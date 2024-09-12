@@ -21,6 +21,10 @@ module.exports = withMT({
       fontFamily: {
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans, "sans-serif"],
       },
+      colors: {
+       p:  '424a53',
+        primary: '#b11016', 
+      },
     },
   },
   plugins: [],

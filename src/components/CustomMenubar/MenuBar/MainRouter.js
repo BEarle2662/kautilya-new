@@ -45,7 +45,7 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
         <Link href={each.href} key={each.id}>
           <MenuItem className="flex items-center  text-black rounded-lg hover:bg-[#b11016] hover:text-white">
             <div>
-              <Typography className="flex items-center text-[10px] xl:text-xs font-bold tracking-[1px] uppercase">
+              <Typography className="flex items-center mb-0 text-[10px] xl:text-xs font-bold tracking-[1px] uppercase">
                 {each.label}
               </Typography>
             </div>

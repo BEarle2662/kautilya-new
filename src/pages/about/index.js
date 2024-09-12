@@ -131,9 +131,9 @@ const About = ({ initialTeamData }) => {
                 include:
               </p>
               <div className="grid md:grid-cols-4 gap-y-6 md:gap-x-6 md:gap-y-10 mt-6">
-                {sectors.map((each) => {
+                {sectors.map((each , index) => {
                   return (
-                    <div className="md:col-span-2">
+                    <div key={index} className="md:col-span-2">
                       <p className="text-p font-bold text-lg mb-2">
                         {each.name}
                       </p>
@@ -224,9 +224,3 @@ export async function getStaticProps() {
 
 export default About;
 
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-ourteamfounding";
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-ourteamdean";
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-ourteamadvisory";
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-ourteam";
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-technicalsupport";
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-supportstaff";

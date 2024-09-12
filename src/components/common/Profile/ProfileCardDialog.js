@@ -55,7 +55,7 @@ export function ProfileCardDialog({
             <p className="inline-block border-b-2 border-b-[#b11016] text-2xl font-semibold mb-4 pb-2.5">
               {profileData.name}
             </p>
-            <p className="text-sm font-semibold md:text-base md:font-semibold text-primary mb-6">
+            <p className="text-sm font-semibold md:text-base md:font-semibold text-primary text-center mb-6">
               {profileData.designation1
                 ? profileData.designation1
                 : profileData.designation}

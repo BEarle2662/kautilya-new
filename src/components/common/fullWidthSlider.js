@@ -121,9 +121,3 @@ const FullwidthSlider = ({ apiEndpoint, customSettings }) => {
 };
 
 export default FullwidthSlider;
-
-// srcSet={`https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/mobile/${eachObj.bannermobile}`}
-// srcSet={`https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/${eachObj.banner}`}
-// src={`https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/${eachObj.banner}`}
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/kautilyanow_slider",
