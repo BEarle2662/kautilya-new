@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Carousel, IconButton } from "@material-tailwind/react";
 
+import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
+import { apisBasePath } from "@/Endpoints/apisBase";
+
 const FullwidthSlider = ({ apiEndpoint, customSettings }) => {
   const [kautilyanow_slider, setSlider] = useState([]);
 
@@ -12,7 +15,8 @@ const FullwidthSlider = ({ apiEndpoint, customSettings }) => {
   const fetchSliderData = async () => {
     try {
       const res = await axios.get(
-        "https://guprojects.gitam.edu/kautilya-admin/api/kautilyanow_slider",
+        apisBasePath.kautilyanowSlider,
+
         {
           headers: {
             "Content-Type": "application/json",
@@ -96,15 +100,15 @@ const FullwidthSlider = ({ apiEndpoint, customSettings }) => {
                 <picture className="block w-full h-full">
                   <source
                     media="(max-width:620px)"
-                    srcSet={`https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/mobile/${eachObj.bannermobile}`}
+                    srcSet={`${ImageBasePaths.homeMobileBannerImagesPath}${eachObj.bannermobile}`}
                   />
                   <source
                     media="(min-width:621px)"
-                    srcSet={`https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/${eachObj.banner}`}
+                    srcSet={`${ImageBasePaths.homeDesktopBannerImagesPath}${eachObj.banner}`}
                   />
                   <img
                     className="w-full h-full object-cover"
-                    src={`https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/${eachObj.banner}`}
+                    srcSet={`${ImageBasePaths.homeDesktopBannerImagesPath}${eachObj.banner}`}
                     alt={`Slide ${eachObj.weborder}`}
                   />
                 </picture>

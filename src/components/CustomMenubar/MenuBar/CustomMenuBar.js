@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Menu, MenuHandler } from "@material-tailwind/react";
 
 import { NavListMenu } from "./MainRouter";
-import { navLinks } from "../../common/endpoints";
+import { navLinks } from "../../../Endpoints/navbarLinks";
+// import { prodNavLinks } from "../../common/endpoints";
 
 const CustomMenuBar = () => {
   return (

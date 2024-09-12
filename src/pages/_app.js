@@ -8,7 +8,6 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 
 function MyApp({ Component, pageProps }) {
   return (
-    
     <ThemeProvider value={theme}>
       <main className={montserrat.className}>
         <Component {...pageProps} />

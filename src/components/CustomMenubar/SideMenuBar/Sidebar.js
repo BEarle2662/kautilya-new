@@ -16,7 +16,8 @@ import {
 
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-import { navLinks } from "@/components/common/endpoints";
+import { navLinks } from "@/Endpoints/navbarLinks";
+// import { prodNavLinks } from "@/components/common/endpoints";
 
 const ComponentSubDropdownAccordian = ({
   subDropdownAccordian,

@@ -11,9 +11,11 @@ module.exports = withMT({
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        // "gradient-image": "url('/kautilya-next/assets/img/gradient-bg.jpg')",
+      },
+      colors: {
+        p: "#424a53",
+        primary: "#b11016",
       },
 
       fontFamily: {

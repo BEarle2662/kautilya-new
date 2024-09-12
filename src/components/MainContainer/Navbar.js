@@ -1,14 +1,10 @@
 import React from "react";
 
 import Image from "next/image";
-// import logo from "../../../public/assests/imgs/logo-1.png";
 import logo from "../../../public/assets/img/logo-1.png";
 
-import {
-  ChevronDownIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
+
 import { IconButton } from "@material-tailwind/react";
 
 import Sidebar from "../CustomMenubar/SideMenuBar/Sidebar";
