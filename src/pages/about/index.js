@@ -68,7 +68,7 @@ const About = ({ initialTeamData }) => {
             const keyName = Object.keys(each)[0];
             // console.log(`md:grid-cols-${initialTeamData[keyName].length}`);
             return (
-              <div key={index} className="my-20">
+              <div key={index} className="mb-20">
                 <CategoryHeading heading={Object.values(each)[0]} />
 
                 {/* <div
@@ -131,7 +131,7 @@ const About = ({ initialTeamData }) => {
                 include:
               </p>
               <div className="grid md:grid-cols-4 gap-y-6 md:gap-x-6 md:gap-y-10 mt-6">
-                {sectors.map((each , index) => {
+                {sectors.map((each, index) => {
                   return (
                     <div key={index} className="md:col-span-2">
                       <p className="text-p font-bold text-lg mb-2">
@@ -182,39 +182,33 @@ const About = ({ initialTeamData }) => {
 };
 
 export async function getStaticProps() {
-  const ourteamfoundingUrl = `${apisBasePath.ourteamfounding}`;
+  const ksppteamdata = apisBasePath.ksppteam;
 
-  const deanDataUrl = `${apisBasePath.ourteamdean}`;
+  const response = await fetch(ksppteamdata);
+  const data = await response.json();
 
-  const advisoryTeamUrl = `${apisBasePath.ourteamadvisory}`;
+  const foundingTeam = data.data.filter(
+    (each) => each.role === "Founding Team"
+  );
+  const deanData = data.data.filter((each) => each.role === "Dean");
+  const advisoryTeam = data.data.filter(
+    (each) => each.role === "Advisory Board"
+  );
+  const ourTeam = data.data.filter((each) => each.role === "Our Team");
+  const technicalSupport = data.data.filter(
+    (each) => each.role === "Technical Support"
+  );
+  const supportStaff = data.data.filter(
+    (each) => each.role === "Support Staff"
+  );
 
-  const ourTeamUrl = `${apisBasePath.ourteam}`;
-
-  const technicalsupportUrl = `${apisBasePath.technicalsupport}`;
-
-  const supportstaffUrl = `${apisBasePath.supportstaff}`;
-
-  // Fetch all URLs concurrently
-  const responses = await Promise.all([
-    fetch(ourteamfoundingUrl),
-    fetch(deanDataUrl),
-    fetch(advisoryTeamUrl),
-    fetch(ourTeamUrl),
-    fetch(technicalsupportUrl),
-    fetch(supportstaffUrl),
-  ]);
-
-  // Parse all responses as JSON
-  const data = await Promise.all(responses.map((response) => response.json()));
-
-  // Combine all the fetched data into one object or array, depending on your needs
   const initialTeamData = {
-    foundingTeam: data[0].data,
-    deanData: data[1].data,
-    advisoryTeam: data[2].data,
-    ourTeam: data[3].data,
-    technicalSupport: data[4].data,
-    supportStaff: data[5].data,
+    foundingTeam: foundingTeam,
+    deanData: deanData,
+    advisoryTeam: advisoryTeam,
+    ourTeam: ourTeam,
+    technicalSupport: technicalSupport,
+    supportStaff: supportStaff,
   };
 
   return {
@@ -223,4 +217,3 @@ export async function getStaticProps() {
 }
 
 export default About;
-
