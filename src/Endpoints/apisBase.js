@@ -29,4 +29,6 @@ export const apisBasePath = {
 
   publicationBanner: `${apiBasePath}fetch-publication-slider-data`, // Publications Academic associates
   publicationAcademicAssoData: `${apiBasePath}fetch-publication-tabs-data`,
+
+  videosData: `${apiBasePath}fetch-videosdata`, // videos
 };

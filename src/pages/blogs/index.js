@@ -25,7 +25,6 @@ const BlogsPage = ({ slugsData }) => {
 
 export async function getStaticProps() {
   const slugsBasePath = `${apisBasePath.blogsList}`;
-  // "https://guprojects.gitam.edu/kautilya-admin/api/blog-lists";
 
   const res = await axios.get(slugsBasePath, {
     headers: {
