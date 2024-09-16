@@ -37,15 +37,15 @@ const videos = ({ videosData }) => {
                 <div
                   key={each.id}
                   className="iframe_video"
-                  style={{ height: "200px" }}
+                  style={{ height: "300px" }}
                 >
                   <LazyLoad
                     offset={200}
                     once
                     style={{
-                      height: "100%",
-                      marginRight: "20px",
-                      marginBottom: "40px",
+                      height: "70%",
+                      // marginRight: "20px",
+                      marginBottom: "20px",
                     }}
                   >
                     <YouTube
@@ -55,7 +55,9 @@ const videos = ({ videosData }) => {
                       style={{ height: "100%" }}
                     />
                   </LazyLoad>
-                  {/* <p>{each.video_title}</p> */}
+                  <p className="font-bold text-p text-base">
+                    {each.video_title}
+                  </p>
                 </div>
               );
             })}
@@ -77,7 +79,7 @@ export async function getStaticProps() {
   });
 
   const videosData = res.data.data;
-  console.log("Videos", videosData);
+  // console.log("Videos", videosData);
   return {
     props: { videosData },
   };

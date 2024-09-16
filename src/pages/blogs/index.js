@@ -9,8 +9,6 @@ const BlogsPage = ({ slugsData }) => {
   const image =
     "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
 
-  // console.log("Capstone", slugsData);
-
   return (
     <MainLayout
       title={"Capstone page Testing for metatags"}
