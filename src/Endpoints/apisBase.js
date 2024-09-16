@@ -1,5 +1,7 @@
 const apiBasePath = "https://guprojects.gitam.edu/kautilya-admin/api/";
 
+//guprojects.gitam.edu/kautilya-admin/api/fetch-ksppteam
+
 export const apisBasePath = {
   kautilyanowSlider: `${apiBasePath}kautilyanow_slider`, // home slider
 
@@ -9,6 +11,7 @@ export const apisBasePath = {
   ourteam: `${apiBasePath}fetch-ourteam`,
   technicalsupport: `${apiBasePath}fetch-technicalsupport`,
   supportstaff: `${apiBasePath}fetch-supportstaff`,
+  ksppteam: `${apiBasePath}fetch-ksppteam`,
 
   faculty: `${apiBasePath}fetch-faculty`, // Faculty
   facultyBrief: `${apiBasePath}faculty-brief`,
@@ -26,4 +29,6 @@ export const apisBasePath = {
 
   publicationBanner: `${apiBasePath}fetch-publication-slider-data`, // Publications Academic associates
   publicationAcademicAssoData: `${apiBasePath}fetch-publication-tabs-data`,
+
+  videosData: `${apiBasePath}fetch-videosdata`, // videos
 };

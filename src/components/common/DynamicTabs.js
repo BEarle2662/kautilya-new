@@ -1,38 +1,57 @@
-import { Tabs, Tab, TabsHeader, TabsBody, TabPanel } from "@material-tailwind/react";
+import React from "react";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
+import {
+  Tabs,
+  Tab,
+  TabsHeader,
+  TabsBody,
+  TabPanel,
+} from "@material-tailwind/react";
 
-const DynamicTabs = ({ tabData }) => {
+const DynamicTabs = ({ tabData = [] }) => {
+  console.log("DynamicTabs received data:", tabData);
+
+  if (!Array.isArray(tabData)) {
+    console.error("Expected tabData to be an array but received:", tabData);
+    tabData = [];
+  }
+
   return (
-    <Tabs id="dynamic-tabs" value={tabData?.length > 0 ? tabData[0].value : ""}>
-    <TabsHeader>
-      {tabData?.length > 0 ? (
-        tabData.map(({ label, value }) => (
-          <Tab key={value} value={value}>
-            {label}
-          </Tab>
-        ))
-      ) : (
-        <p>No tabs available</p>  
-      )}
-    </TabsHeader>
-    <TabsBody
-      animate={{
-        initial: { y: 250 },
-        mount: { y: 0 },
-        unmount: { y: 250 },
-      }}
+    <Tabs
+      id="dynamic-tabs"
+      value={tabData.length > 0 ? tabData[0].id : "default"}
     >
-      {tabData?.length > 0 ? (
-        tabData.map(({ value, desc }) => (
-          <TabPanel key={value} value={value}>
-            {desc}
-          </TabPanel>
-        ))
+      {tabData.length > 0 ? (
+        <>
+          <TabsHeader>
+            {tabData.map(({ category, id }) => (
+              <Tab key={id} value={id}>
+                <div className="flex items-center gap-2">
+                  <UserCircleIcon className="w-5 h-5" />
+                  {category}
+                </div>
+              </Tab>
+            ))}
+          </TabsHeader>
+
+          <TabsBody
+            animate={{
+              initial: { y: 250 },
+              mount: { y: 0 },
+              unmount: { y: 250 },
+            }}
+          >
+            {tabData.map(({ id, description }) => (
+              <TabPanel key={id} value={id}>
+                <div dangerouslySetInnerHTML={{ __html: description }} />
+              </TabPanel>
+            ))}
+          </TabsBody>
+        </>
       ) : (
-        <TabPanel>No content available</TabPanel>  
+        <p>No data available for tabs</p>
       )}
-    </TabsBody>
-  </Tabs>
-  
+    </Tabs>
   );
 };
 
