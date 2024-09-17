@@ -1,19 +1,18 @@
-/** @type {import('@material-tailwind/react').ButtonStyleTypes} */
-/** @type {import('@material-tailwind/react').AccordionStylesType } */
-/** @type {import('@material-tailwind/react').TabsStylesType } */
-/** @type {import('@material-tailwind/react').TabsHeaderStylesType } */
-/** @type {import('@material-tailwind/react').TabsBodyStylesType } */
-/** @type {import('@material-tailwind/react').TabPanelStylesType  } */
-/** @type {import('@material-tailwind/react').TabStylesType } */
+// /** @type {import('@material-tailwind/react').ButtonStyleTypes} */
+// /** @type {import('@material-tailwind/react').AccordionStylesType } */
+// /** @type {import('@material-tailwind/react').TabsStylesType } */
+// /** @type {import('@material-tailwind/react').TabsHeaderStylesType } */
+// /** @type {import('@material-tailwind/react').TabsBodyStylesType } */
+// /** @type {import('@material-tailwind/react').TabPanelStylesType  } */
+// /** @type {import('@material-tailwind/react').TabStylesType } */
 
 const buttonTheme = {
   defaultProps: {
     variant: "filled",
-    size: "lg",
-    color: "#b11016",
+    size: "sm",
     fullWidth: false,
     ripple: true,
-    className: "rounded-none",
+    className: "rounded-none bg-primary text-primary",
   },
 };
 

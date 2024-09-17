@@ -1,13 +1,28 @@
 import FullwidthSlider from "@/components/common/fullWidthSlider";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import CustomSlider from "@/components/common/customSlider";
+import React, { useState, useEffect } from "react";
 export default function Home() {
+  const [sliderData, setSliderData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        "https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/"
+      );
+      const data = await response.json();
+      setSliderData(data);
+    };
+    fetchData();
+  }, []);
   return (
     <MainLayout>
       <div className="pt-4">
         <ScreenWidth layoutwidth="false">
-          <FullwidthSlider apiEndpoint="/kautilyanow_slider" />
+          <CustomSlider apiEndpoint="/kautilyanow_slider" />
         </ScreenWidth>
       </div>
 
