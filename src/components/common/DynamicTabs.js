@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 
 const DynamicTabs = ({ tabData = [] }) => {
-  console.log("DynamicTabs received data:", tabData);
+  // console.log("DynamicTabs received data:", tabData);
 
   if (!Array.isArray(tabData)) {
     console.error("Expected tabData to be an array but received:", tabData);
