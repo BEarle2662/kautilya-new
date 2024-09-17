@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import DynamicTabs from "@/components/common/DynamicTabs";
 import { Button } from "@material-tailwind/react";
 import Link from "next/link";
@@ -42,7 +43,9 @@ const DoctoralPhdProgram = ({ tabData }) => {
           research opportunities that align with your passions and career goals.
         </p>
 
-        <DynamicTabs tabData={tabData} />
+        <ScreenWidth layoutwidth="true">
+          <DynamicTabs tabData={tabData} />
+        </ScreenWidth>
       </div>
     </MainLayout>
   );

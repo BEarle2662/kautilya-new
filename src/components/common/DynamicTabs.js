@@ -1,5 +1,6 @@
 import React from "react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { FaCircleDown } from "react-icons/fa6";
 import {
   Tabs,
   Tab,
@@ -9,8 +10,6 @@ import {
 } from "@material-tailwind/react";
 
 const DynamicTabs = ({ tabData = [] }) => {
-  // console.log("DynamicTabs received data:", tabData);
-
   if (!Array.isArray(tabData)) {
     console.error("Expected tabData to be an array but received:", tabData);
     tabData = [];
@@ -27,7 +26,7 @@ const DynamicTabs = ({ tabData = [] }) => {
             {tabData.map(({ category, id }) => (
               <Tab key={id} value={id}>
                 <div className="flex items-center gap-2">
-                  <UserCircleIcon className="w-5 h-5" />
+                  <FaCircleDown className="w-5 h-5" />
                   {category}
                 </div>
               </Tab>
