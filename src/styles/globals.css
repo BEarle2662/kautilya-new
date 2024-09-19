@@ -30,7 +30,7 @@ p {
 .k-facult-sub {
   @apply text-xs md:text-sm font-normal mt-1 text-center;
 }
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .line-below::after {
     content: "";
     position: absolute;
@@ -55,4 +55,60 @@ p {
   border-radius: 5px;
   width: 100%;
   height: 100%;
+}
+
+.sub_title {
+  color: #b11016;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.border_line {
+  border-bottom: 1px solid #000;
+  margin-bottom: 40px;
+}
+
+table tr th {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+
+table tr td {
+  color: #424a53;
+  text-align: center;
+} */
+
+@media (max-width: 640px) {
+  .line-below::after {
+    @apply absolute bg-white top-[130px] left-0 right-0 h-[2px] w-[63%];
+  }
+}
+
+.ellipsis-two-lines {
+  @apply overflow-hidden text-ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.iframe_video iframe {
+  @apply rounded-md w-full h-full;
+}
+
+.sub_title {
+  @apply text-[#b11016] font-medium text-lg;
+}
+
+.border_line {
+  @apply border-b border-black mb-10;
+}
+
+table tr th {
+  @apply bg-black text-white text-center align-middle;
+}
+
+table tr td {
+  @apply text-[#424a53] text-center;
 }

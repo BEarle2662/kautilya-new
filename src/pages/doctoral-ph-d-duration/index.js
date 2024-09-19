@@ -43,9 +43,7 @@ const DoctoralPhdProgram = ({ tabData }) => {
           research opportunities that align with your passions and career goals.
         </p>
 
-        <ScreenWidth layoutwidth="true">
-          <DynamicTabs tabData={tabData} />
-        </ScreenWidth>
+        <DynamicTabs tabData={tabData} />
       </div>
     </MainLayout>
   );

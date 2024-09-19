@@ -25,4 +25,8 @@ export const apisBasePath = {
   publicationAcademicAssoData: `${apiBasePath}fetch-publication-tabs-data`,
 
   videosData: `${apiBasePath}fetch-videosdata`, // videos
+
+  publicPolicies: `${apiBasePath}fetch-publicpolicies`, // public policies
+
+  mentorsData: `${apiBasePath}fetch-mentorslist`, // mentors data
 };

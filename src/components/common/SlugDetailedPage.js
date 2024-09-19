@@ -47,13 +47,12 @@ const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
           src={`${ImageBasePaths.detailedSlugsMediaPath}${data.posted_by_path}`}
           className="border-2 border-white hover:z-10"
         />
-        <p>
-          <span>
-            {data.opinion} By,
-            <br />
-          </span>
-          <div dangerouslySetInnerHTML={{ __html: data.posted_by }}></div>
-        </p>
+
+        <span>
+          {data.opinion} By,
+          <br />
+        </span>
+        <div dangerouslySetInnerHTML={{ __html: data.posted_by }}></div>
       </div>
 
       <div

@@ -4,6 +4,7 @@ export const ImageBasePaths = {
   facultyImagesPath: `${basePath}faculty/`,
   ourteamImagesPath: `${basePath}ourteam/`,
   alumniImagesPath: `${basePath}alumni/`,
+  mentorsImagesPath: `${basePath}mentors/`,
 
   homeDesktopBannerImagesPath: `${basePath}kautilyanow_slider/`,
   homeMobileBannerImagesPath: `${basePath}kautilyanow_slider/mobile/`,
