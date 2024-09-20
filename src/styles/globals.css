@@ -112,3 +112,87 @@ table tr th {
 table tr td {
   @apply text-[#424a53] text-center;
 }
+.innerpagecontet p {
+  @apply my-5 text-sm md:text-lg;
+}
+.innerpagecontet ul {
+  @apply my-5 text-sm md:text-lg;
+}
+
+/* Base styles */
+.kc-colloquy-ul-li {
+  @apply text-white text-base py-3 px-3 cursor-pointer relative;
+}
+
+/* Active state */
+.kc-colloquy-ul-li.active::after {
+  content: "";
+  @apply absolute w-full h-1 bg-white bottom-0 left-0;
+  animation: underline-animation 0.3s ease-in-out forwards;
+}
+
+/* Keyframes */
+@keyframes underline-animation {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+/* Section container */
+.kc-section-container {
+  @apply bg-gray-200 flex justify-center;
+}
+
+/* Panel container */
+.panel-container {
+  @apply bg-white;
+}
+
+/* Section content container */
+.kc-section-content-container {
+  @apply w-3/4 flex flex-col items-start pt-16 pb-16;
+}
+
+.section-headings {
+  @apply text-[28px] text-[#b51c1f] font-normal mb-7;
+}
+
+.panel-section-container {
+  @apply py-7;
+}
+
+.panel-discussion-title-container {
+  @apply flex my-5;
+}
+
+.panel-discussion-title {
+  @apply text-[22px] text-black font-bold;
+}
+
+.pointer-icon {
+  @apply text-[28px] mr-5;
+}
+
+.kc-colloquy-ul-research {
+  @apply list-disc pl-4 md:pl-10;
+}
+
+.kc-colloquy-ul-li-research {
+  @apply leading-8 pl-1 md:pl-5 text-base;
+}
+
+.anchor-mail {
+  @apply text-[#005aff99];
+}
+
+.anchor {
+  @apply font-semibold text-[#005aff99];
+}
+
+.anchor:hover {
+  @apply font-semibold text-[#005aff99];
+}

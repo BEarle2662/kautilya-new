@@ -31,7 +31,6 @@ const Research = () => {
     <MainLayout>
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Research @ Kautilya" />
-
         <Image
           src={researchBanner}
           width={0}
@@ -41,6 +40,7 @@ const Research = () => {
         />
 
         {/* Rendering the research content */}
+        <div className="innerpagecontet"></div>
         {researchContent.map((element, index) => {
           if (element.tag === "p") {
             return (
