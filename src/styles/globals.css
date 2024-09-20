@@ -196,3 +196,14 @@ table tr td {
 .anchor:hover {
   @apply font-semibold text-[#005aff99];
 }
+
+/* Student club */
+
+.headingWithBG h4 {
+  @apply text-white font-medium text-2xl leading-[45px] py-0 px-5 mb-7;
+  background-image: linear-gradient(to right, #b11016, #f5f9fb);
+}
+
+.headingWithBG p {
+  @apply text-lg leading-8;
+}
