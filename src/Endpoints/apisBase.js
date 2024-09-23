@@ -29,4 +29,6 @@ export const apisBasePath = {
   publicPolicies: `${apiBasePath}fetch-publicpolicies`, // public policies
 
   mentorsData: `${apiBasePath}fetch-mentorslist`, // mentors data
+
+  resourcesData: `${apiBasePath}fetch-resources-data`, // Events data
 };

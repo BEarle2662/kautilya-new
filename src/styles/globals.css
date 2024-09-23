@@ -207,3 +207,29 @@ table tr td {
 .headingWithBG p {
   @apply text-lg leading-8;
 }
+
+/* Events */
+
+.event_heading {
+  @apply text-left font-bold text-[15px] leading-[20px] text-[#424141];
+}
+
+.date_p {
+  @apply font-normal text-[15px] leading-[20px] text-[#424141];
+}
+
+.before_arrow {
+  @apply text-black font-semibold !important;
+}
+
+.readmoreIcon {
+  @apply flex;
+}
+
+.readmoreIcon img {
+  @apply w-[25px] h-[15px] ml-[20px] mt-[5px];
+}
+
+.arrow_img {
+  @apply w-[39px] h-[15px] !important;
+}
