@@ -2,6 +2,20 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Image from "next/image";
+import slideImg1 from "../../../public/assets/img/studentClubs/1.jpg";
+import slideImg2 from "../../../public/assets/img/studentClubs/2.jpg";
+
+import slideImg3 from "../../../public/assets/img/studentClubs/3.jpg";
+
+import slideImg4 from "../../../public/assets/img/studentClubs/4.jpg";
+
+import slideImg5 from "../../../public/assets/img/studentClubs/5.jpg";
+
+import slideImg6 from "../../../public/assets/img/studentClubs/6.jpg";
 
 const clubData = [
   {
@@ -52,6 +66,35 @@ const clubData = [
 ];
 
 const StudentClub = () => {
+  const data = [
+    {
+      imgURL: slideImg1,
+    },
+    {
+      imgURL: slideImg2,
+    },
+    {
+      imgURL: slideImg3,
+    },
+    {
+      imgURL: slideImg4,
+    },
+    {
+      imgURL: slideImg5,
+    },
+    {
+      imgURL: slideImg6,
+    },
+  ];
+
+  const settings = {
+    dots: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    cssEase: "linear",
+  };
+
   return (
     <MainLayout>
       <ScreenWidth layoutwidth="false">
@@ -61,6 +104,22 @@ const StudentClub = () => {
             color="text-[#ffffff]"
           />
         </div>
+
+        <ScreenWidth layoutwidth="true">
+          <Slider {...settings}>
+            {data.map((eachobj) => (
+              <Image
+                src={eachobj.imgURL}
+                key={eachobj.imgURL}
+                height={0}
+                width={0}
+                className="h-full w-full"
+                alt="students-club"
+              />
+            ))}
+          </Slider>
+        </ScreenWidth>
+
         <ScreenWidth layoutwidth="true">
           {clubData.map((each, index) => (
             <div className="headingWithBG" key={index}>

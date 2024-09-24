@@ -7,8 +7,31 @@ import Image from "next/image";
 
 const CustomSlider = ({ sliderData }) => {
   //   console.log(sliderData);
+
   const imagePath =
     "https://guprojects.gitam.edu/kautilya-admin/public/resources/";
+
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "red" }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "green" }}
+        onClick={onClick}
+      />
+    );
+  }
 
   const settings = {
     dots: true,
@@ -29,6 +52,9 @@ const CustomSlider = ({ sliderData }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false,
+          //   nextArrow: <SampleNextArrow />,
+          //   prevArrow: <SamplePrevArrow />,
         },
       },
     ],

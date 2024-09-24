@@ -31,4 +31,6 @@ export const apisBasePath = {
   mentorsData: `${apiBasePath}fetch-mentorslist`, // mentors data
 
   resourcesData: `${apiBasePath}fetch-resources-data`, // Events data
+
+  placementsKcAdvnData: `${apiBasePath}fetch-placementsData`,
 };
