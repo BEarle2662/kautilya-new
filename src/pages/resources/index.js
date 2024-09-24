@@ -6,6 +6,7 @@ import { apisBasePath } from "@/Endpoints/apisBase";
 import React from "react";
 
 const Resources = ({ data }) => {
+  let Page = "Resource";
   const events = data.data?.filter((each) => each.category === "Events");
   const policySeries = data.data?.filter(
     (each) => each.category === "Policy Series"
@@ -19,16 +20,16 @@ const Resources = ({ data }) => {
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Events" textAlign="text-left" />
 
-        <CustomSlider sliderData={events} />
+        <CustomSlider sliderData={events} page={Page} />
 
         <CategoryHeading
           heading="Let's Talk Policy Series"
           textAlign="text-left"
         />
-        <CustomSlider sliderData={policySeries} />
+        <CustomSlider sliderData={policySeries} page={Page} />
 
         <CategoryHeading heading="News & Updates" textAlign="text-left" />
-        <CustomSlider sliderData={new_updates} />
+        <CustomSlider sliderData={new_updates} page={Page} />
       </ScreenWidth>
     </MainLayout>
   );

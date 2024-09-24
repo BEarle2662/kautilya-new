@@ -410,7 +410,7 @@ const AcademicCalendar = () => {
           })}
         </div>
 
-        <p className="mt-5">
+        <p className="mt-10">
           * Classes will be conducted periodically on saturdays as well as per
           the management’s decision
         </p>

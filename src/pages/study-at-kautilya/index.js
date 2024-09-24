@@ -30,7 +30,7 @@ const StudyAtKautilya = ({ kautilyaAdvantageBanner }) => {
               and from areas like Economics, Public Policy, Political Science,
               Statistics, Ethics, Leadership, and more.
             </p>
-            {/* <FullwidthSlider slider={kautilyaAdvantageBanner} pagesMpp={page} /> */}
+
             <FullScreenSlider
               slider={kautilyaAdvantageBanner}
               pagesMpp={page}

@@ -233,3 +233,27 @@ table tr td {
 .arrow_img {
   @apply w-[39px] h-[15px] !important;
 }
+
+/* placements */
+.d-block_carousel {
+  display: block;
+}
+
+.text-slider {
+  h4 {
+    @apply text-white font-bold text-xl mb-4;
+  }
+
+  p {
+    @apply text-white;
+  }
+
+  .slick-dots li button::before {
+    @apply !text-white  text-xs font-semibold;
+  }
+
+  .slick-prev::before,
+  .slick-next::before {
+    content: "";
+  }
+}
