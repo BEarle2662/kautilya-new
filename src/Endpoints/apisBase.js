@@ -32,5 +32,7 @@ export const apisBasePath = {
 
   resourcesData: `${apiBasePath}fetch-resources-data`, // Events data
 
-  placementsKcAdvnData: `${apiBasePath}fetch-placementsData`,
+  placementsKcAdvnData: `${apiBasePath}fetch-placementsData`, // placement data
+
+  studentMixData: `${apiBasePath}fetch-student-mix`, // student mix data
 };

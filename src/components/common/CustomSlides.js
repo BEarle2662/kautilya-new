@@ -83,36 +83,38 @@ const CustomSlides = ({ sliderdata, page, sliderType }) => {
 
   return (
     <>
-      <Slider {...settings} className="">
-        {sliderdata.map((eachobj, index) => {
-          return (
-            <div key={eachobj.id} className="">
-              <a
-                {...(eachobj.Syllabus && {
-                  href: `${pageType.document}${eachobj.Syllabus}`,
-                  target: "_blank",
-                })}
-              >
-                <picture>
-                  <source
-                    media="(max-width:620px)"
-                    srcSet={`${pageType.mobile}${eachobj.mobile_banner}`}
-                  />
-                  <source
-                    media="(min-width:621px)"
-                    srcSet={`${pageType.desktop}${eachobj.desktop_banner}`}
-                  />
-                  <img
-                    className="d-block_carousel"
-                    src={`${pageType.desktop}${eachobj.desktop_banner}`}
-                    alt={`Slide ${eachobj.category}`}
-                  />
-                </picture>
-              </a>
-            </div>
-          );
-        })}
-      </Slider>
+      <div className="slider-container">
+        <Slider {...settings} className="">
+          {sliderdata.map((eachobj, index) => {
+            return (
+              <div key={eachobj.id} className="p-1">
+                <a
+                  {...(eachobj.Syllabus && {
+                    href: `${pageType.document}${eachobj.Syllabus}`,
+                    target: "_blank",
+                  })}
+                >
+                  <picture className="w-full">
+                    <source
+                      media="(max-width:620px)"
+                      srcSet={`${pageType.mobile}${eachobj.mobile_banner}`}
+                    />
+                    <source
+                      media="(min-width:621px)"
+                      srcSet={`${pageType.desktop}${eachobj.desktop_banner}`}
+                    />
+                    <img
+                      className="d-block_carousel w-full"
+                      src={`${pageType.desktop}${eachobj.desktop_banner}`}
+                      alt={`Slide ${eachobj.category}`}
+                    />
+                  </picture>
+                </a>
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
     </>
   );
 };
