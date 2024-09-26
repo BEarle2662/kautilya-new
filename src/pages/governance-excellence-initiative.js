@@ -1,123 +1,12 @@
-import { Button } from "@material-tailwind/react";
+
 import MainLayout from "@/components/MainContainer/MainLayout";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import { useState } from 'react';  // Import useState
 import Image from "next/image";
 
-const GovernExcellenceInitiative = () => {
-  const MySwal = withReactContent(Swal);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    dept: '',
-    subject: '',
-    query: '',
-  });
-
-  const [dummy, setDummy] = useState({ email: '' });
-  const [errors, setErrors] = useState({});
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const validateField = (name, value) => {
-    let isValid = true;
-    let errorMsg = '';
-
-    switch (name) {
-      case 'email':
-        isValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i.test(value);
-        errorMsg = isValid ? '' : 'Please enter a valid email address.';
-        break;
-      case 'name':
-      case 'dept':
-      case 'subject':
-        isValid = /^[a-zA-Z ]*$/.test(value);
-        errorMsg = isValid
-          ? ''
-          : `${name.charAt(0).toUpperCase() + name.slice(1)} can only contain letters and spaces.`;
-        break;
-      default:
-        isValid = true;
-        errorMsg = '';
-        break;
-    }
-
-    return { isValid, errorMsg };
-  };
-
-  const checkFormValidity = (updatedFormData) => {
-    const fields = ['name', 'dept', 'subject', 'query'];
-    for (let field of fields) {
-      const { isValid } = validateField(field, updatedFormData[field]);
-      if (!isValid || updatedFormData[field] === '') return false;
-    }
-    return true;
-  };
-
-  const handleChanges = (e) => {
-    const { name, value } = e.target;
-    const trimmedValue = value.trimStart();
-    const { isValid, errorMsg } = validateField(name, trimmedValue);
-
-    if (isValid) {
-      const updatedFormData = { ...formData, [name]: trimmedValue };
-      setFormData(updatedFormData);
-      setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
-      setIsFormValid(checkFormValidity(updatedFormData));
-    } else {
-      setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMsg }));
-      setIsFormValid(false);
-    }
-  };
-
-  const handleEMail = (e) => {
-    setDummy({ ...dummy, email: e.target.value });
-    const { isValid, errorMsg } = validateField('email', e.target.value);
-    if (!isValid) {
-      setErrors((prevErrors) => ({ ...prevErrors, email: errorMsg }));
-      setIsFormValid(false);
-    } else {
-      setErrors((prevErrors) => ({ ...prevErrors, email: '' }));
-      setIsFormValid(true);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', dummy.email);
-    formDataToSend.append('dept', formData.dept);
-    formDataToSend.append('subject', formData.subject);
-    formDataToSend.append('query', formData.query);
-
-    try {
-      const response = await axios.post(
-        'https://guprojects.gitam.edu/kautilya-admin/api/savegeicontact',
-        formDataToSend
-      );
-
-      setIsFormValid(false);
-      if (response.data.status === 'success') {
-        MySwal.fire({ icon: 'success', title: 'Success!', text: response.data.message });
-        setFormData({ name: '', email: '', dept: '', subject: '', query: '' });
-        setDummy({ email: '' });
-      } else {
-        MySwal.fire({ icon: 'error', title: 'Error!', text: response.data.message });
-      }
-    } catch (error) {
-      MySwal.fire({ icon: 'error', title: 'Error!', text: 'Failed to submit the form. Please try again.' });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+function GovernExcellenceInitiative() {
   return (
     <MainLayout>
     <div className="bg-gray-100">
-      <div className="bg-red-500 text-white text-center IndiaByKautily p-24 bg-[url('/assets/img/events/govtExcellenceInitivies/gradient-bg.jpg')] bg-no-repeat bg-cover bg-center">
+      <div className="bg-red-500 mt-3 text-white text-center IndiaByKautily p-20 bg-[url('/assets/img/events/govtExcellenceInitivies/gradient-bg.jpg')] bg-no-repeat bg-cover bg-center">
         <h5 className="font-bold text-4xl p-4">Governance Excellence Initiative</h5>
         <div className="absolute inset-x-0 top-64 mx-auto w-[15%] h-[2px] bg-white"></div>
       </div>
@@ -166,8 +55,8 @@ const GovernExcellenceInitiative = () => {
               <Image src="./../../assets/img/events/govtExcellenceInitivies/gei_may_2024_2.jpg" alt="govt_excel" className="w-full h-full" height={0} width={0}/>
             </div>
           </div>
-          <div class="col">
-          <h3 class="gei_sub_headings mb-6">Why Choose Us?</h3>
+          <div className="col">
+          <h3 className="gei_sub_headings mb-4 text-lg">Why Choose Us?</h3>
           <p className="mb-6 text-lg">
             <b>Expert Faculty:</b> Our programs are led by <a href="https://kspp.edu.in/our-faculty" target="_blank" className="text-blue-500 underline font-semibold px-2"> 
               faculty members
@@ -206,84 +95,95 @@ const GovernExcellenceInitiative = () => {
             sharing, and peer support among government officials.
           </p>
         </div>
-          <div className="bg-white p-8 shadow-md rounded-md">
-            <h3 className="text-2xl font-bold text-center mb-4">Contact Us</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="w-full">
-                  <input
-                    type="text"
-                    placeholder="Full name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChanges}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
-                  />
-                  {errors.name && <div className="text-red-500 text-sm mt-1">{errors.name}</div>}
-                </div>
-                <div className="w-full">
-                  <input
-                    type="email"
-                    placeholder="Email ID"
-                    name="email"
-                    value={dummy.email}
-                    onChange={handleEMail}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
-                  />
-                  {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
-                </div>
-              </div>
-
-              <div className="flex flex-col md:flex-row gap-4">
-                <div className="w-full">
-                  <input
-                    type="text"
-                    placeholder="Department/Organisation"
-                    name="dept"
-                    value={formData.dept}
-                    onChange={handleChanges}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
-                  />
-                  {errors.dept && <div className="text-red-500 text-sm mt-1">{errors.dept}</div>}
-                </div>
-                <div className="w-full">
-                  <input
-                    type="text"
-                    placeholder="Subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChanges}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
-                  />
-                  {errors.subject && <div className="text-red-500 text-sm mt-1">{errors.subject}</div>}
-                </div>
-              </div>
-
-              <div>
-                <textarea
-                  placeholder="Leave your query"
-                  name="query"
-                  value={formData.query}
-                  onChange={handleChanges}
-                  rows="5"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
-                />
-                {errors.query && <div className="text-red-500 text-sm mt-1">{errors.query}</div>}
-              </div>
-
-              <div className="text-center">
-                <button
-                  type="submit"
-                  disabled={!isFormValid || isLoading}
-                  className={`bg-blue-500 text-white px-6 py-2 rounded-md ${!isFormValid || isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
-                >
-                  {isLoading ? 'Please wait...' : 'Submit'}
-                </button>
-              </div>
-            </form>
           </div>
-        </div>
       </section>
+      <div id="root">
+        <section className="gei_main_section pb-60">
+          <div className="gei_section container mx-auto">
+            <div className="row">
+              <div className="col">
+                <div className="bg-white resume bg-[url('/assets/img/events/govtExcellenceInitivies/contact_bg.jpg')] bg-center bg-no-repeat" id="resume">
+                  <section className="pt-14 p-0">
+                    <div className="p-0 container mx-auto">
+                      <div className="row">
+                        <div className="col-xl-12">
+                          <h3 className="text-primary text-center text-3xl font-bold mb-4">CONTACT US</h3>
+                        </div>
+                      </div>
+                      <div className="col">
+                        <div className="flex justify-center">
+                          <div className="w-full lg:w-8/12">
+                            <div className="logo_bg bg-[#b11016] p-12">
+                              <form noValidate className="">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
+                                  <div className="mb-4">
+                                    <input
+                                      placeholder="Full name"
+                                      name="name"
+                                      type="text"
+                                      className="form-control"
+                                      value=""
+                                    />
+                                  </div>
+                                  <div className="mb-4">
+                                    <input
+                                      placeholder="Email ID"
+                                      name="email"
+                                      type="email"
+                                      className="form-control"
+                                      value=""
+                                    />
+                                  </div>
+                                  <div className="mb-4">
+                                    <input
+                                      placeholder="Department/organisation"
+                                      name="dept"
+                                      type="text"
+                                      className="form-control"
+                                      value=""
+                                    />
+                                  </div>
+                                  <div className="mb-4">
+                                    <input
+                                      placeholder="Subject"
+                                      name="subject"
+                                      type="text"
+                                      className="form-control"
+                                      value=""
+                                    />
+                                  </div>
+                                  <div className="mb-4 col-span-2">
+                                    <textarea
+                                      rows="5"
+                                      placeholder="Leave your query"
+                                      name="query"
+                                      className="form-control"
+                                    ></textarea>
+                                  </div>
+                                  <div className="mb-4 text-center col-span-2">
+                                    <button
+                                      type="submit"
+                                      disabled
+                                      className="btn bg-[#000] text-white cursor-not-allowed py-3 px-4 rounded text-lg"
+                                    >
+                                      Submit
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
     </div>
     </MainLayout>
   );
