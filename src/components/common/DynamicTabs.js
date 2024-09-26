@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
 import { FaCircleDown } from "react-icons/fa6";
 import {
@@ -8,26 +8,59 @@ import {
   TabsBody,
   TabPanel,
 } from "@material-tailwind/react";
+import CustomSlides from "./CustomSlides";
 
-const DynamicTabs = ({ tabData = [] }) => {
-  if (!Array.isArray(tabData)) {
-    console.error("Expected tabData to be an array but received:", tabData);
-    tabData = [];
-  }
+const DynamicTabs = ({ tabData, phd, page }) => {
+  const [mppTabsData, setMppTabsData] = useState([]);
+
+  useEffect(() => {
+    if (phd) {
+      const filteredTabsData = phd.filter(
+        (each) => each.category !== "Batch Profile"
+      );
+      const batchProfile = phd.filter(
+        (each) => each.category === "Batch Profile"
+      );
+      setMppTabsData([
+        ...filteredTabsData,
+        { id: 0, category: "Batch Profile", slides: batchProfile },
+      ]);
+    } else {
+      setMppTabsData(tabData);
+    }
+  }, [phd, tabData]);
 
   return (
-    <Tabs
-      id="dynamic-tabs"
-      value={tabData.length > 0 ? tabData[0].id : "default"}
-    >
-      {tabData.length > 0 ? (
-        <>
+    <>
+      {mppTabsData.length > 0 ? (
+        <Tabs
+          id="custom-animation"
+          value={
+            mppTabsData[0]?.category === "Academic Associates page" ||
+            mppTabsData[0]?.category === "Publications page"
+              ? mppTabsData[0]?.name
+              : mppTabsData[0]?.category
+          }
+        >
           <TabsHeader>
-            {tabData.map(({ category, id }) => (
-              <Tab key={id} value={id}>
+            {mppTabsData.map(({ category, id, name }) => (
+              <Tab
+                key={id}
+                value={
+                  category === "Academic Associates page" ||
+                  category === "Publications page"
+                    ? name
+                    : category
+                }
+              >
                 <div className="flex items-center gap-2">
                   <FaCircleDown className="w-5 h-5" />
-                  {category}
+                  <span>
+                    {category === "Academic Associates page" ||
+                    category === "Publications page"
+                      ? name
+                      : category}
+                  </span>
                 </div>
               </Tab>
             ))}
@@ -40,17 +73,33 @@ const DynamicTabs = ({ tabData = [] }) => {
               unmount: { y: 250 },
             }}
           >
-            {tabData.map(({ id, description }) => (
-              <TabPanel key={id} value={id}>
-                <div dangerouslySetInnerHTML={{ __html: description }} />
+            {mppTabsData.map(({ id, description, category, slides, name }) => (
+              <TabPanel
+                key={id}
+                value={
+                  category === "Academic Associates page" ||
+                  category === "Publications page"
+                    ? name
+                    : category
+                }
+              >
+                {category === "Batch Profile" ? (
+                  <CustomSlides
+                    sliderdata={slides}
+                    page={page}
+                    sliderType="MPP Tabs"
+                  />
+                ) : (
+                  <div dangerouslySetInnerHTML={{ __html: description }} />
+                )}
               </TabPanel>
             ))}
           </TabsBody>
-        </>
+        </Tabs>
       ) : (
         <p>No data available for tabs</p>
       )}
-    </Tabs>
+    </>
   );
 };
 

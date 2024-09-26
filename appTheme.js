@@ -38,19 +38,45 @@ const accordianTheme = {
   },
 };
 
-const tabsTheme = {
-  styles: {
-    base: {
-      display: "flex",
-      position: "relative",
-      bg: "bg-white",
-      bgOpacity: "bg-opacity-0",
-      borderRadius: "rounded-none",
-      padding: "p-6",
+const tabsThem = {
+  tabs: {
+    defaultProps: {
+      className: "",
+      orientation: "vertical",
+    },
+    styles: {
+      base: {
+        display: "flex",
+        position: "relative",
+        bg: "bg-white",
+        bgOpacity: "bg-opacity-0",
+        borderRadius: "rounded-none",
+        padding: "p-6",
+        overflow: "overflow-auto",
+      },
     },
   },
 };
 
+const tabsTheme = {
+  tabs: {
+    defaultProps: {
+      className: "",
+      orientation: "vertical",
+    },
+    styles: {
+      base: {
+        overflow: "overflow-auto",
+      },
+      horizontal: {
+        display: "block",
+      },
+      vertical: {
+        display: "flex",
+      },
+    },
+  },
+};
 const headerTheme = {
   styles: {
     base: {
