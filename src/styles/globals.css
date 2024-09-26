@@ -264,3 +264,22 @@ table tr td {
 .counter-txt {
   @apply text-center;
 }
+
+.embed-responsive-21by9 {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  padding-bottom: 42.8571%;
+  /* 21:9 aspect ratio */
+}
+
+.embed-responsive-21by9 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

@@ -55,9 +55,9 @@ const Partnership = () => {
                 </h4>
               </CardBody>
               <CardFooter className="pt-0 text-center">
-                <Button>
-                  <Link href={each.partnerLink}>Read More</Link>
-                </Button>
+                <Link href={each.partnerLink}>
+                  <Button>Read More </Button>
+                </Link>
               </CardFooter>
             </Card>
           ))}

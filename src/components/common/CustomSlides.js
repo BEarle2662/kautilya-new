@@ -22,6 +22,10 @@ const CustomSlides = ({ sliderdata, page, sliderType }) => {
         "https://guprojects.gitam.edu/kautilya-admin/public/mpp/desktop/",
       document: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/",
     },
+    mppTabs: {
+      mobile: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/tabs/",
+      desktop: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/tabs/",
+    },
     placements: {
       mobile: "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/",
       desktop:
@@ -35,6 +39,9 @@ const CustomSlides = ({ sliderdata, page, sliderType }) => {
       break;
     case "master-program":
       pageType = pages.mpp;
+      break;
+    case "MPP Tabs":
+      pageType = pages.mppTabs;
       break;
     case "placements":
       pageType = pages.placements;
@@ -51,6 +58,10 @@ const CustomSlides = ({ sliderdata, page, sliderType }) => {
     case "Private Organizations":
       noOfslidesToShow = 4;
       noOfslidesToScroll = 4;
+      break;
+    case "MPP Tabs":
+      noOfslidesToShow = 2;
+      noOfslidesToScroll = 2;
       break;
     default:
       noOfslidesToShow = 3;
@@ -87,7 +98,7 @@ const CustomSlides = ({ sliderdata, page, sliderType }) => {
         <Slider {...settings} className="">
           {sliderdata.map((eachobj, index) => {
             return (
-              <div key={eachobj.id} className="p-1">
+              <div key={index} className="p-1">
                 <a
                   {...(eachobj.Syllabus && {
                     href: `${pageType.document}${eachobj.Syllabus}`,

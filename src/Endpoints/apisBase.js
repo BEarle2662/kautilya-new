@@ -29,10 +29,16 @@ export const apisBasePath = {
   publicPolicies: `${apiBasePath}fetch-publicpolicies`, // public policies
 
   mentorsData: `${apiBasePath}fetch-mentorslist`, // mentors data
+  mentorsTabsData: `${apiBasePath}fetch-mentors-tabs-data`,
 
   resourcesData: `${apiBasePath}fetch-resources-data`, // Events data
 
   placementsKcAdvnData: `${apiBasePath}fetch-placementsData`, // placement data
 
   studentMixData: `${apiBasePath}fetch-student-mix`, // student mix data
+
+  masterProgramData: `${apiBasePath}fetch-master-program-data`, // student mix data
+  masterProgramTabsData: `${apiBasePath}fetch-mpp-tabs-data`,
+
+  facilityListdata: `${apiBasePath}fetch-facilitylistdata`, // facilites data
 };

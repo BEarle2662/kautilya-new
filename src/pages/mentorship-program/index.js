@@ -5,13 +5,14 @@ import Image from "next/image";
 import CategoryHeading from "@/components/common/categoryHeading";
 import { apisBasePath } from "@/Endpoints/apisBase";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
+import { Button } from "@material-tailwind/react";
+import DynamicTabs from "@/components/common/DynamicTabs";
 
-const MentorshipProgram = ({ data }) => {
-  // console.log(data);
+const MentorshipProgram = ({ mentorPageData }) => {
   return (
     <MainLayout>
       <ScreenWidth layoutwidth="true">
-        <div className="mb-4">
+        <div className="mb-4" id="know-more">
           <Image
             src={Mentorbanner}
             height={0}
@@ -45,11 +46,19 @@ const MentorshipProgram = ({ data }) => {
           for the students and Mentors.
         </p>
 
+        <div className="my-10">
+          <Button>
+            <a href="#know-more">Know more</a>
+          </Button>
+
+          <DynamicTabs tabData={mentorPageData.tabsData} />
+        </div>
+
         <div className="mt-5">
           <CategoryHeading heading="Mentor List" color="text-[#b51c21]" />
         </div>
         <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
-          {data.data.map((each, index) => (
+          {mentorPageData.mentorImagesData.map((each, index) => (
             <div key={each.id}>
               <ProfileCard profileData={each} page="Mentorship" />
             </div>
@@ -62,12 +71,22 @@ const MentorshipProgram = ({ data }) => {
 
 export async function getStaticProps() {
   const mentorsData = `${apisBasePath.mentorsData}`;
+  const mentorsTabsData = `${apisBasePath.mentorsTabsData}`;
 
-  const response = await fetch(mentorsData);
-  const data = await response.json();
+  const responses = await Promise.all([
+    fetch(mentorsData),
+    fetch(mentorsTabsData),
+  ]);
+
+  const data = await Promise.all(responses.map((response) => response.json()));
+
+  const mentorPageData = {
+    mentorImagesData: data[0].data,
+    tabsData: data[1].data,
+  };
 
   return {
-    props: { data },
+    props: { mentorPageData },
   };
 }
 
