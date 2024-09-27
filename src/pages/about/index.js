@@ -8,6 +8,7 @@ import aboutImg from "../../../public/assets/img/about-left.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
+
 import { apisBasePath } from "@/Endpoints/apisBase";
 
 const sectors = [
