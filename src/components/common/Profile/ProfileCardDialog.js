@@ -25,7 +25,7 @@ export function ProfileCardDialog({
       <Dialog
         open={openProfile}
         onClose={() => setOpenProfile(false)}
-        className="drop-shadow-2xl relative mt-24"
+        className="mt-24"
       >
         <DialogHeader className="flex flex-col items-center justify-center">
           {/* <IconButton
@@ -66,7 +66,8 @@ export function ProfileCardDialog({
 
             <div
               dangerouslySetInnerHTML={{ __html: profileData.description }}
-              className="text-justify text-sm md:text-md text-p max-h-[46vh] md:max-h-[50vh] overflow-y-auto"
+              className="text-justify text-sm md:text-md text-p"
+              // className="text-justify text-sm md:text-md text-p max-h-[46vh] md:max-h-[50vh] overflow-y-auto"
             ></div>
           </div>
         </DialogBody>

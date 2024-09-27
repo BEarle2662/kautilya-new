@@ -68,9 +68,9 @@ const DynamicTabs = ({ tabData, phd, page }) => {
 
           <TabsBody
             animate={{
-              initial: { y: 250 },
+              initial: { y: 0 },
               mount: { y: 0 },
-              unmount: { y: 250 },
+              unmount: { y: 0 },
             }}
           >
             {mppTabsData.map(({ id, description, category, slides, name }) => (
