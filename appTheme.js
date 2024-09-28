@@ -18,17 +18,7 @@ const accordianTheme = {
         },
       },
       body: {
-        // borderWidth: "border-t border-b-blue-gray-200",
-        p: {
-          marginBottom: "mb-0", // Adds margin-bottom to paragraphs
-          fontSize: "text-xl", // Adjust font size
-        },
-        a: {
-          color: "text-blue-500", // Blue text color for links
-          "&:hover": {
-            color: "text-blue-700", // Darker blue on hover
-          },
-        },
+        py: "py-4",
       },
     },
   },
@@ -121,6 +111,7 @@ const tabPanelTheme = {
       fontSmoothing: "antialiased",
       fontSize: "text-base",
       lineHeight: "leading-relaxed",
+      overflow: "overflow-auto",
     },
   },
 };

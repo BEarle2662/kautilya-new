@@ -23,9 +23,9 @@ const Publications = ({ publicationData }) => {
         />
         {/* </div> */}
 
-        {/* <div> */}
-        <DynamicTabs tabData={facultyTabs} />
-        {/* </div> */}
+        <div className="mt-6">
+          <DynamicTabs tabData={facultyTabs} />
+        </div>
       </ScreenWidth>
     </MainLayout>
   );

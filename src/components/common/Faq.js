@@ -22,23 +22,23 @@ const Faq = ({ faqData, pageTitle }) => {
               className="flex justify-start items-center"
               onClick={() => handleOpen(eachFaq.id)}
             >
-              <span className="bg-primary p-3">
+              <span className="bg-primary px-2 py-2">
                 {open === eachFaq.id ? (
                   <MinusIcon className="h-5 w-5 text-white" strokeWidth={4} />
                 ) : (
                   <PlusIcon className="h-5 w-5 text-white" strokeWidth={4} />
                 )}
               </span>
-              <h1 className="text-left font-normal ml-3">
+              <h1 className="text-base sm:text-lg text-left font-normal ml-3">
                 {academicAsso ? eachFaq.name : eachFaq.question}
               </h1>
             </AccordionHeader>
-            <AccordionBody>
+            <AccordionBody className="border-t border-slate-200 sm:pl-14">
               <div
                 dangerouslySetInnerHTML={{
                   __html: academicAsso ? eachFaq.description : eachFaq.answer,
                 }}
-                className="prose  text-primary"
+                className="accordian-inner-tags"
               ></div>
             </AccordionBody>
           </Accordion>

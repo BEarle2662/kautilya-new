@@ -91,7 +91,10 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                     sliderType="MPP Tabs"
                   />
                 ) : (
-                  <div dangerouslySetInnerHTML={{ __html: description }} />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: description }}
+                    className="tabpanel-inner-tags"
+                  />
                 )}
               </TabPanel>
             ))}

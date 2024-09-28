@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 p {
   text-align: justify;
   margin-bottom: 1rem;
@@ -109,6 +110,66 @@ table tr td {
 }
 p {
   @apply not-italic text-justify text-[#424a53];
+}
+
+/* faqs */
+
+.accordian-inner-tags p {
+  @apply text-base text-primary;
+}
+
+.accordian-inner-tags strong {
+  @apply text-base text-primary font-semibold;
+}
+
+.accordian-inner-tags a {
+  @apply text-base text-indigo-900 font-medium hover:underline hover:decoration-indigo-500;
+}
+
+.accordian-inner-tags ul {
+  @apply text-base list-disc text-black pl-10;
+}
+
+.accordian-inner-tags li {
+  @apply mb-3  leading-7;
+}
+
+/* tabs */
+
+.tabpanel-inner-tags strong {
+  @apply text-base text-[#424a53] font-semibold;
+}
+
+.tabpanel-inner-tags strong a {
+  @apply text-base text-primary font-semibold hover:underline hover:decoration-primary;
+}
+
+.tabpanel-inner-tags ul {
+  @apply text-base pl-6 sm:pl-10 list-disc;
+}
+
+.tabpanel-inner-tags ol {
+  @apply text-base sm:pl-10 list-decimal;
+}
+
+.tabpanel-inner-tags li {
+  @apply mb-4 text-black;
+}
+
+.tabpanel-inner-tags a {
+  @apply text-base text-indigo-900 hover:underline hover:decoration-indigo-500;
+}
+
+.tabpanel-inner-tags table {
+  @apply border-collapse border;
+}
+
+.tabpanel-inner-tags table tbody tr td {
+  @apply border border-[#dee2e6] p-2;
+}
+
+.tabpanel-inner-tags table tbody tr th {
+  @apply py-4;
 }
 
 /*events inner pages*/
