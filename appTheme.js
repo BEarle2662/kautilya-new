@@ -107,11 +107,11 @@ const tabPanelTheme = {
     base: {
       width: "w-full",
       height: "h-max",
-      p: "p-6",
+      p: "p-4",
       fontSmoothing: "antialiased",
       fontSize: "text-base",
       lineHeight: "leading-relaxed",
-      overflow: "overflow-auto",
+      overflow: "overflow-x-auto",
     },
   },
 };

@@ -35,7 +35,7 @@ export async function getStaticProps() {
   });
 
   const slugsData = res.data.data;
-
+  // console.log("capstone", slugsData);
   return {
     props: { slugsData },
   };

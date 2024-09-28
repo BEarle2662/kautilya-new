@@ -172,6 +172,12 @@ p {
   @apply py-4;
 }
 
+/* slug pages */
+
+.slug-description a {
+  @apply text-[#15c] hover:underline hover:decoration-indigo-500;
+}
+
 /*events inner pages*/
 .IndiaByKautilya {
   @apply bg-center bg-no-repeat bg-cover p-4 relative -mt-7 pb-12 -z-10;
