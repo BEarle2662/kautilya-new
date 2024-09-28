@@ -34,7 +34,7 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
       "Admission Process",
       "Resources",
     ].includes(label)
-      ? "hover:bg-[#b11016] hover:text-white"
+      ? "hover:bg-[#b11016] hover:bg-opacity-1 hover:text-white"
       : "";
 
   const renderItems = eachdropdownItems.dropdownItems.map((each) => (

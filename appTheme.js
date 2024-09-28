@@ -20,7 +20,7 @@ const accordianTheme = {
       body: {
         // borderWidth: "border-t border-b-blue-gray-200",
         p: {
-          marginBottom: "mb-4", // Adds margin-bottom to paragraphs
+          marginBottom: "mb-0", // Adds margin-bottom to paragraphs
           fontSize: "text-xl", // Adjust font size
         },
         a: {
@@ -86,16 +86,14 @@ const tabTheme = {
         initial: {
           display: "flex",
           alignItems: "items-center",
-          justifyContent: "justify-center",
+          justifyContent: "md:justify-center",
 
-          width: "w-full",
-          height: "h-full",
+          width: "w-auto",
+          height: "h-auto",
           position: "relative",
           bg: "bg-transparent",
-          py: "py-3",
+          py: "py-4",
           px: "px-2",
-          fontSize: "text-base",
-          fontWeight: "font-semibold",
         },
       },
       indicator: {
@@ -177,7 +175,6 @@ const dialogTheme = {
       container: {
         position: "relative",
         bg: "bg-white",
-        m: "5rem",
 
         borderRadius: "rounded-none",
         boxShadow: "shadow-2xl",
@@ -212,10 +209,11 @@ const menuTheme = {
         minWidth: "min-w-[180px]",
         p: "p-0",
 
-        border: "border border-blue-gray-50",
+        border:
+          "hover:border-b-2  focus:border-b-2  active:border-b-2  hover:border-blue-gray-50 focus:border-blue-gray-50  active:border-blue-gray-50",
         borderRadius: "rounded-none",
         boxShadow: "shadow-lg shadow-blue-gray-500/10",
-        color: "text-blue-gray-500",
+        color: "text-black",
         overflow: "overflow-auto",
         outline: "focus:outline-none",
         zIndex: "z-[999]",
@@ -233,11 +231,20 @@ const menuTheme = {
           cursor: "cursor-pointer",
           userSelect: "select-none",
           transition: "transition-all",
-          bg: "hover:bg-blue-gray-50 hover:bg-opacity-0 focus:bg-blue-gray-50 focus:bg-opacity-80 active:bg-blue-gray-50 active:bg-opacity-80",
-          color:
-            "hover:text-blue-gray-900 focus:text-blue-gray-900 active:text-blue-gray-900",
+          bg: "hover:bg-primary hover:bg-opacity-1 focus:bg-primary focus:bg-opacity-1 active:bg-primary active:bg-opacity-1",
+          color: "hover:text-black focus:text-black active:text-black",
           outline: "outline-none",
         },
+      },
+    },
+  },
+};
+
+const cardTheme = {
+  styles: {
+    base: {
+      initial: {
+        borderRadius: "rounded-none",
       },
     },
   },
@@ -253,4 +260,5 @@ export const customTheme = {
   tabPanel: tabPanelTheme,
   dialog: dialogTheme,
   menu: menuTheme,
+  card: cardTheme,
 };

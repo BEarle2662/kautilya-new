@@ -244,17 +244,10 @@ const AcademicCalendar = () => {
                       <thead>
                         <tr>
                           {TABLE_HEAD.map((head) => (
-                            <th
-                              key={head}
-                              className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
-                            >
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal leading-none opacity-70"
-                              >
+                            <th key={head} className="bg-primary p-2">
+                              <h1 className="font-semibold leading-2 text-base text-left">
                                 {head}
-                              </Typography>
+                              </h1>
                             </th>
                           ))}
                         </tr>
@@ -263,37 +256,25 @@ const AcademicCalendar = () => {
                         {each.events.map(({ date, day, event }, index) => {
                           const isLast = index === each.events.length - 1;
                           const classes = isLast
-                            ? "p-4"
-                            : "p-4 border-b border-blue-gray-50";
+                            ? "p-3"
+                            : "p-3 border-b border-blue-gray-50";
 
                           return (
                             <tr key={date}>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {date}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {day}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-semibold text-black text-base mb-0">
                                   {event}
-                                </Typography>
+                                </p>
                               </td>
                             </tr>
                           );
@@ -347,17 +328,10 @@ const AcademicCalendar = () => {
                       <thead>
                         <tr>
                           {TABLE_HEAD.map((head) => (
-                            <th
-                              key={head}
-                              className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
-                            >
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal leading-none opacity-70"
-                              >
+                            <th key={head} className="bg-primary p-2">
+                              <h1 className="font-semibold leading-2 text-base text-left">
                                 {head}
-                              </Typography>
+                              </h1>
                             </th>
                           ))}
                         </tr>
@@ -366,37 +340,25 @@ const AcademicCalendar = () => {
                         {each.events.map(({ date, day, event }, index) => {
                           const isLast = index === each.events.length - 1;
                           const classes = isLast
-                            ? "p-4"
-                            : "p-4 border-b border-blue-gray-50";
+                            ? "p-3"
+                            : "p-3 border-b border-blue-gray-50";
 
                           return (
                             <tr key={date}>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {date}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {day}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-semibold text-black text-base mb-0">
                                   {event}
-                                </Typography>
+                                </p>
                               </td>
                             </tr>
                           );

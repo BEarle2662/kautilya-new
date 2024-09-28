@@ -21,8 +21,7 @@ const StudentMix = ({ data }) => {
           <div className="grid grid-cols-1 md:grid-cols-3">
             <div>
               <p className="count-ratio">
-                <NumberCounter end={19} duration={1000} />:
-                <span className="counter">1</span>
+                <NumberCounter end={21} duration={1000} />
               </p>
               <p className="counter-txt">States Represented by Students</p>
             </div>
@@ -40,7 +39,7 @@ const StudentMix = ({ data }) => {
 
             <div>
               <p className="count-ratio">
-                <NumberCounter end={35} duration={1000} />%
+                <NumberCounter end={47} duration={1000} />%
               </p>
               <p className="counter-txt">
                 Students having prior work experience
@@ -49,7 +48,7 @@ const StudentMix = ({ data }) => {
 
             <div>
               <p className="count-ratio">
-                <NumberCounter end={56} duration={1000} />
+                <NumberCounter end={72} duration={1000} />
               </p>
               <p className="counter-txt">Cities Represented by Students</p>
             </div>
@@ -67,7 +66,7 @@ const StudentMix = ({ data }) => {
 
             <div>
               <p className="count-ratio">
-                <NumberCounter end={42} duration={1000} />%
+                <NumberCounter end={45} duration={1000} />%
               </p>
               <p className="counter-txt">Students are girl child</p>
             </div>

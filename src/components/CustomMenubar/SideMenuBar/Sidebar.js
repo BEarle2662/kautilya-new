@@ -61,9 +61,9 @@ const ComponentSubDropdownAccordian = ({
             onClick={() => handleOpen(subDropdownAccordian.id)}
             className="border-b-0 p-3"
           >
-            <Typography className="mr-auto font-semibold text-white uppercase text-xs">
+            <p className="mr-auto font-semibold text-white uppercase text-xs mb-0">
               {subDropdownAccordian.label}
-            </Typography>
+            </p>
           </AccordionHeader>
         </ListItem>
         <AccordionBody className="py-0.5">
@@ -131,9 +131,9 @@ const ComponentAccordian = ({ DropdownNavItem, openAccordion, setOpen }) => {
           // className="border-b-0 p-3"
           className="border-b-0 p-3"
         >
-          <Typography className="mr-auto font-semibold text-white uppercase text-xs">
+          <p className="mr-auto font-semibold text-white uppercase text-xs mb-0">
             {DropdownNavItem.label}
-          </Typography>
+          </p>
         </AccordionHeader>
       </ListItem>
       <AccordionBody className="py-0.5">

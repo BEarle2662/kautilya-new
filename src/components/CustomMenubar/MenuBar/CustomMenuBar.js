@@ -22,7 +22,7 @@ const CustomMenuBar = () => {
                 />
               ) : (
                 <Menu key={each.id}>
-                  <MenuHandler className="px-3 py-3 text-[10px] xl:text-xs font-semibold whitespace-nowrap">
+                  <MenuHandler className="px-3 py-3 text-[10px] xl:text-xs font-semibold whitespace-nowrap hover:border-b-4  focus:border-b-4  active:border-b-4  hover:border-blue-gray-50 focus:border-blue-gray-50  active:border-blue-gray-50">
                     <Link href={each.href}>{each.label}</Link>
                   </MenuHandler>
                 </Menu>
