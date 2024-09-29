@@ -16,12 +16,10 @@ const ourFacultySlugPage = ({ facultySlugData }) => {
       keywords={"GIMSR, GITAM, Hospital"}
       img={image}
     >
-      <ScreenWidth layoutwidth="true">
-        <FacultySlugPage
-          slugDetailedPage="Our Faculty Slug"
-          slugData={facultySlugData}
-        />
-      </ScreenWidth>
+      <FacultySlugPage
+        slugDetailedPage="Our Faculty Slug"
+        slugData={facultySlugData}
+      />
     </MainLayout>
   );
 };

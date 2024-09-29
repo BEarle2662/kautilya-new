@@ -1,5 +1,5 @@
 import CategoryHeading from "@/components/common/categoryHeading";
-import CustomSlider from "@/components/common/CustomSlider";
+import EventsSlider from "@/components/common/EventsSlider";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import { apisBasePath } from "@/Endpoints/apisBase";
@@ -20,16 +20,16 @@ const Resources = ({ data }) => {
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Events" textAlign="text-left" />
 
-        <CustomSlider sliderData={events} page={Page} />
+        <EventsSlider sliderData={events} page={Page} />
 
         <CategoryHeading
           heading="Let's Talk Policy Series"
           textAlign="text-left"
         />
-        <CustomSlider sliderData={policySeries} page={Page} />
+        <EventsSlider sliderData={policySeries} page={Page} />
 
         <CategoryHeading heading="News & Updates" textAlign="text-left" />
-        <CustomSlider sliderData={new_updates} page={Page} />
+        <EventsSlider sliderData={new_updates} page={Page} />
       </ScreenWidth>
     </MainLayout>
   );

@@ -43,9 +43,9 @@ const DynamicTabs = ({ tabData, phd, page }) => {
           }
         >
           <TabsHeader className="flex-col md:flex-row">
-            {mppTabsData.map(({ category, id, name }) => (
+            {mppTabsData.map(({ category, id, name, label }) => (
               <Tab
-                key={id}
+                key={id || label}
                 value={
                   category === "Academic Associates page" ||
                   category === "Publications page"
@@ -60,6 +60,8 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                     {category === "Academic Associates page" ||
                     category === "Publications page"
                       ? name
+                      : label
+                      ? label
                       : category}
                   </span>
                 </div>
@@ -74,30 +76,32 @@ const DynamicTabs = ({ tabData, phd, page }) => {
               unmount: { y: 0 },
             }}
           >
-            {mppTabsData.map(({ id, description, category, slides, name }) => (
-              <TabPanel
-                key={id}
-                value={
-                  category === "Academic Associates page" ||
-                  category === "Publications page"
-                    ? name
-                    : category
-                }
-              >
-                {category === "Batch Profile" ? (
-                  <CustomSlides
-                    sliderdata={slides}
-                    page={page}
-                    sliderType="MPP Tabs"
-                  />
-                ) : (
-                  <div
-                    dangerouslySetInnerHTML={{ __html: description }}
-                    className="tabpanel-inner-tags"
-                  />
-                )}
-              </TabPanel>
-            ))}
+            {mppTabsData.map(
+              ({ id, description, category, slides, name, label }) => (
+                <TabPanel
+                  key={id || label}
+                  value={
+                    category === "Academic Associates page" ||
+                    category === "Publications page"
+                      ? name
+                      : category
+                  }
+                >
+                  {category === "Batch Profile" ? (
+                    <CustomSlides
+                      sliderdata={slides}
+                      page={page}
+                      sliderType="MPP Tabs"
+                    />
+                  ) : (
+                    <div
+                      dangerouslySetInnerHTML={{ __html: description }}
+                      className="tabpanel-inner-tags"
+                    />
+                  )}
+                </TabPanel>
+              )
+            )}
           </TabsBody>
         </Tabs>
       ) : (

@@ -21,6 +21,7 @@ p {
   width: 30%;
   margin: auto;
 }
+
 .bg-gray {
   @apply bg-[#f1f1f1];
 }
