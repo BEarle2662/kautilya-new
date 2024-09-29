@@ -98,5 +98,3 @@ export async function getStaticProps() {
 }
 
 export default AlumniAssociation;
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-alumniprofiles";

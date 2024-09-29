@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import CategoryHeading from "@/components/common/categoryHeading";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import Image from "next/image";
-import React from "react";
 
 import placementReport from "../../../public/assets/img/placements/KSPP-Placement-Report-2023-Final.jpg";
 import recruitImg from "../../../public/assets/img/placements/Recruit.jpg";
@@ -21,6 +21,8 @@ import placementSec2 from "../../../public/assets/img/placements/Placement-sec2.
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AlumniRegisterForm from "@/components/AlumniRegisterForm";
+import { DialogWithForm } from "@/components/RecruiterRegdForm";
 
 const textData = [
   {
@@ -44,6 +46,12 @@ const textData = [
 ];
 
 const Placements = ({ data }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpenDialog = (handleDialog) => {
+    setOpen(handleDialog);
+  };
+
   let page = "placements";
 
   const image =
@@ -93,7 +101,6 @@ const Placements = ({ data }) => {
               className="w-full h-full"
             />
           </ScreenWidth>
-
           <div className="bg-[#f6f6f6] px-1">
             <ScreenWidth layoutwidth="true">
               <div className="flex flex-col md:grid md:grid-cols-12 gap-8">
@@ -115,7 +122,10 @@ const Placements = ({ data }) => {
                   </p>
 
                   <div className="flex">
-                    <button className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] mr-4">
+                    <button
+                      className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] mr-4"
+                      onClick={handleOpenDialog}
+                    >
                       <Image
                         src={fillForm}
                         width={0}
@@ -144,22 +154,24 @@ const Placements = ({ data }) => {
                       </a>
                     </button>
                   </div>
+                  <DialogWithForm
+                    dialogOpen={open}
+                    handleOpenDialog={handleOpenDialog}
+                  />
                 </div>
               </div>
             </ScreenWidth>
           </div>
-
+          {/* <AlumniRegisterForm /> */}
           <div>
             <ScreenWidth layoutwidth="true">
               <CategoryHeading heading="Top recruiters" />
               <CustomSlides sliderdata={topRecruiters} page={page} />
             </ScreenWidth>
           </div>
-
-          <div className="mt-10">
+          <div className="mt-10 px-10 mb-4">
             <FullScreenSlider slider={placementsCongrats} pagesMpp={page} />
           </div>
-
           <ScreenWidth layoutwidth="true">
             <div className="grid md:grid-cols-12 gap-6">
               <Image
@@ -201,17 +213,18 @@ const Placements = ({ data }) => {
               </div>
             </div>
           </ScreenWidth>
-
           <div className="mt-10">
             <ScreenWidth layoutwidth="true">
               <CategoryHeading
                 heading="Students from across skills, demographics"
                 color="text-primary"
               />
+              <p className="text-lg font-bold text-center">
+                MPP Batch of 2022-24
+              </p>
               <CustomSlides sliderdata={demoGraphs} page={page} />
             </ScreenWidth>
           </div>
-
           <div className="mt-10">
             <ScreenWidth layoutwidth="true">
               <CategoryHeading heading="Internships" />
@@ -241,7 +254,6 @@ const Placements = ({ data }) => {
               </div>
             </ScreenWidth>
           </div>
-
           <div className="bg-[#f6f6f6] md:my-10 pt-10">
             <CategoryHeading heading="Student-led Placement Committee" />
             <ScreenWidth layoutwidth="true">
@@ -269,7 +281,6 @@ const Placements = ({ data }) => {
               </div>
             </ScreenWidth>
           </div>
-
           <div className="bg-[#212529]">
             <ScreenWidth layoutwidth="true">
               <CategoryHeading

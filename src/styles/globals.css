@@ -6,6 +6,32 @@ p {
   text-align: justify;
   margin-bottom: 1rem;
 }
+
+/* //scroll button */
+.back-to-top {
+  display: none;
+}
+
+.back-to-top.active {
+  right: 15px;
+  position: fixed;
+  bottom: 25px;
+  background: #a60f14;
+  border-radius: 50%;
+  padding: 8px 10px;
+  opacity: 0.5;
+  display: block;
+}
+
+.faicon {
+  color: #fff;
+  font-size: 35px;
+}
+
+.back-to-top:hover {
+  background-color: rgba(37, 37, 37, 0.7);
+}
+
 .line-below {
   @apply relative block;
   /* @apply relative block before:absolute before:bottom-0 before:left-0 before:right-0 before:h-1 before:w-64 before:bg-white before:m-auto; */

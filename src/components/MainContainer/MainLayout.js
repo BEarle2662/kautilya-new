@@ -2,6 +2,8 @@ import React from "react";
 import MetaData from "./MetaData";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import SocialLinks from "../common/SocialLinks";
+import BackToTopButton from "../common/BackToTop";
 
 const MainLayout = ({ children, title, description, keywords, img }) => {
   return (
@@ -14,6 +16,8 @@ const MainLayout = ({ children, title, description, keywords, img }) => {
       />
       <Navbar />
       <div>{children}</div>
+      <SocialLinks />
+      <BackToTopButton />
       <Footer />
     </>
   );
