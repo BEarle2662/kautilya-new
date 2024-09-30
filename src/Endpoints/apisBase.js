@@ -3,6 +3,8 @@ const apiBasePath = "https://guprojects.gitam.edu/kautilya-admin/api/";
 //guprojects.gitam.edu/kautilya-admin/api/fetch-ksppteam
 
 export const apisBasePath = {
+  metatagsData: `${apiBasePath}title`, // Metatags
+
   kautilyanowSlider: `${apiBasePath}kautilyanow_slider`, // home slider
 
   ksppteam: `${apiBasePath}fetch-ksppteam`, // about Page
