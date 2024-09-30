@@ -5,13 +5,30 @@ import { Menu, MenuHandler } from "@material-tailwind/react";
 
 import { NavListMenu } from "./MainRouter";
 import { navLinks } from "../../../Endpoints/navbarLinks";
+import { eventNavLinks } from "../../../Endpoints/navbarLinks";
 // import { prodNavLinks } from "../../common/endpoints";
+import { useRouter } from "next/router";
 
 const CustomMenuBar = () => {
+  const location = useRouter();
+
+  // console.log(location.pathname);
+
+  const eventLinks = [
+    "/kautilya-colloquy",
+    "/paper-presentation",
+    "/simulation",
+    "/contact-us",
+    "/kc-registration",
+  ];
+
+  const eventsPage = eventLinks.includes(location.pathname);
+  const navItems = eventsPage ? eventNavLinks : navLinks;
+
   return (
     <>
       <nav className="flex flex-row justify-evenly items-center">
-        {navLinks.map((each) => {
+        {navItems?.map((each) => {
           return (
             <React.Fragment key={each.id}>
               {each.dropdown ? (

@@ -119,3 +119,36 @@ export const navLinks = [
     mainNavItem: true,
   },
 ];
+
+export const eventNavLinks = [
+  {
+    id: 10,
+    label: "ABOUT THE CONCLAVE",
+    href: "/kautilya-colloquy",
+    mainNavItem: true,
+  },
+  {
+    id: 11,
+    label: "PAPER PRESENTATION",
+    href: "/paper-presentation",
+    mainNavItem: true,
+  },
+  {
+    id: 12,
+    label: "SIMULATION",
+    href: "/simulation",
+    mainNavItem: true,
+  },
+  {
+    id: 13,
+    label: "CONTACT US",
+    href: "/contact-us",
+    mainNavItem: true,
+  },
+  {
+    id: 14,
+    label: "REGISTRATION",
+    href: "/kc-registration",
+    mainNavItem: true,
+  },
+];

@@ -16,7 +16,8 @@ import {
 
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
-import { navLinks } from "@/Endpoints/navbarLinks";
+import { eventNavLinks, navLinks } from "@/Endpoints/navbarLinks";
+import { useRouter } from "next/router";
 // import { prodNavLinks } from "@/components/common/endpoints";
 
 const ComponentSubDropdownAccordian = ({
@@ -195,6 +196,19 @@ const Sidebar = ({ openDrawer, setOpenDrawer }) => {
   const closeDrawer = () => setOpenDrawer(false);
   const [open, setOpen] = React.useState(0);
 
+  const location = useRouter();
+
+  const eventLinks = [
+    "/kautilya-colloquy",
+    "/paper-presentation",
+    "/simulation",
+    "/contact-us",
+    "/kc-registration",
+  ];
+
+  const eventsPage = eventLinks.includes(location.pathname);
+  const navItems = eventsPage ? eventNavLinks : navLinks;
+
   return (
     <Drawer
       placement="right"
@@ -211,7 +225,7 @@ const Sidebar = ({ openDrawer, setOpenDrawer }) => {
         className="h-full w-full p-4 flex flex-col bg-[#b11016] rounded-none"
       >
         <List className="flex-grow overflow-y-auto">
-          {navLinks.map((each) => {
+          {navItems?.map((each) => {
             return (
               <React.Fragment key={each.id}>
                 {each.dropdown ? (
