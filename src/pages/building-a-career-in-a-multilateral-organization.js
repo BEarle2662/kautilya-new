@@ -43,18 +43,19 @@ function Multilateral(){
             </section>
             <section className="buildingCareer2 bg-[url('/assets/img/talkseries/talkpolicy/multilateral_spe_bg.jpg')] bg-center bg-no-repeat bg-cover">
                 <div className="container mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="col-span-1 md:col-span-3">
+                <div className="col-span-1 mb-4">
                         <h4 className="text-primary text-5xl font-light">About the panelists</h4>
                     </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/m_syed.png" alt="Panelist 1" />
+                        <img src="/assets/img/talkseries/talkpolicy/m_syed.png" alt="Panelist 1" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/m_saran.png" alt="Panelist 2" />
+                        <img src="/assets/img/talkseries/talkpolicy/m_saran.png" alt="Panelist 2" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/m_manika.png" alt="Panelist 3" />
+                        <img src="/assets/img/talkseries/talkpolicy/m_manika.png" alt="Panelist 3" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0"/>
                     </div>
                     </div>
                 </div>

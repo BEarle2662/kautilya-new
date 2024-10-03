@@ -24,18 +24,18 @@ function PakistanConundrum(){
             </section>
             <section>
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/1.png" alt="Image 1" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/1.png" alt="Image 1" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/2.png" alt="Image 2" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/2.png" alt="Image 2" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/3.png" alt="Image 3" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/3.png" alt="Image 3" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/4.png" alt="Image 4" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/4.png" alt="Image 4" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     </div>
                 </div>

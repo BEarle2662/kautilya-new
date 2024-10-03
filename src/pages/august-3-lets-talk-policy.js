@@ -61,7 +61,7 @@ function SeptemberFour(){
                     <h2 className="text-5xl font-bold mb-8 text-center text-white">About the panellists</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/Nidi.png" alt="Nidhi Razdan" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute" />
+                        <img src="/assets/img/talkseries/talkpolicy/Nidi.png" alt="Nidhi Razdan" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute" />
                         <div className="p-4 text-white text-center">
                         <h5 className="text-xl font-semibold mt-20 ">Nidhi Razdan</h5>
                         <p className="text-sm text-white text-center">Visiting Faculty, Kautilya &amp;<br />Fmr. Exec. Editor NDTV</p>
@@ -72,7 +72,7 @@ function SeptemberFour(){
                     </div>
 
                     <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
-                        <img src="/assets/img/talkseries/talkpolicy/1-1.png" alt="Anumita Roy Chowdhury" className="w-full absolute left-[118px] top-[-75px] w-[150px]" />
+                        <img src="/assets/img/talkseries/talkpolicy/1-1.png" alt="Anumita Roy Chowdhury" className="absolute left-[118px] top-[-75px] w-[150px]" />
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">Sridhar Pabbisetty</h5>
                         <p className="text-sm text-white text-center">Founding Director, Kautilya </p>
@@ -83,7 +83,7 @@ function SeptemberFour(){
                     </div>
 
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px">
-                        <img src="/assets/img/talkseries/talkpolicy/2-2.png" alt="Jyoti Pande Lavakare" className="w-full absolute left-[118px] top-[-75px] w-[150px]" />
+                        <img src="/assets/img/talkseries/talkpolicy/2-2.png" alt="Jyoti Pande Lavakare" className="absolute left-[118px] top-[-75px] w-[150px]" />
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">Saket Modi</h5>
                         <p className="text-sm text-white text-center">CEO & Co-Founder,<br/>
@@ -95,7 +95,7 @@ function SeptemberFour(){
                     </div>
 
                     <div className="bg-black border-4 border-white p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/3-3.png" alt="Bhargav Krishna" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
+                        <img src="/assets/img/talkseries/talkpolicy/3-3.png" alt="Bhargav Krishna" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-white">Ashutosh Sharma</h5>
                         <p className="text-sm text-white text-center">Secretary, Dept. of Science<br/>
@@ -106,7 +106,7 @@ function SeptemberFour(){
                         </div>
                     </div>
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/4-2.png" alt="Bhargav Krishna" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
+                        <img src="/assets/img/talkseries/talkpolicy/4-2.png" alt="Bhargav Krishna" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-white">Dr. Chandrima Shaha</h5>
                         <p className="text-sm text-white text-center">President, Indian National<br/>

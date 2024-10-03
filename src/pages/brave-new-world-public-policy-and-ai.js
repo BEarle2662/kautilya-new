@@ -112,13 +112,13 @@ function BraveNewWorld(){
                                 <h4 className="pseudo_border mb-3">WHO SHOULD ATTEND?</h4>
                                 <div className="heading_border mb-4"></div>
                             </div>
-                            <div>
+                            <div className="col-span-2 sm:col-span-1">
                                 <ul className="entry_content">
                                 <li>Government Officials and Policymakers</li>
                                 <li>Academics and Researchers</li>
                                 </ul>
                             </div>
-                            <div>
+                            <div className="col-span-2 sm:col-span-1">
                                 <ul className="entry_content">
                                 <li>Technology Innovators</li>
                                 <li>Entrepreneurs and Startups</li>

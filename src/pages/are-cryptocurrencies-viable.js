@@ -28,7 +28,7 @@ function Currency(){
                     <div className="mx-auto w-full xl:w-1/2">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="text-center">
-                            <img src="/assets/img/talkseries/talkpolicy/Nidhi.png" alt="Nidhi Razdan" class="max-w-[100%] h-auto align-top"/>
+                            <img src="/assets/img/talkseries/talkpolicy/Nidhi.png" alt="Nidhi Razdan" class="max-w-[75%] h-auto align-top mx-auto"/>
                             <h6 className="text-white mt-4">EVENT MODERATED BY</h6>
                             <p className="text-white text-center">
                             Nidhi Razdan <br />
@@ -37,7 +37,7 @@ function Currency(){
                         </div>
 
                         <div className="text-center">
-                            <img src="/assets/img/talkseries/talkpolicy/Milind.png" alt="Milind Deora" class="max-w-[100%] h-auto align-top"/>
+                            <img src="/assets/img/talkseries/talkpolicy/Milind.png" alt="Milind Deora" class="max-w-[75%] h-auto align-top mx-auto"/>
                             <h6 className="text-white mt-4">Milind Deora</h6>
                             <p className="text-white text-center">
                             <small>
@@ -47,7 +47,7 @@ function Currency(){
                         </div>
 
                         <div className="text-center">
-                            <img src="/assets/img/talkseries/talkpolicy/Krishna.png" alt="Krishna Hegde" class="max-w-[100%] h-auto align-top"/>
+                            <img src="/assets/img/talkseries/talkpolicy/Krishna.png" alt="Krishna Hegde" class="max-w-[75%] h-auto align-top mx-auto"/>
                             <h6 className="text-white mt-4">Krishna Hegde</h6>
                             <p className="text-white text-center">
                             <small>Senior Vice President & New Initiatives at CoinSwitch Kuber</small>
@@ -55,7 +55,7 @@ function Currency(){
                         </div>
 
                         <div className="text-center">
-                            <img src="/assets/img/talkseries/talkpolicy/Rajat.png" alt="Rajat" class="max-w-[100%] h-auto align-top"/>
+                            <img src="/assets/img/talkseries/talkpolicy/Rajat.png" alt="Rajat" class="max-w-[75%] h-auto align-top mx-auto"/>
                             <h6 className="text-white mt-4">Milind Deora</h6>
                             <p className="text-white text-center">
                             <small>

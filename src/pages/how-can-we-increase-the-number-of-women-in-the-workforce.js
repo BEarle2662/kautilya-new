@@ -34,16 +34,16 @@ function WorkforceIncrease(){
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/vasudha.png" alt="Women Work Force 1" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/vasudha.png" alt="Women Work Force 1" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/shaili.png" alt="Women Work Force 2" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/shaili.png" alt="Women Work Force 2" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/mahesh.png" alt="Women Work Force 3" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/mahesh.png" alt="Women Work Force 3" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/nidhi_raz.png" alt="Women Work Force 4" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/nidhi_raz.png" alt="Women Work Force 4" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     </div>
                 </div>

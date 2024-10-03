@@ -22,21 +22,21 @@ function Russia(){
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
                     {/* First set of speakers */}
                     <div className="mx-auto col-span-1 xl:col-span-2">
-                        <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                         <div className="text-center">
-                            <img src="/assets/img/talkseries/talkpolicy/r_syed.png" alt="Amb. Syed Akbaruddin" />
+                            <img src="/assets/img/talkseries/talkpolicy/r_syed.png" alt="Amb. Syed Akbaruddin" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0" />
                             <p className="k-eventcard5-title font-bold text-white mt-3">Amb. Syed Akbaruddin</p>
                             <p className="k-eventcard5-desig text-white font-bold">Fmr. Permanent Rep. of India to the UN; Dean, Kautilya</p>
                         </div>
                         <div className="text-center">
-                            <img src="/assets/img/talkseries/talkpolicy/r_venkatesh.png" alt="Amb. D. B. Venkatesh Varma" />
+                            <img src="/assets/img/talkseries/talkpolicy/r_venkatesh.png" alt="Amb. D. B. Venkatesh Varma" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0" />
                             <p className="k-eventcard5-title text-white font-bold mt-3">Amb. D. B. Venkatesh Varma</p>
                             <p className="k-eventcard5-desig text-white font-bold">
                             (IFS:1988), recently retired Indian Ambassador to Russia; Lectures occasionally at Kautilya
                             </p>
                         </div>
                         <div className="text-center">
-                            <img src="/assets/img/talkseries/talkpolicy/r_venkatesh.png" alt="Prateek Kanwal" />
+                            <img src="/assets/img/talkseries/talkpolicy/r_venkatesh.png" alt="Prateek Kanwal" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0" />
                             <p className="k-eventcard5-title text-white mt-3 font-bold">Prateek Kanwal</p>
                             <p className="k-eventcard5-desig text-white font-bold">
                             Project Director at Ekatrit – Educate Girls;<br/> Co-Founder, Kautilya

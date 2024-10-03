@@ -141,7 +141,7 @@ const colloquyEvent = () => {
       </div>
 
       <div className="flex justify-center  bg-black py-3">
-        <ul className="list-none flex  flex-row text-base justify-start w-3/4">
+        <ul className="list-none sm:flex  flex-row text-base justify-start w-3/4">
           <li
             className={`kc-colloquy-ul-li ${
               activeTab === "about" ? "active" : ""

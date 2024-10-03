@@ -89,7 +89,7 @@ function October(){
                     <h2 className="text-5xl font-bold mb-8 text-center text-white">About the panellists</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/Nidi.png" alt="Nidhi Razdan" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute" />
+                        <img src="/assets/img/talkseries/talkpolicy/Nidi.png" alt="Nidhi Razdan" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute" />
                         <div className="p-4 text-white text-center">
                         <h5 className="text-xl font-semibold mt-20 ">Nidhi Razdan</h5>
                         <p className="text-sm text-white text-center">Visiting Faculty, Kautilya &amp;<br />Fmr. Exec. Editor NDTV</p>
@@ -100,7 +100,7 @@ function October(){
                     </div>
 
                     <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
-                        <img src="/assets/img/talkseries/talkpolicy/Dilip-Chenoy_circle.png" alt="Anumita Roy Chowdhury" className="w-full absolute left-[118px] top-[-75px] w-[150px]" />
+                        <img src="/assets/img/talkseries/talkpolicy/Dilip-Chenoy_circle.png" alt="Anumita Roy Chowdhury" className="absolute left-[118px] top-[-75px] w-[150px]" />
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">Anumita Roy Chowdhury</h5>
                         <p className="text-sm text-white text-center">Exec Dir., Research and Advocacy,<br />Center for Science &amp; Env.</p>
@@ -111,7 +111,7 @@ function October(){
                     </div>
 
                     <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
-                        <img src="/assets/img/talkseries/talkpolicy/Jyoti_Pande_Lavakare.png" alt="Jyoti Pande Lavakare" className="w-full absolute left-[118px] top-[-75px] w-[150px]" />
+                        <img src="/assets/img/talkseries/talkpolicy/Jyoti_Pande_Lavakare.png" alt="Jyoti Pande Lavakare" className="absolute left-[118px] top-[-75px] w-[150px]" />
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">Jyoti Pande Lavakare</h5>
                         <p className="text-sm text-white text-center">Co-founder, Care for Air</p>
@@ -122,7 +122,7 @@ function October(){
                     </div>
 
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/Bhargav_Krishna.png" alt="Bhargav Krishna" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
+                        <img src="/assets/img/talkseries/talkpolicy/Bhargav_Krishna.png" alt="Bhargav Krishna" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-white">Bhargav Krishna</h5>
                         <p className="text-sm text-white text-center">Fellow, Centre for Policy Research</p>

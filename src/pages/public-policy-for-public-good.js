@@ -9,13 +9,13 @@ function PPForPg(){
    return (
     <MainLayout>
      <div className="ppforpg bg-[url('/assets/img/events/publicPolicy/ppforpg.jpg')] bg-center bg-no-repeat bg-cover min-h-[60vh] py-14">
-    <section className="ml-[50px] py-[60px]"> {/* Adjust ml as per your design */}
+    <section className="ml-[10px] mr-[10px] sm:ml-[50px] py-[60px] sm:mr-[50px] md:mr-0"> {/* Adjust ml as per your design */}
       <div className="container-fluid">
-        <div className="grid grid-cols-12">
-          <div className="col-span-3">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-12">
+          <div className="sm:col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3">
             <div className="bg-white rounded-md shadow-[4px_4px_4px_4px_#cd6d786b] px-[40px] py-[35px] text-center">
               <form>
-                <div className="grid grid-cols-12">
+                <div className="grid grid-cols-12 ">
                   {/* Name Field */}
                   <div className="mb-4 col-span-12 pb-3">
                     <div className="flex justify-between items-center">
@@ -105,7 +105,7 @@ function PPForPg(){
                       <span className="input-field ml-4">
                         <select
                           name="experience"
-                          className="bg-white w-[342px] border-b border-black pb-1 text-['#c9c9c9']"
+                          className="bg-white xl:w-[342px] w-[90%] border-b border-black pb-1 text-['#c9c9c9']"
                           aria-required="true"
                           aria-invalid="false"
                         >

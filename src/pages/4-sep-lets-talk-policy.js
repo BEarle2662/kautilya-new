@@ -71,7 +71,7 @@ function SeptemberFour(){
                     <h2 className="text-5xl font-bold mb-8 text-center text-white">About the panellists</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/Nidi.png" alt="Nidhi Razdan" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute" />
+                        <img src="/assets/img/talkseries/talkpolicy/Nidi.png" alt="Nidhi Razdan" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute" />
                         <div className="p-4 text-white text-center">
                         <h5 className="text-xl font-semibold mt-20 ">Nidhi Razdan</h5>
                         <p className="text-sm text-white text-center">Visiting Faculty, Kautilya &amp;<br />Fmr. Exec. Editor NDTV</p>
@@ -82,7 +82,7 @@ function SeptemberFour(){
                     </div>
 
                     <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
-                        <img src="/assets/img/talkseries/talkpolicy/Navtej1.png" alt="Anumita Roy Chowdhury" className="w-full absolute left-[118px] top-[-75px] w-[150px]" />
+                        <img src="/assets/img/talkseries/talkpolicy/Navtej1.png" alt="Anumita Roy Chowdhury" className="absolute left-[118px] top-[-75px] w-[150px]" />
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">Navtej Singh Sarna</h5>
                         <p className="text-sm text-white text-center">Former Indian Ambassador to the US & Israel<br/>
@@ -94,7 +94,7 @@ function SeptemberFour(){
                     </div>
 
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px">
-                        <img src="/assets/img/talkseries/talkpolicy/Suhasini.png" alt="Jyoti Pande Lavakare" className="w-full absolute left-[118px] top-[-75px] w-[150px]" />
+                        <img src="/assets/img/talkseries/talkpolicy/Suhasini.png" alt="Jyoti Pande Lavakare" className="absolute left-[118px] top-[-75px] w-[150px]" />
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">Suhasini Haidar</h5>
                         <p className="text-sm text-white text-center">Diplomatic Affair Editor<br/>
@@ -106,7 +106,7 @@ function SeptemberFour(){
                     </div>
 
                     <div className="bg-black border-4 border-white p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/Amitabh.png" alt="Bhargav Krishna" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
+                        <img src="/assets/img/talkseries/talkpolicy/Amitabh.png" alt="Bhargav Krishna" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-white">Amitabh Mattoo</h5>
                         <p className="text-sm text-white text-center">Prof., Int’l Relations<br/>
@@ -117,7 +117,7 @@ function SeptemberFour(){
                         </div>
                     </div>
                     <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
-                        <img src="/assets/img/talkseries/talkpolicy/Shanthie.png" alt="Bhargav Krishna" className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
+                        <img src="/assets/img/talkseries/talkpolicy/Shanthie.png" alt="Bhargav Krishna" className="rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"/>
                         <div className="p-4 text-center">
                         <h5 className="text-xl font-semibold mt-20 text-white">Dr. Shanthie Mariet D’Souza</h5>
                         <p className="text-sm text-white text-center">Founding Professor,<br/>

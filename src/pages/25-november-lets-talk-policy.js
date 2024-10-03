@@ -36,7 +36,7 @@ function November(){
                 <div className="container mx-auto text-white">
                     <h2 className="text-left text-4xl font-bold mb-8">About the Panelists</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="flex items-start">
+                    <div className="sm:flex items-start">
                         <img src="/assets/img/talkseries/talkpolicy/Nidhi-Razdan.png" alt="Nidhi Razdan" class="max-w-[75%] h-auto align-top bg-white"/>
                         <div className="mt-12 ml-8">
                         <h4 className="font-semibold mb-3">EVENT MODERATED BY</h4>
@@ -45,7 +45,7 @@ function November(){
                         </div>
                     </div>
 
-                    <div className="flex items-start">
+                    <div className="sm:flex items-start">
                         <img src="/assets/img/talkseries/talkpolicy/Pranesh-Prakash.png" alt="Pranesh Prakash" class="max-w-[75%] h-auto align-top bg-white"/>
                         <div className="mt-12 ml-8">
                         <h5 className="font-bold mb-3">Pranesh Prakash</h5>
@@ -53,7 +53,7 @@ function November(){
                         </div>
                     </div>
 
-                    <div className="flex items-start mb-3">
+                    <div className="sm:flex items-start mb-3">
                         <img src="/assets/img/talkseries/talkpolicy/Jiten-Jain.png" alt="Jiten Jain" class="max-w-[75%] h-auto align-top bg-white"/>
                         <div className="mt-12 ml-8">
                         <h5 className="font-bold mb-3">Jiten Jain</h5>
@@ -61,7 +61,7 @@ function November(){
                         </div>
                     </div>
 
-                    <div className="flex items-start mb-3">
+                    <div className="sm:flex items-start mb-3">
                         <img src="/assets/img/talkseries/talkpolicy/Trisha-Ray.png" alt="Trisha Ray" class="max-w-[75%] h-auto align-top bg-white"/>
                         <div className="mt-12 ml-8">
                         <h5 className="font-bold mb-3">Trisha Ray</h5>

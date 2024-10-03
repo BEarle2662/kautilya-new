@@ -1,14 +1,189 @@
 
 import MainLayout from "@/components/MainContainer/MainLayout";
+import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+import axios from 'axios';
 import Image from "next/image";
 
+
 function GovernExcellenceInitiative() {
+
+  const MySwal = withReactContent(Swal);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    dept: "",
+    subject: "",
+    query: "",
+  });
+  //console.log("form",formData)
+  const [dummy,setDummy]=useState({email:""})
+  const [errors, setErrors] = useState({});
+  // console.log(errors)
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
+
+  const validateField = (name, value) => {
+    let isValid = true;
+    let errorMsg = '';
+
+    switch (name) {
+      case 'email':
+        isValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i.test(value);
+        errorMsg = isValid ? '' : 'Please enter a valid email address.';
+        break;
+
+      case 'name':
+      case 'dept':
+      case 'subject':
+        isValid = /^[a-zA-Z ]*$/.test(value);
+        errorMsg = isValid
+          ? ''
+          : `${name.charAt(0).toUpperCase() + name.slice(1)} can only contain letters and spaces.`;
+        break;
+
+      default:
+        isValid = true;
+        errorMsg = '';
+        break;
+    }
+
+    return { isValid, errorMsg };
+  };
+ 
+  const checkFormValidity = (updatedFormData) => {
+    const fields = ['name',  'dept', 'subject', 'query'];
+    for (let field of fields) {
+      const { isValid } = validateField(field, updatedFormData[field]);
+      if (!isValid || updatedFormData[field] === '') return false;
+    }
+    return true;
+  };
+
+  const handleChanges = (e) => {
+    const { name, value } = e.target;
+    const trimmedValue = value.trimStart();
+    const { isValid, errorMsg } = validateField(name, trimmedValue);
+
+    if (isValid) {
+      const updatedFormData = {
+        ...formData,
+        [name]: trimmedValue,
+      };
+
+      setFormData(updatedFormData);
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: '',
+      }));
+      setIsFormValid(checkFormValidity(updatedFormData));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: errorMsg,
+      }));
+      setIsFormValid(false);
+    }
+  };
+
+  const handleEMail = (e) => {
+    setDummy({
+      ...dummy,
+      email: e.target.value,
+    });
+
+    // Validate the email field separately
+    const { isValid, errorMsg } = validateField('email', e.target.value);
+    if (!isValid) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: errorMsg,
+      }));
+      setIsFormValid(false);
+
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: '',
+      }));
+      setIsFormValid(true);
+
+    }
+  };
+ 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name);
+    formDataToSend.append("email", dummy.email);
+    formDataToSend.append("dept", formData.dept);
+    formDataToSend.append("subject", formData.subject);
+    formDataToSend.append("query", formData.query);
+
+    try {
+      const response = await axios.post(
+        "https://guprojects.gitam.edu/kautilya-admin/api/savegeicontact",
+        formDataToSend
+      );
+      
+      setIsFormValid(false);
+      // Show SweetAlert success message
+      if (response.data.status == "success") {
+        
+        MySwal.fire({
+          icon: "success",
+          title: "Success!",
+          text: response.data.message,
+        });
+        setFormData({
+        name: "",
+        email: "",
+        dept: "",
+        subject: "",
+        query: "",
+      });
+      setDummy({
+        email:''
+      })
+      
+      } else {
+        MySwal.fire({
+          icon: "error",
+          title: "Error!",
+          text: response.data.message,
+        });
+      }
+    } catch (error) {
+      // console.error("Error submitting form:", error);
+      // Handle error and show SweetAlert error message if needed
+      MySwal.fire({
+        icon: "error",
+        title: "Error!",
+        text: "Failed to submit the form. Please try again.",
+      });
+    } finally {
+      setIsLoading(false); // Reset loading state after form submission completes
+    }
+    return (
+      <form onSubmit={handleSubmit}>
+        {/* Your form inputs and other JSX elements */}
+      </form>
+    );
+  };
+
+
+ 
+  
+
   return (
     <MainLayout>
     <div className="bg-gray-100">
       <div className="bg-red-500 mt-3 text-white text-center IndiaByKautily p-20 bg-[url('/assets/img/events/govtExcellenceInitivies/gradient-bg.jpg')] bg-no-repeat bg-cover bg-center">
-        <h5 className="font-bold text-4xl p-4">Governance Excellence Initiative</h5>
-        <div className="absolute inset-x-0 top-64 mx-auto w-[15%] h-[2px] bg-white"></div>
+        <h5 className="font-bold text-xl md:text-4xl  p-4">Governance Excellence Initiative</h5>
+        <div className="absolute inset-x-0 md:top-64 mx-auto w-[15%] h-[2px] bg-white"></div>
       </div>
       <section className="py-8">
         <div className="container mx-auto px-4">
@@ -114,16 +289,23 @@ function GovernExcellenceInitiative() {
                         <div className="flex justify-center">
                           <div className="w-full lg:w-8/12">
                             <div className="logo_bg bg-[#b11016] p-12">
-                              <form noValidate className="">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
+                              <form onSubmit={handleSubmit} noValidate >
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              
                                   <div className="mb-4">
                                     <input
                                       placeholder="Full name"
                                       name="name"
                                       type="text"
                                       className="form-control"
-                                      value=""
+                                      value={formData.name}
+                                      onChange={handleChanges}
                                     />
+                                    {errors.name && (
+                                    <div className="text-light vaildate-text">
+                                      {errors.name}
+                                    </div>
+                                  )}
                                   </div>
                                   <div className="mb-4">
                                     <input
@@ -131,8 +313,14 @@ function GovernExcellenceInitiative() {
                                       name="email"
                                       type="email"
                                       className="form-control"
-                                      value=""
+                                      value={dummy.email}
+                                      onChange={handleEMail}
                                     />
+                                     {errors.email && (
+                                    <div className="text-light vaildate-text">
+                                      {errors.email}
+                                    </div>
+                                  )}
                                   </div>
                                   <div className="mb-4">
                                     <input
@@ -140,8 +328,14 @@ function GovernExcellenceInitiative() {
                                       name="dept"
                                       type="text"
                                       className="form-control"
-                                      value=""
+                                      value={formData.dept}
+                                      onChange={handleChanges}
                                     />
+                                     {errors.dept && (
+                                    <div className="text-light vaildate-text">
+                                      {errors.dept}
+                                    </div>
+                                  )}
                                   </div>
                                   <div className="mb-4">
                                     <input
@@ -149,34 +343,63 @@ function GovernExcellenceInitiative() {
                                       name="subject"
                                       type="text"
                                       className="form-control"
-                                      value=""
+                                      value={formData.subject}
+                                      onChange={handleChanges}
                                     />
+                                    {errors.subject && (
+                                    <div className="text-light vaildate-text">
+                                      {errors.subject}
+                                    </div>
+                                  )}
                                   </div>
-                                  <div className="mb-4 col-span-2">
+                                  <div className="mb-4 md:col-span-2">
                                     <textarea
                                       rows="5"
                                       placeholder="Leave your query"
                                       name="query"
                                       className="form-control"
+                                      value={formData.query}
+                                      onChange={handleChanges}
                                     ></textarea>
+                                    {errors.query && (
+                                    <div className="text-light vaildate-text">
+                                      {errors.query}
+                                    </div>
+                                  )}
                                   </div>
-                                  <div className="mb-4 text-center col-span-2">
+                                  <div className="mb-4 text-center md:col-span-2">
                                     <button
                                       type="submit"
-                                      disabled
-                                      className="btn bg-[#000] text-white cursor-not-allowed py-3 px-4 rounded text-lg"
-                                    >
-                                      Submit
+                                      disabled={!isFormValid || isLoading}
+                                      className={`btn bg-[#000] text-white py-3 px-4 rounded text-lg ${!isFormValid ? 'cursor-not-allowed' : ''}`}
+                                      >
+                                       {isLoading ? (
+                                      <>
+                                        <div
+                                          as="span"
+                                          animation="border"
+                                          size="sm"
+                                          role="status"
+                                          aria-hidden="true"
+                                        />{" "}
+                                        Please wait...
+                                      </>
+                                    ) : (
+                                      "Submit"
+                                    )}
                                     </button>
                                   </div>
                                 </div>
+                               
                               </form>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                   
                   </section>
+                  
                 </div>
               </div>
             </div>

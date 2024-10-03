@@ -42,19 +42,19 @@ function MentalHealth(){
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 1" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 1" class="max-w-[75%] h-auto align-top mx-auto sm:m-0" />
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 2" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 2" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 3" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 3" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 4" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 4" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 5" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/pannel1.png" alt="Panelist 5" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     </div>
                 </div>

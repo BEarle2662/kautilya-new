@@ -58,7 +58,7 @@ function PolicyMakingForNewIndia(){
                             </div>
                         </div>
                         </div>
-                        <div className="col-span-5">
+                        <div className="md:col-span-5 col-span-12">
                         <div className="bg-white p-8 rounded shadow-md">
                         <form>
                             <div className="grid grid-cols-12">
@@ -151,7 +151,7 @@ function PolicyMakingForNewIndia(){
                                 <span className="input-field ml-4">
                                     <select 
                                     name="experience"
-                                    className="bg-white w-[398px] border-b border-black pb-1 text-['#c9c9c9']"
+                                    className="bg-white xl:w-[398px] w-[90%] border-b border-black pb-1 text-['#c9c9c9']"
                                     aria-required="true"
                                     aria-invalid="false"
                                    

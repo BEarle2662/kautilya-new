@@ -27,16 +27,16 @@ function UniteIndia(){
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
-                        <img src="/assets/img/talkseries/talkpolicy/u1.png" alt="Image 1" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/u1.png" alt="Image 1" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div>
-                        <img src="/assets/img/talkseries/talkpolicy/u2.png" alt="Image 2"class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/u2.png" alt="Image 2"class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div>
-                        <img src="/assets/img/talkseries/talkpolicy/u3.png" alt="Image 3" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/u3.png" alt="Image 3" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div>
-                        <img src="/assets/img/talkseries/talkpolicy/u4.png" alt="Image 4" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/u4.png" alt="Image 4" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     </div>
                 </div>

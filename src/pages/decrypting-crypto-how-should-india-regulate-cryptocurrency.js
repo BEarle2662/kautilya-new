@@ -41,16 +41,16 @@ function Crypto(){
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/zaki.jpg" alt="Crypto Image 1" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/zaki.jpg" alt="Crypto Image 1" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/prashant.jpg" alt="Crypto Image 2" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/prashant.jpg" alt="Crypto Image 2" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/meghna.jpg" alt="Crypto Image 3" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/meghna.jpg" alt="Crypto Image 3" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/crypto_smita.jpg" alt="Crypto Image 4" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/crypto_smita.jpg" alt="Crypto Image 4" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     </div>
                     </div>
                 </div>

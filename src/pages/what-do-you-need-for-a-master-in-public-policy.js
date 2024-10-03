@@ -17,15 +17,15 @@ function MasterInPublicPolicy(){
                         </div>
                     </div>
 
-                    <div className="col-span-12">
-                        <div className="flex items-start">
+                    <div className="col-span-12 sm:text-left text-center">
+                        <div className="sm:flex items-start">
                         <img
                             src="/assets/img/talkseries/publicpolicy/Prateek-Kanwal.png"
                             alt="Prateek Kanwal"
                             className="w-1/4"
                         />
                         <div>
-                            <p className="text-lg AMA-txt text-[20px] pt-[110px]">
+                            <p className="text-lg AMA-txt text-[20px] sm:pt-[110px]">
                             Join the AMA<br />
                             on Admissions<br />
                             and careers with our<br />

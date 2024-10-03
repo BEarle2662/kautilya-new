@@ -29,16 +29,16 @@ function Budget2023(){
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/vinod.jpg" alt="Budget Image 1" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/vinod.jpg" alt="Budget Image 1" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0" />
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/mitali.jpg" alt="Budget Image 2" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/mitali.jpg" alt="Budget Image 2" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0" />
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/venu.jpg" alt="Budget Image 3" class="max-w-[75%] h-auto align-top"/>
+                        <img src="/assets/img/talkseries/talkpolicy/venu.jpg" alt="Budget Image 3" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0"/>
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/smita_sharma.jpg" alt="Budget Image 4" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/smita_sharma.jpg" alt="Budget Image 4" class="max-w-[75%] h-auto align-top  mx-auto sm:m-0" />
                     </div>
                     </div>
                 </div>

@@ -65,25 +65,25 @@ function ImpactfulCareer(){
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
                     <div className="text-center">
-                    <img src="/assets/img/talkseries/publicpolicy/7.png" alt="Public Policy Environment" class="max-w-[75%] h-auto align-top"/>
+                    <img src="/assets/img/talkseries/publicpolicy/7.png" alt="Public Policy Environment" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     <p className="text-primary mt-2 text-left">
                         <strong>Public Policy environment</strong> and its application across different domains
                     </p>
                     </div>
                     <div className="text-center">
-                    <img src="/assets/img/talkseries/publicpolicy/8.png" alt="Career Opportunities" class="max-w-[75%] h-auto align-top"/>
+                    <img src="/assets/img/talkseries/publicpolicy/8.png" alt="Career Opportunities" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     <p className="text-primary mt-2 text-left">
                         <strong>Career opportunities in</strong> public and private sector
                     </p>
                     </div>
                     <div className="text-center">
-                    <img src="/assets/img/talkseries/publicpolicy/9.png" alt="Growth Pathway" class="max-w-[75%] h-auto align-top"/>
+                    <img src="/assets/img/talkseries/publicpolicy/9.png" alt="Growth Pathway" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     <p className="text-primary mt-2 text-left">
                         <strong>Growth pathway;</strong> academic and professional
                     </p>
                     </div>
                     <div className="text-center">
-                    <img src="/assets/img/talkseries/publicpolicy/10.png" alt="Learning Opportunities" class="max-w-[75%] h-auto align-top"/>
+                    <img src="/assets/img/talkseries/publicpolicy/10.png" alt="Learning Opportunities" class="max-w-[75%] h-auto align-top mx-auto sm:m-0"/>
                     <p className="text-primary mt-2 text-left">
                         <strong>Learning opportunities;</strong> networking, conferences etc.
                     </p>

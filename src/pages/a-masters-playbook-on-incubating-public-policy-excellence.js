@@ -24,7 +24,7 @@ function MasterPlaybook(){
                         </p>
 
                         {/* Flexbox for Syed Akbaruddin section */}
-                        <div className="flex space-x-4 mt-4">
+                        <div className="sm:flex space-x-4 mt-4">
                         {/* Image */}
                         <div>
                             <img
@@ -35,7 +35,7 @@ function MasterPlaybook(){
                         </div>
 
                         {/* Description */}
-                        <div>
+                        <div className="sm:mt:0 mt-4">
                             <p>
                             <span className="ltp-syed text-[#b51c21] text-2xl font-semibold">Syed Akbaruddin</span>
                             </p>

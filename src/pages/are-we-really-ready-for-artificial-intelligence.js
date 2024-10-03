@@ -32,16 +32,16 @@ function AI(){
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/Amar.jpg" alt="Amar" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/Amar.jpg" alt="Amar" class="max-w-[75%] h-auto align-top mx-auto sm:m-0" />
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/Nikhil.jpg" alt="Nikhil" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/Nikhil.jpg" alt="Nikhil" class="max-w-[75%] h-auto align-top mx-auto sm:m-0" />
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/Mishi.jpg" alt="Mishi" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/Mishi.jpg" alt="Mishi" class="max-w-[75%] h-auto align-top mx-auto sm:m-0" />
                     </div>
                     <div className="col-span-1">
-                        <img src="/assets/img/talkseries/talkpolicy/Nidhi.jpg" alt="Nidhi" class="max-w-[75%] h-auto align-top" />
+                        <img src="/assets/img/talkseries/talkpolicy/Nidhi.jpg" alt="Nidhi" class="max-w-[75%] h-auto align-top mx-auto sm:m-0" />
                     </div>
                     </div>
                 </div>
