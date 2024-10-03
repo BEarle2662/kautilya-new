@@ -300,7 +300,7 @@ const Placements = ({ data }) => {
                   />
                 </div>
 
-                <div className="col-span-12 md:col-span-6 text-slider">
+                <div className="col-span-12 md:col-span-6 text-slider p-4">
                   <Slider {...settings}>
                     {textData.map((eachobj) => {
                       return (

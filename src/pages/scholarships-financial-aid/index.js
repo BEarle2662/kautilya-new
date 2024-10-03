@@ -1,4 +1,5 @@
 import CategoryHeading from "@/components/common/categoryHeading";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
@@ -43,9 +44,23 @@ const financialAidContent = `
     </ul>
   </div>
 `;
-const FinancialAid = () => {
+const FinancialAid = ({ metaTagsResponse }) => {
   return (
-    <MainLayout>
+    <MainLayout
+      title={
+        metaTagsResponse.title || "kautilya Finance page Testing for metatags"
+      }
+      description={
+        metaTagsResponse.description ||
+        "kautilya Finance page Testing for metatags"
+      }
+      keywords={metaTagsResponse.keywords || "kautilya, Finance"}
+      img={
+        metaTagsResponse.s_image
+          ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
+          : image
+      }
+    >
       <div className="bg-[#95131d] h-[20vh] pt-10 py-20 md:pt-20 md:py-40">
         <h1 className="text-white text-center text-2xl md:text-6xl font-normal">
           Scholarships & TAship
@@ -59,6 +74,31 @@ const FinancialAid = () => {
       </div>
     </MainLayout>
   );
+};
+
+export const getServerSideProps = async () => {
+  try {
+    // Fetch the placements data
+
+    // Await the meta tags data from MetaTagsComponent
+    const metaTagsResponse = await MetaTagsComponent({
+      page: "scholarships-financial-aid",
+    });
+    console.log("metaTagsResponse", metaTagsResponse);
+    // Ensure that metaTagsResponse is not undefined
+    return {
+      props: {
+        metaTagsResponse: metaTagsResponse || {}, // Ensure default object if undefined
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return {
+      props: {
+        metaTagsResponse: {}, // Provide default empty object in case of error
+      },
+    };
+  }
 };
 
 export default FinancialAid;

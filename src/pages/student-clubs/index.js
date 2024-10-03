@@ -98,7 +98,7 @@ const StudentClub = () => {
   return (
     <MainLayout>
       <ScreenWidth layoutwidth="false">
-        <div className="h-[40vh] bg-[url('/assets/img/bgImages/bg-01.jpg')] pt-10">
+        <div className="h-[40vh] bg-[url('/assets/img/bgImages/black-shade.jpg')] pt-10">
           <CategoryHeading
             heading="Student Clubs and Activities"
             color="text-[#ffffff]"

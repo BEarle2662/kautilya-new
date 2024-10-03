@@ -1,3 +1,4 @@
+const { ImagePaths } = require("./src/Endpoints/imagePath");
 /** @type {import('tailwindcss').Config} */
 const withMT = require("@material-tailwind/react/utils/withMT");
 const defaultTheme = require("tailwindcss/defaultTheme");
@@ -11,7 +12,9 @@ module.exports = withMT({
   theme: {
     extend: {
       backgroundImage: {
-        // "gradient-image": "url('/kautilya-next/assets/img/gradient-bg.jpg')",
+        "red-shade": `url('${ImagePaths.redGradientBg}')`,
+        "black-shade": `url('${ImagePaths.blackShadeImage}')`,
+        "group-img": `url('${ImagePaths.groupImg}')`,
       },
       colors: {
         p: "#424a53",

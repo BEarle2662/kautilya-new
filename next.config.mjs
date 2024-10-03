@@ -7,8 +7,8 @@ const nextConfig = {
   },
   trailingSlash: true,
   // output: "export",
-  // assetPrefix: "https://webdev.gitam.edu/kautilya-next/",
-  // basePath: "/kautilya-next",
+  assetPrefix: "https://webdev.gitam.edu/kautilya-next/",
+  basePath: "/kautilya-next",
 };
 
 export default nextConfig;

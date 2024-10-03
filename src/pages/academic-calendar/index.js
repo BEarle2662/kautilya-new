@@ -12,37 +12,9 @@ import {
 
 import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 
-import { Card, Typography } from "@material-tailwind/react";
+import { Card } from "@material-tailwind/react";
 
 const TABLE_HEAD = ["Date and Month", "Day", "Event", ""];
-
-const TABLE_ROWS = [
-  {
-    name: "John Michael",
-    job: "Manager",
-    date: "23/04/18",
-  },
-  {
-    name: "Alexa Liras",
-    job: "Developer",
-    date: "23/04/18",
-  },
-  {
-    name: "Laurent Perrier",
-    job: "Executive",
-    date: "19/09/17",
-  },
-  {
-    name: "Michael Levi",
-    job: "Developer",
-    date: "24/12/08",
-  },
-  {
-    name: "Richard Gran",
-    job: "Manager",
-    date: "04/10/21",
-  },
-];
 
 const academicCalendar2024 = [
   {
@@ -189,8 +161,15 @@ const AcademicCalendar = () => {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
+  const image =
+    "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/mpp_desktop_66b64f79d1f7d.jpg";
   return (
-    <MainLayout>
+    <MainLayout
+      title={"kautilya academic calender page Testing for metatags"}
+      description={"kautilya Advantage page Testing for metatags"}
+      keywords={"kautilya, Advantage"}
+      img={image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Academic Calendar" />
 

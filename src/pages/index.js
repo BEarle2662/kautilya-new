@@ -13,7 +13,7 @@ export default function Home() {
 
       {/* india by kautilya section */}
       <div className=" mt-0">
-        <div className="h-[10vh] bg-cover bg-center bg-[url('/assets/img/gradient-bg.jpg')] flex items-center justify-center text-center pt-28 pb-48">
+        <div className="h-[10vh] bg-cover bg-center bg-red-shade flex items-center justify-center text-center pt-28 pb-48">
           <ScreenWidth layoutwidth="true">
             <div className="grid grid-cols-1 ">
               <h1 className="text-white text-4xl mb-12 ">#Indiabykautilya</h1>

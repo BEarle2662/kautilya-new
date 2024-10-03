@@ -35,7 +35,7 @@ const faculty = ({ data }) => {
         </ScreenWidth>
 
         <ScreenWidth layoutwidth="false">
-          <div className="bg-[url('/assets/img/bgImages/faculty-bg.jpg')]  bg-cover bg-no-repeat  h-lvh mt-6">
+          <div className="bg-group-img  bg-cover bg-no-repeat  h-lvh mt-6">
             <ScreenWidth layoutwidth="true">
               <div className="grid grid-cols-12">
                 <div className="hidden md:block md:col-span-4"></div>

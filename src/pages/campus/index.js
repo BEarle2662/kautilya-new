@@ -48,7 +48,7 @@ export async function getStaticProps() {
 
   const facilityListdataResponse = await fetch(facilityListdata);
   const facilitiesdata = await facilityListdataResponse.json();
-  console.log(facilitiesdata);
+  // console.log(facilitiesdata);
   return {
     props: { facilitiesdata },
   };
