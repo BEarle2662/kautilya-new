@@ -14,7 +14,7 @@ const StudentMix = ({ data }) => {
 
   return (
     <MainLayout>
-      <div className="bg-[url('/assets/img/bgImages/studentmix-banner.jpg')]  bg-cover bg-no-repeat">
+      <div className="bg-white-shade  bg-cover bg-no-repeat">
         <ScreenWidth layoutwidth="true">
           <CategoryHeading heading="#IndiaByKautilya" />
 

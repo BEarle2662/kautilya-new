@@ -18,7 +18,7 @@ const PoliciesCard = ({ policiesData }) => {
                       <h4 className="text-sm md:text-lg font-semibold">
                         {each.type}
                       </h4>
-                      <p className="text-sm md:text-lg font-medium text-center">
+                      <p className="text-sm md:text-lg font-medium text-center text-white">
                         {each.subtitle}
                       </p>
                     </div>
@@ -38,7 +38,7 @@ const PoliciesCard = ({ policiesData }) => {
                     <h4 className="text-sm md:text-lg font-semibold">
                       {each.type}
                     </h4>
-                    <p className="text-sm md:text-lg font-medium  text-center">
+                    <p className="text-sm md:text-lg font-medium  text-center text-white">
                       {each.subtitle}
                     </p>
                   </a>

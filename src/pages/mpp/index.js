@@ -23,7 +23,7 @@ const Mpp = ({ mppData }) => {
 
   return (
     <MainLayout>
-      <div className="bg-[url('/assets/img/bgImages/masters_banner.jpg')]  bg-cover bg-no-repeat py-14">
+      <div className="bg-mpp-img  bg-cover bg-no-repeat py-14">
         <ScreenWidth layoutwidth="true">
           <div className="md:grid md:grid-cols-12">
             <div className="md:col-span-7">
@@ -108,7 +108,7 @@ const Mpp = ({ mppData }) => {
             <a
               href="https://www.ugc.gov.in/"
               target="_blank"
-              className="mpp_anchor"
+              className="mpp_anchor underline"
             >
               UGC
             </a>
@@ -120,17 +120,6 @@ const Mpp = ({ mppData }) => {
     </MainLayout>
   );
 };
-
-// export async function getStaticProps() {
-//   const masterProgramData = `${apisBasePath.masterProgramData}`;
-
-//   const masterProgramDataResp = await fetch(masterProgramData);
-//   const data = await masterProgramDataResp.json();
-//   //   console.log(data);
-//   return {
-//     props: { data },
-//   };
-// }
 
 export async function getStaticProps() {
   const masterProgramData = `${apisBasePath.masterProgramData}`;

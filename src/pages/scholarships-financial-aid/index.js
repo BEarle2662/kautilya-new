@@ -76,7 +76,7 @@ const FinancialAid = ({ metaTagsResponse }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   try {
     // Fetch the placements data
 

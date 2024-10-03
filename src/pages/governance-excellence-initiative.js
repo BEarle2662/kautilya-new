@@ -209,7 +209,7 @@ function GovernExcellenceInitiative() {
               <div className="row">
                 <div className="col">
                   <div
-                    className="bg-white resume bg-[url('/assets/img/events/govtExcellenceInitivies/contact_bg.jpg')] bg-center bg-no-repeat"
+                    className="bg-white resume bg-govern-white-shade bg-center bg-no-repeat"
                     id="resume"
                   >
                     <section className="pt-14 p-0">
