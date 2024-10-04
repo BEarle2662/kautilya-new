@@ -120,7 +120,7 @@ function SeptemberFour() {
           </p>
         </div>
       </section>
-      <section className="panellists bg-[url('/assets/img/talkseries/talkpolicy/november_bg.jpg')] bg-center bg-no-repeat bg-cover">
+      <section className="panellists bg-nov-bg bg-center bg-no-repeat bg-cover">
         <div className="container mx-auto px-4">
           <h2 className="text-5xl font-bold mb-8 text-center text-white">
             About the panellists
@@ -284,7 +284,7 @@ function SeptemberFour() {
           </div>
         </div>
       </section>
-      <section className="attendees bg-[url('/assets/img/talkseries/talkpolicy/november_footer_bg.jpg')] bg-center bg-no-repeat bg-cover">
+      <section className="attendees bg-nov-bg-footer bg-center bg-no-repeat bg-cover">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-4 text-white">Attendees</h2>
           <p className="mb-2 text-white">
