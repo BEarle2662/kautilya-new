@@ -14,7 +14,7 @@ function ShapeUp() {
           </div>
         </div>
       </div>
-      <section className="politicalCompanion mt-0 bg-[url('/assets/img/talkseries/talkpolicy/shapeup_bg.jpg')] bg-center bg-no-repeat bg-cover">
+      <section className="politicalCompanion mt-0 bg-shape-bg bg-center bg-no-repeat bg-cover">
         <div className="container mx-auto">
           <div className="grid grid-cols-1">
             <div className="m-3 p-3 col-span-1"></div>
@@ -78,7 +78,7 @@ function ShapeUp() {
           </div>
         </div>
       </section>
-      <section className="politicalCompanion2 bg-[url('/assets/img/talkseries/talkpolicy/sahpe_panalist.jpg')] bg-center bg-no-repeat bg-cover">
+      <section className="politicalCompanion2 bg-shape-panalist bg-center bg-no-repeat bg-cover">
         <div className="container mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-white text-2xl">Panelist</h2>
@@ -124,7 +124,7 @@ function ShapeUp() {
           </div>
         </div>
       </section>
-      <section className="politicalCompanion3 bg-[url('/assets/img/talkseries/talkpolicy/shape_middle_bg.jpg')] bg-center bg-no-repeat bg-cover">
+      <section className="politicalCompanion3 bg-shape-mid bg-center bg-no-repeat bg-cover">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Empty Column for Spacing */}
