@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function DelhiSession() {
   return (
@@ -9,7 +10,8 @@ function DelhiSession() {
             <div className="grid grid-cols-1 text-left">
               <div className="col-span-1">
                 <img
-                  src="/assets/img/events/publicpolicy/Info_Session_Logo.png"
+                  // src="/assets/img/events/publicpolicy/Info_Session_Logo.png"
+                  src={ImagePaths.infoSessionLogo}
                   alt="Info Session Logo"
                   className="mb-4"
                   style={{ width: "150px" }}
@@ -27,7 +29,8 @@ function DelhiSession() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
               <div className="col-span-1 flex items-center justify-center">
                 <img
-                  src="/assets/img/events/publicpolicy/calender_red.png"
+                  // src="/assets/img/events/publicpolicy/calender_red.png"
+                  src={ImagePaths.calenderRed}
                   alt="icon calendar"
                   style={{ width: "50px" }}
                   className="mr-2"
@@ -37,7 +40,8 @@ function DelhiSession() {
 
               <div className="col-span-1 flex items-center justify-center">
                 <img
-                  src="/assets/img/events/publicpolicy/time_red.png"
+                  // src="/assets/img/events/publicpolicy/time_red.png"
+                  src={ImagePaths.timeRed}
                   alt="icon time"
                   style={{ width: "50px" }}
                   className="mr-2"
@@ -47,7 +51,8 @@ function DelhiSession() {
 
               <div className="col-span-1 flex items-center justify-center">
                 <img
-                  src="/assets/img/events/publicpolicy/map_red.png"
+                  // src="/assets/img/events/publicpolicy/map_red.png"
+                  src={ImagePaths.mapRed}
                   alt="icon map"
                   style={{ width: "20px" }}
                   className="mr-2"
@@ -70,17 +75,20 @@ function DelhiSession() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center">
             <img
-              src="/assets/img/events/publicpolicy/person1.png"
+              // src="/assets/img/events/publicpolicy/person1.png"
+              src={ImagePaths.person1}
               alt="Image 1"
               className="w-[250px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/person2.png"
+              // src="/assets/img/events/publicpolicy/person2.png"
+              src={ImagePaths.person2}
               alt="Image 2"
               className="w-[250px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/person3.png"
+              // src="/assets/img/events/publicpolicy/person3.png"
+              src={ImagePaths.person3}
               alt="Image 3"
               className="w-[250px] h-auto"
             />
@@ -94,17 +102,20 @@ function DelhiSession() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-items-center">
             <img
-              src="/assets/img/events/publicpolicy/person4.png"
+              // src="/assets/img/events/publicpolicy/person4.png"
+              src={ImagePaths.person4}
               alt="Image 1"
               className="w-[250px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/person5.png"
+              // src="/assets/img/events/publicpolicy/person5.png"
+              src={ImagePaths.person5}
               alt="Image 2"
               className="w-[250px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/person6.png"
+              // src="/assets/img/events/publicpolicy/person6.png"
+              src={ImagePaths.person6}
               alt="Image 3"
               className="w-[250px] h-auto"
             />
@@ -118,24 +129,28 @@ function DelhiSession() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
             <img
-              src="/assets/img/events/publicpolicy/expect1.png"
+              // src="/assets/img/events/publicpolicy/expect1.png"
+              src={ImagePaths.expect1}
               alt="Image 1"
               class="max-w-[75%] h-auto align-top"
             />
             <img
-              src="/assets/img/events/publicpolicy/expect2.png"
+              // src="/assets/img/events/publicpolicy/expect2.png"
+              src={ImagePaths.expect2}
               alt="Image 2"
               class="max-w-[75%] h-auto align-top"
             />
           </div>
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
             <img
-              src="/assets/img/events/publicpolicy/expect3.png"
+              // src="/assets/img/events/publicpolicy/expect3.png"
+              src={ImagePaths.expect3}
               alt="Image 3"
               class="max-w-[75%] h-auto align-top"
             />
             <img
-              src="/assets/img/events/publicpolicy/expect4.png"
+              // src="/assets/img/events/publicpolicy/expect4.png"
+              src={ImagePaths.expect4}
               alt="Image 4"
               class="max-w-[75%] h-auto align-top"
             />
@@ -164,27 +179,32 @@ function DelhiSession() {
           {/* Icon Section */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 justify-items-center">
             <img
-              src="/assets/img/events/publicpolicy/icontext1.png"
+              // src="/assets/img/events/publicpolicy/icontext1.png"
+              src={ImagePaths.icontext1}
               alt="Icon 1"
               className="w-[80px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/icontext2.png"
+              // src="/assets/img/events/publicpolicy/icontext2.png"
+              src={ImagePaths.icontext2}
               alt="Icon 2"
               className="w-[80px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/icontext3.png"
+              // src="/assets/img/events/publicpolicy/icontext3.png"
+              src={ImagePaths.icontext3}
               alt="Icon 3"
               className="w-[80px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/icontext4.png"
+              // src="/assets/img/events/publicpolicy/icontext4.png"
+              src={ImagePaths.icontext4}
               alt="Icon 4"
               className="w-[80px] h-auto"
             />
             <img
-              src="/assets/img/events/publicpolicy/icontext5.png"
+              // src="/assets/img/events/publicpolicy/icontext5.png"
+              src={ImagePaths.icontext5}
               alt="Icon 5"
               className="w-[80px] h-auto"
             />

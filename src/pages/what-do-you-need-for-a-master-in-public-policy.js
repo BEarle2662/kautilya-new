@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function MasterInPublicPolicy() {
   return (
@@ -20,7 +21,8 @@ function MasterInPublicPolicy() {
             <div className="col-span-12">
               <div className="flex items-start">
                 <img
-                  src="/assets/img/talkseries/publicpolicy/Prateek-Kanwal.png"
+                  // src="/assets/img/talkseries/publicpolicy/Prateek-Kanwal.png"
+                  src={ImagePaths.PrateekKanwal}
                   alt="Prateek Kanwal"
                   className="w-1/4"
                 />
@@ -43,7 +45,8 @@ function MasterInPublicPolicy() {
             <div className="col-span-12">
               <div className="flex items-center time_date">
                 <img
-                  src="/assets/img/talkseries/publicpolicy/calender_red.png"
+                  // src="/assets/img/talkseries/publicpolicy/calender_red.png"
+                  src={ImagePaths.calenderRed}
                   alt="Calendar"
                   className="w-[60px] mr-2"
                 />
@@ -54,7 +57,8 @@ function MasterInPublicPolicy() {
             <div className="col-span-12 mb-5">
               <div className="flex items-center time_date">
                 <img
-                  src="/assets/img/talkseries/publicpolicy/time_red.png"
+                  // src="/assets/img/talkseries/publicpolicy/time_red.png"
+                  src={ImagePaths.timeRed}
                   alt="Time"
                   className="w-[60px] mr-2"
                 />

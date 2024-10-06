@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function Multilateral() {
   return (
@@ -16,11 +17,7 @@ function Multilateral() {
         <div className="container mx-auto ">
           <div className="grid grid-cols-1">
             <div className="col-xl-12">
-              <img
-                src="/assets/img/talkseries/talkpolicy/quote.png"
-                alt="quote"
-                className="w-32"
-              />
+              <img src={ImagePaths.quote} alt="quote" className="w-32" />
             </div>
             <div className="col-xl-12">
               <h5 className="text-white text-6xl font-bold">
@@ -78,22 +75,13 @@ function Multilateral() {
               </h4>
             </div>
             <div className="col-span-1">
-              <img
-                src="/assets/img/talkseries/talkpolicy/m_syed.png"
-                alt="Panelist 1"
-              />
+              <img src={ImagePaths.mSyed} alt="Panelist 1" />
             </div>
             <div className="col-span-1">
-              <img
-                src="/assets/img/talkseries/talkpolicy/m_saran.png"
-                alt="Panelist 2"
-              />
+              <img src={ImagePaths.mSaran} alt="Panelist 2" />
             </div>
             <div className="col-span-1">
-              <img
-                src="/assets/img/talkseries/talkpolicy/m_manika.png"
-                alt="Panelist 3"
-              />
+              <img src={ImagePaths.mManika} alt="Panelist 3" />
             </div>
           </div>
         </div>

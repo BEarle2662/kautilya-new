@@ -7,6 +7,7 @@ import { apisBasePath } from "@/Endpoints/apisBase";
 
 import faqImage from "../../../public/assets/img/FAQ-2.jpg";
 import Faq from "@/components/common/Faq";
+import axios from "axios";
 
 const ResearchFaqs = ({ researchFaq }) => {
   const image =
@@ -28,25 +29,53 @@ const ResearchFaqs = ({ researchFaq }) => {
   );
 };
 
+// export async function getStaticProps() {
+//   let researchFaq = [];
+
+//   try {
+//     const response = await fetch(
+//       apisBasePath.faqdata,
+
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           type: "Research",
+//         }),
+//       }
+//     );
+//     researchFaq = await response.json();
+//     // console.log("ResearchFaq", researchFaq);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+
+//   return {
+//     props: {
+//       researchFaq,
+//     },
+//   };
+// }
+
 export async function getStaticProps() {
   let researchFaq = [];
 
   try {
-    const response = await fetch(
+    const response = await axios.post(
       apisBasePath.faqdata,
-
       {
-        method: "POST",
+        type: "Research",
+      },
+      {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          type: "Research",
-        }),
       }
     );
-    researchFaq = await response.json();
-    // console.log("ResearchFaq", researchFaq);
+    researchFaq = response.data;
+    console.log("researchFaq", researchFaq);
   } catch (error) {
     console.error("Error fetching data:", error);
   }

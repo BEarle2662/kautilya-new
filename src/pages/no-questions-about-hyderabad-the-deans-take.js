@@ -1,10 +1,10 @@
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
 import blogIntro from "../../public/assets/img/blogs/blog_intro.jpg";
-import syed from "../../public/assets/img/blogs/syed.jpg";
 import Image from "next/image";
 import { Avatar } from "@material-tailwind/react";
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function BlogsIntro() {
   return (
@@ -30,7 +30,7 @@ function BlogsIntro() {
               size="lg"
               variant="circular"
               alt=""
-              src={syed}
+              src={ImagePaths.syed}
               className="border-2 border-white hover:z-10 mr-3"
             />
             <div className="font-extrabold text-[#424a53]">

@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function November() {
   return (
@@ -12,10 +13,7 @@ function November() {
               </p>
               <div className="flex items-center">
                 <span>
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/quote_red.png"
-                    alt="Quote Icon"
-                  />
+                  <img src={ImagePaths.quoteRed4Sep} alt="Quote Icon" />
                 </span>
                 <p className="LTP-txt ml-2 text-white text-2xl">
                   Let’s Talk <br />
@@ -27,19 +25,13 @@ function November() {
               </p>
               <div className="flex space-x-4 mb-5">
                 <span className="flex items-center">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/calender_white.png"
-                    alt="Date Icon"
-                  />
+                  <img src={ImagePaths.calenderWhite} alt="Date Icon" />
                   <span className="LTP-tit ml-2 text-white text-xl">
                     November 25th, 2021
                   </span>
                 </span>
                 <span className="flex items-center">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/time_white.png"
-                    alt="Time Icon"
-                  />
+                  <img src={ImagePaths.timeWhite} alt="Time Icon" />
                   <span className="LTP-tit ml-2 text-white text-xl">
                     7 – 8PM IST
                   </span>
@@ -57,7 +49,7 @@ function November() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex items-start">
               <img
-                src="/assets/img/talkseries/talkpolicy/Nidhi-Razdan.png"
+                src={ImagePaths.nidhiRazdan}
                 alt="Nidhi Razdan"
                 class="max-w-[75%] h-auto align-top bg-white"
               />
@@ -74,7 +66,7 @@ function November() {
 
             <div className="flex items-start">
               <img
-                src="/assets/img/talkseries/talkpolicy/Pranesh-Prakash.png"
+                src={ImagePaths.Pranesh}
                 alt="Pranesh Prakash"
                 class="max-w-[75%] h-auto align-top bg-white"
               />
@@ -92,7 +84,7 @@ function November() {
 
             <div className="flex items-start mb-3">
               <img
-                src="/assets/img/talkseries/talkpolicy/Jiten-Jain.png"
+                src={ImagePaths.jiten}
                 alt="Jiten Jain"
                 class="max-w-[75%] h-auto align-top bg-white"
               />
@@ -107,7 +99,7 @@ function November() {
 
             <div className="flex items-start mb-3">
               <img
-                src="/assets/img/talkseries/talkpolicy/Trisha-Ray.png"
+                src={ImagePaths.trisha}
                 alt="Trisha Ray"
                 class="max-w-[75%] h-auto align-top bg-white"
               />

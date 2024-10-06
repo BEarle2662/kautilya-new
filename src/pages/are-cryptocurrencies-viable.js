@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function Currency() {
   return (
@@ -37,7 +38,7 @@ function Currency() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="text-center">
                   <img
-                    src="/assets/img/talkseries/talkpolicy/Nidhi.png"
+                    src={ImagePaths.Nidhi}
                     alt="Nidhi Razdan"
                     class="max-w-[100%] h-auto align-top"
                   />
@@ -50,7 +51,7 @@ function Currency() {
 
                 <div className="text-center">
                   <img
-                    src="/assets/img/talkseries/talkpolicy/Milind.png"
+                    src={ImagePaths.milind}
                     alt="Milind Deora"
                     class="max-w-[100%] h-auto align-top"
                   />
@@ -65,7 +66,7 @@ function Currency() {
 
                 <div className="text-center">
                   <img
-                    src="/assets/img/talkseries/talkpolicy/Krishna.png"
+                    src={ImagePaths.Krishna}
                     alt="Krishna Hegde"
                     class="max-w-[100%] h-auto align-top"
                   />
@@ -80,7 +81,7 @@ function Currency() {
 
                 <div className="text-center">
                   <img
-                    src="/assets/img/talkseries/talkpolicy/Rajat.png"
+                    src={ImagePaths.rajat}
                     alt="Rajat"
                     class="max-w-[100%] h-auto align-top"
                   />

@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function MasterPlaybook() {
   return (
@@ -12,7 +13,7 @@ function MasterPlaybook() {
             {/* Main Content */}
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/publicpolicy/ask.jpg"
+                src={ImagePaths.ask}
                 alt="A master's playbook"
                 className="w-[350px]"
               />
@@ -29,7 +30,7 @@ function MasterPlaybook() {
                 {/* Image */}
                 <div>
                   <img
-                    src="/assets/img/talkseries/publicpolicy/Dean.jpg"
+                    src={ImagePaths.dean}
                     alt="Syed Akbaruddin"
                     className="w-[200px]"
                   />
@@ -51,14 +52,14 @@ function MasterPlaybook() {
                   </p>
                   <p className="time_date mt-2">
                     <img
-                      src="/assets/img/talkseries/publicpolicy/calender_red.png"
+                      src={ImagePaths.calenderRed}
                       alt="Calendar"
                       className="inline-block w-[60px]"
                     />
                     <span className="ml-2">June 27, Tuesday</span>
                     <br />
                     <img
-                      src="/assets/img/talkseries/publicpolicy/time_red.png"
+                      src={ImagePaths.timeRed}
                       alt="Time"
                       className="inline-block w-[60px]"
                     />

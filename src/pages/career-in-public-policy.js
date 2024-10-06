@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function Career() {
   return (
@@ -59,7 +60,7 @@ function Career() {
             </div>
             <div className="xl:col-span-3">
               <img
-                src="/assets/img/talkseries/publicpolicy/prateek.png"
+                src={ImagePaths.prateek}
                 alt="Prateek Kanwal"
                 class="max-w-[75%] h-auto align-top"
               />
@@ -87,7 +88,7 @@ function Career() {
           <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
             <div className="text-center">
               <img
-                src="/assets/img/talkseries/publicpolicy/7.png"
+                src={ImagePaths.seven}
                 alt="Public Policy Environment"
                 class="max-w-[75%] h-auto align-top"
               />
@@ -98,7 +99,7 @@ function Career() {
             </div>
             <div className="text-center">
               <img
-                src="/assets/img/talkseries/publicpolicy/8.png"
+                src={ImagePaths.eight}
                 alt="Career Opportunities"
                 class="max-w-[75%] h-auto align-top"
               />
@@ -109,7 +110,7 @@ function Career() {
             </div>
             <div className="text-center">
               <img
-                src="/assets/img/talkseries/publicpolicy/9.png"
+                src={ImagePaths.nine}
                 alt="Growth Pathway"
                 class="max-w-[75%] h-auto align-top"
               />
@@ -119,7 +120,7 @@ function Career() {
             </div>
             <div className="text-center">
               <img
-                src="/assets/img/talkseries/publicpolicy/10.png"
+                src={ImagePaths.ten}
                 alt="Learning Opportunities"
                 class="max-w-[75%] h-auto align-top"
               />

@@ -5,7 +5,6 @@ import CategoryHeading from "./categoryHeading";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
 import blogIntro from "../../../public/assets/img/blogs/blog_intro.jpg";
-import syed from "../../../public/assets/img/blogs/syed.jpg";
 
 import {
   Card,
@@ -16,6 +15,7 @@ import {
 } from "@material-tailwind/react";
 
 import Link from "next/link";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 const SlugsPage = ({ pageTitle, slugsPageData }) => {
   let slugBasePath;
@@ -49,7 +49,13 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                 </h3>
 
                 <div className="flex">
-                  <Image src={syed} className="rounded-full" alt="syed" />
+                  <Image
+                    src={ImagePaths.syed}
+                    className="rounded-full"
+                    alt="syed"
+                    width={60}
+                    height={60}
+                  />
                   <p className="font-bold text-base text-p ml-4 text-left">
                     By Syed Akbaruddin, Dean
                   </p>

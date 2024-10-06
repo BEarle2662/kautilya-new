@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 import Image from "next/image";
 
 function GovernExcellenceInitiative() {
@@ -60,7 +61,7 @@ function GovernExcellenceInitiative() {
             <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
               <div className="md:w-1/2">
                 <Image
-                  src="./../../assets/img/events/govtExcellenceInitivies/gei_dec_2022_1.jpg"
+                  src={ImagePaths.geiDec1}
                   alt="govt_excel"
                   className="w-full h-full"
                   height={0}
@@ -69,7 +70,7 @@ function GovernExcellenceInitiative() {
               </div>
               <div className="md:w-1/2">
                 <Image
-                  src="./../../assets/img/events/govtExcellenceInitivies/gei_dec_2022_2.jpg"
+                  src={ImagePaths.geiDec2}
                   alt="govt_excel"
                   className="w-full h-full"
                   height={0}
@@ -90,7 +91,7 @@ function GovernExcellenceInitiative() {
             </p>
             <div className="mx-auto container w-9/12 mb-6">
               <Image
-                src="./../../assets/img/events/govtExcellenceInitivies/gei_july_2023.jpg"
+                src={ImagePaths.geiJul}
                 alt="govt_excel"
                 className="w-full h-auto"
                 height={0}
@@ -98,7 +99,7 @@ function GovernExcellenceInitiative() {
               />
             </div>
 
-            <p className="mb-6 text-lg mb-6">
+            <p className="mb-6 text-lg">
               <b>
                 August 2023: Media Engagement Workshop for 75 RR IPS Officers{" "}
               </b>
@@ -111,7 +112,7 @@ function GovernExcellenceInitiative() {
             <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
               <div className="md:w-1/2">
                 <Image
-                  src="./../../assets/img/events/govtExcellenceInitivies/gei_july_2023_2.jpg"
+                  src={ImagePaths.geiJul2}
                   alt="govt_excel"
                   className="w-full h-full"
                   height={0}
@@ -120,7 +121,7 @@ function GovernExcellenceInitiative() {
               </div>
               <div className="md:w-1/2">
                 <Image
-                  src="./../../assets/img/events/govtExcellenceInitivies/gei_aug_2023_2.jpg"
+                  src={ImagePaths.geiAug2}
                   alt="govt_excel"
                   className="w-full h-full"
                   height={0}
@@ -139,7 +140,7 @@ function GovernExcellenceInitiative() {
             <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
               <div className="md:w-1/2">
                 <Image
-                  src="./../../assets/img/events/govtExcellenceInitivies/gei_may_2024_1.jpg"
+                  src={ImagePaths.geiMay}
                   alt="govt_excel"
                   className="w-full h-full"
                   height={0}
@@ -148,7 +149,7 @@ function GovernExcellenceInitiative() {
               </div>
               <div className="md:w-1/2">
                 <Image
-                  src="./../../assets/img/events/govtExcellenceInitivies/gei_may_2024_2.jpg"
+                  src={ImagePaths.geiMay2}
                   alt="govt_excel"
                   className="w-full h-full"
                   height={0}

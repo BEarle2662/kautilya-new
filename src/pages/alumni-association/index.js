@@ -7,17 +7,31 @@ import indiaMap from "../../../public/assets/img/alumni/india-map.jpg";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
 
 import { apisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const AlumniAssociation = ({ data }) => {
+const AlumniAssociation = ({ data, metaTagsResponse }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
   return (
     <MainLayout
-      title={"AlumniAssociation page Testing for metatags"}
-      description={"AlumniAssociation page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      // title={"AlumniAssociation page Testing for metatags"}
+      // description={"AlumniAssociation page Testing for metatags"}
+      // keywords={"GIMSR, GITAM, Hospital"}
+      // img={image}
+      title={
+        metaTagsResponse.title || "AlumniAssociation page Testing for metatags"
+      }
+      description={
+        metaTagsResponse.description ||
+        "AlumniAssociation page Testing for metatags"
+      }
+      keywords={metaTagsResponse.keywords || "kautilya, Alumni"}
+      img={
+        metaTagsResponse.s_image
+          ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
+          : image
+      }
     >
       <ScreenWidth layoutwidth="false">
         <div className="border-b-2 md:mb-10">
@@ -88,12 +102,15 @@ const AlumniAssociation = ({ data }) => {
 
 export async function getStaticProps() {
   const alumniProfiles = apisBasePath.alumniprofiles;
+  const metaTagsResponse = await MetaTagsComponent({
+    page: "alumni-association",
+  });
 
   const response = await fetch(alumniProfiles);
   const data = await response.json();
 
   return {
-    props: { data },
+    props: { data, metaTagsResponse: metaTagsResponse },
   };
 }
 

@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function IndiaEconomy() {
   return (
@@ -12,7 +13,8 @@ function IndiaEconomy() {
             <div className="flex flex-col items-left">
               <div className="top-div text-left">
                 <img
-                  src="/assets/img/talkseries/talkpolicy/quote.png"
+                  // src="/assets/img/talkseries/talkpolicy/quote.png"
+                  src={ImagePaths.quote}
                   className="w-24"
                   alt="Quote"
                 />
@@ -69,7 +71,8 @@ function IndiaEconomy() {
           <div className="flex">
             <div className="w-full">
               <img
-                src="/assets/img/talkseries/talkpolicy/speakers_bg.jpg"
+                // src="/assets/img/talkseries/talkpolicy/speakers_bg.jpg"
+                src={ImagePaths.speakersBg}
                 alt="Economy Inflation"
                 class="max-w-[90%] h-auto align-top"
               />

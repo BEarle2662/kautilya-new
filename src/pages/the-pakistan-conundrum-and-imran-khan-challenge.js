@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function PakistanConundrum() {
   return (
@@ -30,28 +31,32 @@ function PakistanConundrum() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/1.png"
+                // src="/assets/img/talkseries/talkpolicy/1.png"
+                src={ImagePaths.talkOne}
                 alt="Image 1"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/2.png"
+                // src="/assets/img/talkseries/talkpolicy/2.png"
+                src={ImagePaths.talkTwo}
                 alt="Image 2"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/3.png"
+                // src="/assets/img/talkseries/talkpolicy/3.png"
+                src={ImagePaths.talkThree}
                 alt="Image 3"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/4.png"
+                // src="/assets/img/talkseries/talkpolicy/4.png"
+                src={ImagePaths.talkFour}
                 alt="Image 4"
                 class="max-w-[75%] h-auto align-top"
               />

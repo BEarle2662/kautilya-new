@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function NuclearDeal() {
   return (
@@ -23,7 +24,7 @@ function NuclearDeal() {
                   From Nuclear Deal
                   <br /> to Critical Tech
                 </p>
-                <p className="font-light text-2xl mt-2 mb-5 text-white mb-16">
+                <p className="font-light text-2xl mt-2 mb-5 text-white md:mb-16">
                   The New Chapter in India-US Ties
                 </p>
 
@@ -31,7 +32,7 @@ function NuclearDeal() {
                   <div className="LTP eventicon flex items-center space-x-2">
                     <img
                       className="mb-2.5 w-[30px] mr-2"
-                      src="/assets/img/talkseries/talkpolicy/calender_white.png"
+                      src={ImagePaths.calenderWhite}
                       alt="Calendar"
                     />
                     <span className="font-semibold text-lg">
@@ -41,7 +42,7 @@ function NuclearDeal() {
                   <div className="LTP eventicon flex items-center space-x-2 mt-2">
                     <img
                       className="mb-2.5 w-[30px] mr-2"
-                      src="/assets/img/talkseries/talkpolicy/time_white.png"
+                      src={ImagePaths.timeWhite}
                       alt="Time"
                     />
                     <span className="font-semibold text-lg">
@@ -61,7 +62,7 @@ function NuclearDeal() {
             {/* First Image */}
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Lisa.png"
+                src={ImagePaths.lisa}
                 alt="Lisa"
                 className="max-w-[75%] h-auto align-top"
               />
@@ -70,7 +71,7 @@ function NuclearDeal() {
             {/* Second Image */}
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Navtej.png"
+                src={ImagePaths.Navtej}
                 alt="Navtej"
                 className="max-w-[75%] h-auto align-top"
               />
@@ -79,7 +80,7 @@ function NuclearDeal() {
             {/* Third Image */}
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Smita.png"
+                src={ImagePaths.Smita}
                 alt="Smita"
                 className="max-w-[75%] h-auto align-top"
               />

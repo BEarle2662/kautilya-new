@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function Russia() {
   return (
@@ -27,7 +28,8 @@ function Russia() {
               <div className="grid grid-cols-1 xl:grid-cols-3 gap-5">
                 <div className="text-center">
                   <img
-                    src="/assets/img/talkseries/talkpolicy/r_syed.png"
+                    // src="/assets/img/talkseries/talkpolicy/r_syed.png"
+                    src={ImagePaths.rSyed}
                     alt="Amb. Syed Akbaruddin"
                   />
                   <p className="k-eventcard5-title font-bold text-white mt-3">
@@ -39,7 +41,8 @@ function Russia() {
                 </div>
                 <div className="text-center">
                   <img
-                    src="/assets/img/talkseries/talkpolicy/r_venkatesh.png"
+                    // src="/assets/img/talkseries/talkpolicy/r_venkatesh.png"
+                    src={ImagePaths.rVenkatesh}
                     alt="Amb. D. B. Venkatesh Varma"
                   />
                   <p className="k-eventcard5-title text-white font-bold mt-3">
@@ -52,7 +55,8 @@ function Russia() {
                 </div>
                 <div className="text-center">
                   <img
-                    src="/assets/img/talkseries/talkpolicy/r_venkatesh.png"
+                    // src="/assets/img/talkseries/talkpolicy/r_venkatesh.png"
+                    src={ImagePaths.rVenkatesh}
                     alt="Prateek Kanwal"
                   />
                   <p className="k-eventcard5-title text-white mt-3 font-bold">

@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function Fitness() {
   return (
@@ -11,11 +12,7 @@ function Fitness() {
             </a>
           </div>
           <div className="flex flex-col">
-            <img
-              src="/assets/img/talkseries/talkpolicy/quote.png"
-              alt="Quote"
-              className="mb-4 w-32"
-            />
+            <img src={ImagePaths.quote} alt="Quote" className="mb-4 w-32" />
             <h5 className="text-white text-5xl font-bold text-left mb-4">
               Let’s Talk <br /> Policy
             </h5>
@@ -39,7 +36,7 @@ function Fitness() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/img/talkseries/talkpolicy/ambrish.png"
+                  src={ImagePaths.ambrish}
                   alt="Dr. Ambrish Mithal"
                   className="mb-4"
                 />
@@ -52,7 +49,7 @@ function Fitness() {
               </div>
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/img/talkseries/talkpolicy/arvind.png"
+                  src={ImagePaths.arvind}
                   alt="Prof. (Dr.) Arvind Kumar"
                   className="mb-4"
                 />
@@ -65,7 +62,7 @@ function Fitness() {
               </div>
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/img/talkseries/talkpolicy/mithal.png"
+                  src={ImagePaths.mithal}
                   alt="Dr. Ambrish Mithal"
                   className="mb-4"
                 />
@@ -78,7 +75,8 @@ function Fitness() {
               </div>
               <div className="flex flex-col items-center">
                 <img
-                  src="/assets/img/talkseries/talkpolicy/ambrish.png"
+                  // src="/assets/img/talkseries/talkpolicy/ambrish.png"
+                  src={ImagePaths.ambrish}
                   alt="Dr. Ambrish Mithal"
                   className="mb-4"
                 />
@@ -180,21 +178,21 @@ function Fitness() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/f1.png"
+                src={ImagePaths.f1}
                 alt="Attendee 1"
                 className="w-full h-auto rounded-lg"
               />
             </div>
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/f1.png"
+                src={ImagePaths.f1}
                 alt="Attendee 2"
                 className="w-full h-auto rounded-lg"
               />
             </div>
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/f1.png"
+                src={ImagePaths.f1}
                 alt="Attendee 3"
                 className="w-full h-auto rounded-lg"
               />

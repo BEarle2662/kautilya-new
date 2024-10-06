@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function Crypto() {
   return (
@@ -23,7 +24,7 @@ function Crypto() {
             <div className="col-span-1">
               <div className="top-div text-left">
                 <img
-                  src="/assets/img/talkseries/talkpolicy/quote.png"
+                  src={ImagePaths.quote}
                   alt="Quote"
                   className="w-32 mb-12"
                 />
@@ -50,28 +51,28 @@ function Crypto() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/zaki.jpg"
+                src={ImagePaths.zaki}
                 alt="Crypto Image 1"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/prashant.jpg"
+                src={ImagePaths.prashant}
                 alt="Crypto Image 2"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/meghna.jpg"
+                src={ImagePaths.meghna}
                 alt="Crypto Image 3"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/crypto_smita.jpg"
+                src={ImagePaths.cryptoSmita}
                 alt="Crypto Image 4"
                 class="max-w-[75%] h-auto align-top"
               />

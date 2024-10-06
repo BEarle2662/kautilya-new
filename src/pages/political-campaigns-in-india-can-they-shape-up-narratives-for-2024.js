@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function ShapeUp() {
   return (
@@ -21,7 +22,8 @@ function ShapeUp() {
             <div className="col-span-1">
               <div className="top-div text-left">
                 <img
-                  src="/assets/img/talkseries/talkpolicy/quote.png"
+                  // src="/assets/img/talkseries/talkpolicy/quote.png"
+                  src={ImagePaths.quote}
                   alt="Quote"
                   className="mb-8"
                 />
@@ -87,7 +89,8 @@ function ShapeUp() {
           {/* Centered Panelist Image */}
           <div className="flex justify-center mb-8">
             <img
-              src="/assets/img/talkseries/talkpolicy/steve.png"
+              // src="/assets/img/talkseries/talkpolicy/steve.png"
+              src={ImagePaths.steve}
               alt="Panelist 1"
               class="max-w-[75%] h-auto align-top"
             />
@@ -97,7 +100,8 @@ function ShapeUp() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/ashutosh.png"
+                // src="/assets/img/talkseries/talkpolicy/ashutosh.png"
+                src={ImagePaths.ashutosh}
                 alt="Panelist 2"
                 class="max-w-[75%] h-auto align-top"
               />
@@ -107,7 +111,8 @@ function ShapeUp() {
             </div>
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/vasu_singh.png"
+                // src="/assets/img/talkseries/talkpolicy/vasu_singh.png"
+                src={ImagePaths.vasuSingh}
                 alt="Panelist 3"
                 class="max-w-[75%] h-auto align-top"
               />
@@ -117,7 +122,8 @@ function ShapeUp() {
           {/* Centered Panelist Image */}
           <div className="flex justify-center mt-8 mb-8">
             <img
-              src="/assets/img/talkseries/talkpolicy/shape_smita.png"
+              // src="/assets/img/talkseries/talkpolicy/shape_smita.png"
+              src={ImagePaths.shapeSmita}
               alt="Panelist 4"
               class="max-w-[75%] h-auto align-top"
             />

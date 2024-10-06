@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function ChildrensFuture() {
   return (
@@ -31,7 +32,7 @@ function ChildrensFuture() {
                   <span className="flex items-center text-lg mb-3">
                     <img
                       className="w-6"
-                      src="/assets/img/events/publicpolicy/calender_white.png"
+                      src={ImagePaths.calenderWhite}
                       alt="Calendar Icon"
                     />
                     <span className="ml-2 font-semibold">
@@ -41,7 +42,7 @@ function ChildrensFuture() {
                   <span className="flex items-center mt-2 text-lg">
                     <img
                       className="w-6"
-                      src="/assets/img/events/publicpolicy/time_white.png"
+                      src={ImagePaths.timeWhite}
                       alt="Time Icon"
                     />
                     <span className="ml-2 font-semibold">
@@ -68,14 +69,14 @@ function ChildrensFuture() {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div>
                 <img
-                  src="/assets/img/events/publicpolicy/1.png"
+                  src={ImagePaths.one}
                   alt="Image 1"
                   class="max-w-[75%] h-auto align-top"
                 />
               </div>
               <div>
                 <img
-                  src="/assets/img/events/publicpolicy/2.png"
+                  src={ImagePaths.two}
                   alt="Image 2"
                   class="max-w-[75%] h-auto align-top"
                 />

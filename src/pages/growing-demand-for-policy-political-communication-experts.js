@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function PoliticalExperts() {
   return (
@@ -31,10 +32,7 @@ function PoliticalExperts() {
                 political communication experts
               </h4>
               <p className="flex items-center mt-4">
-                <img
-                  src="/assets/img/talkseries/publicpolicy/Calender_time.png"
-                  className="w-10 mr-2"
-                />
+                <img src={ImagePaths.calenderTime} className="w-10 mr-2" />
                 <span>25th June, 2022 11 am – 12 pm</span>
               </p>
             </div>
@@ -72,36 +70,21 @@ function PoliticalExperts() {
         <div className="container mx-auto">
           <div className="grid grid-cols-1">
             <div className="col-span-1">
-              <img
-                src="/assets/img/talkseries/publicpolicy/image1.jpg"
-                alt="Image 1"
-              />
+              <img src={ImagePaths.image1} alt="Image 1" />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <div>
-              <img
-                src="/assets/img/talkseries/publicpolicy/image2.jpg"
-                alt="Image 2"
-              />
+              <img src={ImagePaths.image2} alt="Image 2" />
             </div>
             <div>
-              <img
-                src="/assets/img/talkseries/publicpolicy/image3.jpg"
-                alt="Image 3"
-              />
+              <img src={ImagePaths.image3} alt="Image 3" />
             </div>
             <div>
-              <img
-                src="/assets/img/talkseries/publicpolicy/image4.jpg"
-                alt="Image 4"
-              />
+              <img src={ImagePaths.image4} alt="Image 4" />
             </div>
             <div>
-              <img
-                src="/assets/img/talkseries/publicpolicy/image5.jpg"
-                alt="Image 5"
-              />
+              <img src={ImagePaths.image5} alt="Image 5" />
             </div>
           </div>
         </div>

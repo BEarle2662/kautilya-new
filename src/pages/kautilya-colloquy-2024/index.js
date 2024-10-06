@@ -1,6 +1,5 @@
-import CategoryHeading from "@/components/common/categoryHeading";
 import MainLayout from "@/components/MainContainer/MainLayout";
-import ScreenWidth from "@/components/MainContainer/ScreenWidth";
+import { ImagePaths } from "@/Endpoints/imagePath";
 import Image from "next/image";
 import React, { useState } from "react";
 import { GoChevronRight } from "react-icons/go";
@@ -12,14 +11,17 @@ const kautilyaColloquyData = [
         id: 1,
         title: "Digital Governance",
         desc: `India, with its vision for an inclusive and prosperous future, strongly emphasizes digital governance. This policy vision aims to enhance government services through "Digital Connectivity" and "Data-Led Governance," which seek to bridge the digital divide and foster inclusivity. By leveraging digital technologies and promoting data-driven decision-making, the vision strives to create a transparent and accountable governance framework, ensuring equitable access to opportunities and empowering every citizen to thrive in the digital age.`,
-        img: "../../../assets/img/colluquy/kc-colloquy-1.jpeg",
+        // img: "../../../assets/img/colluquy/kc-colloquy-1.jpeg",
+        img: ImagePaths.colloqy1,
         contentOrder: true,
       },
       {
         id: 2,
         title: "Climate Change & ESG",
         desc: `The Climate Change and ESG panel will delve into key themes shaping our sustainable future, focusing on balancing economic growth and environmental responsibility. It will explore the evolving expectations around ESG (Environmental, Social, and Governance) practices and their impact on businesses and societies. The discussion will also address the complex relationship between climate action, ESG initiatives, and social equity, focusing on ensuring a just transition for all. Additionally, the panel will examine the crucial role of international trade in combating climate change, including the potential impact of carbon tariffs and other policy mechanisms that promote sustainable practices.`,
-        img: "../../../assets/img/colluquy/kc-colloquy-2.jpeg",
+        // img: "../../../assets/img/colluquy/kc-colloquy-2.jpeg",
+        img: ImagePaths.colloqy2,
+
         contentOrder: false,
       },
       {
@@ -28,7 +30,8 @@ const kautilyaColloquyData = [
         desc: `The panel will address the interconnected challenges and opportunities within India’s climate finance landscape. It will examine 
                  the global and domestic barriers that hinder climate finance, including insufficient international funding and institutional obstacles like risk assessment, credit allocation, and regulatory constraints. The discussion will focus on aligning global financial flows with the needs of developing economies while exploring how Indian financial institutions can better support sustainable initiatives. Additionally, the panel will assess the effectiveness of key government policies, such as FAME and PLI schemes, and propose ways to enhance their impact on achieving India’s climate goals. Together, these insights aim to create a roadmap 
                  for overcoming funding gaps and improving policy efficacy, ensuring a balanced approach to economic growth and environmental sustainability.`,
-        img: "../../../assets/img/colluquy/kc-colloquy-3.jpeg",
+        // img: "../../../assets/img/colluquy/kc-colloquy-3.jpeg",
+        img: ImagePaths.colloqy3,
         contentOrder: true,
       },
       {
@@ -41,7 +44,8 @@ const kautilyaColloquyData = [
             the presence of women in policy making roles influences the gendered lens through which policies are formulated. Additionally,
              the panel will investigate the barriers hindering women's ascension to leadership positions
          within policy spheres and the types of support and mentorship that can facilitate their progress`,
-        img: "../../../assets/img/colluquy/kc-colloquy-4.jpeg",
+        // img: "../../../assets/img/colluquy/kc-colloquy-4.jpeg",
+        img: ImagePaths.colloqy4,
         contentOrder: false,
       },
     ],

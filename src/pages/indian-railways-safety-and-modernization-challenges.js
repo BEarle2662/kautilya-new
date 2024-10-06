@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function RailwaySafty() {
   return (
@@ -46,21 +47,24 @@ function RailwaySafty() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Mahesh-Mangal.jpg"
+                // src="/assets/img/talkseries/talkpolicy/Mahesh-Mangal.jpg"
+                src={ImagePaths.MaheshMangal}
                 alt="Mahesh Mangal"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Alok-Verma.jpg"
+                // src="/assets/img/talkseries/talkpolicy/Alok-Verma.jpg"
+                src={ImagePaths.AlokVerma}
                 alt="Alok Verma"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Smita.jpg"
+                // src="/assets/img/talkseries/talkpolicy/Smita.jpg"
+                src={ImagePaths.Smita}
                 alt="Smita"
                 class="max-w-[75%] h-auto align-top"
               />

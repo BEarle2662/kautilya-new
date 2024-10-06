@@ -12,6 +12,7 @@ import CustomMenuBar from "../CustomMenubar/MenuBar/CustomMenuBar";
 import Link from "next/link";
 import ScreenWidth from "./ScreenWidth";
 import { useRouter } from "next/router";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 const Navbar = () => {
   const [openNav, setOpenNav] = React.useState(false);

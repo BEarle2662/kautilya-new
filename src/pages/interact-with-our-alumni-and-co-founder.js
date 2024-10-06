@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function OurAlumni() {
   return (
@@ -10,7 +11,8 @@ function OurAlumni() {
               <div className="col-span-1 text-left">
                 <div className="alumini_banner_text">
                   <img
-                    src="/assets/img/events/alumni/ask-me-white.png"
+                    // src="/assets/img/events/alumni/ask-me-white.png"
+                    src={ImagePaths.askMeWhite}
                     alt="Ask me"
                     className="ask_me_white mt-5 mb-8 w-[30%]"
                   />
@@ -33,13 +35,15 @@ function OurAlumni() {
             <div className="col-span-1">
               <p className="text-center">
                 <img
-                  src="/assets/img/events/alumni/calender.png"
+                  // src="/assets/img/events/alumni/calender.png"
+                  src={ImagePaths.calender}
                   alt="Calendar"
                   className="inline w-12"
                 />
                 June 16, Friday |
                 <img
-                  src="/assets/img/events/alumni/time.png"
+                  // src="/assets/img/events/alumni/time.png"
+                  src={ImagePaths.time}
                   alt="Time"
                   className="inline w-12 mx-2"
                 />
@@ -55,7 +59,8 @@ function OurAlumni() {
             <div className="col-span-1 text-center">
               <div className="image_content">
                 <img
-                  src="/assets/img/events/alumni/alumini1.png"
+                  // src="/assets/img/events/alumni/alumini1.png"
+                  src={ImagePaths.alumini1}
                   alt="Rawson Gonsalves"
                   class="max-w-[100%] h-auto align-top"
                 />
@@ -66,7 +71,8 @@ function OurAlumni() {
             <div className="col-span-1 text-center">
               <div className="image_content">
                 <img
-                  src="/assets/img/events/alumni/alumini2.png"
+                  // src="/assets/img/events/alumni/alumini2.png"
+                  src={ImagePaths.alumini2}
                   alt="Snigdha"
                   class="max-w-[100%] h-auto align-top"
                 />
@@ -77,7 +83,8 @@ function OurAlumni() {
             <div className="col-span-1 text-center">
               <div className="image_content">
                 <img
-                  src="/assets/img/events/alumni/alumini3.png"
+                  // src="/assets/img/events/alumni/alumini3.png"
+                  src={ImagePaths.alumini3}
                   alt="Prateek Kanwal"
                   class="max-w-[100%] h-auto align-top"
                 />
@@ -204,7 +211,8 @@ function OurAlumni() {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="/assets/img/events/alumni/instagram.png"
+                    // src="/assets/img/events/alumni/instagram.png"
+                    src={ImagePaths.instagram}
                     alt="Instagram"
                     className="w-12 mr-2"
                   />
@@ -215,7 +223,8 @@ function OurAlumni() {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src="/assets/img/events/alumni/twitter.png"
+                    // src="/assets/img/events/alumni/twitter.png"
+                    src={ImagePaths.twitter}
                     alt="Twitter"
                     className="w-12"
                   />

@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function UnpackingLaw() {
   return (
@@ -36,28 +37,28 @@ function UnpackingLaw() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/gupta.png"
+                src={ImagePaths.gupta}
                 alt="Image 1"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/prasanth.png"
+                src={ImagePaths.prasanth}
                 alt="Image 2"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/muktesh.png"
+                src={ImagePaths.muktesh}
                 alt="Image 3"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/smita_m.png"
+                src={ImagePaths.smitaM}
                 alt="Image 4"
                 class="max-w-[75%] h-auto align-top"
               />

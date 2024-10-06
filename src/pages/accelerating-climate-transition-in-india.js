@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function ClimateTransition() {
   return (
@@ -27,7 +28,7 @@ function ClimateTransition() {
                   <span className="block text-lg mb-3">
                     <img
                       width="24"
-                      src="/assets/img/events/publicpolicy/calender_white.png"
+                      src={ImagePaths.calenderWhite}
                       alt="Calendar Icon"
                       className="inline-block mr-2"
                     />
@@ -38,7 +39,7 @@ function ClimateTransition() {
                   <span className="block text-lg">
                     <img
                       width="24"
-                      src="/assets/img/events/publicpolicy/time_white.png"
+                      src={ImagePaths.timeWhite}
                       alt="Time Icon"
                       className="inline-block mr-2"
                     />
@@ -63,21 +64,21 @@ function ClimateTransition() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <img
-                  src="/assets/img/events/publicpolicy/Manish.png"
+                  src={ImagePaths.manisha}
                   alt="Manish Image"
                   class="max-w-[75%] h-auto align-top"
                 />
               </div>
               <div>
                 <img
-                  src="/assets/img/events/publicpolicy/Namita.png"
+                  src={ImagePaths.namita}
                   alt="Namita Image"
                   class="max-w-[75%] h-auto align-top"
                 />
               </div>
               <div>
                 <img
-                  src="/assets/img/events/publicpolicy/Anita-Bhatia.png"
+                  src={ImagePaths.anitaBhatia}
                   alt="Anita Bhatia Image"
                   class="max-w-[75%] h-auto align-top"
                 />

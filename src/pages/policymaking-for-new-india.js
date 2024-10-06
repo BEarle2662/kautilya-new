@@ -5,6 +5,7 @@ import { FaMobileScreen } from "react-icons/fa6";
 import { MdLocationPin } from "react-icons/md";
 import { FaBriefcase } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa6";
+import { ImagePaths } from "@/Endpoints/imagePath";
 function PolicyMakingForNewIndia() {
   return (
     <MainLayout>
@@ -14,7 +15,8 @@ function PolicyMakingForNewIndia() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-5">
               <div className="col-span-12 text-center">
                 <img
-                  src="/assets/img/events/publicPolicy/Icon.png"
+                  // src="/assets/img/events/publicPolicy/Icon.png"
+                  src={ImagePaths.Icon}
                   alt="background image"
                   className="w-72 mx-auto"
                 />
@@ -32,7 +34,8 @@ function PolicyMakingForNewIndia() {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                   <div className="col-span-5">
                     <img
-                      src="/assets/img/events/publicPolicy/Dean-AMA-n.png"
+                      // src="/assets/img/events/publicPolicy/Dean-AMA-n.png"
+                      src={ImagePaths.DeanAMA}
                       alt="Dean"
                       className="w-300"
                     />
@@ -47,7 +50,8 @@ function PolicyMakingForNewIndia() {
                     </p>
                     <p className="flex items-center">
                       <img
-                        src="/assets/img/events/publicPolicy/date-icon.png"
+                        // src="/assets/img/events/publicPolicy/date-icon.png"
+                        src={ImagePaths.dateIcon}
                         alt="Date"
                         className="w-7 mr-2"
                       />
@@ -56,7 +60,8 @@ function PolicyMakingForNewIndia() {
                       </span>{" "}
                       <br />
                       <img
-                        src="/assets/img/events/publicPolicy/time-icon.png"
+                        // src="/assets/img/events/publicPolicy/time-icon.png"
+                        src={ImagePaths.timeIcon}
                         alt="Time"
                         className="w-7 mx-2"
                       />

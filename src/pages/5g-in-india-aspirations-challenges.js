@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function IndiaAspirations() {
   return (
@@ -38,22 +39,13 @@ function IndiaAspirations() {
           </div>
           <div className="flex justify-center items-center space-x-4">
             <div className="flex-1">
-              <img
-                src="/assets/img/talkseries/talkpolicy/social_twitter.png"
-                alt="Social Icon 1"
-              />
+              <img src={ImagePaths.socialTwitter} alt="Social Icon 1" />
             </div>
             <div className="flex-1">
-              <img
-                src="/assets/img/talkseries/talkpolicy/social_facebook.png"
-                alt="Social Icon 2"
-              />
+              <img src={ImagePaths.socialFacebook} alt="Social Icon 2" />
             </div>
             <div className="flex-1">
-              <img
-                src="/assets/img/talkseries/talkpolicy/social_youtube.jpg"
-                alt="Social Icon 3"
-              />
+              <img src={ImagePaths.socialYoutube} alt="Social Icon 3" />
             </div>
           </div>
         </div>
@@ -70,28 +62,28 @@ function IndiaAspirations() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/5g_prashant.png"
+                src={ImagePaths.prashant}
                 alt="Panelist 1"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/5g_puru.png"
+                src={ImagePaths.puru}
                 alt="Panelist 2"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/5g_nazeer.png"
+                src={ImagePaths.nazeer}
                 alt="Panelist 3"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="flex justify-center">
               <img
-                src="/assets/img/talkseries/talkpolicy/5g_smita.png"
+                src={ImagePaths.smita}
                 alt="Panelist 4"
                 class="max-w-[75%] h-auto align-top"
               />

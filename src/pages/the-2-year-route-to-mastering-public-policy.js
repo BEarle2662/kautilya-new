@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function MasterPublicPolicy() {
   return (
@@ -30,13 +31,15 @@ function MasterPublicPolicy() {
                   </p>
                   <p className="text-white mt-4">
                     <img
-                      src="/assets/img/events/publicpolicy/calender_white.png"
+                      // src="/assets/img/events/publicpolicy/calender_white.png"
+                      src={ImagePaths.calenderWhite}
                       className="inline-block me-3 mb-2"
                     />
                     June 1, Thursday
                     <br />
                     <img
-                      src="/assets/img/events/publicpolicy/time_white.png"
+                      // src="/assets/img/events/publicpolicy/time_white.png"
+                      src={ImagePaths.timeWhite}
                       className="inline-block me-3"
                     />
                     7:00 PM to 8:30 PM (Via Zoom)

@@ -5,13 +5,13 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
 
-import aboutImg from "../../../public/assets/img/about-left.jpg";
-import arrowImg from "../../../public/assets/img/iconimages/redarrow.png";
-
 import Image from "next/image";
 import Link from "next/link";
 
 import { apisBasePath } from "@/Endpoints/apisBase";
+import { ImagePaths } from "@/Endpoints/imagePath";
+
+import aboutImg from "../../../public/assets/img/about-left.jpg";
 
 const sectors = [
   {
@@ -166,7 +166,7 @@ const About = ({ initialTeamData }) => {
                         LEARN ABOUT THE PROGRAM
                       </h1>
                       <Image
-                        src={arrowImg}
+                        src={ImagePaths.redArrow}
                         alt="right-arrow"
                         width={0}
                         height={0}

@@ -5,6 +5,7 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
 import { apisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
 
 const AcademicFaqs = ({ academicfaq }) => {
   const image =
@@ -25,25 +26,53 @@ const AcademicFaqs = ({ academicfaq }) => {
   );
 };
 
+// export async function getStaticProps() {
+//   let academicfaq = [];
+
+//   try {
+//     const response = await fetch(
+//       apisBasePath.faqdata,
+
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           type: "Academics",
+//         }),
+//       }
+//     );
+//     academicfaq = await response.json();
+//     console.log("academicfaq", academicfaq);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+
+//   return {
+//     props: {
+//       academicfaq,
+//     },
+//   };
+// }
+
 export async function getStaticProps() {
   let academicfaq = [];
 
   try {
-    const response = await fetch(
+    const response = await axios.post(
       apisBasePath.faqdata,
-
       {
-        method: "POST",
+        type: "Academics",
+      },
+      {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          type: "Academics",
-        }),
       }
     );
-    academicfaq = await response.json();
-    // console.log("academicfaq", academicfaq);
+    academicfaq = response.data;
+    console.log("academicfaq", academicfaq);
   } catch (error) {
     console.error("Error fetching data:", error);
   }

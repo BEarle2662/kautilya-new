@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function WorkforceIncrease() {
   return (
@@ -40,28 +41,29 @@ function WorkforceIncrease() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/vasudha.png"
+                // src="/assets/img/talkseries/talkpolicy/vasudha.png"
+                src={ImagePaths.vasudha}
                 alt="Women Work Force 1"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/shaili.png"
+                src={ImagePaths.shaili}
                 alt="Women Work Force 2"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/mahesh.png"
+                src={ImagePaths.mahesh}
                 alt="Women Work Force 3"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/nidhi_raz.png"
+                src={ImagePaths.nidhiRaz}
                 alt="Women Work Force 4"
                 class="max-w-[75%] h-auto align-top"
               />

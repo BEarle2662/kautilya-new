@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function September() {
   return (
@@ -12,10 +13,7 @@ function September() {
               </p>
               <div className="flex items-start panel">
                 <span>
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/quote_red.png"
-                    alt="Quote"
-                  />
+                  <img src={ImagePaths.quoteRed4Sep} alt="Quote" />
                 </span>
                 <p className="LTP-txt text-black text-4xl font-bold ml-3">
                   Let’s Talk <br />
@@ -28,27 +26,18 @@ function September() {
               <p className="LTP-tit text-white text-xl">
                 <span>In association with </span>
                 <span>
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/Ficci-Logo.png"
-                    alt="Ficci Logo"
-                  />
+                  <img src={ImagePaths.ficciLogo} alt="Ficci Logo" />
                 </span>
               </p>
               <div className="flex items-center panel_cal">
                 <span className="flex items-center">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/calender_white.png"
-                    alt="Event Icon 1"
-                  />
+                  <img src={ImagePaths.calenderWhite} alt="Event Icon 1" />
                   <span className="LTP-tit text-white text-xl ml-3">
                     Sep 18, 2021
                   </span>
                 </span>
                 <span className="flex items-center ml-4">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/time_white.png"
-                    alt="Event Icon 2"
-                  />
+                  <img src={ImagePaths.timeWhite} alt="Event Icon 2" />
                   <span className="LTP-tit text-white text-xl ml-3">
                     6 PM IST
                   </span>
@@ -57,10 +46,7 @@ function September() {
             </div>
 
             <div className="mt-5">
-              <img
-                src="/assets/img/talkseries/talkpolicy/Banner.png"
-                alt="Event Banner"
-              />
+              <img src={ImagePaths.banner} alt="Event Banner" />
             </div>
           </div>
         </div>
@@ -135,7 +121,7 @@ function September() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
               <img
-                src="/assets/img/talkseries/talkpolicy/Nidi.png"
+                src={ImagePaths.Nidi}
                 alt="Nidhi Razdan"
                 className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"
               />
@@ -166,7 +152,7 @@ function September() {
 
             <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
               <img
-                src="/assets/img/talkseries/talkpolicy/Dilip-Chenoy_circle.png"
+                src={ImagePaths.dilipChenoy}
                 alt="Anumita Roy Chowdhury"
                 className="w-full absolute left-[118px] top-[-75px] w-[150px]"
               />
@@ -199,7 +185,7 @@ function September() {
 
             <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
               <img
-                src="/assets/img/talkseries/talkpolicy/Dr.-Sangita-Redy_circle.png"
+                src={ImagePaths.sangita}
                 alt="Jyoti Pande Lavakare"
                 className="w-full absolute left-[118px] top-[-75px] w-[150px]"
               />
@@ -232,7 +218,7 @@ function September() {
 
             <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
               <img
-                src="/assets/img/talkseries/talkpolicy/Naina-Lal-Kidwai.png"
+                src={ImagePaths.lalKidwai}
                 alt="Bhargav Krishna"
                 className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"
               />

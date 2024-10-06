@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function EconomicOutlook() {
   return (
@@ -53,7 +54,7 @@ function EconomicOutlook() {
             {/* First Image */}
             <div>
               <img
-                src="/assets/img/talkseries/talkpolicy/Manisha.jpg"
+                src={ImagePaths.Manish}
                 alt="Manisha"
                 class="max-w-[75%] h-auto align-top"
               />
@@ -62,7 +63,7 @@ function EconomicOutlook() {
             {/* Second Image */}
             <div>
               <img
-                src="/assets/img/talkseries/talkpolicy/Anita.jpg"
+                src={ImagePaths.Anita}
                 alt="Anita"
                 class="max-w-[75%] h-auto align-top"
               />

@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function BraveNewWorld() {
   return (
@@ -31,7 +32,7 @@ function BraveNewWorld() {
                   <span className="flex items-center space-x-3">
                     <img
                       className="w-6"
-                      src="/assets/img/events/publicpolicy/calender_white.png"
+                      src={ImagePaths.calenderWhite}
                       alt="Calendar Icon"
                     />
                     <span>November 17, Friday</span>
@@ -39,7 +40,7 @@ function BraveNewWorld() {
                   <span className="flex items-center space-x-3 mt-2">
                     <img
                       className="w-6"
-                      src="/assets/img/events/publicpolicy/time_white.png"
+                      src={ImagePaths.timeWhite}
                       alt="Time Icon"
                     />
                     <span>7:30 PM – 8:30 PM (Via Zoom)</span>
@@ -63,14 +64,14 @@ function BraveNewWorld() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="col-span-1">
               <img
-                src="/assets/img/events/publicpolicy/sowmya.png"
+                src={ImagePaths.sowmya}
                 alt="Sowmya"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/events/publicpolicy/anitha.png"
+                src={ImagePaths.anitha}
                 alt="Anitha"
                 class="max-w-[75%] h-auto align-top"
               />

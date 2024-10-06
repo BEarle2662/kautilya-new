@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function MppApplication() {
   return (
@@ -18,7 +19,8 @@ function MppApplication() {
             <div className="mt-5 grid grid-cols-1 md:grid-cols-3">
               <div className="flex justify-center">
                 <img
-                  src="/assets/img/events/publicPolicy/Dean-AMA-n.png"
+                  // src="/assets/img/events/publicPolicy/Dean-AMA-n.png"
+                  src={ImagePaths.DeanAMA}
                   alt="Dean"
                   className="w-300"
                 />
@@ -26,7 +28,8 @@ function MppApplication() {
               <div className="col-span-2">
                 <div className="ms-5 mt-5">
                   <img
-                    src="/assets/img/events/publicPolicy/ask-me-any.png"
+                    // src="/assets/img/events/publicPolicy/ask-me-any.png"
+                    src={ImagePaths.askMeAny}
                     alt="Ask me"
                     className="ask_img mt-5 mb-5"
                   />
@@ -41,14 +44,16 @@ function MppApplication() {
                     </p>
                     <p className="text-white">
                       <img
-                        src="/assets/img/events/publicPolicy/calender.png"
+                        // src="/assets/img/events/publicPolicy/calender.png"
+                        src={ImagePaths.calender}
                         alt="Calendar"
                         className="inline w-12"
                       />{" "}
                       July 11, Tuesday
                       <br />
                       <img
-                        src="/assets/img/events/publicPolicy/time.png"
+                        // src="/assets/img/events/publicPolicy/time.png"
+                        src={ImagePaths.time}
                         alt="Time"
                         className="inline w-12"
                       />{" "}

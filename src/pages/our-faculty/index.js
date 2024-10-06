@@ -8,6 +8,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { apisBasePath } from "@/Endpoints/apisBase";
+import { ImagePaths } from "@/Endpoints/imagePath";
+import axios from "axios";
 
 const faculty = ({ data }) => {
   const image =
@@ -51,7 +53,7 @@ const faculty = ({ data }) => {
                         LEARN ABOUT THE PROGRAM
                       </h1>
                       <Image
-                        src="/assets/img/iconimages/redarrow.png"
+                        src={ImagePaths.redArrow}
                         alt="right-arrow"
                         width={0}
                         height={0}
@@ -72,8 +74,9 @@ const faculty = ({ data }) => {
 export async function getStaticProps() {
   const ourFaculty = `${apisBasePath.faculty}`;
 
-  const response = await fetch(ourFaculty);
-  const data = await response.json();
+  const res = await axios.get(ourFaculty);
+
+  const data = res.data;
 
   return {
     props: { data },

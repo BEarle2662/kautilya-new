@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function October() {
   return (
@@ -13,10 +14,7 @@ function October() {
               </p>
               <div className="flex items-center mb-4">
                 <span>
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/quote_red.png"
-                    alt="Quote"
-                  />
+                  <img src={ImagePaths.quoteRed4Sep} alt="Quote" />
                 </span>
                 <p className="LTP-txt ml-2 text-white text-2xl">
                   Let’s Talk <br />
@@ -31,19 +29,13 @@ function October() {
               </p>
               <div className="flex items-center mt-4">
                 <span className="flex items-center mr-4">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/calender_white.png"
-                    alt="Calendar"
-                  />
+                  <img src={ImagePaths.calenderWhite} alt="Calendar" />
                   <span className="LTP-tit ml-2 text-white text-xl">
                     October 11, 2021
                   </span>
                 </span>
                 <span className="flex items-center">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/time_white.png"
-                    alt="Clock"
-                  />
+                  <img src={ImagePaths.timeWhite} alt="Clock" />
                   <span className="LTP-tit ml-2 text-white text-xl">
                     7 PM IST
                   </span>
@@ -53,10 +45,7 @@ function October() {
 
             {/* Right Column */}
             <div className="mt-5">
-              <img
-                src="/assets/img/talkseries/talkpolicy/Banner_LP.png"
-                alt="Banner"
-              />
+              <img src={ImagePaths.Banner_LP} alt="Banner" />
             </div>
           </div>
         </div>
@@ -64,11 +53,7 @@ function October() {
       <section className="lets_talk modarate bg-[#b51c21]">
         <div className="container mx-auto px-4">
           <div className="flex items-end">
-            <img
-              src="/assets/img/talkseries/talkpolicy/img-11.png"
-              alt="Nidhi Razdan"
-              className="w-1/3"
-            />
+            <img src={ImagePaths.img11} alt="Nidhi Razdan" className="w-1/3" />
             <div className="ml-3">
               <h4 className="text-lg font-semibold text-white md:text-4xl">
                 EVENT MODERATED BY
@@ -154,7 +139,7 @@ function October() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
               <img
-                src="/assets/img/talkseries/talkpolicy/Nidi.png"
+                src={ImagePaths.Nidi}
                 alt="Nidhi Razdan"
                 className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"
               />
@@ -185,7 +170,7 @@ function October() {
 
             <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
               <img
-                src="/assets/img/talkseries/talkpolicy/Dilip-Chenoy_circle.png"
+                src={ImagePaths.dilipChenoy}
                 alt="Anumita Roy Chowdhury"
                 className="w-full absolute left-[118px] top-[-75px] w-[150px]"
               />
@@ -218,7 +203,7 @@ function October() {
 
             <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
               <img
-                src="/assets/img/talkseries/talkpolicy/Jyoti_Pande_Lavakare.png"
+                src={ImagePaths.pande}
                 alt="Jyoti Pande Lavakare"
                 className="w-full absolute left-[118px] top-[-75px] w-[150px]"
               />
@@ -249,7 +234,7 @@ function October() {
 
             <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
               <img
-                src="/assets/img/talkseries/talkpolicy/Bhargav_Krishna.png"
+                src={ImagePaths.krishna}
                 alt="Bhargav Krishna"
                 className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"
               />

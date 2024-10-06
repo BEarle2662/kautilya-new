@@ -67,7 +67,7 @@ const FinancialAid = ({ metaTagsResponse }) => {
         </h1>
       </div>
 
-      <div className="bg-[url('/assets/img/bgImages/scholarship.webp')] p-4 md:p-20 bg-cover bg-no-repeat">
+      <div className="bg-white-shade p-4 md:p-20 bg-cover bg-no-repeat">
         <ScreenWidth layoutwidth="true">
           <div dangerouslySetInnerHTML={{ __html: financialAidContent }} />
         </ScreenWidth>
@@ -78,24 +78,21 @@ const FinancialAid = ({ metaTagsResponse }) => {
 
 export const getStaticProps = async () => {
   try {
-    // Fetch the placements data
-
-    // Await the meta tags data from MetaTagsComponent
     const metaTagsResponse = await MetaTagsComponent({
       page: "scholarships-financial-aid",
     });
     console.log("metaTagsResponse", metaTagsResponse);
-    // Ensure that metaTagsResponse is not undefined
+
     return {
       props: {
-        metaTagsResponse: metaTagsResponse || {}, // Ensure default object if undefined
+        metaTagsResponse: metaTagsResponse || {},
       },
     };
   } catch (error) {
     console.error("Error fetching data", error);
     return {
       props: {
-        metaTagsResponse: {}, // Provide default empty object in case of error
+        metaTagsResponse: {},
       },
     };
   }

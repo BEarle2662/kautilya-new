@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function Budget2023() {
   return (
@@ -34,28 +35,28 @@ function Budget2023() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/vinod.jpg"
+                src={ImagePaths.vinod}
                 alt="Budget Image 1"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/mitali.jpg"
+                src={ImagePaths.mitali}
                 alt="Budget Image 2"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/venu.jpg"
+                src={ImagePaths.venu}
                 alt="Budget Image 3"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/smita_sharma.jpg"
+                src={ImagePaths.smita}
                 alt="Budget Image 4"
                 class="max-w-[75%] h-auto align-top"
               />

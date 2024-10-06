@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function AI() {
   return (
@@ -42,28 +43,28 @@ function AI() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Amar.jpg"
+                src={ImagePaths.Amar}
                 alt="Amar"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Nikhil.jpg"
+                src={ImagePaths.nikhil}
                 alt="Nikhil"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Mishi.jpg"
+                src={ImagePaths.mishi}
                 alt="Mishi"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div className="col-span-1">
               <img
-                src="/assets/img/talkseries/talkpolicy/Nidhi.jpg"
+                src={ImagePaths.Nidhi}
                 alt="Nidhi"
                 class="max-w-[75%] h-auto align-top"
               />

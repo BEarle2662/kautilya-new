@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Image from "next/image";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 const EventsSlider = ({ sliderData }) => {
   //   console.log(sliderData);
@@ -91,7 +92,7 @@ const EventsSlider = ({ sliderData }) => {
                   <span className="before_arrow readmoreIcon">
                     Read more
                     <img
-                      src="../../assets/img/iconimages/redarrow.png"
+                      src={ImagePaths.redArrow}
                       className="arrow_img"
                       alt="Read more arrow"
                     />

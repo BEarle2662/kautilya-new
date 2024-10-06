@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function SeptemberFour() {
   return (
@@ -12,10 +13,7 @@ function SeptemberFour() {
               </p>
               <div className="flex items-start panel">
                 <span>
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/quote_red.png"
-                    alt="Quote"
-                  />
+                  <img src={ImagePaths.quoteRed4Sep} alt="Quote" />
                 </span>
                 <p className="LTP-txt text-black text-4xl font-bold ml-3">
                   Let’s Talk <br />
@@ -28,19 +26,13 @@ function SeptemberFour() {
 
               <div className="flex items-center panel_cal">
                 <span className="flex items-center">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/calender_white.png"
-                    alt="Event Icon 1"
-                  />
+                  <img src={ImagePaths.calenderWhite} alt="Event Icon 1" />
                   <span className="LTP-tit text-white text-xl ml-3">
                     August 3, 2021
                   </span>
                 </span>
                 <span className="flex items-center ml-4">
-                  <img
-                    src="/assets/img/talkseries/talkpolicy/time_white.png"
-                    alt="Event Icon 2"
-                  />
+                  <img src={ImagePaths.timeWhite} alt="Event Icon 2" />
                   <span className="LTP-tit text-white text-xl ml-3">
                     6 PM IST
                   </span>
@@ -49,10 +41,7 @@ function SeptemberFour() {
             </div>
 
             <div className="mt-5">
-              <img
-                src="/assets/img/talkseries/talkpolicy/LP-top-banner-PNG-1-1.png"
-                alt="Event Banner"
-              />
+              <img src={ImagePaths.LPTopBanner1} alt="Event Banner" />
             </div>
           </div>
         </div>
@@ -118,9 +107,9 @@ function SeptemberFour() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
               <img
-                src="/assets/img/talkseries/talkpolicy/Nidi.png"
+                src={ImagePaths.Nidi}
                 alt="Nidhi Razdan"
-                className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"
+                className="w-full rounded-t-lg left-[118px] top-[-75px] md:w-[150px] absolute"
               />
               <div className="p-4 text-white text-center">
                 <h5 className="text-xl font-semibold mt-20 ">Nidhi Razdan</h5>
@@ -149,9 +138,9 @@ function SeptemberFour() {
 
             <div className="bg-black p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px] border-4 border-white">
               <img
-                src="/assets/img/talkseries/talkpolicy/1-1.png"
+                src={ImagePaths.img1}
                 alt="Anumita Roy Chowdhury"
-                className="w-full absolute left-[118px] top-[-75px] w-[150px]"
+                className="w-full absolute left-[118px] top-[-75px] md:w-[150px]"
               />
               <div className="p-4 text-center">
                 <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">
@@ -180,9 +169,9 @@ function SeptemberFour() {
 
             <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px">
               <img
-                src="/assets/img/talkseries/talkpolicy/2-2.png"
+                src={ImagePaths.img2}
                 alt="Jyoti Pande Lavakare"
-                className="w-full absolute left-[118px] top-[-75px] w-[150px]"
+                className="w-full absolute left-[118px] top-[-75px] md:w-[150px]"
               />
               <div className="p-4 text-center">
                 <h5 className="text-xl font-semibold mt-20 text-[#b2061c]">
@@ -213,9 +202,9 @@ function SeptemberFour() {
 
             <div className="bg-black border-4 border-white p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
               <img
-                src="/assets/img/talkseries/talkpolicy/3-3.png"
+                src={ImagePaths.img3}
                 alt="Bhargav Krishna"
-                className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"
+                className="w-full rounded-t-lg left-[118px] top-[-75px] md:w-[150px] absolute"
               />
               <div className="p-4 text-center">
                 <h5 className="text-xl font-semibold mt-20 text-white">
@@ -241,9 +230,9 @@ function SeptemberFour() {
             </div>
             <div className="bg-[#b2061c] p-4 rounded-lg shadow-lg relative ml-[30px] mt-[150px] pb-0 pl-[20px] pr-[20px]">
               <img
-                src="/assets/img/talkseries/talkpolicy/4-2.png"
+                src={ImagePaths.img4}
                 alt="Bhargav Krishna"
-                className="w-full rounded-t-lg left-[118px] top-[-75px] w-[150px] absolute"
+                className="w-full rounded-t-lg left-[118px] top-[-75px] md:w-[150px] absolute"
               />
               <div className="p-4 text-center">
                 <h5 className="text-xl font-semibold mt-20 text-white">

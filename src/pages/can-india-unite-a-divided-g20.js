@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function UniteIndia() {
   return (
@@ -31,28 +32,28 @@ function UniteIndia() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
               <img
-                src="/assets/img/talkseries/talkpolicy/u1.png"
+                src={ImagePaths.u1}
                 alt="Image 1"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div>
               <img
-                src="/assets/img/talkseries/talkpolicy/u2.png"
+                src={ImagePaths.u2}
                 alt="Image 2"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div>
               <img
-                src="/assets/img/talkseries/talkpolicy/u3.png"
+                src={ImagePaths.u3}
                 alt="Image 3"
                 class="max-w-[75%] h-auto align-top"
               />
             </div>
             <div>
               <img
-                src="/assets/img/talkseries/talkpolicy/u4.png"
+                src={ImagePaths.u4}
                 alt="Image 4"
                 class="max-w-[75%] h-auto align-top"
               />
