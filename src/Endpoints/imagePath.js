@@ -1,5 +1,5 @@
 const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/kautilya-next" : ""; // Adjust the base path for production
+const basePath = isProd ? "" : ""; // Adjust the base path for production
 
 export const ImagePaths = {
   redGradientBg: `${basePath}/assets/img/bgImages/gradient-bg.jpg`, // background Images
