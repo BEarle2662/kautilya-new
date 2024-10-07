@@ -72,7 +72,7 @@ export function DialogWithForm({ dialogOpen, handleOpenDialog }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Called Handle Submit");
+    // console.log("Called Handle Submit");
     try {
       // Send the form data to the server
       const response = await fetch(

@@ -126,7 +126,7 @@ export const getStaticProps = async () => {
     const metaTagsResponse = await MetaTagsComponent({
       page: "study-at-kautilya",
     });
-    console.log("metaTagsResponse", metaTagsResponse);
+    // console.log("metaTagsResponse", metaTagsResponse);
     // Ensure that metaTagsResponse is not undefined
     return {
       props: {

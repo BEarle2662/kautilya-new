@@ -81,7 +81,7 @@ export const getStaticProps = async () => {
     const metaTagsResponse = await MetaTagsComponent({
       page: "scholarships-financial-aid",
     });
-    console.log("metaTagsResponse", metaTagsResponse);
+    // console.log("metaTagsResponse", metaTagsResponse);
 
     return {
       props: {

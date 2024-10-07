@@ -75,7 +75,7 @@ export async function getStaticProps() {
       }
     );
     researchFaq = response.data;
-    console.log("researchFaq", researchFaq);
+    // console.log("researchFaq", researchFaq);
   } catch (error) {
     console.error("Error fetching data:", error);
   }

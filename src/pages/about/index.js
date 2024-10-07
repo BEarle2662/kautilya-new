@@ -216,6 +216,8 @@ export async function getStaticProps() {
 
   return {
     props: { initialTeamData },
+    // Revalidate at most once every 60 seconds
+    revalidate: 30, // In seconds
   };
 }
 

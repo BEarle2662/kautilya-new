@@ -80,9 +80,9 @@ export async function getStaticProps() {
 
   return {
     props: { data },
+    // Revalidate at most once every 60 seconds
+    revalidate: 30, // In seconds
   };
 }
 
 export default faculty;
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-faculty";

@@ -72,7 +72,7 @@ export async function getStaticProps() {
       }
     );
     academicfaq = response.data;
-    console.log("academicfaq", academicfaq);
+    // console.log("academicfaq", academicfaq);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
