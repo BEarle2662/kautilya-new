@@ -4,6 +4,7 @@ import axios from "axios";
 import React from "react";
 
 import { apisBasePath } from "@/Endpoints/apisBase";
+import CategoryHeading from "@/components/common/categoryHeading";
 
 const BlogsPage = ({ slugsData }) => {
   const image =
@@ -16,26 +17,27 @@ const BlogsPage = ({ slugsData }) => {
       keywords={"GIMSR, GITAM, Hospital"}
       img={image}
     >
-      <SlugsPage pageTitle="Blogs" slugsPageData={slugsData} />
+      <CategoryHeading heading="blogs" />
+      {/* <SlugsPage pageTitle="Blogs" slugsPageData={slugsData} /> */}
     </MainLayout>
   );
 };
 
-export async function getStaticProps() {
-  const slugsBasePath = `${apisBasePath.blogsList}`;
+// export async function getStaticProps() {
+//   const slugsBasePath = `${apisBasePath.blogsList}`;
 
-  const res = await axios.get(slugsBasePath, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "8efgh5gyujk",
-    },
-  });
+//   const res = await axios.get(slugsBasePath, {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: "8efgh5gyujk",
+//     },
+//   });
 
-  const slugsData = res.data.data;
+//   const slugsData = res.data.data;
 
-  return {
-    props: { slugsData },
-  };
-}
+//   return {
+//     props: { slugsData },
+//   };
+// }
 
 export default BlogsPage;

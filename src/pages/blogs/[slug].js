@@ -4,6 +4,7 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
 import { apisBasePath } from "@/Endpoints/apisBase";
+import CategoryHeading from "@/components/common/categoryHeading";
 
 const BlogSlugPage = ({ blog }) => {
   const image =
@@ -17,7 +18,8 @@ const BlogSlugPage = ({ blog }) => {
       img={image}
     >
       <ScreenWidth layoutwidth="true">
-        <SlugDetailedPage slugDetailedPage="Blog" slugData={blog} />
+        <CategoryHeading heading="slug detailed page" />
+        {/* <SlugDetailedPage slugDetailedPage="Blog" slugData={blog} /> */}
       </ScreenWidth>
     </MainLayout>
   );
@@ -25,41 +27,41 @@ const BlogSlugPage = ({ blog }) => {
 
 export default BlogSlugPage;
 
-export async function getStaticPaths() {
-  const res = await fetch(
-    apisBasePath.blogsList,
+// export async function getStaticPaths() {
+//   const res = await fetch(
+//     apisBasePath.blogsList,
 
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "8efgh5gyujk",
-      },
-    }
-  );
-  const blogs = await res.json();
+//     {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: "8efgh5gyujk",
+//       },
+//     }
+//   );
+//   const blogs = await res.json();
 
-  const paths = blogs.data.map((blog) => {
-    return {
-      params: { slug: blog.slug },
-    };
-  });
+//   const paths = blogs.data.map((blog) => {
+//     return {
+//       params: { slug: blog.slug },
+//     };
+//   });
 
-  return { paths, fallback: "blocking" };
-}
+//   return { paths, fallback: "blocking" };
+// }
 
-export async function getStaticProps({ params }) {
-  const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "8efgh5gyujk",
-    },
-  });
+// export async function getStaticProps({ params }) {
+//   const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: "8efgh5gyujk",
+//     },
+//   });
 
-  const blog = await res.json();
+//   const blog = await res.json();
 
-  return {
-    props: {
-      blog,
-    },
-  };
-}
+//   return {
+//     props: {
+//       blog,
+//     },
+//   };
+// }
