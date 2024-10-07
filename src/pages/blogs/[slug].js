@@ -18,8 +18,8 @@ const BlogSlugPage = ({ blog }) => {
       img={image}
     >
       <ScreenWidth layoutwidth="true">
-        <CategoryHeading heading="slug detailed page" />
-        {/* <SlugDetailedPage slugDetailedPage="Blog" slugData={blog} /> */}
+        {/* <CategoryHeading heading="slug detailed page" /> */}
+        <SlugDetailedPage slugDetailedPage="Blog" slugData={blog} />
       </ScreenWidth>
     </MainLayout>
   );
