@@ -63,5 +63,3 @@ export async function getStaticProps({ params }) {
     },
   };
 }
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/blog-lists",
