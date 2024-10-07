@@ -18,26 +18,27 @@ const BlogsPage = ({ slugsData }) => {
       img={image}
     >
       <CategoryHeading heading="blogs" />
-      {/* <SlugsPage pageTitle="Blogs" slugsPageData={slugsData} /> */}
+      <SlugsPage pageTitle="Blogs" slugsPageData={slugsData} />
     </MainLayout>
   );
 };
 
-// export async function getStaticProps() {
-//   const slugsBasePath = `${apisBasePath.blogsList}`;
+export async function getStaticProps() {
+  const slugsBasePath = `${apisBasePath.blogsList}`;
 
-//   const res = await axios.get(slugsBasePath, {
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: "8efgh5gyujk",
-//     },
-//   });
+  const res = await axios.get(slugsBasePath, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
 
-//   const slugsData = res.data.data;
+  const slugsData = res.data.data;
 
-//   return {
-//     props: { slugsData },
-//   };
-// }
+  return {
+    props: { slugsData },
+    revalidate: 60,
+  };
+}
 
 export default BlogsPage;
