@@ -27,41 +27,58 @@ const BlogSlugPage = ({ blog }) => {
 
 export default BlogSlugPage;
 
-// export async function getStaticPaths() {
-//   const res = await fetch(
-//     apisBasePath.blogsList,
+export async function getStaticPaths() {
+  const res = await fetch(
+    apisBasePath.blogsList,
 
-//     {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: "8efgh5gyujk",
-//       },
-//     }
-//   );
-//   const blogs = await res.json();
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }
+  );
+  const blogs = await res.json();
 
-//   const paths = blogs.data.map((blog) => {
-//     return {
-//       params: { slug: blog.slug },
-//     };
-//   });
+  const paths = blogs.data.map((blog) => {
+    return {
+      params: { slug: blog.slug },
+    };
+  });
 
-//   return { paths, fallback: "blocking" };
-// }
+  return { paths, fallback: "blocking" };
+}
 
-// export async function getStaticProps({ params }) {
-//   const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: "8efgh5gyujk",
-//     },
-//   });
+export async function getStaticProps({ params }) {
+  try {
+    const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    });
 
-//   const blog = await res.json();
+    // const blog = await res.json();
 
-//   return {
-//     props: {
-//       blog,
-//     },
-//   };
-// }
+    if (!res.ok) {
+      // Handle case where API returns an error
+      return { notFound: true };
+    }
+
+    const blog = await res.json();
+
+    // Ensure the blog has the required structure
+    if (!blog || !blog.data) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        blog,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch blog data:", error);
+    return { notFound: true };
+  }
+}

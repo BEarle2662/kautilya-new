@@ -26,7 +26,11 @@ const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
       documentFile = null;
   }
 
-  const data = slugData.data;
+  const data = slugData?.data || {};
+
+  if (!data.title) {
+    return <div>Data not available</div>;
+  }
 
   return (
     <ScreenWidth layoutwidth="">
