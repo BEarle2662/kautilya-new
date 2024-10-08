@@ -1,5 +1,6 @@
-// import path from "path";
 /** @type {import('next').NextConfig} */
+
+const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig = {
   reactStrictMode: true,
@@ -8,11 +9,13 @@ const nextConfig = {
   },
   trailingSlash: true,
 
+  assetPrefix: isProd ? "/kautilya-next/" : "", // Set this to your subdirectory
+  basePath: isProd ? "/kautilya-next" : "", // Set this to your subdirectory
+  trailingSlash: true, // Ensures that paths like /about don't 404
+
   // output: "export",
   // assetPrefix: "https://webdev.gitam.edu/kautilya-next/",
-  // assetPrefix: "https://guprojects.gitam.edu/ksppnext",
   // basePath: "/kautilya-next",
-  // basePath: "/ksppnext",
 };
 
 export default nextConfig;
