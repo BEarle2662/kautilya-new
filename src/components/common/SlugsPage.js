@@ -60,7 +60,7 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                 <div className="flex">
                   <Image
                     src={ImagePaths.syed}
-                    className="rounded-full h-full w-full"
+                    className="rounded-full"
                     alt="syed"
                     width={60}
                     height={60}
@@ -91,8 +91,8 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                 src={blogIntro}
                 alt="syed"
                 className="h-full w-full"
-                width={800}
-                height={600}
+                width={0}
+                height={0}
                 loading="lazy"
               />
             </div>

@@ -17,7 +17,6 @@ const BlogsPage = ({ slugsData }) => {
       keywords={"GIMSR, GITAM, Hospital"}
       img={image}
     >
-      <CategoryHeading heading="blogs" />
       <SlugsPage pageTitle="Blogs" slugsPageData={slugsData} />
     </MainLayout>
   );
