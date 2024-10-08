@@ -32,6 +32,15 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
     default:
       slugBasePath = null;
   }
+
+  if (!Array.isArray(slugsPageData)) {
+    return (
+      <div className="text-center mt-10">
+        <p className="text-gray-500">No data available.</p>
+      </div>
+    );
+  }
+
   return (
     <>
       <ScreenWidth layoutwidth="true">
@@ -51,10 +60,11 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                 <div className="flex">
                   <Image
                     src={ImagePaths.syed}
-                    className="rounded-full"
+                    className="rounded-full h-full w-full"
                     alt="syed"
                     width={60}
                     height={60}
+                    loading="lazy"
                   />
                   <p className="font-bold text-base text-p ml-4 text-left">
                     By Syed Akbaruddin, Dean
@@ -81,59 +91,68 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                 src={blogIntro}
                 alt="syed"
                 className="h-full w-full"
-                width={0}
-                height={0}
+                width={800}
+                height={600}
+                loading="lazy"
               />
             </div>
           </Card>
         )}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {slugsPageData.map((eachSlugItem) => {
-            return (
-              <Card
-                className="mt-6 rounded-none flex flex-col justify-between drop-shadow-md"
-                key={eachSlugItem.id}
-              >
-                <Image
-                  src={`${ImageBasePaths.detailedSlugsMediaPath}${eachSlugItem.thumbnail_path}`}
-                  height={0}
-                  width={0}
-                  className="h-46 w-full"
-                  alt={eachSlugItem.posted_by}
-                />
-                <CardBody>
-                  <p className="font-semibold text-sm text-[#000] mb-4">
-                    {eachSlugItem.title}
-                  </p>
+          {slugsPageData.length > 0 ? (
+            <>
+              {slugsPageData.map((eachSlugItem) => {
+                return (
+                  <Card
+                    className="mt-6 rounded-none flex flex-col justify-between drop-shadow-md"
+                    key={eachSlugItem.id}
+                  >
+                    <Image
+                      src={`${ImageBasePaths.detailedSlugsMediaPath}${eachSlugItem.thumbnail_path}`}
+                      height={0}
+                      width={0}
+                      className="h-46 w-full"
+                      alt={eachSlugItem.posted_by}
+                    />
+                    <CardBody>
+                      <p className="font-semibold text-sm text-[#000] mb-4">
+                        {eachSlugItem.title}
+                      </p>
 
-                  <Avatar
-                    size="lg"
-                    variant="circular"
-                    alt="natali craig"
-                    src={`${ImageBasePaths.detailedSlugsMediaPath}${eachSlugItem.posted_by_path}`}
-                    className="border-2 border-white hover:z-10"
-                  />
-                  {eachSlugItem.posted_by_front ? (
-                    <span className="font-semibold text-xs text-[#000] ml-2">
-                      {eachSlugItem.posted_by_front}
-                    </span>
-                  ) : (
-                    <span className="font-semibold text-xs text-[#000] ml-2">
-                      {eachSlugItem.posted_by}
-                    </span>
-                  )}
-                  <p className="text-sm text-[#424a53] ellipsis-two-lines">
-                    {eachSlugItem.posted_by_about}
-                  </p>
-                </CardBody>
-                <CardFooter className="pt-0">
-                  <Link href={`${slugBasePath}${eachSlugItem.slug}`}>
-                    <Button className="rounded-none">Read More</Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-            );
-          })}
+                      <Avatar
+                        size="lg"
+                        variant="circular"
+                        alt="natali craig"
+                        src={`${ImageBasePaths.detailedSlugsMediaPath}${eachSlugItem.posted_by_path}`}
+                        className="border-2 border-white hover:z-10"
+                      />
+                      {eachSlugItem.posted_by_front ? (
+                        <span className="font-semibold text-xs text-[#000] ml-2">
+                          {eachSlugItem.posted_by_front}
+                        </span>
+                      ) : (
+                        <span className="font-semibold text-xs text-[#000] ml-2">
+                          {eachSlugItem.posted_by}
+                        </span>
+                      )}
+                      <p className="text-sm text-[#424a53] ellipsis-two-lines">
+                        {eachSlugItem.posted_by_about}
+                      </p>
+                    </CardBody>
+                    <CardFooter className="pt-0">
+                      <Link href={`${slugBasePath}${eachSlugItem.slug}`}>
+                        <Button className="rounded-none">Read More</Button>
+                      </Link>
+                    </CardFooter>
+                  </Card>
+                );
+              })}
+            </>
+          ) : (
+            <div className="text-center mt-10">
+              <p className="text-gray-500">No blog posts available.</p>
+            </div>
+          )}
         </div>
       </ScreenWidth>
     </>

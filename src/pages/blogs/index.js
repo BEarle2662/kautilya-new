@@ -23,22 +23,52 @@ const BlogsPage = ({ slugsData }) => {
   );
 };
 
+// export async function getStaticProps() {
+//   const slugsBasePath = `${apisBasePath.blogsList}`;
+
+//   const res = await axios.get(slugsBasePath, {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: process.env.NEXT_PUBLIC_API_AUTH_TOKEN,
+//     },
+//   });
+
+//   const slugsData = res.data.data;
+
+//   return {
+//     props: { slugsData },
+//     revalidate: 60,
+//   };
+// }
+
 export async function getStaticProps() {
   const slugsBasePath = `${apisBasePath.blogsList}`;
 
-  const res = await axios.get(slugsBasePath, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "8efgh5gyujk",
-    },
-  });
+  try {
+    const res = await axios.get(slugsBasePath, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.NEXT_PUBLIC_API_AUTH_TOKEN, // Use env variable
+      },
+    });
 
-  const slugsData = res.data.data;
+    const slugsData = res.data.data;
 
-  return {
-    props: { slugsData },
-    revalidate: 60,
-  };
+    return {
+      props: { slugsData },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error(
+      "Error fetching blogs:",
+      error.response ? error.response.data : error.message
+    );
+
+    return {
+      props: { slugsData: [] }, // Provide fallback data
+      revalidate: 60,
+    };
+  }
 }
 
 export default BlogsPage;
