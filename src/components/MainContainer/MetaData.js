@@ -78,7 +78,7 @@ const MetaData = ({
         <meta property="og:image" content={img} />
         <meta
           property="og:url"
-          content="https://webdev.gitam.edu/kautilya-next/"
+          content="https://nextdev.gitam.edu/kautilya-next/"
         />
         <meta property="og:type" content="website" />
 

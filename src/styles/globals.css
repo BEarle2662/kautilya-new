@@ -339,7 +339,7 @@ section {
 }
 
 .headingWithBG p {
-  @apply text-sm md:text-lg leading-8;
+  @apply text-sm md:text-base leading-relaxed;
 }
 
 /* Events */

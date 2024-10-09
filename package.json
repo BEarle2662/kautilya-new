@@ -2,7 +2,7 @@
   "name": "kautilya-next",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://webdev.gitam.edu/kautilya-next/",
+  "homepage": "https://nextdev.gitam.edu/kautilya-next/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
