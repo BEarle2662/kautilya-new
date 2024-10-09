@@ -5,11 +5,16 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import Image from "next/image";
 // import Jury from "../../../components/Jury"; // Adjust the path as needed
 
+import sanjay from "../../public/assets/img/events/paperpresentation/simulation/1.png";
+import sanjiv from "../../public/assets/img/events/paperpresentation/simulation/2.png";
+import varma from "../../public/assets/img/events/paperpresentation/simulation/3.png";
+import ProfileCard from "@/components/common/Profile/ProfileCard";
+
 const Simulation = () => {
   const facultyData = [
     {
       id: 1,
-      imgURL: "/images/events/paperpresentation/simulation/1.png",
+      imgURL: sanjay,
       name: "Amb. Sanjay Bhattacharya",
       description: `
         <p>
@@ -19,7 +24,7 @@ const Simulation = () => {
     },
     {
       id: 2,
-      imgURL: "/images/events/paperpresentation/simulation/2.png",
+      imgURL: sanjiv,
       name: "Lt. General Sanjiv Langer(Retd)",
       description: `
         <p><strong>Lt. General Sanjiv Langer(Retd)</strong>, PVSM, AVSM, is a distinguished military veteran with a service span of 39 years, where he held several operational and logistic appointments. During his work, he dealt with strategic and operational issues with the Ministry of Defence, Ministry of Home Affairs, and Ministry of External Affairs. Sanjiv Langer was the first Indian to be selected to serve at the UN Headquarters as an International Civil Servant under the Department of Peacekeeping for Africa region. He also commanded an Operational Infantry Division and Strike Corps during his tenure. Later, he was appointed as Director General, Defence Intelligence and Deputy Chief Integrated Defence Staff and also as a Member of the Armed Forces Tribunal.</p>
@@ -27,7 +32,7 @@ const Simulation = () => {
     },
     {
       id: 3,
-      imgURL: "/images/events/paperpresentation/simulation/3.png",
+      imgURL: varma,
       name: "Amb. DB Venkatesh Varma",
       description: `
         <p><strong>Amb. DB Venkatesh Varma</strong> holds a profound understanding of India’s Security and Defence policies, including its nuclear, missile, and space programs. He has been India’s Ambassador to the Conference on Disarmament in Geneva, to the Kingdom of Spain, and to the Russian Federation. He has served as Joint Secretary in charge of Disarmament and International Security in the Ministry of External Affairs. His diplomatic tenure also includes him working with the UN First Committee and United Nations Disarmament Commission. He was also a key member of the Indian negotiating team involved in the Civil Nuclear Initiative with the US. Amb Varma was the first recipient of the S.K. Singh Award for Excellence in the Indian Foreign Service in 2011 for his contribution to the negotiations of the Civil Nuclear Initiative. He also served as Joint Secretary in charge of Disarmament and International Security in the Ministry of External Affairs. He was also a member of the UN Group of Government Experts on Missiles and on Disarmament and Nuclear Nonproliferation Education. He holds an M.Phil in International Relations from the Jawaharlal Nehru University, Delhi.</p>
@@ -168,6 +173,11 @@ const Simulation = () => {
           <div className="mb-8 headingWithBG">
             <h4 className="">Mentors</h4>
             {/* <Jury faculty={facultyData} popup={true} /> */}
+          </div>
+          <div className="flex max-w-screen-xl justify-evenly">
+            {facultyData.map((each) => (
+              <ProfileCard profileData={each} popup={true} page="simulation" />
+            ))}
           </div>
         </div>
 

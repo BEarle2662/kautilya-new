@@ -76,6 +76,7 @@ module.exports = withMT({
         "russia-sep": `url('${ImagePaths.russiaSepBg}')`,
         "russia-footer": `url('${ImagePaths.russiaFooterBg}')`,
         "master-public": `url('${ImagePaths.masterPubilc}')`,
+        "contact-banner": `url('${ImagePaths.contactBanner}')`,
       },
       colors: {
         p: "#424a53",

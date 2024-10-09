@@ -16,7 +16,7 @@ const MainLayout = ({ children, title, description, keywords, img }) => {
         img={img}
       />
       <Navbar />
-      {/* <AdmissionEnquiryBtn /> */}
+      <AdmissionEnquiryBtn />
       <div>{children}</div>
       <SocialLinks />
       <BackToTopButton />

@@ -21,7 +21,7 @@ export function ProfileCardDialog({
 }) {
   const handleOpen = () => setOpenProfile(!openProfile);
   const profileImg =
-    page === "PaperPresentation"
+    page === "PaperPresentation" || page === "simulation"
       ? profileData.imgURL
       : `${imageBasePath}${profileData.profile}`;
   return (

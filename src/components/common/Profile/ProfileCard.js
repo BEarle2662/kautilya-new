@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ProfileCardDialog } from "./ProfileCardDialog";
+import { FaLinkedinIn } from "react-icons/fa";
 
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
+import Link from "next/link";
 
 const ProfileCard = ({ profileData, page }) => {
   let imagesPath;
@@ -37,7 +39,9 @@ const ProfileCard = ({ profileData, page }) => {
   };
 
   const profileImg =
-    page === "PaperPresentation"
+    page === "PaperPresentation" ||
+    page === "simulation" ||
+    page === "contactUs"
       ? profileData.imgURL
       : `${imagesPath}${imageKey}`;
 
@@ -52,6 +56,15 @@ const ProfileCard = ({ profileData, page }) => {
         {profileData.name}
       </h4>
       {profileData.place && <p>{profileData.place}</p>}
+      {profileData.linkdin_url && (
+        <Link
+          href={profileData.linkdin_url}
+          target="_blank"
+          className="text-primary"
+        >
+          <FaLinkedinIn />
+        </Link>
+      )}
 
       <p
         className={
@@ -65,15 +78,16 @@ const ProfileCard = ({ profileData, page }) => {
           : profileData.designation1}
       </p>
 
-      {page !== "Mentorship" && (
-        <ProfileCardDialog
-          openProfile={openProfile}
-          setOpenProfile={setOpenProfile}
-          profileData={profileData}
-          imageBasePath={imagesPath}
-          page={page}
-        />
-      )}
+      {page !== "Mentorship" ||
+        (page !== "contactUs" && (
+          <ProfileCardDialog
+            openProfile={openProfile}
+            setOpenProfile={setOpenProfile}
+            profileData={profileData}
+            imageBasePath={imagesPath}
+            page={page}
+          />
+        ))}
     </div>
   );
 };
