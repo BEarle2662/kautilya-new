@@ -36,18 +36,18 @@ const ProfileCard = ({ profileData, page }) => {
     setOpenProfile(!openProfile);
   };
 
+  const profileImg =
+    page === "PaperPresentation"
+      ? profileData.imgURL
+      : `${imagesPath}${imageKey}`;
+
   return (
     <div
       className="flex flex-col items-center justify-start  text-center p-2 m-2"
       onClick={onClickProfileCard}
       key={profileData.id}
     >
-      <Image
-        src={`${imagesPath}${imageKey}`}
-        width={137}
-        height={135}
-        alt={profileData.name}
-      />
+      <Image src={profileImg} width={137} height={135} alt={profileData.name} />
       <h4 className="font-semibold pt-4 leading-5 text-[#424a53] text-sm md:text-base">
         {profileData.name}
       </h4>
@@ -71,6 +71,7 @@ const ProfileCard = ({ profileData, page }) => {
           setOpenProfile={setOpenProfile}
           profileData={profileData}
           imageBasePath={imagesPath}
+          page={page}
         />
       )}
     </div>

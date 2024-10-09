@@ -6,17 +6,23 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 // import Jury from "../../../components/Jury"; // Adjust the path as needed
 
+import anant from "../../public/assets/img/events/paperpresentation/jury/1.png";
+import amir from "../../public/assets/img/events/paperpresentation/jury/2.png";
+import Sharmila from "../../public/assets/img/events/paperpresentation/jury/3.png";
+import Srividya from "../../public/assets/img/events/paperpresentation/jury/4.png";
+import ProfileCard from "@/components/common/Profile/ProfileCard";
+
 const PaperPresentation = () => {
   const [facultyData, setFacultyData] = useState([
     {
       id: 1,
-      imgURL: "/images/events/paperpresentation/jury/1.png",
+      imgURL: anant,
       name: "Dr. Anant Maringanti",
-      description: `<p>Dr. Anant Maringanti is an urban expert, writer, and teacher based in Hyderabad. He heads the Hyderabad Urban Lab Foundation (HUL), a think tank committed to developing urban solutions sensitive to local contexts. Since 2012, HUL has produced research on a number of policy-relevant areas and gained an international reputation as a thought leader in urban development in the global south. Their work spans urban infrastructure, housing, and community development. HUL is an advocate of small public infrastructures in rapidly growing cities like Hyderabad. In this regard, HUL entered into a MOU with the Government of Telangana to run the Low Cost Action Lab. The aim is to position Hyderabad and Telangana in international urban research and action.</p>`,
+      description: `<p class="">Dr. Anant Maringanti is an urban expert, writer, and teacher based in Hyderabad. He heads the Hyderabad Urban Lab Foundation (HUL), a think tank committed to developing urban solutions sensitive to local contexts. Since 2012, HUL has produced research on a number of policy-relevant areas and gained an international reputation as a thought leader in urban development in the global south. Their work spans urban infrastructure, housing, and community development. HUL is an advocate of small public infrastructures in rapidly growing cities like Hyderabad. In this regard, HUL entered into a MOU with the Government of Telangana to run the Low Cost Action Lab. The aim is to position Hyderabad and Telangana in international urban research and action.</p>`,
     },
     {
       id: 2,
-      imgURL: "/images/events/paperpresentation/jury/2.png",
+      imgURL: amir,
       name: "Dr. Amir Ullah Khan",
       description: `
         <p class="text-justify">Amir Ullah Khan is a former civil servant and now works as an advisor to the Sahayata Trust, Research Director at the Centre for Development Policy and Practice, and Adjunct Professor of Economics at the Tata Institute of Social Science, MCR Human Resource Development Institute of the Government of Telangana, and the Manipal Institute of Technology. He is visiting faculty at ISB and at NALSAR.</p>
@@ -25,7 +31,7 @@ const PaperPresentation = () => {
     },
     {
       id: 3,
-      imgURL: "/images/events/paperpresentation/jury/3.png",
+      imgURL: Sharmila,
       name: "Ms. Sharmila Chavaly",
       description: `
         <p class="text-justify">Having just completed her tenure as Advisor, National Institute of Smart Government (NISG), Sharmila Chavaly is currently Advisor, Climate Policy Initiative (India chapter). In over three and a half decades as a civil servant, she has worked in various capacities in the Ministries of Railways and Finance in the Government of India, including as Joint Secretary (Infrastructure) at the Department of Economic Affairs, where she was in charge of setting up InvITs, revamped REITs & Municipal Bonds, Infrastructure Credit Rating Scale, the Credit Enhancement Fund, etc. She was Member Secretary of the Committee for Revitalising PPPs.</p>
@@ -35,7 +41,7 @@ const PaperPresentation = () => {
     },
     {
       id: 4,
-      imgURL: "/images/events/paperpresentation/jury/4.png",
+      imgURL: Srividya,
       name: "Ms. Srividya Reddy",
       description: `
         <p class="text-justify">Ms. Srividya Reddy Gunampalli, Vice-Chairperson of G Pulla Reddy Charities Trust, holds a Graduate degree in Engineering from JNTU, an MBA from ICFAI, one of the pioneers in management education, and holds a leadership certification from the University of Pennsylvania. She leads a multi-faceted life as an educationist, entrepreneur, and community volunteer while being actively associated with the G. Pulla Reddy Charities Trust for over two decades now.</p>
@@ -99,18 +105,26 @@ const PaperPresentation = () => {
         </div>
 
         {/* Jury Section */}
-        <div className="container mx-auto mt-20 px-4">
+        <div className="container mx-auto mt-14 px-4">
           <div className="mb-8">
             <h4 className="leading-[45px] font-medium text-white text-[24px] px-5 bg-gradient-to-r from-[#b11016] to-[#f5f9fb] mb-[27px]">
               Jury
             </h4>
           </div>
 
-          {/* <Jury faculty={facultyData} popup={true} /> */}
+          <div className="flex max-w-screen-xl justify-evenly">
+            {facultyData.map((each) => (
+              <ProfileCard
+                profileData={each}
+                popup={true}
+                page="PaperPresentation"
+              />
+            ))}
+          </div>
         </div>
 
         {/* Prizes and Awards */}
-        <div className="container mx-auto mt-20 mb-5 px-4">
+        <div className="container mx-auto mt-14 mb-5 px-4">
           <div className="mb-8">
             <h4 className="leading-[45px] font-medium text-white text-[24px] px-5 bg-gradient-to-r from-[#b11016] to-[#f5f9fb] mb-[27px]">
               Prizes and Awards:
@@ -140,7 +154,7 @@ const PaperPresentation = () => {
         </div>
 
         {/* General Guidelines */}
-        <div className="container mx-auto mt-20 px-4">
+        <div className="container mx-auto mt-14 px-4">
           <div className="mb-8">
             <h4 className="leading-[45px] font-medium text-white text-[24px] px-5 bg-gradient-to-r from-[#b11016] to-[#f5f9fb] mb-[27px]">
               General Guidelines:
@@ -217,58 +231,61 @@ const PaperPresentation = () => {
               Important Dates:
             </h4>
           </div>
-          <table className="min-w-full table-auto border-collapse mx-auto w-auto border border-gray-300">
-            <tbody>
-              <tr>
-                <th className="border bg-primary text-left px-4 py-2">
-                  Registration Deadline
-                </th>
-                <td className="border  text-left  px-4 py-2">
-                  31st August 2023
-                </td>
-              </tr>
-              <tr>
-                <th className="border bg-primary text-left px-4 py-2">
-                  Abstract Submission Deadline
-                </th>
-                <td className="border  text-left px-4 py-2">
-                  5th September 2023
-                </td>
-              </tr>
-              <tr>
-                <th className="border bg-primary text-left px-4 py-2">
-                  Shortlisted Candidates Shall be notified by
-                </th>
-                <td className="border  text-left px-4 py-2">
-                  10th September 2023
-                </td>
-              </tr>
-              <tr>
-                <th className="border bg-primary  text-left px-4 py-2">
-                  Final Paper Submission
-                </th>
-                <td className="border  text-left px-4 py-2">
-                  17th September 2023
-                </td>
-              </tr>
-              <tr>
-                <th className="border bg-primary text-left px-4 py-2">
-                  Final PPT Submission
-                </th>
-                <td className="border  text-left px-4 py-2">
-                  20th September 2023
-                </td>
-              </tr>
-              <tr>
-                <th className="border bg-primary text-left px-4 py-2">
-                  Final Paper Presentation
-                </th>
-                <td className="border  text-left px-4 py-2">
-                  23rd September 2023
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+          <div className="max-w-2xl mx-auto">
+            <table className="w-full table-auto border-collapse mx-auto border border-gray-300">
+              <tbody>
+                <tr>
+                  <th className="border bg-primary border-black text-left px-4 py-2">
+                    Registration Deadline
+                  </th>
+                  <td className="border border-black  text-left  px-4 py-2">
+                    31st August 2023
+                  </td>
+                </tr>
+                <tr>
+                  <th className="border bg-primary border-black text-left px-4 py-2">
+                    Abstract Submission Deadline
+                  </th>
+                  <td className="border  border-black text-left px-4 py-2">
+                    5th September 2023
+                  </td>
+                </tr>
+                <tr>
+                  <th className="border bg-primary border-black text-left px-4 py-2">
+                    Shortlisted Candidates Shall be notified by
+                  </th>
+                  <td className="border border-black  text-left px-4 py-2">
+                    10th September 2023
+                  </td>
+                </tr>
+                <tr>
+                  <th className="border bg-primary border-black  text-left px-4 py-2">
+                    Final Paper Submission
+                  </th>
+                  <td className="border border-black text-left px-4 py-2">
+                    17th September 2023
+                  </td>
+                </tr>
+                <tr>
+                  <th className="border bg-primary border-black text-left px-4 py-2">
+                    Final PPT Submission
+                  </th>
+                  <td className="border border-black  text-left px-4 py-2">
+                    20th September 2023
+                  </td>
+                </tr>
+                <tr>
+                  <th className="border bg-primary border-black text-left px-4 py-2">
+                    Final Paper Presentation
+                  </th>
+                  <td className="border border-black text-left px-4 py-2">
+                    23rd September 2023
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* Submission Guidelines */}

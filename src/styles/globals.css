@@ -334,7 +334,7 @@ section {
 /* Student club */
 
 .headingWithBG h4 {
-  @apply text-white font-medium text-lg md:text-xl leading-[45px]  py-2 px-5 mb-7;
+  @apply text-white font-medium text-base md:text-xl md:leading-[45px]  py-2 px-5 mb-7;
   background-image: linear-gradient(to right, #b11016, #f5f9fb);
 }
 

@@ -17,9 +17,13 @@ export function ProfileCardDialog({
   setOpenProfile,
   profileData,
   imageBasePath,
+  page,
 }) {
   const handleOpen = () => setOpenProfile(!openProfile);
-
+  const profileImg =
+    page === "PaperPresentation"
+      ? profileData.imgURL
+      : `${imageBasePath}${profileData.profile}`;
   return (
     <>
       <Dialog
@@ -44,7 +48,7 @@ export function ProfileCardDialog({
         <DialogBody className="relative pt-16 pb-6 px-6">
           <div className="absolute top-[-100px] left-1/2 transform -translate-x-1/2">
             <Image
-              src={`${imageBasePath}${profileData.profile}`}
+              src={profileImg}
               width={137}
               height={135}
               alt={profileData.name}
@@ -55,13 +59,18 @@ export function ProfileCardDialog({
             <p className="inline-block border-b-2 border-b-[#b11016] text-2xl font-semibold mb-4 pb-2.5">
               {profileData.name}
             </p>
+
             <p className="text-sm font-semibold md:text-base md:font-semibold text-primary text-center mb-6">
               {profileData.designation1
                 ? profileData.designation1
                 : profileData.designation}
-              <span className="pl-2">
-                {profileData.place ? profileData.place : profileData.city}
-              </span>
+
+              {profileData.place ||
+                (profileData.city && (
+                  <span className="pl-2">
+                    {profileData.place ? profileData.place : profileData.city}
+                  </span>
+                ))}
             </p>
 
             <div

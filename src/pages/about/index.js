@@ -67,7 +67,6 @@ const About = ({ initialTeamData }) => {
         img={image}
       >
         <ScreenWidth layoutwidth="true">
-          <h1>About Page</h1>
           {deptHeadings.map((each, index) => {
             const keyName = Object.keys(each)[0];
             // console.log(`md:grid-cols-${initialTeamData[keyName].length}`);
