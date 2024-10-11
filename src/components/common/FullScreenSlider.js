@@ -47,7 +47,7 @@ const FullScreenSlider = ({ slider, pagesMpp }) => {
       <div className="slider-container">
         <Slider {...settings}>
           {slides.map((sliderItem) => (
-            <div key={sliderItem.id}>
+            <div key={sliderItem.desktop_banner}>
               <picture>
                 <source
                   media="(max-width:620px)"

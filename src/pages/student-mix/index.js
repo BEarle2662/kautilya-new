@@ -18,7 +18,7 @@ const StudentMix = ({ data }) => {
         <ScreenWidth layoutwidth="true">
           <CategoryHeading heading="#IndiaByKautilya" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="hidden  md:grid  md:grid-cols-3">
             <div>
               <p className="count-ratio">
                 <NumberCounter end={21} duration={1000} />
@@ -28,7 +28,7 @@ const StudentMix = ({ data }) => {
 
             <div>
               <p className="count-ratio">
-                <span className="counter ">
+                <span className="counter">
                   <NumberCounter end={41} duration={1000} />
                 </span>
               </p>

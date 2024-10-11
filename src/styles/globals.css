@@ -408,7 +408,7 @@ section {
 }
 
 .count-ratio {
-  @apply text-[46px] text-[#b11016] italic font-extrabold opacity-100 text-center;
+  @apply text-5xl text-[#b11016] italic font-bold opacity-100 text-center font-whitney mb-2;
 }
 .counter-txt {
   @apply text-center;

@@ -8,6 +8,8 @@ import React from "react";
 const Resources = ({ data }) => {
   let Page = "Resource";
   const events = data.data?.filter((each) => each.category === "Events");
+  const colloquy = data.data?.filter((each) => each.category === "Colloquy");
+
   const policySeries = data.data?.filter(
     (each) => each.category === "Policy Series"
   );
@@ -19,8 +21,10 @@ const Resources = ({ data }) => {
     <MainLayout>
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Events" textAlign="text-left" />
-
         <EventsSlider sliderData={events} page={Page} />
+
+        <CategoryHeading heading="Colloquy event" textAlign="text-left" />
+        <EventsSlider sliderData={colloquy} page={Page} />
 
         <CategoryHeading
           heading="Let's Talk Policy Series"

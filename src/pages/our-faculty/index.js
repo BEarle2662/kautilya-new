@@ -41,11 +41,11 @@ const faculty = ({ data }) => {
             <ScreenWidth layoutwidth="true">
               <div className="grid grid-cols-12">
                 <div className="hidden md:block md:col-span-4"></div>
-                <div className="col-span-10 md:col-span-7 text-2xl md:text-3xl lg:text-5xl font-medium mt-16">
+                <div className="col-span-10 md:col-span-8 text-2xl md:text-3xl lg:text-5xl font-medium mt-16">
                   <h1 className="mb-4">
-                    Kautilya’s Master of Public Policy (MPP) is designed for
-                    those looking to rebalance Society, Government and Business
-                    towards an equitable society.
+                    Kautilya’s Master’s Program in Public Policy (MPP) is
+                    designed for those looking to rebalance Society, Government
+                    and Business towards an equitable society.
                   </h1>
                   <Link href="/mpp" className="text-primary">
                     <div className="flex">

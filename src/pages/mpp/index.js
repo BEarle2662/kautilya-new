@@ -4,8 +4,7 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import { apisBasePath } from "@/Endpoints/apisBase";
 import Image from "next/image";
-import React from "react";
-import mppPath from "../../../public/assets/img/mpp/mpp_path.jpg";
+import mppPath from "../../../public/assets/img/mpp/mpp-path.jpg";
 import DynamicTabs from "@/components/common/DynamicTabs";
 
 const Mpp = ({ mppData }) => {
@@ -54,8 +53,13 @@ const Mpp = ({ mppData }) => {
         </ScreenWidth>
       </div>
 
-      <div>
+      <div className="bg-[#f6f6f6]">
         <ScreenWidth layoutwidth="true">
+          <p className="my-10 text-sm md:text-base">
+            Bridging the gap between the industry requirements and academic
+            curriculum at the master’s level through targeted skill development
+            programs taught by practitioners.
+          </p>
           <DynamicTabs phd={mppData.tabsData} page="MPP Tabs" />
         </ScreenWidth>
       </div>

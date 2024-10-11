@@ -77,6 +77,7 @@ module.exports = withMT({
         "russia-footer": `url('${ImagePaths.russiaFooterBg}')`,
         "master-public": `url('${ImagePaths.masterPubilc}')`,
         "contact-banner": `url('${ImagePaths.contactBanner}')`,
+        "page-notfound": `url('${ImagePaths.bgNotfound}')`,
       },
       colors: {
         p: "#424a53",
@@ -85,6 +86,7 @@ module.exports = withMT({
 
       fontFamily: {
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans, "sans-serif"],
+        whitney: ["Whitney"],
       },
     },
   },

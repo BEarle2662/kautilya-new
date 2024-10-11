@@ -65,8 +65,7 @@ const EventsSlider = ({ sliderData }) => {
     <div className="slider-container">
       <Slider {...settings}>
         {sliderData.map((eachobj) => {
-          const slug = eachobj.link.split("/").pop(); // 'public-policy-for-public-good'
-
+          const slug = eachobj.link?.split("/").pop();
           return (
             <div
               key={eachobj.id}
@@ -88,16 +87,19 @@ const EventsSlider = ({ sliderData }) => {
               <div className="text-light">
                 <p className="date_p"> {eachobj.subtitle}</p>
                 {/* <Link href={`${eachobj.link}`}> */}
-                <Link href={`${slug}`}>
-                  <span className="before_arrow readmoreIcon">
-                    Read more
-                    <img
-                      src={ImagePaths.redArrow}
-                      className="arrow_img"
-                      alt="Read more arrow"
-                    />
-                  </span>
-                </Link>
+
+                {eachobj.link && (
+                  <Link href={`${slug}`}>
+                    <span className="before_arrow readmoreIcon">
+                      Read more
+                      <img
+                        src={ImagePaths.redArrow}
+                        className="arrow_img"
+                        alt="Read more arrow"
+                      />
+                    </span>
+                  </Link>
+                )}
               </div>
             </div>
           );

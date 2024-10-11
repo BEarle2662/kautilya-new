@@ -98,6 +98,7 @@ const Placements = ({ data }) => {
               src={placementReport}
               width={0}
               height={0}
+              alt="placement-reports"
               className="w-full h-full"
             />
           </ScreenWidth>
@@ -108,11 +109,12 @@ const Placements = ({ data }) => {
                   src={recruitImg}
                   width={0}
                   height={0}
-                  className="w-full h-full md:col-span-3"
+                  alt="recruit"
+                  className="w-1/2 h-1/2 md:w-full md:h-full md:col-span-3 self-center md:self-start"
                 />
 
                 <div className="md:col-span-9">
-                  <h1 className="text-2xl md:text-5xl font-normal text-center">
+                  <h1 className="text-xl md:text-5xl font-normal text-center">
                     Recruit from Kautilya
                   </h1>
                   <p className="text-p mt-5">
@@ -121,34 +123,36 @@ const Placements = ({ data }) => {
                     insights that help them hit the ground running.
                   </p>
 
-                  <div className="flex">
+                  <div className="flex flex-col md:flex-row gap-4 items-center">
                     <button
-                      className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] mr-4"
+                      className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] md:mr-4 w-full"
                       onClick={handleOpenDialog}
                     >
                       <Image
                         src={fillForm}
                         width={0}
                         height={0}
+                        alt="Recruiter Registration"
                         className="w-[20px] h-[20px] mr-2"
                       />
-                      <span className="text-primary text-sm">
+                      <span className="text-primary text-xs md:text-sm">
                         Recruiter Registration
                       </span>
                     </button>
 
-                    <button className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf]">
+                    <button className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] w-full">
                       <Image
                         src={docDownload}
                         width={0}
                         height={0}
+                        alt="Recruiters Guide"
                         className="w-[20px] h-[20px] mr-2"
                       />
                       <a
                         href="/assets/pdf/placements/Kautilya-Recruiters-Guide.pdf"
                         download
                       >
-                        <span className="text-primary text-sm">
+                        <span className="text-primary text-xs md:text-sm">
                           Recruiters Guide
                         </span>
                       </a>
@@ -177,6 +181,7 @@ const Placements = ({ data }) => {
               <Image
                 width={0}
                 height={0}
+                alt="recruiter-student synergy"
                 className="h-full w-full md:col-span-5"
                 src={placementSec2}
               />
@@ -259,21 +264,36 @@ const Placements = ({ data }) => {
             <ScreenWidth layoutwidth="true">
               <div className="flex flex-col justify-center md:flex-row md:gap-8">
                 <div className="flex flex-col items-center md:mr-4">
-                  <Image src={placement1} width={160} height={160} />
+                  <Image
+                    src={placement1}
+                    width={160}
+                    height={160}
+                    alt="Aarini-Mishra"
+                  />
                   <p className="mt-3 text-primary text-lg font-semibold">
                     Aarini Mishra
                   </p>
                 </div>
 
                 <div className="flex flex-col items-center md:mr-4">
-                  <Image src={placement2} width={160} height={160} />
+                  <Image
+                    src={placement2}
+                    width={160}
+                    height={160}
+                    alt="Oaishik-Bhattacharya"
+                  />
                   <p className="mt-3 text-primary text-lg font-semibold">
                     Oaishik Bhattacharya
                   </p>
                 </div>
 
                 <div className="flex flex-col items-center md:mr-4">
-                  <Image src={placement3} width={160} height={160} />
+                  <Image
+                    src={placement3}
+                    width={160}
+                    height={160}
+                    alt="Saumya-Anand"
+                  />
                   <p className="mt-3 text-primary text-lg font-semibold">
                     Saumya Anand
                   </p>
@@ -300,7 +320,7 @@ const Placements = ({ data }) => {
                   />
                 </div>
 
-                <div className="col-span-12 md:col-span-6 text-slider p-4">
+                <div className="col-span-10 md:col-span-6 text-slider md:p-4">
                   <Slider {...settings}>
                     {textData.map((eachobj) => {
                       return (
@@ -311,8 +331,7 @@ const Placements = ({ data }) => {
                             dangerouslySetInnerHTML={{
                               __html: eachobj.description,
                             }}
-                            className="table-responsive"
-                          ></div>
+                          />
                         </div>
                       );
                     })}

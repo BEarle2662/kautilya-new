@@ -8,6 +8,7 @@ export const ImagePaths = {
   mppImg: `${basePath}/assets/img/bgImages/masters_banner.jpg`,
   whiteShadeImg: `${basePath}/assets/img/bgImages/studentmix-banner.jpg`,
   contactBanner: `${basePath}/assets/img/bgImages/contact_banner.png`,
+  bgNotfound: `${basePath}/assets/img/bgImages/404-Background-Light.png`,
 
   governWhiteShadeImg: `${basePath}/assets/img/events/govtExcellenceInitivies/contact_bg.jpg`, // events inner pages background Images
   ppforpgImg: `${basePath}/assets/img/events/publicPolicy/ppforpg.jpg`,
