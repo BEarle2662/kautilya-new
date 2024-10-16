@@ -37,7 +37,7 @@ const DynamicTabs = ({ tabData, phd, page }) => {
           id="custom-animation"
           value={
             mppTabsData[0]?.category === "Academic Associates page" ||
-            mppTabsData[0]?.category === "Publications page"
+            mppTabsData[0]?.category === "Faculties page"
               ? mppTabsData[0]?.name
               : mppTabsData[0]?.category
           }
@@ -48,7 +48,7 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                 key={id || label}
                 value={
                   category === "Academic Associates page" ||
-                  category === "Publications page"
+                  category === "Faculties page"
                     ? name
                     : category
                 }
@@ -58,7 +58,7 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                   <FaCircleDown className="w-5 h-5 lg:w-3 lg:h-3" />
                   <span>
                     {category === "Academic Associates page" ||
-                    category === "Publications page"
+                    category === "Faculties page"
                       ? name
                       : label
                       ? label
@@ -82,7 +82,7 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                   key={id || label}
                   value={
                     category === "Academic Associates page" ||
-                    category === "Publications page"
+                    category === "Faculties page"
                       ? name
                       : category
                   }

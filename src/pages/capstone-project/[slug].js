@@ -3,7 +3,7 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 const CapstoneProjectSlugPage = ({ CapstoneProject }) => {
   const image =
@@ -30,7 +30,8 @@ export default CapstoneProjectSlugPage;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    apisBasePath.capstoneProjectsList,
+    // apisBasePath.capstoneProjectsList,
+    ksppApisBasePath.cpLists,
     // "https://guprojects.gitam.edu/kautilya-admin/api/cp-lists",
     {
       headers: {
@@ -51,8 +52,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  console.log("CP Params", params.slug);
   const res = await fetch(
-    `${apisBasePath.capstoneProjectsList}/${params.slug}`,
+    // `${apisBasePath.capstoneProjectsList}/${params.slug}`,
+    `${ksppApisBasePath.cpSlug}/${params.slug}`,
+
     {
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +66,7 @@ export async function getStaticProps({ params }) {
   );
 
   const CapstoneProject = await res.json();
-
+  console.log("CapstoneProject", CapstoneProject);
   return {
     props: {
       CapstoneProject,

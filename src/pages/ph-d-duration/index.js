@@ -1,24 +1,12 @@
+import { ksppApisBasePath } from "@/Endpoints/apisBase";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import DynamicTabs from "@/components/common/DynamicTabs";
 import { Button } from "@material-tailwind/react";
+import axios from "axios";
 import Link from "next/link";
 
 // import pdfDoc from "../../../public/assets/pdf/events/qs-gitamuniversity.pdf";
-
-// Fetch tab data during build time
-export async function getStaticProps() {
-  const response = await fetch(
-    "https://guprojects.gitam.edu/kautilya-admin/api/fetch-phd-tabsdata"
-  );
-  const data = await response.json();
-
-  return {
-    props: {
-      tabData: data?.data || [], // Pass tabData to the page
-    },
-  };
-}
 
 // React component definition
 const DoctoralPhdProgram = ({ tabData }) => {
@@ -83,3 +71,28 @@ const DoctoralPhdProgram = ({ tabData }) => {
 
 // Make sure the component is exported as the default export
 export default DoctoralPhdProgram;
+
+// Fetch tab data during build time
+export async function getStaticProps() {
+  // const response = await fetch(
+  //   "https://guprojects.gitam.edu/kautilya-admin/api/fetch-phd-tabsdata"
+  // );
+  // const data = await response.json();
+
+  const phdDurationApi = ksppApisBasePath.phdDurationApi;
+
+  const response = await axios.get(phdDurationApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const data = response.data.data;
+
+  return {
+    props: {
+      tabData: data || [], // Pass tabData to the page
+    },
+  };
+}

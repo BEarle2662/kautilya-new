@@ -3,7 +3,7 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import axios from "axios";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import CategoryHeading from "@/components/common/categoryHeading";
 
 const BlogsPage = ({ slugsData }) => {
@@ -41,7 +41,9 @@ const BlogsPage = ({ slugsData }) => {
 // }
 
 export async function getStaticProps() {
-  const slugsBasePath = `${apisBasePath.blogsList}`;
+  // const slugsBasePath = `${apisBasePath.blogsList}`;
+
+  const slugsBasePath = `${ksppApisBasePath.blogsListApi}`;
 
   try {
     const res = await axios.get(slugsBasePath, {

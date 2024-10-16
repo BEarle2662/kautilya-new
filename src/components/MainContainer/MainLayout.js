@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SocialLinks from "../common/SocialLinks";
 import BackToTopButton from "../common/BackToTop";
-import AdmissionEnquiryBtn from "../common/AdmissionEnquiryBtn";
+// import AdmissionEnquiryBtn from "../common/AdmissionEnquiryBtn";
 
 const MainLayout = ({ children, title, description, keywords, img }) => {
   return (
@@ -16,7 +16,7 @@ const MainLayout = ({ children, title, description, keywords, img }) => {
         img={img}
       />
       <Navbar />
-      <AdmissionEnquiryBtn />
+      {/* <AdmissionEnquiryBtn /> */}
       <div>{children}</div>
       <SocialLinks />
       <BackToTopButton />

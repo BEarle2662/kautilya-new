@@ -51,7 +51,12 @@ const ProfileCard = ({ profileData, page }) => {
       onClick={onClickProfileCard}
       key={profileData.id}
     >
-      <Image src={profileImg} width={137} height={135} alt={profileData.name} />
+      <Image
+        src={profileImg}
+        width={137}
+        height={135}
+        alt={profileData.alt_tag || profileData.name}
+      />
       <h4 className="font-semibold pt-4 leading-5 text-[#424a53] text-sm md:text-base">
         {profileData.name}
       </h4>
@@ -78,16 +83,15 @@ const ProfileCard = ({ profileData, page }) => {
           : profileData.designation1}
       </p>
 
-      {page !== "Mentorship" ||
-        (page !== "contactUs" && (
-          <ProfileCardDialog
-            openProfile={openProfile}
-            setOpenProfile={setOpenProfile}
-            profileData={profileData}
-            imageBasePath={imagesPath}
-            page={page}
-          />
-        ))}
+      {(page !== "Mentorship" || page !== "contactUs") && (
+        <ProfileCardDialog
+          openProfile={openProfile}
+          setOpenProfile={setOpenProfile}
+          profileData={profileData}
+          imageBasePath={imagesPath}
+          page={page}
+        />
+      )}
     </div>
   );
 };

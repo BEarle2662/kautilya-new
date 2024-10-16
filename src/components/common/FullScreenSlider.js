@@ -3,9 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ScreenWidth from "../MainContainer/ScreenWidth";
+import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
 const FullScreenSlider = ({ slider, pagesMpp }) => {
   let slides = slider;
+  console.log("KCADV", slides);
 
   let pageType;
   const pages = {
@@ -14,9 +16,13 @@ const FullScreenSlider = ({ slider, pagesMpp }) => {
       desktop: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/tabs/",
     },
     placements: {
-      mobile: "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/",
-      desktop:
-        "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/",
+      mobile: ImageBasePaths.placementsImagesPath,
+      desktop: ImageBasePaths.placementsImagesPath,
+    },
+    kautilyaAdvantage: {
+      mobile:
+        "https://guprojects.gitam.edu/KSPPCMS/public/studykautilya/mobile/",
+      desktop: "https://guprojects.gitam.edu/KSPPCMS/public/studykautilya/",
     },
   };
 
@@ -26,6 +32,11 @@ const FullScreenSlider = ({ slider, pagesMpp }) => {
       break;
     case "placements":
       pageType = pages.placements;
+      slides = [...slides].reverse(); // Reverse the slides array
+      // console.log("switch rev", slides);
+      break;
+    case "kautiya-advantage":
+      pageType = pages.kautilyaAdvantage;
       slides = [...slides].reverse(); // Reverse the slides array
       // console.log("switch rev", slides);
       break;
@@ -47,19 +58,25 @@ const FullScreenSlider = ({ slider, pagesMpp }) => {
       <div className="slider-container">
         <Slider {...settings}>
           {slides.map((sliderItem) => (
-            <div key={sliderItem.desktop_banner}>
+            <div key={sliderItem.desktop_banner || sliderItem.desktop_image}>
               <picture>
                 <source
                   media="(max-width:620px)"
-                  srcSet={`${pageType.mobile}${sliderItem.mobile_banner}`}
+                  srcSet={`${pageType.mobile}${
+                    sliderItem.mobile_banner || sliderItem.mobile_image
+                  }`}
                 />
                 <source
                   media="(min-width:621px)"
-                  srcSet={`${pageType.desktop}${sliderItem.desktop_banner}`}
+                  srcSet={`${pageType.desktop}${
+                    sliderItem.desktop_banner || sliderItem.desktop_image
+                  }`}
                 />
                 <img
                   className="d-block_carousel"
-                  src={`${pageType.desktop}${sliderItem.desktop_banner}`}
+                  src={`${pageType.desktop}${
+                    sliderItem.desktop_banner || sliderItem.desktop_image
+                  }`}
                   alt={`Slide ${sliderItem.category}`}
                 />
               </picture>

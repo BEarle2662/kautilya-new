@@ -2,11 +2,12 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import DynamicTabs from "@/components/common/DynamicTabs";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
 import React from "react";
 
 const Campus = ({ facilitiesdata }) => {
-  const tabsData = facilitiesdata.data;
+  const tabsData = facilitiesdata;
   return (
     <MainLayout>
       <ScreenWidth layoutwidth="true">
@@ -44,10 +45,19 @@ const Campus = ({ facilitiesdata }) => {
 };
 
 export async function getStaticProps() {
-  const facilityListdata = `${apisBasePath.facilityListdata}`;
+  // const facilityListdata = `${apisBasePath.facilityListdata}`;
 
-  const facilityListdataResponse = await fetch(facilityListdata);
-  const facilitiesdata = await facilityListdataResponse.json();
+  const faciltiesDataApi = `${ksppApisBasePath.faciltiesDataApi}`;
+
+  const response = await axios.get(faciltiesDataApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+  // const facilitiesdata = await facilityListdataResponse.json();
+
+  const facilitiesdata = response.data.data;
   // console.log(facilitiesdata);
   return {
     props: { facilitiesdata },

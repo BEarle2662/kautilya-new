@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
+import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
 const CustomSlides = ({ sliderdata, page, sliderType }) => {
   let pageType;
@@ -11,25 +12,22 @@ const CustomSlides = ({ sliderdata, page, sliderType }) => {
 
   const pages = {
     studentMix: {
-      mobile:
-        "https://guprojects.gitam.edu/kautilya-admin/public/studentmix/mobile/",
+      mobile: "https://guprojects.gitam.edu/KSPPCMS/public/studentmix/mobile/",
       desktop:
-        "https://guprojects.gitam.edu/kautilya-admin/public/studentmix/desktop/",
+        "https://guprojects.gitam.edu/KSPPCMS/public/studentmix/desktop/",
     },
     mpp: {
-      mobile: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/mobile/",
-      desktop:
-        "https://guprojects.gitam.edu/kautilya-admin/public/mpp/desktop/",
-      document: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/",
+      mobile: "https://guprojects.gitam.edu/KSPPCMS/public/mpp/mobile/",
+      desktop: "https://guprojects.gitam.edu/KSPPCMS/public/mpp/desktop/",
+      document: "https://guprojects.gitam.edu/KSPPCMS/public/mpp/",
     },
     mppTabs: {
-      mobile: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/tabs/",
-      desktop: "https://guprojects.gitam.edu/kautilya-admin/public/mpp/tabs/",
+      mobile: "https://guprojects.gitam.edu/KSPPCMS/public/mpp/tabs/",
+      desktop: "https://guprojects.gitam.edu/KSPPCMS/public/mpp/tabs/",
     },
     placements: {
-      mobile: "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/",
-      desktop:
-        "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/",
+      mobile: ImageBasePaths.placementsImagesPath,
+      desktop: ImageBasePaths.placementsImagesPath,
     },
   };
 

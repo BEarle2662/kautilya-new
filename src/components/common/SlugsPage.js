@@ -19,15 +19,25 @@ import { ImagePaths } from "@/Endpoints/imagePath";
 
 const SlugsPage = ({ pageTitle, slugsPageData }) => {
   let slugBasePath;
+  let slugMediaThumbnailPath;
+  let slugMediaPostedByPath;
   switch (pageTitle) {
     case "Capstone Project":
       slugBasePath = "capstone-project/";
+      slugMediaThumbnailPath = `${ImageBasePaths.capstoneSlugsMediaPath}thumbnail_image`;
+      slugMediaPostedByPath = `${ImageBasePaths.capstoneSlugsMediaPath}posted_by_image`;
+
       break;
     case "Blogs":
       slugBasePath = "blogs/";
+      slugMediaThumbnailPath = `${ImageBasePaths.blogSlugsMediaPath}thumbnail_image`;
+      slugMediaPostedByPath = `${ImageBasePaths.blogSlugsMediaPath}posted_by_image`;
       break;
     case "Issue Brief":
       slugBasePath = "issue-brief/";
+      slugMediaThumbnailPath = `${ImageBasePaths.issueBriefSlugsMediaPath}thumbnail_image`;
+      slugMediaPostedByPath = `${ImageBasePaths.issueBriefSlugsMediaPath}posted_by_image`;
+
       break;
     default:
       slugBasePath = null;
@@ -108,11 +118,11 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                     key={eachSlugItem.id}
                   >
                     <Image
-                      src={`${ImageBasePaths.detailedSlugsMediaPath}${eachSlugItem.thumbnail_path}`}
+                      src={`${slugMediaThumbnailPath}/${eachSlugItem.thumbnail_image}`}
                       height={0}
                       width={0}
                       className="h-46 w-full"
-                      alt={eachSlugItem.posted_by}
+                      alt={eachSlugItem.thumbnail_alttag}
                     />
                     <CardBody>
                       <p className="font-semibold text-sm text-[#000] mb-4">
@@ -122,8 +132,8 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                       <Avatar
                         size="lg"
                         variant="circular"
-                        alt="natali craig"
-                        src={`${ImageBasePaths.detailedSlugsMediaPath}${eachSlugItem.posted_by_path}`}
+                        alt={eachSlugItem.posted_by_image_alttag}
+                        src={`${slugMediaPostedByPath}/${eachSlugItem.posted_by_image}`}
                         className="border-2 border-white hover:z-10"
                       />
                       {eachSlugItem.posted_by_front ? (

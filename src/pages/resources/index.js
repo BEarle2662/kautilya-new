@@ -2,7 +2,7 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import EventsSlider from "@/components/common/EventsSlider";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import React from "react";
 
 const Resources = ({ data }) => {
@@ -40,9 +40,15 @@ const Resources = ({ data }) => {
 };
 
 export async function getStaticProps() {
-  const resourcesData = `${apisBasePath.resourcesData}`;
+  // const resourcesData = `${apisBasePath.resourcesData}`;
+  const resourcesData = `${ksppApisBasePath.eventsListApi}`;
 
-  const response = await fetch(resourcesData);
+  const response = await fetch(resourcesData, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: process.env.NEXT_PUBLIC_API_AUTH_TOKEN, // Use env variable
+    },
+  });
   const data = await response.json();
 
   return {

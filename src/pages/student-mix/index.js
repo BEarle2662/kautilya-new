@@ -3,14 +3,15 @@ import CustomSlides from "@/components/common/CustomSlides";
 import NumberCounter from "@/components/Counter";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
 import React from "react";
 
 const StudentMix = ({ data }) => {
-  const firstSlider = data.data?.filter((each) => each.category === "2023-25");
-  const secondSlider = data.data?.filter((each) => each.category === "2022-24");
-  const thirdSlider = data.data?.filter((each) => each.category === "2021-23");
-  const fourthSlider = data.data?.filter((each) => each.category === "2024-26");
+  const firstSlider = data?.filter((each) => each.category === "2023-25");
+  const secondSlider = data?.filter((each) => each.category === "2022-24");
+  const thirdSlider = data?.filter((each) => each.category === "2021-23");
+  const fourthSlider = data?.filter((each) => each.category === "2024-26");
 
   return (
     <MainLayout>
@@ -107,15 +108,25 @@ const StudentMix = ({ data }) => {
   );
 };
 
-export async function getStaticProps() {
-  const studentMixData = `${apisBasePath.studentMixData}`;
+export default StudentMix;
 
-  const studentMixDataResp = await fetch(studentMixData);
-  const data = await studentMixDataResp.json();
+export async function getStaticProps() {
+  // const studentMixData = `${apisBasePath.studentMixData}`;
+  const studentMixApi = ksppApisBasePath.studentMixApi;
+
+  // const studentMixDataResp = await fetch(studentMixData);
+  // const data = await studentMixDataResp.json();
+
+  const response = await axios.get(studentMixApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const data = response.data.data;
   //   console.log(data);
   return {
     props: { data },
   };
 }
-
-export default StudentMix;

@@ -3,7 +3,7 @@ import FacultySlugPage from "@/components/common/FacultySlugPage";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 const ourFacultySlugPage = ({ facultySlugData }) => {
   const image =
@@ -27,7 +27,13 @@ const ourFacultySlugPage = ({ facultySlugData }) => {
 export default ourFacultySlugPage;
 
 export async function getStaticPaths() {
-  const res = await fetch(`${apisBasePath.faculty}`, {
+  // const res = await fetch(`${apisBasePath.faculty}`, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: "8efgh5gyujk",
+  //   },
+  // });
+  const res = await fetch(`${ksppApisBasePath.faculty}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: "8efgh5gyujk",
@@ -49,7 +55,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`${apisBasePath.facultyBrief}/${params.slug}`, {
+  // const res = await fetch(`${apisBasePath.facultyBrief}/${params.slug}`, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: "8efgh5gyujk",
+  //   },
+  // });
+
+  const res = await fetch(`${ksppApisBasePath.facultyBrief}/${params.slug}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: "8efgh5gyujk",

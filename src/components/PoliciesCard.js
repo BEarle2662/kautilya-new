@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ScreenWidth from "./MainContainer/ScreenWidth";
+import { docsPath } from "@/Endpoints/docsBasePath";
 
 const PoliciesCard = ({ policiesData }) => {
   return (
@@ -30,9 +31,7 @@ const PoliciesCard = ({ policiesData }) => {
                   className="text-white hover:bg-[#b11116b0] md:col-span-4 bg-[#00000082] border-2 min-h-[180px] flex flex-col justify-center items-center text-center"
                 >
                   <a
-                    href={`${"https://guprojects.gitam.edu/kautilya-admin/public/policies/"}${
-                      each.policypdf
-                    }`}
+                    href={`${docsPath.policyGuidelinesPath}${each.policypdf}`}
                     target="_blank"
                   >
                     <h4 className="text-sm md:text-lg font-semibold">

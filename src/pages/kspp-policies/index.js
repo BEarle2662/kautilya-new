@@ -2,7 +2,7 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import PoliciesCard from "@/components/PoliciesCard";
@@ -33,9 +33,15 @@ const Policies = ({ policiesData }) => {
 };
 
 export async function getStaticProps() {
-  const publicPolicies = `${apisBasePath.publicPolicies}`;
+  // const publicPolicies = `${apisBasePath.publicPolicies}`;
+  const publicPolicies = `${ksppApisBasePath.policiesGuideLines}`;
 
-  const response = await fetch(publicPolicies);
+  const response = await fetch(publicPolicies, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
   const policiesData = await response.json();
 
   return {

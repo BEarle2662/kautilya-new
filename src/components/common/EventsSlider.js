@@ -5,12 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Image from "next/image";
 import { ImagePaths } from "@/Endpoints/imagePath";
+import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
 const EventsSlider = ({ sliderData }) => {
   //   console.log(sliderData);
 
-  const imagePath =
-    "https://guprojects.gitam.edu/kautilya-admin/public/resources/";
+  // const imagePath = "https://guprojects.gitam.edu/KSPPCMS/public/resources/";
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -76,7 +76,7 @@ const EventsSlider = ({ sliderData }) => {
               className="p-2"
             >
               <Image
-                src={`${imagePath}${eachobj.desktop_image}`}
+                src={`${ImageBasePaths.eventsImagesPath}${eachobj.desktop_image}`}
                 alt={eachobj.title}
                 height={0}
                 width={0}

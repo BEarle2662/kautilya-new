@@ -7,13 +7,25 @@ import ProfileCard from "@/components/common/Profile/ProfileCard";
 import Link from "next/link";
 import Image from "next/image";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImagePaths } from "@/Endpoints/imagePath";
 import axios from "axios";
 
 const faculty = ({ data }) => {
   const image =
     "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
+
+  // console.log("KSPP faculty", data);
+
+  const distinguished = data.data?.filter(
+    (each) => each.category === "Distinguished Professor/Fellow"
+  );
+  const permanentFaculties = data.data?.filter(
+    (each) => each.category === "Permanent Faculties"
+  );
+  const visitingFaculties = data.data?.filter(
+    (each) => each.category === "Visiting Faculties"
+  );
 
   return (
     <>
@@ -24,15 +36,40 @@ const faculty = ({ data }) => {
         img={image}
       >
         <ScreenWidth layoutwidth="true">
-          <div className="my-10">
-            <CategoryHeading heading="Faculty Members" />
+          <div>
+            <CategoryHeading heading="Distinguished Professor/Fellow" />
+
+            <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4">
+              {distinguished.map((each, index) => (
+                <div key={each.id}>
+                  <ProfileCard profileData={each} page="faculty" />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
-            {data.data.map((each, index) => (
-              <div key={each.id}>
-                <ProfileCard profileData={each} page="faculty" />
-              </div>
-            ))}
+
+          <div>
+            <CategoryHeading heading="Permanent Faculties" />
+
+            <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
+              {permanentFaculties.map((each, index) => (
+                <div key={each.id}>
+                  <ProfileCard profileData={each} page="faculty" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <CategoryHeading heading="Visiting Faculties" />
+
+            <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
+              {visitingFaculties.map((each, index) => (
+                <div key={each.id}>
+                  <ProfileCard profileData={each} page="faculty" />
+                </div>
+              ))}
+            </div>
           </div>
         </ScreenWidth>
 
@@ -72,9 +109,15 @@ const faculty = ({ data }) => {
 };
 
 export async function getStaticProps() {
-  const ourFaculty = `${apisBasePath.faculty}`;
+  // const ourFaculty = `${apisBasePath.faculty}`;
+  const ourFaculty = `${ksppApisBasePath.faculty}`;
 
-  const res = await axios.get(ourFaculty);
+  const res = await axios.get(ourFaculty, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
 
   const data = res.data;
 

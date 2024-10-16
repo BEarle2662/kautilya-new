@@ -6,8 +6,9 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import indiaMap from "../../../public/assets/img/alumni/india-map.jpg";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
+import axios from "axios";
 
 const AlumniAssociation = ({ data, metaTagsResponse }) => {
   const image =
@@ -87,7 +88,7 @@ const AlumniAssociation = ({ data, metaTagsResponse }) => {
             </h1>
 
             <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
-              {data.data.map((each, index) => (
+              {data.map((each, index) => (
                 <div key={each.name}>
                   <ProfileCard profileData={each} page="alumniAssociation" />
                 </div>
@@ -101,13 +102,24 @@ const AlumniAssociation = ({ data, metaTagsResponse }) => {
 };
 
 export async function getStaticProps() {
-  const alumniProfiles = apisBasePath.alumniprofiles;
+  // const alumniProfiles = apisBasePath.alumniprofiles;
+  const almuniProfileApi = ksppApisBasePath.almuniProfileApi;
+
   const metaTagsResponse = await MetaTagsComponent({
     page: "alumni-association",
   });
 
-  const response = await fetch(alumniProfiles);
-  const data = await response.json();
+  // const response = await fetch(alumniProfiles);
+  // const data = await response.json();
+
+  const response = await axios.get(almuniProfileApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const data = response.data.data;
 
   return {
     props: { data, metaTagsResponse: metaTagsResponse },

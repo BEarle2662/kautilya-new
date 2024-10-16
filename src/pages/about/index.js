@@ -8,7 +8,7 @@ import ProfileCard from "@/components/common/Profile/ProfileCard";
 import Image from "next/image";
 import Link from "next/link";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImagePaths } from "@/Endpoints/imagePath";
 
 import aboutImg from "../../../public/assets/img/about-left.jpg";
@@ -185,9 +185,15 @@ const About = ({ initialTeamData }) => {
 };
 
 export async function getStaticProps() {
-  const ksppteamdata = apisBasePath.ksppteam;
+  // const ksppteamdata = apisBasePath.ksppteam;
+  const ksppteamdata = ksppApisBasePath.ourteam;
 
-  const response = await fetch(ksppteamdata);
+  const response = await fetch(ksppteamdata, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
   const data = await response.json();
 
   const foundingTeam = data.data.filter(

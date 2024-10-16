@@ -8,7 +8,7 @@ import placementReport from "../../../public/assets/img/placements/KSPP-Placemen
 import recruitImg from "../../../public/assets/img/placements/Recruit.jpg";
 import fillForm from "../../../public/assets/img/placements/re-1.jpg";
 import docDownload from "../../../public/assets/img/placements/re-2.jpg";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import CustomSlides from "@/components/common/CustomSlides";
 import FullScreenSlider from "@/components/common/FullScreenSlider";
 
@@ -347,9 +347,16 @@ const Placements = ({ data }) => {
 };
 
 export async function getStaticProps() {
-  const placementsKcAdvnData = `${apisBasePath.placementsKcAdvnData}`;
+  // const placementsKcAdvnData = `${apisBasePath.placementsKcAdvnData}`;
 
-  const placementResponse = await fetch(placementsKcAdvnData);
+  const placementsApi = ksppApisBasePath.placementsApi;
+
+  const placementResponse = await fetch(placementsApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
   const data = await placementResponse.json();
 
   return {

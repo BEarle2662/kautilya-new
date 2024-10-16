@@ -16,6 +16,9 @@ import slideImg4 from "../../../public/assets/img/studentClubs/4.jpg";
 import slideImg5 from "../../../public/assets/img/studentClubs/5.jpg";
 
 import slideImg6 from "../../../public/assets/img/studentClubs/6.jpg";
+import { ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
+import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
 const clubData = [
   {
@@ -65,27 +68,27 @@ const clubData = [
   },
 ];
 
-const StudentClub = () => {
-  const data = [
-    {
-      imgURL: slideImg1,
-    },
-    {
-      imgURL: slideImg2,
-    },
-    {
-      imgURL: slideImg3,
-    },
-    {
-      imgURL: slideImg4,
-    },
-    {
-      imgURL: slideImg5,
-    },
-    {
-      imgURL: slideImg6,
-    },
-  ];
+const StudentClub = ({ data }) => {
+  // const data = [
+  //   {
+  //     imgURL: slideImg1,
+  //   },
+  //   {
+  //     imgURL: slideImg2,
+  //   },
+  //   {
+  //     imgURL: slideImg3,
+  //   },
+  //   {
+  //     imgURL: slideImg4,
+  //   },
+  //   {
+  //     imgURL: slideImg5,
+  //   },
+  //   {
+  //     imgURL: slideImg6,
+  //   },
+  // ];
 
   const settings = {
     dots: true,
@@ -107,10 +110,10 @@ const StudentClub = () => {
 
         <ScreenWidth layoutwidth="true">
           <Slider {...settings}>
-            {data.map((eachobj) => (
+            {data.map((eachobj, index) => (
               <Image
-                src={eachobj.imgURL}
-                key={eachobj.imgURL}
+                src={`${ImageBasePaths.studentsClubImagesPath}${eachobj.desktop_banner}`}
+                key={index}
                 height={0}
                 width={0}
                 className="h-full w-full"
@@ -134,3 +137,21 @@ const StudentClub = () => {
 };
 
 export default StudentClub;
+
+export async function getStaticProps() {
+  const studentClubApi = ksppApisBasePath.studentClubApi;
+  const response = await axios.get(studentClubApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const data = response.data.data;
+
+  return {
+    props: {
+      data,
+    },
+  };
+}

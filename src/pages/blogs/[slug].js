@@ -3,7 +3,7 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import CategoryHeading from "@/components/common/categoryHeading";
 
 const BlogSlugPage = ({ blog }) => {
@@ -29,7 +29,8 @@ export default BlogSlugPage;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    apisBasePath.blogsList,
+    // apisBasePath.blogsList,
+    ksppApisBasePath.blogsListApi,
 
     {
       headers: {
@@ -51,12 +52,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "8efgh5gyujk",
-      },
-    });
+    // const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
+
+    const res = await fetch(
+      `${ksppApisBasePath.blogsListBriefApi}/${params.slug}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "8efgh5gyujk",
+        },
+      }
+    );
 
     // const blog = await res.json();
 

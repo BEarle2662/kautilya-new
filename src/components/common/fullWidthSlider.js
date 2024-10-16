@@ -3,19 +3,38 @@ import axios from "axios";
 import { Carousel, IconButton } from "@material-tailwind/react";
 
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
-const FullwidthSlider = ({ apiEndpoint, customSettings }) => {
+const FullwidthSlider = () => {
   const [kautilyanow_slider, setSlider] = useState([]);
 
   useEffect(() => {
     fetchSliderData();
   }, []);
 
+  // const fetchSliderData = async () => {
+  //   try {
+  //     const res = await axios.get(
+  //       apisBasePath.kautilyanowSlider,
+
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: "8efgh5gyujk",
+  //         },
+  //       }
+  //     );
+
+  //     setSlider(res.data.data);
+  //   } catch (error) {
+  //     console.error("Error fetching the slider data:", error);
+  //   }
+  // };
+
   const fetchSliderData = async () => {
     try {
       const res = await axios.get(
-        apisBasePath.kautilyanowSlider,
+        ksppApisBasePath.homeSlider,
 
         {
           headers: {
@@ -30,7 +49,6 @@ const FullwidthSlider = ({ apiEndpoint, customSettings }) => {
       console.error("Error fetching the slider data:", error);
     }
   };
-
   return (
     <div className="relative w-full h-full overflow-hidden">
       <Carousel

@@ -2,13 +2,13 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
-import banner from "../../../public/assets/img/partners/partner_banner.jpg";
+// import banner from "../../../public/assets/img/partners/partner_banner2.jpg";
 import Image from "next/image";
 import { ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
-const ieUniversitysSchoolOfPolitics = ({ data }) => {
+const InnerPage = ({ data }) => {
   return (
     <MainLayout>
       <ScreenWidth layoutwidth="true">
@@ -43,13 +43,13 @@ const ieUniversitysSchoolOfPolitics = ({ data }) => {
   );
 };
 
-export default ieUniversitysSchoolOfPolitics;
+export default InnerPage;
 
 export async function getStaticProps() {
-  const partnershipInnerPage_1_Api =
-    ksppApisBasePath.partnershipInnerPage_1_Api;
+  const partnershipInnerPage_2_Api =
+    ksppApisBasePath.partnershipInnerPage_2_Api;
 
-  const response = await axios.get(partnershipInnerPage_1_Api, {
+  const response = await axios.get(partnershipInnerPage_2_Api, {
     headers: {
       "Content-Type": "application/json",
       Authorization: "8efgh5gyujk",

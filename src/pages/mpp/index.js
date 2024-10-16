@@ -2,7 +2,7 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import CustomSlides from "@/components/common/CustomSlides";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import Image from "next/image";
 import mppPath from "../../../public/assets/img/mpp/mpp-path.jpg";
 import DynamicTabs from "@/components/common/DynamicTabs";
@@ -126,13 +126,25 @@ const Mpp = ({ mppData }) => {
 };
 
 export async function getStaticProps() {
-  const masterProgramData = `${apisBasePath.masterProgramData}`;
+  // const masterProgramData = `${apisBasePath.masterProgramData}`;
+  const masterProgramData = `${ksppApisBasePath.mppSliders}`;
 
-  const masterProgramTabsData = `${apisBasePath.masterProgramTabsData}`;
-
+  // const masterProgramTabsData = `${apisBasePath.masterProgramTabsData}`;
+  const mppTabsData = `${ksppApisBasePath.mppTabs}`;
+  // console.log("mppTabsData", mppTabsData);
   const responses = await Promise.all([
-    fetch(masterProgramData),
-    fetch(masterProgramTabsData),
+    fetch(masterProgramData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+    fetch(mppTabsData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
   ]);
 
   const data = await Promise.all(responses.map((response) => response.json()));

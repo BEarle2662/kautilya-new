@@ -3,11 +3,11 @@ import FullwidthSlider from "@/components/common/fullWidthSlider";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import React from "react";
 
-const StudyAtKautilya = ({ kautilyaAdvantageBanner, metaTagsResponse }) => {
+const StudyAtKautilya = ({ studentAtKautilyaData, metaTagsResponse }) => {
   let page =
     "placements"; /* due to sending the data to slider with a same path of placements & kautilya Adv */
 
@@ -51,8 +51,8 @@ const StudyAtKautilya = ({ kautilyaAdvantageBanner, metaTagsResponse }) => {
             </p>
 
             <FullScreenSlider
-              slider={kautilyaAdvantageBanner}
-              pagesMpp={page}
+              slider={studentAtKautilyaData}
+              pagesMpp="kautiya-advantage"
             />
 
             <p className="text-lg mt-8">
@@ -116,11 +116,20 @@ const StudyAtKautilya = ({ kautilyaAdvantageBanner, metaTagsResponse }) => {
 export const getStaticProps = async () => {
   try {
     // Fetch the placements data
-    const response = await axios.get(apisBasePath.placementsKcAdvnData);
+    // const response = await axios.get(apisBasePath.placementsKcAdvnData);
+    const response = await axios.get(ksppApisBasePath.kcAdvnData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    });
+    // console.log("studentAtKautilyaData", response);
     const studentAtKautilyaData = response.data.data;
-    const kautilyaAdvantageBanner = studentAtKautilyaData.filter(
-      (each) => each.category === "study-at-kautilya"
-    );
+    // const kautilyaAdvantageBanner = studentAtKautilyaData.filter(
+    //   (each) => each.category === "study-at-kautilya"
+    // );
+
+    // console.log("studentAtKautilyaData", studentAtKautilyaData);
 
     // Await the meta tags data from MetaTagsComponent
     const metaTagsResponse = await MetaTagsComponent({
@@ -130,7 +139,7 @@ export const getStaticProps = async () => {
     // Ensure that metaTagsResponse is not undefined
     return {
       props: {
-        kautilyaAdvantageBanner,
+        studentAtKautilyaData,
         metaTagsResponse: metaTagsResponse || {}, // Ensure default object if undefined
       },
     };
@@ -138,7 +147,7 @@ export const getStaticProps = async () => {
     console.error("Error fetching data", error);
     return {
       props: {
-        kautilyaAdvantageBanner: [],
+        studentAtKautilyaData: [],
         metaTagsResponse: {}, // Provide default empty object in case of error
       },
     };

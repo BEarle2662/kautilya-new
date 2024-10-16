@@ -3,7 +3,7 @@ import React from "react";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 import faqImage from "../../../public/assets/img/FAQ-2.jpg";
 import Faq from "@/components/common/Faq";
@@ -29,57 +29,36 @@ const ResearchFaqs = ({ researchFaq }) => {
   );
 };
 
-// export async function getStaticProps() {
-//   let researchFaq = [];
-
-//   try {
-//     const response = await fetch(
-//       apisBasePath.faqdata,
-
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           type: "Research",
-//         }),
-//       }
-//     );
-//     researchFaq = await response.json();
-//     // console.log("ResearchFaq", researchFaq);
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//   }
-
-//   return {
-//     props: {
-//       researchFaq,
-//     },
-//   };
-// }
-
 export async function getStaticProps() {
-  let researchFaq = [];
+  // let researchFaq = [];
 
-  try {
-    const response = await axios.post(
-      apisBasePath.faqdata,
-      {
-        type: "Research",
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    researchFaq = response.data;
-    // console.log("researchFaq", researchFaq);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+  // try {
+  //   const response = await axios.post(
+  //     apisBasePath.faqdata,
+  //     {
+  //       type: "Research",
+  //     },
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   );
+  //   researchFaq = response.data;
+  //   console.log("researchFaq", researchFaq);
+  // } catch (error) {
+  //   console.error("Error fetching data:", error);
+  // }
+  const researchFaqsApi = ksppApisBasePath.researchFaqsApi;
 
+  const response = await axios.get(researchFaqsApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const researchFaq = response.data.data || [];
   return {
     props: {
       researchFaq,

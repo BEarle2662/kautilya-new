@@ -7,28 +7,44 @@ import Link from "next/link";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
 import { FaDownload } from "react-icons/fa6";
+import { docsPath } from "@/Endpoints/docsBasePath";
 
 const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
   const docPath = "https://guprojects.gitam.edu/kautilya-admin/public/";
 
   let documentFile;
+  let slugMediaInnerImgPath;
+  let slugMediaPostedByPath;
 
   switch (slugDetailedPage) {
     case "Capstone Project":
-      documentFile = "CapstoneProject/";
+      documentFile = docsPath.capstoneSlugsMediaPath;
+      slugMediaInnerImgPath = `${ImageBasePaths.capstoneSlugsMediaPath}innerpage_image/`;
+      slugMediaPostedByPath = `${ImageBasePaths.capstoneSlugsMediaPath}posted_by_image/`;
+
       break;
 
     case "Issue Brief":
-      documentFile = "issuebrief/";
+      documentFile = docsPath.issueBriefSlugsMediaPath;
+      slugMediaInnerImgPath = `${ImageBasePaths.issueBriefSlugsMediaPath}innerpage_image/`;
+      slugMediaPostedByPath = `${ImageBasePaths.issueBriefSlugsMediaPath}posted_by_image/`;
+
+      break;
+
+    case "Blog":
+      // documentFile = docsPath.issueBriefSlugsMediaPath;
+      slugMediaInnerImgPath = `${ImageBasePaths.blogSlugsMediaPath}innerpage_image/`;
+      slugMediaPostedByPath = `${ImageBasePaths.blogSlugsMediaPath}posted_by_image/`;
+
       break;
 
     default:
       documentFile = null;
   }
 
-  const data = slugData?.data || {};
+  const data = slugData?.data;
 
-  if (!data.title) {
+  if (!data.inner_title) {
     return <div>Data not available</div>;
   }
 
@@ -36,15 +52,15 @@ const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
     <ScreenWidth layoutwidth="">
       <h4 className="text-base font-bold uppercase mb-4">{data.opinion}</h4>
       <h1 className="text-[22px] md:text-[42px] font-extrabold leading-8 md:leading-10 mb-8">
-        {data.title}
+        {data.inner_title}
       </h1>
 
       <div>
         <Image
-          src={`${ImageBasePaths.detailedSlugsMediaPath}${data.header_path}`}
+          src={`${slugMediaInnerImgPath}${data.innerpage_image}`}
           width={0}
           height={0}
-          alt={data.title}
+          alt={data.innerpage_image_alttag}
           className="h-full w-full"
         />
       </div>
@@ -53,8 +69,8 @@ const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
         <Avatar
           size="lg"
           variant="circular"
-          alt=""
-          src={`${ImageBasePaths.detailedSlugsMediaPath}${data.posted_by_path}`}
+          alt={data.posted_by_image_alttag}
+          src={`${slugMediaPostedByPath}${data.posted_by_image}`}
           className="border-2 border-white hover:z-10 mr-3"
         />
         <div className="font-extrabold text-[#424a53]">
@@ -72,9 +88,11 @@ const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
         className="mt-4 mb-3 slug-description"
       ></div>
 
-      {data.document && (
+      {data.file_document && (
         <Link
-          href={`${docPath}${documentFile}${data.document}`}
+          // href={`${docPath}${documentFile}${data.document}`}
+          href={`${documentFile}${data.file_document}`}
+          target="_blank"
           className="text-indigo-900 flex items-center gap-2"
         >
           <strong>DOWNLOAD PAPER</strong>
