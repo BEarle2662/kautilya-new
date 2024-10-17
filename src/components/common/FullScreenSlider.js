@@ -7,7 +7,7 @@ import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
 const FullScreenSlider = ({ slider, pagesMpp }) => {
   let slides = slider;
-  console.log("KCADV", slides);
+  // console.log("KCADV", slides);
 
   let pageType;
   const pages = {

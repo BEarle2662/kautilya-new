@@ -52,7 +52,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log("CP Params", params.slug);
+  // console.log("CP Params", params.slug);
   const res = await fetch(
     // `${apisBasePath.capstoneProjectsList}/${params.slug}`,
     `${ksppApisBasePath.cpSlug}/${params.slug}`,
@@ -66,7 +66,7 @@ export async function getStaticProps({ params }) {
   );
 
   const CapstoneProject = await res.json();
-  console.log("CapstoneProject", CapstoneProject);
+  // console.log("CapstoneProject", CapstoneProject);
   return {
     props: {
       CapstoneProject,

@@ -65,7 +65,7 @@ export async function getStaticProps({ params }) {
   );
 
   const issueBrief = await res.json();
-  console.log("Issue brief Slug", issueBrief);
+  // console.log("Issue brief Slug", issueBrief);
 
   return {
     props: {

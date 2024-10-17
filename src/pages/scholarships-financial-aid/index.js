@@ -55,11 +55,7 @@ const FinancialAid = ({ metaTagsResponse }) => {
         "kautilya Finance page Testing for metatags"
       }
       keywords={metaTagsResponse.keywords || "kautilya, Finance"}
-      img={
-        metaTagsResponse.s_image
-          ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
-          : image
-      }
+      img={metaTagsResponse.meta_image}
     >
       <div className="bg-[#95131d] h-[20vh] pt-10 py-20 md:pt-20 md:py-40">
         <h1 className="text-white text-center text-2xl md:text-6xl font-normal">

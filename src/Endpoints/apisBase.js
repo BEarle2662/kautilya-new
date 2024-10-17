@@ -114,4 +114,5 @@ export const ksppApisBasePath = {
   resourcespodcastsApi: `${ksppApiBasePath}fetch-resources-podcasts`, //  placements List
 
 
+  metadataApi: `${ksppApiBasePath}meta-tags`, // meta data
 };

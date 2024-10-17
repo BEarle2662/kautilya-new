@@ -12,6 +12,7 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImagePaths } from "@/Endpoints/imagePath";
 
 import aboutImg from "../../../public/assets/img/about-left.jpg";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const sectors = [
   {
@@ -46,7 +47,7 @@ const sectors = [
   },
 ];
 
-const About = ({ initialTeamData }) => {
+const About = ({ initialTeamData, metaTagsData }) => {
   const deptHeadings = [
     { foundingTeam: "Founding Team" },
     { deanData: "Dean" },
@@ -61,10 +62,10 @@ const About = ({ initialTeamData }) => {
   return (
     <>
       <MainLayout
-        title={"About page Testing for metatags"}
-        description={"Home page Testing for metatags"}
-        keywords={"GIMSR, GITAM, Hospital"}
-        img={image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image || image}
       >
         <ScreenWidth layoutwidth="true">
           {deptHeadings.map((each, index) => {
@@ -220,10 +221,14 @@ export async function getStaticProps() {
     supportStaff: supportStaff,
   };
 
+  const metaComponentResponse = await MetaTagsComponent({ page: "about" });
+
+  console.log("About Page Meta DAta", metaComponentResponse);
+
   return {
-    props: { initialTeamData },
+    props: { initialTeamData, metaTagsData: metaComponentResponse },
     // Revalidate at most once every 60 seconds
-    revalidate: 30, // In seconds
+    revalidate: 60, // In seconds
   };
 }
 
