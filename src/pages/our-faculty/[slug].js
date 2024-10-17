@@ -5,16 +5,20 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
-const ourFacultySlugPage = ({ facultySlugData }) => {
+const ourFacultySlugPage = ({ facultySlugData}) => {
   const image =
     "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
 
   return (
     <MainLayout
-      title={"Our faculty slug page Testing for metatags"}
-      description={"Our faculty slug for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={ metaTagsData.title || "Our faculty slug page Testing for metatags"}
+      description={metaTagsData.description || "Our faculty slug for metatags"}
+      keywords={metaTagsData.keywords || "GIMSR, GITAM, Hospital"}
+      img={
+        metaTagsData.s_image
+          ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
+          : image
+      }
     >
       <FacultySlugPage
         slugDetailedPage="Our Faculty Slug"
@@ -68,12 +72,17 @@ export async function getStaticProps({ params }) {
       Authorization: "8efgh5gyujk",
     },
   });
-
   const facultySlugData = await res.json();
+  
+
+  
   // console.log("facultySlugData", facultySlugData);
   return {
     props: {
       facultySlugData,
+    
+      
     },
+    revalidate: 60,
   };
 }

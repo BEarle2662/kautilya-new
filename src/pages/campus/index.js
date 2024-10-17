@@ -5,11 +5,17 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import React from "react";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const Campus = ({ facilitiesdata }) => {
+const Campus = ({ facilitiesdata,metaTagsData }) => {
   const tabsData = facilitiesdata;
   return (
-    <MainLayout>
+    <MainLayout
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Facilities" />
 
@@ -56,11 +62,14 @@ export async function getStaticProps() {
     },
   });
   // const facilitiesdata = await facilityListdataResponse.json();
+  const metaComponentResponse = await MetaTagsComponent({ page: "campus" });
 
+  console.log("campus Page Meta DAta", metaComponentResponse);
   const facilitiesdata = response.data.data;
   // console.log(facilitiesdata);
   return {
-    props: { facilitiesdata },
+    props: { facilitiesdata, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

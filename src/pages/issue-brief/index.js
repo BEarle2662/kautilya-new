@@ -4,8 +4,9 @@ import axios from "axios";
 import React from "react";
 
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const IssueBrief = ({ slugsData }) => {
+const IssueBrief = ({ slugsData, metaTagsData }) => {
   const image =
     "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
 
@@ -13,10 +14,10 @@ const IssueBrief = ({ slugsData }) => {
 
   return (
     <MainLayout
-      title={"Issue Brief page Testing for metatags"}
-      description={"Issue Brief page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+    title={metaTagsData.title}
+    description={metaTagsData.description}
+    keywords={metaTagsData.keywords}
+    img={metaTagsData.meta_image}
     >
       <SlugsPage pageTitle="Issue Brief" slugsPageData={slugsData} />
     </MainLayout>
@@ -36,11 +37,14 @@ export async function getStaticProps() {
   });
 
   const slugsData = res.data.data || [];
+  const metaComponentResponse = await MetaTagsComponent({ page: "issue-brief" });
 
+  console.log("issue-brief Page Meta DAta", metaComponentResponse);
   // console.log("Issue brief", slugsData);
 
   return {
-    props: { slugsData },
+    props: { slugsData, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

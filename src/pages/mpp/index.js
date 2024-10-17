@@ -7,7 +7,10 @@ import Image from "next/image";
 import mppPath from "../../../public/assets/img/mpp/mpp-path.jpg";
 import DynamicTabs from "@/components/common/DynamicTabs";
 
-const Mpp = ({ mppData }) => {
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
+
+
+const Mpp = ({ mppData,metaTagsData  }) => {
   // filter for masterProgramdata
   let page = "master-program";
   const skillsShop = mppData.slidesData?.filter(
@@ -21,7 +24,12 @@ const Mpp = ({ mppData }) => {
   );
 
   return (
-    <MainLayout>
+    <MainLayout
+    title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <div className="bg-mpp-img  bg-cover bg-no-repeat py-14">
         <ScreenWidth layoutwidth="true">
           <div className="md:grid md:grid-cols-12">
@@ -153,9 +161,12 @@ export async function getStaticProps() {
     slidesData: data[0].data,
     tabsData: data[1].data,
   };
+  const metaComponentResponse = await MetaTagsComponent({ page: "mpp" });
 
+  console.log("mpp Page Meta DAta", metaComponentResponse);
   return {
-    props: { mppData },
+    props: { mppData, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

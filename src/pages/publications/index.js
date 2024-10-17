@@ -5,14 +5,20 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 import Image from "next/image";
 import React from "react";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const Publications = ({ publicationData }) => {
+const Publications = ({ publicationData, metaTagsData}) => {
   // const facultyTabs = publicationData.facultiesData?.filter(
   //   (each) => each.category === "Publications page"
   // );
 
   return (
-    <MainLayout>
+    <MainLayout
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         {/* <div> */}
         <Image
@@ -63,9 +69,14 @@ export async function getStaticProps() {
     banner: data[0].data[0],
     facultiesData: facultiesdata,
   };
+
+  const metaComponentResponse = await MetaTagsComponent({ page: "publications" });
+
+  console.log("publications Page Meta DAta", metaComponentResponse);
   // console.log("facultyTabs", publicationData);
   return {
-    props: { publicationData },
+    props: { publicationData, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

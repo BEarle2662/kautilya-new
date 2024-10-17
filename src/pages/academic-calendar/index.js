@@ -2,6 +2,7 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import { BsArrowRight } from "react-icons/bs";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 import React from "react";
 import {
@@ -156,7 +157,7 @@ const academicCalendar2025 = [
   },
 ];
 
-const AcademicCalendar = () => {
+const AcademicCalendar = ({metaTagsData}) => {
   const [open, setOpen] = React.useState(0);
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
@@ -165,10 +166,10 @@ const AcademicCalendar = () => {
     "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/mpp_desktop_66b64f79d1f7d.jpg";
   return (
     <MainLayout
-      title={"kautilya academic calender page Testing for metatags"}
-      description={"kautilya Advantage page Testing for metatags"}
-      keywords={"kautilya, Advantage"}
-      img={image}
+    title={metaTagsData.title}
+    description={metaTagsData.description}
+    keywords={metaTagsData.keywords}
+    img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Academic Calendar" />
@@ -359,5 +360,17 @@ const AcademicCalendar = () => {
     </MainLayout>
   );
 };
+export async function getStaticProps() {
+  // const initialTeamData = {
+  // }
+const metaComponentResponse = await MetaTagsComponent({ page: "academic-calendar" });
 
+console.log("academic-calendar Page Meta DAta", metaComponentResponse);
+
+return {
+  props: {  metaTagsData: metaComponentResponse },
+  // Revalidate at most once every 60 seconds
+  revalidate: 60, // In seconds
+};
+}
 export default AcademicCalendar;

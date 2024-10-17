@@ -5,13 +5,20 @@ import DynamicTabs from "@/components/common/DynamicTabs";
 import { Button } from "@material-tailwind/react";
 import axios from "axios";
 import Link from "next/link";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 // import pdfDoc from "../../../public/assets/pdf/events/qs-gitamuniversity.pdf";
 
 // React component definition
-const DoctoralPhdProgram = ({ tabData }) => {
+const DoctoralPhdProgram = ({ tabData, metaTagsData  }) => {
   return (
-    <MainLayout>
+
+    <MainLayout
+    title={metaTagsData.title}
+    description={metaTagsData.description}
+    keywords={metaTagsData.keywords}
+    img={metaTagsData.meta_image}
+    >
       <div className="md:p-12">
         <ScreenWidth layoutwidth="true">
           <Link
@@ -87,12 +94,16 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
+  const metaComponentResponse = await MetaTagsComponent({ page: "ph-d-duration" });
+
+  console.log("ph-d-duration Page Meta DAta", metaComponentResponse);
 
   const data = response.data.data;
 
   return {
     props: {
-      tabData: data || [], // Pass tabData to the page
+      tabData: data || [], metaTagsData: metaComponentResponse// Pass tabData to the page
     },
+    revalidate: 60,
   };
 }

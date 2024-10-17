@@ -3,6 +3,7 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import Image from "next/image";
 import banner from "../../../public/assets/img/kautilya-ICSSR-web-banner-min.jpg";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const projectContent = `
   <div class="mt-10">
@@ -78,9 +79,14 @@ const projectContent = `
   </div>
 `;
 
-const ResearchProjects = () => {
+const ResearchProjects = ({metaTagsData}) => {
   return (
-    <MainLayout>
+    <MainLayout
+    title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Grants & Projects" />
         <Image
@@ -95,5 +101,15 @@ const ResearchProjects = () => {
     </MainLayout>
   );
 };
+export async function getStaticProps() {
+  const metaComponentResponse = await MetaTagsComponent({ page: "research-projects" });
 
+  console.log("research-projects Page Meta DAta", metaComponentResponse);
+
+  return {
+    props: { metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 60, // In seconds
+  };
+}
 export default ResearchProjects;

@@ -1,7 +1,7 @@
 import CategoryHeading from "@/components/common/categoryHeading";
-import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const financialAidContent = `
   <div>
@@ -44,18 +44,13 @@ const financialAidContent = `
     </ul>
   </div>
 `;
-const FinancialAid = ({ metaTagsResponse }) => {
+const FinancialAid = ({ metaTagsResponse, metaTagsData }) => {
   return (
     <MainLayout
-      title={
-        metaTagsResponse.title || "kautilya Finance page Testing for metatags"
-      }
-      description={
-        metaTagsResponse.description ||
-        "kautilya Finance page Testing for metatags"
-      }
-      keywords={metaTagsResponse.keywords || "kautilya, Finance"}
-      img={metaTagsResponse.meta_image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
     >
       <div className="bg-[#95131d] h-[20vh] pt-10 py-20 md:pt-20 md:py-40">
         <h1 className="text-white text-center text-2xl md:text-6xl font-normal">
@@ -73,25 +68,34 @@ const FinancialAid = ({ metaTagsResponse }) => {
 };
 
 export const getStaticProps = async () => {
-  try {
-    const metaTagsResponse = await MetaTagsComponent({
-      page: "scholarships-financial-aid",
-    });
-    // console.log("metaTagsResponse", metaTagsResponse);
+  // try {
+  //   const metaTagsResponse = await MetaTagsComponent({
+  //     page: "scholarships-financial-aid",
+  //   });
+  //   // console.log("metaTagsResponse", metaTagsResponse);
 
-    return {
-      props: {
-        metaTagsResponse: metaTagsResponse || {},
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching data", error);
-    return {
-      props: {
-        metaTagsResponse: {},
-      },
-    };
-  }
+  //   return {
+  //     props: {
+  //       metaTagsResponse: metaTagsResponse || {},
+  //     },
+  //   };
+  // } catch (error) {
+  //   console.error("Error fetching data", error);
+  //   return {
+  //     props: {
+  //       metaTagsResponse: {},
+  //     },
+  //   };
+  // }
+  const metaComponentResponse = await MetaTagsComponent({ page: "scholarships-financial-aid" });
+
+  console.log("scholarships-financial-aid Page Meta DAta", metaComponentResponse);
+
+  return {
+    props: { metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 60, // In seconds
+  };
 };
 
 export default FinancialAid;

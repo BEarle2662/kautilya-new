@@ -3,6 +3,7 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import Image from "next/image";
 import researchBanner from "../../../public/assets/img/research.jpg";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const researchContent = [
   {
@@ -26,9 +27,14 @@ const researchContent = [
   },
 ];
 
-const Research = () => {
+const Research = ({metaTagsData}) => {
   return (
-    <MainLayout>
+    <MainLayout
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Research @ Kautilya" />
         <Image
@@ -67,5 +73,15 @@ const Research = () => {
     </MainLayout>
   );
 };
+export async function getStaticProps() {
+const metaComponentResponse = await MetaTagsComponent({ page: "research" });
 
+  console.log("research Page Meta DAta", metaComponentResponse);
+ 
+  return {
+    props: { metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 60, // In seconds
+  };
+}
 export default Research;

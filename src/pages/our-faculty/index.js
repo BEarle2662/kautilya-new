@@ -10,8 +10,9 @@ import Image from "next/image";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImagePaths } from "@/Endpoints/imagePath";
 import axios from "axios";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const faculty = ({ data }) => {
+const faculty = ({ data, metaTagsData }) => {
   const image =
     "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
 
@@ -30,10 +31,10 @@ const faculty = ({ data }) => {
   return (
     <>
       <MainLayout
-        title={"Faculty page Testing for metatags"}
-        description={"Faculty page Testing for metatags"}
-        keywords={"GIMSR, GITAM, Hospital"}
-        img={image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
       >
         <ScreenWidth layoutwidth="true">
           <div>
@@ -118,13 +119,15 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
+  const metaComponentResponse = await MetaTagsComponent({ page: "our-faculty" });
 
+  console.log("faculty Page Meta DAta", metaComponentResponse);
   const data = res.data;
 
   return {
-    props: { data },
+    props: { data, metaTagsData: metaComponentResponse },
     // Revalidate at most once every 60 seconds
-    revalidate: 30, // In seconds
+    revalidate: 60, // In seconds
   };
 }
 

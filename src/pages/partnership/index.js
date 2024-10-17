@@ -19,6 +19,7 @@ import Image from "next/image";
 import { ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const partnersData = [
   {
@@ -33,9 +34,14 @@ const partnersData = [
   },
 ];
 
-const Partnership = ({ data }) => {
+const Partnership = ({ data, metaTagsData }) => {
   return (
-    <MainLayout>
+    <MainLayout
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Partnership" />
         <div className="flex flex-col md:flex-row justify-around items-center">
@@ -83,9 +89,13 @@ export async function getStaticProps() {
 
   const data = response.data.data;
   // console.log(data);
+  const metaComponentResponse = await MetaTagsComponent({ page: "partnership" });
+
+  console.log("partnership Page Meta DAta", metaComponentResponse);
   return {
     props: {
-      data,
+      data, metaTagsData: metaComponentResponse
     },
+    revalidate: 60,
   };
 }

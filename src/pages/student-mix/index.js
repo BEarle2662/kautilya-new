@@ -6,15 +6,21 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import React from "react";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const StudentMix = ({ data }) => {
+const StudentMix = ({ data, metaTagsData }) => {
   const firstSlider = data?.filter((each) => each.category === "2023-25");
   const secondSlider = data?.filter((each) => each.category === "2022-24");
   const thirdSlider = data?.filter((each) => each.category === "2021-23");
   const fourthSlider = data?.filter((each) => each.category === "2024-26");
 
   return (
-    <MainLayout>
+    <MainLayout
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <div className="bg-white-shade  bg-cover bg-no-repeat">
         <ScreenWidth layoutwidth="true">
           <CategoryHeading heading="#IndiaByKautilya" />
@@ -123,10 +129,13 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
+  const metaComponentResponse = await MetaTagsComponent({ page: "student-mix" });
 
+  console.log("student-mix Page Meta DAta", metaComponentResponse);
   const data = response.data.data;
   //   console.log(data);
   return {
-    props: { data },
+    props: { data, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }

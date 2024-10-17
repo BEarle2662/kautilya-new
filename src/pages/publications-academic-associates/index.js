@@ -6,8 +6,9 @@ import React from "react";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 import Image from "next/image";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const PublicationsAcademicAssociates = ({ AcademicAssodata }) => {
+const PublicationsAcademicAssociates = ({ AcademicAssodata, metaTagsData }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
@@ -17,10 +18,10 @@ const PublicationsAcademicAssociates = ({ AcademicAssodata }) => {
 
   return (
     <MainLayout
-      title={"Placements page Testing for metatags"}
-      description={"Placements page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image
@@ -73,9 +74,14 @@ export async function getStaticProps() {
     banner: data[0].data[1],
     associatesData: Associatesdata,
   };
+
+  const metaComponentResponse = await MetaTagsComponent({ page: "publications-academic-associates" });
+
+  console.log("publications-academic-associates Page Meta DAta", metaComponentResponse);
   // console.log("AcademicAssodata", AcademicAssodata);
   return {
-    props: { AcademicAssodata },
+    props: { AcademicAssodata, metaTagsData: metaComponentResponse  },
+    revalidate: 60,
   };
 }
 

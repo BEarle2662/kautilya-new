@@ -19,6 +19,7 @@ import slideImg6 from "../../../public/assets/img/studentClubs/6.jpg";
 import { ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const clubData = [
   {
@@ -68,7 +69,7 @@ const clubData = [
   },
 ];
 
-const StudentClub = ({ data }) => {
+const StudentClub = ({ data, metaTagsData }) => {
   // const data = [
   //   {
   //     imgURL: slideImg1,
@@ -99,7 +100,12 @@ const StudentClub = ({ data }) => {
   };
 
   return (
-    <MainLayout>
+    <MainLayout
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="false">
         <div className="h-[40vh] bg-black-shade pt-10">
           <CategoryHeading
@@ -148,10 +154,13 @@ export async function getStaticProps() {
   });
 
   const data = response.data.data;
+  const metaComponentResponse = await MetaTagsComponent({ page: "student-clubs" });
 
+  console.log("student-clubs Page Meta DAta", metaComponentResponse);
   return {
     props: {
-      data,
+      data, metaTagsData: metaComponentResponse
     },
+    revalidate: 60,
   };
 }

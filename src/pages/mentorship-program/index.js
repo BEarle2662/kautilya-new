@@ -7,10 +7,16 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
 import { Button } from "@material-tailwind/react";
 import DynamicTabs from "@/components/common/DynamicTabs";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const MentorshipProgram = ({ mentorPageData }) => {
+const MentorshipProgram = ({ mentorPageData,metaTagsData }) => {
   return (
-    <MainLayout>
+    <MainLayout
+       title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <div className="mb-4" id="know-more">
           <Image
@@ -98,9 +104,12 @@ export async function getStaticProps() {
     mentorImagesData: data[0].data,
     tabsData: data[1].data,
   };
+  const metaComponentResponse = await MetaTagsComponent({ page: "mentorship-program" });
 
+  console.log("mentorship-program Page Meta DAta", metaComponentResponse);
   return {
-    props: { mentorPageData },
+    props: { mentorPageData,  metaTagsData: metaComponentResponse},
+    revalidate: 60,
   };
 }
 

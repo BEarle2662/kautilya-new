@@ -7,7 +7,7 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import React from "react";
 
-const StudyAtKautilya = ({ studentAtKautilyaData, metaTagsResponse }) => {
+const StudyAtKautilya = ({ studentAtKautilyaData, metaTagsData }) => {
   let page =
     "placements"; /* due to sending the data to slider with a same path of placements & kautilya Adv */
 
@@ -17,16 +17,16 @@ const StudyAtKautilya = ({ studentAtKautilyaData, metaTagsResponse }) => {
     <>
       <MainLayout
         title={
-          metaTagsResponse.title ||
+          metaTagsData.title ||
           "kautilya Advantage page Testing for metatags"
         }
         description={
-          metaTagsResponse.description ||
+          metaTagsData.description ||
           "kautilya Advantage page Testing for metatags"
         }
-        keywords={metaTagsResponse.keywords || "kautilya, Advantage"}
+        keywords={metaTagsData.keywords || "kautilya, Advantage"}
         img={
-          metaTagsResponse.s_image
+          metaTagsData.s_image
             ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
             : image
         }
@@ -132,15 +132,19 @@ export const getStaticProps = async () => {
     // console.log("studentAtKautilyaData", studentAtKautilyaData);
 
     // Await the meta tags data from MetaTagsComponent
-    const metaTagsResponse = await MetaTagsComponent({
-      page: "study-at-kautilya",
-    });
+    // const metaTagsResponse = await MetaTagsComponent({
+    //   page: "study-at-kautilya",
+    // });
     // console.log("metaTagsResponse", metaTagsResponse);
     // Ensure that metaTagsResponse is not undefined
+    const metaComponentResponse = await MetaTagsComponent({ page: "study-at-kautilya" });
+
+    console.log("study Page Meta DAta", metaComponentResponse);
     return {
       props: {
         studentAtKautilyaData,
-        metaTagsResponse: metaTagsResponse || {}, // Ensure default object if undefined
+       metaTagsData: metaComponentResponse, 
+       revalidate: 60, // Ensure default object if undefined
       },
     };
   } catch (error) {
@@ -148,7 +152,7 @@ export const getStaticProps = async () => {
     return {
       props: {
         studentAtKautilyaData: [],
-        metaTagsResponse: {}, // Provide default empty object in case of error
+        metaTagsData: {}, // Provide default empty object in case of error
       },
     };
   }

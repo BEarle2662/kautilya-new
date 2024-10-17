@@ -8,16 +8,17 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import faqImage from "../../../public/assets/img/FAQ-2.jpg";
 import Faq from "@/components/common/Faq";
 import axios from "axios";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const AdmissionFaqs = ({ admissionFaqs }) => {
+const AdmissionFaqs = ({ admissionFaqs,metaTagsData }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
   return (
     <MainLayout
-      title={"Admission Faq page Testing for metatags"}
-      description={"Admission Faq page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image src={faqImage} width={0} height={0} alt="faq-banner" />
@@ -62,11 +63,14 @@ export async function getStaticProps() {
   });
 
   const admissionFaqs = response.data.data;
+  const metaComponentResponse = await MetaTagsComponent({ page: "admissions-faqs" });
 
+  console.log("admissions-faqs Page Meta DAta", metaComponentResponse);
   return {
     props: {
-      admissionFaqs,
+      admissionFaqs,metaTagsData: metaComponentResponse
     },
+    revalidate: 60,
   };
 }
 

@@ -7,32 +7,19 @@ import indiaMap from "../../../public/assets/img/alumni/india-map.jpg";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
 
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
-import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 import axios from "axios";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const AlumniAssociation = ({ data, metaTagsResponse }) => {
+const AlumniAssociation = ({ data, metaTagsData }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
   return (
     <MainLayout
-      // title={"AlumniAssociation page Testing for metatags"}
-      // description={"AlumniAssociation page Testing for metatags"}
-      // keywords={"GIMSR, GITAM, Hospital"}
-      // img={image}
-      title={
-        metaTagsResponse.title || "AlumniAssociation page Testing for metatags"
-      }
-      description={
-        metaTagsResponse.description ||
-        "AlumniAssociation page Testing for metatags"
-      }
-      keywords={metaTagsResponse.keywords || "kautilya, Alumni"}
-      img={
-        metaTagsResponse.s_image
-          ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
-          : image
-      }
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="false">
         <div className="border-b-2 md:mb-10">
@@ -120,9 +107,12 @@ export async function getStaticProps() {
   });
 
   const data = response.data.data;
+  const metaComponentResponse = await MetaTagsComponent({ page: "alumni-association" });
 
+  console.log("alumni-association Page Meta DAta", metaComponentResponse);
   return {
-    props: { data, metaTagsResponse: metaTagsResponse },
+    props: { data, metaTagsData: metaComponentResponse},
+    revalidate: 60,
   };
 }
 
