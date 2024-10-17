@@ -37,7 +37,7 @@ export async function getStaticProps() {
 
   const slugsData = res.data.data || [];
 
-  console.log("Issue brief", slugsData);
+  // console.log("Issue brief", slugsData);
 
   return {
     props: { slugsData },

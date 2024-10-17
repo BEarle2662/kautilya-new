@@ -76,7 +76,7 @@ export async function getStaticProps() {
   // const mentorsTabsData = `${apisBasePath.mentorsTabsData}`;
 
   const mentorsTabsData = `${ksppApisBasePath.mentorsTabs}`;
-  console.log("mentorsListData", mentorsData);
+  // console.log("mentorsListData", mentorsData);
   const responses = await Promise.all([
     fetch(mentorsData, {
       headers: {

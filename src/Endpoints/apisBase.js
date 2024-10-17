@@ -110,4 +110,6 @@ export const ksppApisBasePath = {
   policiesGuideLines: `${ksppApiBasePath}fetch-policies-guidelines`, //  events List
 
   placementsApi: `${ksppApiBasePath}fetch-placements-data`, //  placements List
+
+  metadataApi: `${ksppApiBasePath}meta-tags`, // meta data
 };
