@@ -3,33 +3,33 @@ import CustomSlides from "@/components/common/CustomSlides";
 import NumberCounter from "@/components/Counter";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
 import React from "react";
 
 const StudentMix = ({ data }) => {
-  const firstSlider = data.data?.filter((each) => each.category === "2023-25");
-  const secondSlider = data.data?.filter((each) => each.category === "2022-24");
-  const thirdSlider = data.data?.filter((each) => each.category === "2021-23");
-  const fourthSlider = data.data?.filter((each) => each.category === "2024-26");
+  const firstSlider = data?.filter((each) => each.category === "2023-25");
+  const secondSlider = data?.filter((each) => each.category === "2022-24");
+  const thirdSlider = data?.filter((each) => each.category === "2021-23");
+  const fourthSlider = data?.filter((each) => each.category === "2024-26");
 
   return (
     <MainLayout>
-      <div className="bg-[url('/assets/img/bgImages/studentmix-banner.jpg')]  bg-cover bg-no-repeat">
+      <div className="bg-white-shade  bg-cover bg-no-repeat">
         <ScreenWidth layoutwidth="true">
           <CategoryHeading heading="#IndiaByKautilya" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="hidden  md:grid  md:grid-cols-3">
             <div>
               <p className="count-ratio">
-                <NumberCounter end={19} duration={1000} />:
-                <span className="counter">1</span>
+                <NumberCounter end={21} duration={1000} />
               </p>
               <p className="counter-txt">States Represented by Students</p>
             </div>
 
             <div>
               <p className="count-ratio">
-                <span className="counter ">
+                <span className="counter">
                   <NumberCounter end={41} duration={1000} />
                 </span>
               </p>
@@ -40,7 +40,7 @@ const StudentMix = ({ data }) => {
 
             <div>
               <p className="count-ratio">
-                <NumberCounter end={35} duration={1000} />%
+                <NumberCounter end={47} duration={1000} />%
               </p>
               <p className="counter-txt">
                 Students having prior work experience
@@ -49,7 +49,7 @@ const StudentMix = ({ data }) => {
 
             <div>
               <p className="count-ratio">
-                <NumberCounter end={56} duration={1000} />
+                <NumberCounter end={72} duration={1000} />
               </p>
               <p className="counter-txt">Cities Represented by Students</p>
             </div>
@@ -67,7 +67,7 @@ const StudentMix = ({ data }) => {
 
             <div>
               <p className="count-ratio">
-                <NumberCounter end={42} duration={1000} />%
+                <NumberCounter end={45} duration={1000} />%
               </p>
               <p className="counter-txt">Students are girl child</p>
             </div>
@@ -108,15 +108,25 @@ const StudentMix = ({ data }) => {
   );
 };
 
-export async function getStaticProps() {
-  const studentMixData = `${apisBasePath.studentMixData}`;
+export default StudentMix;
 
-  const studentMixDataResp = await fetch(studentMixData);
-  const data = await studentMixDataResp.json();
+export async function getStaticProps() {
+  // const studentMixData = `${apisBasePath.studentMixData}`;
+  const studentMixApi = ksppApisBasePath.studentMixApi;
+
+  // const studentMixDataResp = await fetch(studentMixData);
+  // const data = await studentMixDataResp.json();
+
+  const response = await axios.get(studentMixApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const data = response.data.data;
   //   console.log(data);
   return {
     props: { data },
   };
 }
-
-export default StudentMix;

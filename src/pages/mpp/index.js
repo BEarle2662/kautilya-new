@@ -2,10 +2,9 @@ import CategoryHeading from "@/components/common/categoryHeading";
 import CustomSlides from "@/components/common/CustomSlides";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import Image from "next/image";
-import React from "react";
-import mppPath from "../../../public/assets/img/mpp/mpp_path.jpg";
+import mppPath from "../../../public/assets/img/mpp/mpp-path.jpg";
 import DynamicTabs from "@/components/common/DynamicTabs";
 
 const Mpp = ({ mppData }) => {
@@ -23,7 +22,7 @@ const Mpp = ({ mppData }) => {
 
   return (
     <MainLayout>
-      <div className="bg-[url('/assets/img/bgImages/masters_banner.jpg')]  bg-cover bg-no-repeat py-14">
+      <div className="bg-mpp-img  bg-cover bg-no-repeat py-14">
         <ScreenWidth layoutwidth="true">
           <div className="md:grid md:grid-cols-12">
             <div className="md:col-span-7">
@@ -54,8 +53,13 @@ const Mpp = ({ mppData }) => {
         </ScreenWidth>
       </div>
 
-      <div>
+      <div className="bg-[#f6f6f6]">
         <ScreenWidth layoutwidth="true">
+          <p className="my-10 text-sm md:text-base">
+            Bridging the gap between the industry requirements and academic
+            curriculum at the master’s level through targeted skill development
+            programs taught by practitioners.
+          </p>
           <DynamicTabs phd={mppData.tabsData} page="MPP Tabs" />
         </ScreenWidth>
       </div>
@@ -108,7 +112,7 @@ const Mpp = ({ mppData }) => {
             <a
               href="https://www.ugc.gov.in/"
               target="_blank"
-              className="mpp_anchor"
+              className="mpp_anchor underline"
             >
               UGC
             </a>
@@ -121,25 +125,26 @@ const Mpp = ({ mppData }) => {
   );
 };
 
-// export async function getStaticProps() {
-//   const masterProgramData = `${apisBasePath.masterProgramData}`;
-
-//   const masterProgramDataResp = await fetch(masterProgramData);
-//   const data = await masterProgramDataResp.json();
-//   //   console.log(data);
-//   return {
-//     props: { data },
-//   };
-// }
-
 export async function getStaticProps() {
-  const masterProgramData = `${apisBasePath.masterProgramData}`;
+  // const masterProgramData = `${apisBasePath.masterProgramData}`;
+  const masterProgramData = `${ksppApisBasePath.mppSliders}`;
 
-  const masterProgramTabsData = `${apisBasePath.masterProgramTabsData}`;
-
+  // const masterProgramTabsData = `${apisBasePath.masterProgramTabsData}`;
+  const mppTabsData = `${ksppApisBasePath.mppTabs}`;
+  // console.log("mppTabsData", mppTabsData);
   const responses = await Promise.all([
-    fetch(masterProgramData),
-    fetch(masterProgramTabsData),
+    fetch(masterProgramData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+    fetch(mppTabsData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
   ]);
 
   const data = await Promise.all(responses.map((response) => response.json()));

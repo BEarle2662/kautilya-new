@@ -3,7 +3,7 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import axios from "axios";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 const IssueBrief = ({ slugsData }) => {
   const image =
@@ -24,7 +24,9 @@ const IssueBrief = ({ slugsData }) => {
 };
 
 export async function getStaticProps() {
-  const slugsBasePath = `${apisBasePath.issuesBreifList}`;
+  // const slugsBasePath = `${apisBasePath.issuesBreifList}`;
+
+  const slugsBasePath = `${ksppApisBasePath.issueBriefLists}`;
 
   const res = await axios.get(slugsBasePath, {
     headers: {
@@ -33,7 +35,9 @@ export async function getStaticProps() {
     },
   });
 
-  const slugsData = res.data.data;
+  const slugsData = res.data.data || [];
+
+  console.log("Issue brief", slugsData);
 
   return {
     props: { slugsData },

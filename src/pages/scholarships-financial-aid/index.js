@@ -1,4 +1,5 @@
 import CategoryHeading from "@/components/common/categoryHeading";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
@@ -43,22 +44,58 @@ const financialAidContent = `
     </ul>
   </div>
 `;
-const FinancialAid = () => {
+const FinancialAid = ({ metaTagsResponse }) => {
   return (
-    <MainLayout>
+    <MainLayout
+      title={
+        metaTagsResponse.title || "kautilya Finance page Testing for metatags"
+      }
+      description={
+        metaTagsResponse.description ||
+        "kautilya Finance page Testing for metatags"
+      }
+      keywords={metaTagsResponse.keywords || "kautilya, Finance"}
+      img={
+        metaTagsResponse.s_image
+          ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
+          : image
+      }
+    >
       <div className="bg-[#95131d] h-[20vh] pt-10 py-20 md:pt-20 md:py-40">
         <h1 className="text-white text-center text-2xl md:text-6xl font-normal">
           Scholarships & TAship
         </h1>
       </div>
 
-      <div className="bg-[url('/assets/img/bgImages/scholarship.webp')] p-4 md:p-20 bg-cover bg-no-repeat">
+      <div className="bg-white-shade p-4 md:p-20 bg-cover bg-no-repeat">
         <ScreenWidth layoutwidth="true">
           <div dangerouslySetInnerHTML={{ __html: financialAidContent }} />
         </ScreenWidth>
       </div>
     </MainLayout>
   );
+};
+
+export const getStaticProps = async () => {
+  try {
+    const metaTagsResponse = await MetaTagsComponent({
+      page: "scholarships-financial-aid",
+    });
+    // console.log("metaTagsResponse", metaTagsResponse);
+
+    return {
+      props: {
+        metaTagsResponse: metaTagsResponse || {},
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data", error);
+    return {
+      props: {
+        metaTagsResponse: {},
+      },
+    };
+  }
 };
 
 export default FinancialAid;

@@ -1,7 +1,7 @@
 import CategoryHeading from "@/components/common/categoryHeading";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import React from "react";
 import YouTube from "react-youtube";
@@ -69,7 +69,9 @@ const videos = ({ videosData }) => {
 };
 
 export async function getStaticProps() {
-  const videosDataPath = `${apisBasePath.videosData}`;
+  // const videosDataPath = `${apisBasePath.videosData}`;
+
+  const videosDataPath = `${ksppApisBasePath.videoGalleryApi}`;
 
   const res = await axios.get(videosDataPath, {
     headers: {

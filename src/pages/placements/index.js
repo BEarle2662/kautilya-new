@@ -1,14 +1,14 @@
+import React, { useState } from "react";
 import CategoryHeading from "@/components/common/categoryHeading";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import Image from "next/image";
-import React from "react";
 
 import placementReport from "../../../public/assets/img/placements/KSPP-Placement-Report-2023-Final.jpg";
 import recruitImg from "../../../public/assets/img/placements/Recruit.jpg";
 import fillForm from "../../../public/assets/img/placements/re-1.jpg";
 import docDownload from "../../../public/assets/img/placements/re-2.jpg";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import CustomSlides from "@/components/common/CustomSlides";
 import FullScreenSlider from "@/components/common/FullScreenSlider";
 
@@ -21,6 +21,8 @@ import placementSec2 from "../../../public/assets/img/placements/Placement-sec2.
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AlumniRegisterForm from "@/components/AlumniRegisterForm";
+import { DialogWithForm } from "@/components/RecruiterRegdForm";
 
 const textData = [
   {
@@ -44,6 +46,12 @@ const textData = [
 ];
 
 const Placements = ({ data }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpenDialog = (handleDialog) => {
+    setOpen(handleDialog);
+  };
+
   let page = "placements";
 
   const image =
@@ -90,10 +98,10 @@ const Placements = ({ data }) => {
               src={placementReport}
               width={0}
               height={0}
+              alt="placement-reports"
               className="w-full h-full"
             />
           </ScreenWidth>
-
           <div className="bg-[#f6f6f6] px-1">
             <ScreenWidth layoutwidth="true">
               <div className="flex flex-col md:grid md:grid-cols-12 gap-8">
@@ -101,11 +109,12 @@ const Placements = ({ data }) => {
                   src={recruitImg}
                   width={0}
                   height={0}
-                  className="w-full h-full md:col-span-3"
+                  alt="recruit"
+                  className="w-1/2 h-1/2 md:w-full md:h-full md:col-span-3 self-center md:self-start"
                 />
 
                 <div className="md:col-span-9">
-                  <h1 className="text-2xl md:text-5xl font-normal text-center">
+                  <h1 className="text-xl md:text-5xl font-normal text-center">
                     Recruit from Kautilya
                   </h1>
                   <p className="text-p mt-5">
@@ -114,57 +123,65 @@ const Placements = ({ data }) => {
                     insights that help them hit the ground running.
                   </p>
 
-                  <div className="flex">
-                    <button className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] mr-4">
+                  <div className="flex flex-col md:flex-row gap-4 items-center">
+                    <button
+                      className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] md:mr-4 w-full"
+                      onClick={handleOpenDialog}
+                    >
                       <Image
                         src={fillForm}
                         width={0}
                         height={0}
+                        alt="Recruiter Registration"
                         className="w-[20px] h-[20px] mr-2"
                       />
-                      <span className="text-primary text-sm">
+                      <span className="text-primary text-xs md:text-sm">
                         Recruiter Registration
                       </span>
                     </button>
 
-                    <button className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf]">
+                    <button className="flex items-center justify-center py-2 px-5 rounded-md bg-[#cfcfcf] w-full">
                       <Image
                         src={docDownload}
                         width={0}
                         height={0}
+                        alt="Recruiters Guide"
                         className="w-[20px] h-[20px] mr-2"
                       />
                       <a
                         href="/assets/pdf/placements/Kautilya-Recruiters-Guide.pdf"
                         download
                       >
-                        <span className="text-primary text-sm">
+                        <span className="text-primary text-xs md:text-sm">
                           Recruiters Guide
                         </span>
                       </a>
                     </button>
                   </div>
+                  <DialogWithForm
+                    dialogOpen={open}
+                    handleOpenDialog={handleOpenDialog}
+                  />
                 </div>
               </div>
             </ScreenWidth>
           </div>
-
+          {/* <AlumniRegisterForm /> */}
           <div>
             <ScreenWidth layoutwidth="true">
               <CategoryHeading heading="Top recruiters" />
               <CustomSlides sliderdata={topRecruiters} page={page} />
             </ScreenWidth>
           </div>
-
-          <div className="mt-10">
+          <div className="mt-10 px-10 mb-4">
             <FullScreenSlider slider={placementsCongrats} pagesMpp={page} />
           </div>
-
           <ScreenWidth layoutwidth="true">
             <div className="grid md:grid-cols-12 gap-6">
               <Image
                 width={0}
                 height={0}
+                alt="recruiter-student synergy"
                 className="h-full w-full md:col-span-5"
                 src={placementSec2}
               />
@@ -201,17 +218,18 @@ const Placements = ({ data }) => {
               </div>
             </div>
           </ScreenWidth>
-
           <div className="mt-10">
             <ScreenWidth layoutwidth="true">
               <CategoryHeading
                 heading="Students from across skills, demographics"
                 color="text-primary"
               />
+              <p className="text-lg font-bold text-center">
+                MPP Batch of 2022-24
+              </p>
               <CustomSlides sliderdata={demoGraphs} page={page} />
             </ScreenWidth>
           </div>
-
           <div className="mt-10">
             <ScreenWidth layoutwidth="true">
               <CategoryHeading heading="Internships" />
@@ -241,27 +259,41 @@ const Placements = ({ data }) => {
               </div>
             </ScreenWidth>
           </div>
-
           <div className="bg-[#f6f6f6] md:my-10 pt-10">
             <CategoryHeading heading="Student-led Placement Committee" />
             <ScreenWidth layoutwidth="true">
               <div className="flex flex-col justify-center md:flex-row md:gap-8">
                 <div className="flex flex-col items-center md:mr-4">
-                  <Image src={placement1} width={160} height={160} />
+                  <Image
+                    src={placement1}
+                    width={160}
+                    height={160}
+                    alt="Aarini-Mishra"
+                  />
                   <p className="mt-3 text-primary text-lg font-semibold">
                     Aarini Mishra
                   </p>
                 </div>
 
                 <div className="flex flex-col items-center md:mr-4">
-                  <Image src={placement2} width={160} height={160} />
+                  <Image
+                    src={placement2}
+                    width={160}
+                    height={160}
+                    alt="Oaishik-Bhattacharya"
+                  />
                   <p className="mt-3 text-primary text-lg font-semibold">
                     Oaishik Bhattacharya
                   </p>
                 </div>
 
                 <div className="flex flex-col items-center md:mr-4">
-                  <Image src={placement3} width={160} height={160} />
+                  <Image
+                    src={placement3}
+                    width={160}
+                    height={160}
+                    alt="Saumya-Anand"
+                  />
                   <p className="mt-3 text-primary text-lg font-semibold">
                     Saumya Anand
                   </p>
@@ -269,7 +301,6 @@ const Placements = ({ data }) => {
               </div>
             </ScreenWidth>
           </div>
-
           <div className="bg-[#212529]">
             <ScreenWidth layoutwidth="true">
               <CategoryHeading
@@ -289,7 +320,7 @@ const Placements = ({ data }) => {
                   />
                 </div>
 
-                <div className="col-span-12 md:col-span-6 text-slider">
+                <div className="col-span-10 md:col-span-6 text-slider md:p-4">
                   <Slider {...settings}>
                     {textData.map((eachobj) => {
                       return (
@@ -300,8 +331,7 @@ const Placements = ({ data }) => {
                             dangerouslySetInnerHTML={{
                               __html: eachobj.description,
                             }}
-                            className="table-responsive"
-                          ></div>
+                          />
                         </div>
                       );
                     })}
@@ -317,9 +347,16 @@ const Placements = ({ data }) => {
 };
 
 export async function getStaticProps() {
-  const placementsKcAdvnData = `${apisBasePath.placementsKcAdvnData}`;
+  // const placementsKcAdvnData = `${apisBasePath.placementsKcAdvnData}`;
 
-  const placementResponse = await fetch(placementsKcAdvnData);
+  const placementsApi = ksppApisBasePath.placementsApi;
+
+  const placementResponse = await fetch(placementsApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
   const data = await placementResponse.json();
 
   return {

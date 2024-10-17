@@ -3,11 +3,12 @@ import React from "react";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+
 
 import podcast from "../../../public/assets/img/podcast.jpg";
 import Faq from "@/components/common/Faq";
-
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
 const PodcastFaqs = ({ podcastFaqs }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
@@ -46,27 +47,37 @@ const PodcastFaqs = ({ podcastFaqs }) => {
 };
 
 export async function getStaticProps() {
-  let podcastFaqs = [];
+ // let podcastFaqs = [];
 
-  try {
-    const response = await fetch(
-      apisBasePath.faqdata,
 
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "Podcasts",
-        }),
-      }
-    );
-    podcastFaqs = await response.json();
-    // console.log("podcastFaqs", podcastFaqs);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+  const podcastFaqsApi = ksppApisBasePath.resourcespodcastsApi;
+
+  const response = await axios.get(podcastFaqsApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+  const podcastFaqs = response.data.data || [];
+  // try {
+  //   const response = await fetch(
+  //     apisBasePath.faqdata,
+
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         type: "Podcasts",
+  //       }),
+  //     }
+  //   );
+  //   podcastFaqs = await response.json();
+  //   // console.log("podcastFaqs", podcastFaqs);
+  // } catch (error) {
+  //   console.error("Error fetching data:", error);
+  // }
 
   return {
     props: {

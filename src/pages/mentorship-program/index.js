@@ -3,7 +3,7 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import Mentorbanner from "../../../public/assets/img/mentor-banner.jpg";
 import Image from "next/image";
 import CategoryHeading from "@/components/common/categoryHeading";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
 import { Button } from "@material-tailwind/react";
 import DynamicTabs from "@/components/common/DynamicTabs";
@@ -70,12 +70,26 @@ const MentorshipProgram = ({ mentorPageData }) => {
 };
 
 export async function getStaticProps() {
-  const mentorsData = `${apisBasePath.mentorsData}`;
-  const mentorsTabsData = `${apisBasePath.mentorsTabsData}`;
+  // const mentorsData = `${apisBasePath.mentorsData}`;
+  const mentorsData = `${ksppApisBasePath.mentorsData}`;
 
+  // const mentorsTabsData = `${apisBasePath.mentorsTabsData}`;
+
+  const mentorsTabsData = `${ksppApisBasePath.mentorsTabs}`;
+  console.log("mentorsListData", mentorsData);
   const responses = await Promise.all([
-    fetch(mentorsData),
-    fetch(mentorsTabsData),
+    fetch(mentorsData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+    fetch(mentorsTabsData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
   ]);
 
   const data = await Promise.all(responses.map((response) => response.json()));

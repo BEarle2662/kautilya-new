@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /kautilya-next/  # Update with your subdirectory, e.g., /kautilya-next/
+
+  # Redirect any requests for non-existing files or directories to index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [QSA,L]
+
+  # Handle Next.js's _next directory
+  RewriteRule ^_next/ - [L]
+</IfModule>

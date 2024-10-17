@@ -12,37 +12,9 @@ import {
 
 import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 
-import { Card, Typography } from "@material-tailwind/react";
+import { Card } from "@material-tailwind/react";
 
 const TABLE_HEAD = ["Date and Month", "Day", "Event", ""];
-
-const TABLE_ROWS = [
-  {
-    name: "John Michael",
-    job: "Manager",
-    date: "23/04/18",
-  },
-  {
-    name: "Alexa Liras",
-    job: "Developer",
-    date: "23/04/18",
-  },
-  {
-    name: "Laurent Perrier",
-    job: "Executive",
-    date: "19/09/17",
-  },
-  {
-    name: "Michael Levi",
-    job: "Developer",
-    date: "24/12/08",
-  },
-  {
-    name: "Richard Gran",
-    job: "Manager",
-    date: "04/10/21",
-  },
-];
 
 const academicCalendar2024 = [
   {
@@ -189,8 +161,15 @@ const AcademicCalendar = () => {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
+  const image =
+    "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/mpp_desktop_66b64f79d1f7d.jpg";
   return (
-    <MainLayout>
+    <MainLayout
+      title={"kautilya academic calender page Testing for metatags"}
+      description={"kautilya Advantage page Testing for metatags"}
+      keywords={"kautilya, Advantage"}
+      img={image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Academic Calendar" />
 
@@ -244,17 +223,10 @@ const AcademicCalendar = () => {
                       <thead>
                         <tr>
                           {TABLE_HEAD.map((head) => (
-                            <th
-                              key={head}
-                              className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
-                            >
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal leading-none opacity-70"
-                              >
+                            <th key={head} className="bg-primary p-2">
+                              <h1 className="font-semibold leading-2 text-base text-left">
                                 {head}
-                              </Typography>
+                              </h1>
                             </th>
                           ))}
                         </tr>
@@ -263,37 +235,25 @@ const AcademicCalendar = () => {
                         {each.events.map(({ date, day, event }, index) => {
                           const isLast = index === each.events.length - 1;
                           const classes = isLast
-                            ? "p-4"
-                            : "p-4 border-b border-blue-gray-50";
+                            ? "p-3"
+                            : "p-3 border-b border-blue-gray-50";
 
                           return (
                             <tr key={date}>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {date}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {day}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-semibold text-black text-base mb-0">
                                   {event}
-                                </Typography>
+                                </p>
                               </td>
                             </tr>
                           );
@@ -347,17 +307,10 @@ const AcademicCalendar = () => {
                       <thead>
                         <tr>
                           {TABLE_HEAD.map((head) => (
-                            <th
-                              key={head}
-                              className="border-b border-blue-gray-100 bg-blue-gray-50 p-4"
-                            >
-                              <Typography
-                                variant="small"
-                                color="blue-gray"
-                                className="font-normal leading-none opacity-70"
-                              >
+                            <th key={head} className="bg-primary p-2">
+                              <h1 className="font-semibold leading-2 text-base text-left">
                                 {head}
-                              </Typography>
+                              </h1>
                             </th>
                           ))}
                         </tr>
@@ -366,37 +319,25 @@ const AcademicCalendar = () => {
                         {each.events.map(({ date, day, event }, index) => {
                           const isLast = index === each.events.length - 1;
                           const classes = isLast
-                            ? "p-4"
-                            : "p-4 border-b border-blue-gray-50";
+                            ? "p-3"
+                            : "p-3 border-b border-blue-gray-50";
 
                           return (
                             <tr key={date}>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {date}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-normal text-base mb-0">
                                   {day}
-                                </Typography>
+                                </p>
                               </td>
                               <td className={classes}>
-                                <Typography
-                                  variant="small"
-                                  color="blue-gray"
-                                  className="font-normal"
-                                >
+                                <p className="font-semibold text-black text-base mb-0">
                                   {event}
-                                </Typography>
+                                </p>
                               </td>
                             </tr>
                           );

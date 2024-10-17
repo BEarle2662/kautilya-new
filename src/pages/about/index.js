@@ -4,12 +4,14 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import CategoryHeading from "@/components/common/categoryHeading";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
-import aboutImg from "../../../public/assets/img/about-left.jpg";
+
 import Image from "next/image";
 import Link from "next/link";
 
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import aboutImg from "../../../public/assets/img/about-left.jpg";
 
 const sectors = [
   {
@@ -149,7 +151,7 @@ const About = ({ initialTeamData }) => {
           </div>
         </ScreenWidth>
         <ScreenWidth layoutwidth="false">
-          <div className="bg-[url('/assets/img/bgImages/bg-01.jpg')]  bg-cover bg-no-repeat  h-screen mt-6 pt-24">
+          <div className="bg-black-shade  bg-cover bg-no-repeat  h-screen mt-6 pt-24">
             <ScreenWidth layoutwidth="true">
               <div className="grid grid-cols-9">
                 <div className="text-2xl md:text-3xl lg:text-6xl font-medium mt-16 col-span-9">
@@ -164,7 +166,7 @@ const About = ({ initialTeamData }) => {
                         LEARN ABOUT THE PROGRAM
                       </h1>
                       <Image
-                        src="/assets/img/iconimages/redarrow.png"
+                        src={ImagePaths.redArrow}
                         alt="right-arrow"
                         width={0}
                         height={0}
@@ -183,9 +185,15 @@ const About = ({ initialTeamData }) => {
 };
 
 export async function getStaticProps() {
-  const ksppteamdata = apisBasePath.ksppteam;
+  // const ksppteamdata = apisBasePath.ksppteam;
+  const ksppteamdata = ksppApisBasePath.ourteam;
 
-  const response = await fetch(ksppteamdata);
+  const response = await fetch(ksppteamdata, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
   const data = await response.json();
 
   const foundingTeam = data.data.filter(
@@ -214,6 +222,8 @@ export async function getStaticProps() {
 
   return {
     props: { initialTeamData },
+    // Revalidate at most once every 60 seconds
+    revalidate: 30, // In seconds
   };
 }
 

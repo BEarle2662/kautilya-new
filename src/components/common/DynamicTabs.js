@@ -37,28 +37,31 @@ const DynamicTabs = ({ tabData, phd, page }) => {
           id="custom-animation"
           value={
             mppTabsData[0]?.category === "Academic Associates page" ||
-            mppTabsData[0]?.category === "Publications page"
+            mppTabsData[0]?.category === "Faculties page"
               ? mppTabsData[0]?.name
               : mppTabsData[0]?.category
           }
         >
-          <TabsHeader>
-            {mppTabsData.map(({ category, id, name }) => (
+          <TabsHeader className="flex-col md:flex-row">
+            {mppTabsData.map(({ category, id, name, label }) => (
               <Tab
-                key={id}
+                key={id || label}
                 value={
                   category === "Academic Associates page" ||
-                  category === "Publications page"
+                  category === "Faculties page"
                     ? name
                     : category
                 }
+                className="lg:text-nowrap text-base md:text-sm font-semibold"
               >
                 <div className="flex items-center gap-2">
-                  <FaCircleDown className="w-5 h-5" />
+                  <FaCircleDown className="w-5 h-5 lg:w-3 lg:h-3" />
                   <span>
                     {category === "Academic Associates page" ||
-                    category === "Publications page"
+                    category === "Faculties page"
                       ? name
+                      : label
+                      ? label
                       : category}
                   </span>
                 </div>
@@ -68,32 +71,37 @@ const DynamicTabs = ({ tabData, phd, page }) => {
 
           <TabsBody
             animate={{
-              initial: { y: 250 },
+              initial: { y: 0 },
               mount: { y: 0 },
-              unmount: { y: 250 },
+              unmount: { y: 0 },
             }}
           >
-            {mppTabsData.map(({ id, description, category, slides, name }) => (
-              <TabPanel
-                key={id}
-                value={
-                  category === "Academic Associates page" ||
-                  category === "Publications page"
-                    ? name
-                    : category
-                }
-              >
-                {category === "Batch Profile" ? (
-                  <CustomSlides
-                    sliderdata={slides}
-                    page={page}
-                    sliderType="MPP Tabs"
-                  />
-                ) : (
-                  <div dangerouslySetInnerHTML={{ __html: description }} />
-                )}
-              </TabPanel>
-            ))}
+            {mppTabsData.map(
+              ({ id, description, category, slides, name, label }) => (
+                <TabPanel
+                  key={id || label}
+                  value={
+                    category === "Academic Associates page" ||
+                    category === "Faculties page"
+                      ? name
+                      : category
+                  }
+                >
+                  {category === "Batch Profile" ? (
+                    <CustomSlides
+                      sliderdata={slides}
+                      page={page}
+                      sliderType="MPP Tabs"
+                    />
+                  ) : (
+                    <div
+                      dangerouslySetInnerHTML={{ __html: description }}
+                      className="tabpanel-inner-tags"
+                    />
+                  )}
+                </TabPanel>
+              )
+            )}
           </TabsBody>
         </Tabs>
       ) : (

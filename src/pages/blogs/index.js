@@ -3,7 +3,8 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import axios from "axios";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import CategoryHeading from "@/components/common/categoryHeading";
 
 const BlogsPage = ({ slugsData }) => {
   const image =
@@ -21,21 +22,54 @@ const BlogsPage = ({ slugsData }) => {
   );
 };
 
+// export async function getStaticProps() {
+//   const slugsBasePath = `${apisBasePath.blogsList}`;
+
+//   const res = await axios.get(slugsBasePath, {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: process.env.NEXT_PUBLIC_API_AUTH_TOKEN,
+//     },
+//   });
+
+//   const slugsData = res.data.data;
+
+//   return {
+//     props: { slugsData },
+//     revalidate: 60,
+//   };
+// }
+
 export async function getStaticProps() {
-  const slugsBasePath = `${apisBasePath.blogsList}`;
+  // const slugsBasePath = `${apisBasePath.blogsList}`;
 
-  const res = await axios.get(slugsBasePath, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "8efgh5gyujk",
-    },
-  });
+  const slugsBasePath = `${ksppApisBasePath.blogsListApi}`;
 
-  const slugsData = res.data.data;
+  try {
+    const res = await axios.get(slugsBasePath, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: process.env.NEXT_PUBLIC_API_AUTH_TOKEN, // Use env variable
+      },
+    });
 
-  return {
-    props: { slugsData },
-  };
+    const slugsData = res.data.data;
+
+    return {
+      props: { slugsData },
+      revalidate: 60,
+    };
+  } catch (error) {
+    console.error(
+      "Error fetching blogs:",
+      error.response ? error.response.data : error.message
+    );
+
+    return {
+      props: { slugsData: [] }, // Provide fallback data
+      revalidate: 60,
+    };
+  }
 }
 
 export default BlogsPage;

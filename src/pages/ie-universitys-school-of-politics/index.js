@@ -4,23 +4,24 @@ import React from "react";
 
 import banner from "../../../public/assets/img/partners/partner_banner.jpg";
 import Image from "next/image";
+import { ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
+import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 
-const InnerPage = () => {
+const ieUniversitysSchoolOfPolitics = ({ data }) => {
   return (
     <MainLayout>
       <ScreenWidth layoutwidth="true">
-        <h5 className="mb-4 text-base font-semibold">
-          MoU with IE University’s School of Politics
-        </h5>
+        <h5 className="mb-4 text-base font-semibold">{data.full_title}</h5>
         <Image
           height={0}
           width={0}
-          src={banner}
+          src={`${ImageBasePaths.partnerShipImagesPath}desktop/${data.full_desktop_image}`}
           className="h-full w-full"
-          alt="banner"
+          alt={data.fullpageimage_alttag}
         />
 
-        <p className="mt-4 text-sm md:text-base">
+        {/* <p className="mt-4 text-sm md:text-base">
           Kautilya School of Public Policy has signed an MoU with IE
           University’s School of Politics, Global Affairs and Economics (SPEGA)
           for student exchange, research collaboration, faculty exchange amongst
@@ -32,10 +33,34 @@ const InnerPage = () => {
           various courses at SPEGA . There will be a merit based competitive
           process for the selection of interested students. The credit
           equivalence has been established.
-        </p>
+        </p> */}
+        <div
+          dangerouslySetInnerHTML={{ __html: data.description }}
+          className="mt-4 text-sm md:text-base"
+        />
       </ScreenWidth>
     </MainLayout>
   );
 };
 
-export default InnerPage;
+export default ieUniversitysSchoolOfPolitics;
+
+export async function getStaticProps() {
+  const partnershipInnerPage_1_Api =
+    ksppApisBasePath.partnershipInnerPage_1_Api;
+
+  const response = await axios.get(partnershipInnerPage_1_Api, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const data = response.data.data;
+
+  return {
+    props: {
+      data,
+    },
+  };
+}

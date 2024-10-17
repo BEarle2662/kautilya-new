@@ -1,15 +1,15 @@
 import DynamicTabs from "@/components/common/DynamicTabs";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 import Image from "next/image";
 import React from "react";
 
 const Publications = ({ publicationData }) => {
-  const facultyTabs = publicationData.facultiesData?.filter(
-    (each) => each.category === "Publications page"
-  );
+  // const facultyTabs = publicationData.facultiesData?.filter(
+  //   (each) => each.category === "Publications page"
+  // );
 
   return (
     <MainLayout>
@@ -23,31 +23,47 @@ const Publications = ({ publicationData }) => {
         />
         {/* </div> */}
 
-        {/* <div> */}
-        <DynamicTabs tabData={facultyTabs} />
-        {/* </div> */}
+        <div className="mt-6">
+          <DynamicTabs tabData={publicationData.facultiesData} />
+        </div>
       </ScreenWidth>
     </MainLayout>
   );
 };
 
 export async function getStaticProps() {
-  const publicationBanner = `${apisBasePath.publicationBanner}`;
+  // const publicationBanner = `${apisBasePath.publicationBanner}`;
+  const publicationBanner = `${ksppApisBasePath.publicationBannerData}`;
 
-  const publicationAcademicAssoData = `${apisBasePath.publicationAcademicAssoData}`;
+  // const publicationAcademicAssoData = `${apisBasePath.publicationAcademicAssoData}`;
+  const publicationAcademicAssoData = `${ksppApisBasePath.publicationTabsData}`;
 
   const responses = await Promise.all([
-    fetch(publicationBanner),
-    fetch(publicationAcademicAssoData),
+    fetch(publicationBanner, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+    fetch(publicationAcademicAssoData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
   ]);
 
   const data = await Promise.all(responses.map((response) => response.json()));
 
+  const facultiesdata = data[1].data.filter(
+    (each) => each.category === "Faculties page"
+  );
+
   const publicationData = {
     banner: data[0].data[0],
-    facultiesData: data[1].data,
+    facultiesData: facultiesdata,
   };
-  //   console.log("facultyTabs", publicationData);
+  // console.log("facultyTabs", publicationData);
   return {
     props: { publicationData },
   };
