@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { apisBasePath } from "@/Endpoints/apisBase";
 let meta = {
-  title: "GITAM INSTITUTE OF MEDICAL SCIENCES AND RESEARCH",
+  title: "Kautilya - Master's Program in Public Policy (MPP), Kautilya School of Public Policy, Best MPP Program",
   description:
     "Gandhi Institute of Technology and Management, popularly known as GITAM, was founded in 1980 by an inspired group of eminent intellectuals and industrialists with the objective of promoting a world-class institution of higher learning in diverse fields of professional education. In 2007, this premier institution of higher learning and research with Global standards was declared a deemed university u/s 3 of the UGC Act, 1956, by Ministry of Human Resources, Govt. of India. GITAM is located in three picturesque campuses at Visakhapatnam, Hyderabad and Bengaluru. With a multi disciplinary approach, GITAM offers different programs at UG, PG and Doctoral levels in - Technology, Pharmacy, Science, Management, International Business, Architecture and Law.",
   keywords:
@@ -71,7 +71,7 @@ const MetaData = ({
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
-
+        <link rel="icon" href="./favicon.png"/>
         {/* Open Graph meta tags for social media sharing */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />

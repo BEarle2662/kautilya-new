@@ -23,6 +23,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AlumniRegisterForm from "@/components/AlumniRegisterForm";
 import { DialogWithForm } from "@/components/RecruiterRegdForm";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const textData = [
   {
@@ -45,7 +46,7 @@ const textData = [
   },
 ];
 
-const Placements = ({ data }) => {
+const Placements = ({ data, metaTagsData }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpenDialog = (handleDialog) => {
@@ -86,10 +87,10 @@ const Placements = ({ data }) => {
   return (
     <>
       <MainLayout
-        title={"Placements page Testing for metatags"}
-        description={"Placements page Testing for metatags"}
-        keywords={"GIMSR, GITAM, Hospital"}
-        img={image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
       >
         <CategoryHeading heading="Placements" />
         <ScreenWidth layoutwidth="false">
@@ -358,9 +359,15 @@ export async function getStaticProps() {
     },
   });
   const data = await placementResponse.json();
-
+  let  metaComponentResponse = await MetaTagsComponent({ page: "placements" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for placements Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("placements Page Meta DAta", metaComponentResponse);
   return {
-    props: { data },
+    props: { data, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

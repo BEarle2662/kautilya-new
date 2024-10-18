@@ -6,10 +6,17 @@ import { docsPath } from "@/Endpoints/docsBasePath";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 import axios from "axios";
 import Link from "next/link";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-export default function Home({ data }) {
+export default function Home({ data,metaTagsData }) {
   return (
-    <MainLayout>
+    <MainLayout
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
+    >
+
       <div className="pt-4">
         <ScreenWidth layoutwidth="false">
           <FullwidthSlider />
@@ -177,8 +184,12 @@ export async function getStaticProps() {
     accRanking: accRanking.data.data,
   };
   // console.log("home", data);
+
+  let  metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  
+  console.log("resource-list-of-podcasts Page Meta DAta", metaComponentResponse);
   return {
-    props: { data },
+    props: { data, metaTagsData: metaComponentResponse },
     // Revalidate at most once every 60 seconds
     revalidate: 30, // In seconds
   };

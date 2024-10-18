@@ -4,8 +4,9 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import React from "react";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const Resources = ({ data }) => {
+const Resources = ({ data,metaTagsData }) => {
   let Page = "Resource";
   const events = data.data?.filter((each) => each.category === "Events");
   const colloquy = data.data?.filter((each) => each.category === "Colloquy");
@@ -18,7 +19,12 @@ const Resources = ({ data }) => {
   );
 
   return (
-    <MainLayout>
+    <MainLayout
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Events" textAlign="text-left" />
         <EventsSlider sliderData={events} page={Page} />
@@ -51,9 +57,17 @@ export async function getStaticProps() {
   });
   const data = await response.json();
 
+  let  metaComponentResponse = await MetaTagsComponent({ page: "resources" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for resources Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("resources Page Meta DAta", metaComponentResponse);
   return {
-    props: { data },
+    props: { data, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
+  
 }
 
 export default Resources;

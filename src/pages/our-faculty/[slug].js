@@ -11,14 +11,10 @@ const ourFacultySlugPage = ({ facultySlugData}) => {
 
   return (
     <MainLayout
-      title={ metaTagsData.title || "Our faculty slug page Testing for metatags"}
-      description={metaTagsData.description || "Our faculty slug for metatags"}
-      keywords={metaTagsData.keywords || "GIMSR, GITAM, Hospital"}
-      img={
-        metaTagsData.s_image
-          ? `https://guprojects.gitam.edu/kautilya-admin/public/metaimage/${metaTagsResponse.s_image}`
-          : image
-      }
+      title={"Our faculty slug page Testing for metatags"}
+      description={"Our faculty slug for metatags"}
+      keywords={"GIMSR, GITAM, Hospital"}
+      img={image}
     >
       <FacultySlugPage
         slugDetailedPage="Our Faculty Slug"

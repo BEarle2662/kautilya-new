@@ -3,6 +3,7 @@ import { ImagePaths } from "@/Endpoints/imagePath";
 import Image from "next/image";
 import React, { useState } from "react";
 import { GoChevronRight } from "react-icons/go";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const kautilyaColloquyData = [
   {
@@ -122,7 +123,7 @@ const ImgTextContent = ({ content }) => {
   );
 };
 
-const colloquyEvent = () => {
+const colloquyEvent = ({metaTagsData}) => {
   const [activeTab, setActiveTab] = useState("about");
 
   const handleTabClick = (tab) => {
@@ -134,7 +135,14 @@ const colloquyEvent = () => {
   };
 
   return (
-    <MainLayout>
+    <MainLayout
+    title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
+    >
+
+
       <div className="bg-[#95131d] h-[20vh] pt-10 py-20 md:pt-20 md:py-40">
         <h1 className="text-white text-center text-2xl md:text-4xl font-semibold">
           Kautilya Colloquy
@@ -332,5 +340,21 @@ const colloquyEvent = () => {
     </MainLayout>
   );
 };
+
+export async function getStaticProps() {
+  let  metaComponentResponse = await MetaTagsComponent({ page: "kautilya-colloquy-2024" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for kautilya-colloquy-2024 Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("kautilya-colloquy-2024 Page Meta DAta", metaComponentResponse);
+  return {
+    props: {
+      metaTagsData: metaComponentResponse
+    },
+    revalidate: 60,
+  };
+}
+
 
 export default colloquyEvent;

@@ -6,8 +6,9 @@ import axios from "axios";
 import React from "react";
 import YouTube from "react-youtube";
 import LazyLoad from "react-lazyload";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const videos = ({ videosData }) => {
+const videos = ({ videosData, metaTagsData  }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
@@ -22,10 +23,10 @@ const videos = ({ videosData }) => {
   return (
     <>
       <MainLayout
-        title={"videos page Testing for metatags"}
-        description={"videos page Testing for metatags"}
-        keywords={"GIMSR, GITAM, Hospital"}
-        img={image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
       >
         <ScreenWidth layoutwidth="true">
           <div className="">
@@ -81,9 +82,16 @@ export async function getStaticProps() {
   });
 
   const videosData = res.data.data;
+  let  metaComponentResponse = await MetaTagsComponent({ page: "videos" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for videos Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("videos Page Meta DAta", metaComponentResponse);
   // console.log("Videos", videosData);
   return {
-    props: { videosData },
+    props: { videosData, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

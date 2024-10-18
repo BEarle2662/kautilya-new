@@ -7,10 +7,16 @@ import banner from "../../../public/assets/img/library/library.jpg";
 import img1 from "../../../public/assets/img/library/GITAM-logo_new_0.jpg";
 import img2 from "../../../public/assets/img/library/logo.png";
 import img3 from "../../../public/assets/img/library/MOnika-latest-1.jpg";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const Library = () => {
+const Library = ({metaTagsData}) => {
   return (
-    <MainLayout>
+    <MainLayout
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Library" />
         <Image
@@ -82,5 +88,14 @@ const Library = () => {
     </MainLayout>
   );
 };
+export async function getStaticProps() {
+  const metaComponentResponse = await MetaTagsComponent({ page: "library" });
 
+  console.log("library Page Meta DAta", metaComponentResponse);
+  return {
+    props: {metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 60, // In seconds
+  };
+}
 export default Library;
