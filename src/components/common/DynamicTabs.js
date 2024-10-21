@@ -52,7 +52,3 @@ const DynamicTabs = ({ tabData = [] }) => {
         <p>No data available for tabs</p>
       )}
     </Tabs>
-  );
-};
-
-export default DynamicTabs;
