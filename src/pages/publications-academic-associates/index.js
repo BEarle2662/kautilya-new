@@ -3,24 +3,25 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
 import Image from "next/image";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const PublicationsAcademicAssociates = ({ AcademicAssodata }) => {
+const PublicationsAcademicAssociates = ({ AcademicAssodata, metaTagsData }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
-  const academicAssoDatafilter = AcademicAssodata.associatesData?.filter(
-    (each) => each.category === "Academic Associates page"
-  );
+  // const academicAssoDatafilter = AcademicAssodata.associatesData?.filter(
+  //   (each) => each.category === "Academic Associates page"
+  // );
 
   return (
     <MainLayout
-      title={"Placements page Testing for metatags"}
-      description={"Placements page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image
@@ -32,7 +33,7 @@ const PublicationsAcademicAssociates = ({ AcademicAssodata }) => {
         />
         <div className="md:my-16 md:px-7">
           <Faq
-            faqData={academicAssoDatafilter}
+            faqData={AcademicAssodata.associatesData}
             pageTitle="Pubilication Academic Asso"
           />
         </div>
@@ -42,24 +43,45 @@ const PublicationsAcademicAssociates = ({ AcademicAssodata }) => {
 };
 
 export async function getStaticProps() {
-  const publicationBanner = `${apisBasePath.publicationBanner}`;
+  // const publicationBanner = `${apisBasePath.publicationBanner}`;
+  const publicationBanner = `${ksppApisBasePath.publicationBannerData}`;
 
-  const publicationAcademicAssoData = `${apisBasePath.publicationAcademicAssoData}`;
+  // const publicationAcademicAssoData = `${apisBasePath.publicationAcademicAssoData}`;
+  const publicationAcademicAssoData = `${ksppApisBasePath.publicationTabsData}`;
 
   const responses = await Promise.all([
-    fetch(publicationBanner),
-    fetch(publicationAcademicAssoData),
+    fetch(publicationBanner, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+    fetch(publicationAcademicAssoData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
   ]);
 
   const data = await Promise.all(responses.map((response) => response.json()));
 
+  const Associatesdata = data[1].data.filter(
+    (each) => each.category === "Academic Associates page"
+  );
+
   const AcademicAssodata = {
     banner: data[0].data[1],
-    associatesData: data[1].data,
+    associatesData: Associatesdata,
   };
+
+  const metaComponentResponse = await MetaTagsComponent({ page: "publications-academic-associates" });
+
+  console.log("publications-academic-associates Page Meta DAta", metaComponentResponse);
   // console.log("AcademicAssodata", AcademicAssodata);
   return {
-    props: { AcademicAssodata },
+    props: { AcademicAssodata, metaTagsData: metaComponentResponse  },
+    revalidate: 60,
   };
 }
 

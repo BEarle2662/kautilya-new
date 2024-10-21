@@ -1,41 +1,38 @@
 import FullwidthSlider from "@/components/common/fullWidthSlider";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import CustomSlider from "@/components/common/customSlider";
-import React, { useState, useEffect } from "react";
-export default function Home() {
-  const [sliderData, setSliderData] = useState([]);
+import { ksppApisBasePath } from "@/Endpoints/apisBase";
+import { docsPath } from "@/Endpoints/docsBasePath";
+import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
+import axios from "axios";
+import Link from "next/link";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        "https://guprojects.gitam.edu/kautilya-admin/public/kautilyanow_slider/"
-      );
-      const data = await response.json();
-      setSliderData(data);
-    };
-    fetchData();
-  }, []);
+export default function Home({ data, metaTagsData }) {
   return (
-    <MainLayout>
+    <MainLayout
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
+    >
       <div className="pt-4">
         <ScreenWidth layoutwidth="false">
-          <CustomSlider apiEndpoint="/kautilyanow_slider" />
+          <FullwidthSlider />
         </ScreenWidth>
       </div>
 
       {/* india by kautilya section */}
-      <div className=" mt-0">
-        <div className="h-[10vh] bg-cover bg-center bg-[url('/assets/img/gradient-bg.jpg')] flex items-center justify-center text-center pt-28 pb-48">
+      <div className="mt-0">
+        <div className="h-[10vh] bg-cover bg-center bg-red-shade flex items-center justify-center text-center pt-28 pb-48">
           <ScreenWidth layoutwidth="true">
             <div className="grid grid-cols-1 ">
-              <h1 className="text-white text-4xl mb-12 ">#Indiabykautilya</h1>
+              <h1 className="text-white text-2xl md:text-4xl mb-4 md:mb-12 font-semibold md:font-bold">
+                {data.indiaByKc[0].title}
+              </h1>
               <div className="line-below">
-                <p className="text-white text-2xl ">
-                  If there’s one word that well and truly defines India today,
-                  it is ‘potential’.
+                <p className="text-white text-xl md:text-2xl text-center ">
+                  {data.indiaByKc[0].subtitle}
                 </p>
               </div>
             </div>
@@ -43,53 +40,60 @@ export default function Home() {
         </div>
       </div>
       {/* Text section */}
-      <div className=" p-12">
+      <div className="p-12">
         <ScreenWidth layoutwidth="false">
-          <p className="pb-4">
-            Building a new India will require passion, long-term commitment, and
-            most importantly,
-            <b>a pool of public policy experts </b>formally trained in
-            evidence-based policy-making, implementation, and leadership.
-            Kautilya’s
-            <b>vision</b> (“Working to rebalance the role of Society, Government
-            &amp; Business for a more equitable and sustainable future.”) &amp;
-            <b>mission</b> (“Empowering leaders to address 21st-century issues
-            through rigorous public policy education.”)
-          </p>
-
-          <p>
-            Kautilya brings on board the{" "}
-            <b>world’s leading policy practitioners </b>drawn from
-            <b>eminent institutions and international organizations</b> to
-            inculcate diverse skills through one of the
-            <b>finest curriculum </b> for Doctoral, and Master’s degree programs
-            in Public Policy necessary for a successful career as a
-            <b>public policy professional</b> in policy-making &amp; governance.
-          </p>
+          <div
+            dangerouslySetInnerHTML={{ __html: data.indiaByKc[0].description }}
+            className="pb-4 india-by-kc"
+          ></div>
         </ScreenWidth>
       </div>
       {/* gitam @ glance */}
       <div className="p-12 bg-gray">
         <ScreenWidth layoutwidth="false">
-          <h1 className="text-4xl mb-12 text-center text-primary">
-            GITAM @ A GLANCE
+          <h1 className="text-center text-primary text-2xl md:text-4xl mb-4 md:mb-8 font-semibold md:font-bold">
+            {data.gitamGlance[0].title}
           </h1>
+          <div className="blackLine mb-5"></div>
+
+          <div
+            dangerouslySetInnerHTML={{
+              __html: data.gitamGlance[0].description,
+            }}
+            className="pb-4 india-by-kc"
+          ></div>
+
           <img
-            src="assets/img/glance.jpg"
+            src={`${ImageBasePaths.homeGitamGlanceDeskImagesPath}${data.gitamGlance[0].desktop_image}`}
             className="max-w-full"
-            alt="gitam @ glance"
+            alt={data.gitamGlance[0].alt_tag}
           />
         </ScreenWidth>
       </div>
+
       {/* ACCREDITATIONS AND RECOGNITIONS */}
       <div className="p-12 bg-gray">
         <ScreenWidth layoutwidth="false">
-          <h1 className="text-4xl mb-4 text-center text-primary ">
+          <h1 className="text-center text-primary text-2xl md:text-4xl mb-4 md:mb-8 font-semibold md:font-bold">
             ACCREDITATIONS AND RECOGNITIONS
           </h1>
-          <div className="blackLine"></div>
+          <div className="blackLine mb-5"></div>
           <div className="grid grid-cols-5 gap-5">
-            <div className="flex flex-col items-center">
+            {data.accRanking.map((each, i) => (
+              <div className="flex flex-col items-center" key={i}>
+                <Link href={`${docsPath.acceDoc}${each.doc}`}>
+                  <img
+                    src={`${ImageBasePaths.homeAccRankDeskImagesPath}${each.desktop_image}`}
+                    className="max-w-full"
+                    alt={each.alt_tag}
+                  />
+                  <p className="text-center font-bold text-sm mt-4">
+                    {each.img_title}
+                  </p>
+                </Link>
+              </div>
+            ))}
+            {/* <div className="flex flex-col items-center">
               <img
                 src="assets/img/accrediations/gitam-naac-A-grade-in-2017.jpg"
                 className="max-w-full"
@@ -138,10 +142,57 @@ export default function Home() {
               <p className="text-center font-bold text-sm mt-4">
                 93 in QS – INDIA Rankings 2023
               </p>
-            </div>
+            </div> */}
           </div>
         </ScreenWidth>
       </div>
     </MainLayout>
   );
+}
+
+export async function getStaticProps() {
+  // const ourFaculty = `${apisBasePath.faculty}`; homeAccRanking
+  const homeIndiaByKc = `${ksppApisBasePath.homeIndiaByKc}`;
+  const homeGitamGlance = `${ksppApisBasePath.homeGitamGlance}`;
+  const homeAccRanking = `${ksppApisBasePath.homeAccRanking}`;
+
+  const [indiaByKc, gitamGlance, accRanking] = await Promise.all([
+    axios.get(homeIndiaByKc, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+    axios.get(homeGitamGlance, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+    axios.get(homeAccRanking, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "8efgh5gyujk",
+      },
+    }),
+  ]);
+
+  const data = {
+    indiaByKc: indiaByKc.data.data,
+    gitamGlance: gitamGlance.data.data,
+    accRanking: accRanking.data.data,
+  };
+  // console.log("home", data);
+
+  let metaComponentResponse = await MetaTagsComponent({ page: "home" });
+
+  console.log(
+    "resource-list-of-podcasts Page Meta DAta",
+    metaComponentResponse
+  );
+  return {
+    props: { data, metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 30, // In seconds
+  };
 }

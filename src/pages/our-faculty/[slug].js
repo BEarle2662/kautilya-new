@@ -3,25 +3,20 @@ import FacultySlugPage from "@/components/common/FacultySlugPage";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 const ourFacultySlugPage = ({ facultySlugData }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
   return (
     <MainLayout
       title={"Our faculty slug page Testing for metatags"}
       description={"Our faculty slug for metatags"}
       keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      img={null}
     >
-      <ScreenWidth layoutwidth="true">
-        <FacultySlugPage
-          slugDetailedPage="Our Faculty Slug"
-          slugData={facultySlugData}
-        />
-      </ScreenWidth>
+      <FacultySlugPage
+        slugDetailedPage="Our Faculty Slug"
+        slugData={facultySlugData}
+      />
     </MainLayout>
   );
 };
@@ -29,7 +24,13 @@ const ourFacultySlugPage = ({ facultySlugData }) => {
 export default ourFacultySlugPage;
 
 export async function getStaticPaths() {
-  const res = await fetch(`${apisBasePath.faculty}`, {
+  // const res = await fetch(`${apisBasePath.faculty}`, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: "8efgh5gyujk",
+  //   },
+  // });
+  const res = await fetch(`${ksppApisBasePath.faculty}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: "8efgh5gyujk",
@@ -51,18 +52,26 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`${apisBasePath.facultyBrief}/${params.slug}`, {
+  // const res = await fetch(`${apisBasePath.facultyBrief}/${params.slug}`, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: "8efgh5gyujk",
+  //   },
+  // });
+
+  const res = await fetch(`${ksppApisBasePath.facultyBrief}/${params.slug}`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: "8efgh5gyujk",
     },
   });
-
   const facultySlugData = await res.json();
+
   // console.log("facultySlugData", facultySlugData);
   return {
     props: {
       facultySlugData,
     },
+    revalidate: 60,
   };
 }

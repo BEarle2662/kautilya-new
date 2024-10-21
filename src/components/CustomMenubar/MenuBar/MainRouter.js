@@ -34,7 +34,7 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
       "Admission Process",
       "Resources",
     ].includes(label)
-      ? "hover:bg-[#b11016] hover:text-white"
+      ? "hover:bg-[#b11016] hover:bg-opacity-1 hover:text-white"
       : "";
 
   const renderItems = eachdropdownItems.dropdownItems.map((each) => (
@@ -43,7 +43,7 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
         <NestedDropdown subDropdow={each} keyProp={each.id} />
       ) : (
         <Link href={each.href} key={each.id}>
-          <MenuItem className="flex items-center  text-black rounded-lg hover:bg-[#b11016] hover:text-white">
+          <MenuItem className="flex items-center py-3 text-black rounded-none  hover:bg-[#b11016] hover:text-white">
             <div>
               <Typography className="flex items-center mb-0 text-[10px] xl:text-xs font-bold tracking-[1px] uppercase">
                 {each.label}
@@ -60,11 +60,11 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
       <Menu
         open={isMenuOpen}
         handler={setIsMenuOpen}
-        offset={{ mainAxis: 15 }}
+        offset={{ mainAxis: 2 }}
         placement={menuposition}
         allowHover={true}
         key={keyProp}
-        className="!rounded-none"
+        className=""
         animate={{
           mount: { y: 4 },
           unmount: { y: 25 },
@@ -72,7 +72,7 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
       >
         <MenuHandler>
           <ListItem
-            className={`flex items-center gap-2 xl:gap-4 font-semibold whitespace-nowrap	text-black  text-[10px] xl:text-xs uppercase ${hoverClass(
+            className={`pl-6 flex items-center gap-2 xl:gap-4 font-semibold whitespace-nowrap	text-black  text-[10px] xl:text-xs uppercase rounded-none  ${hoverClass(
               eachdropdownItems.label
             )}`}
             selected={isMenuOpen || isMobileMenuOpen}
@@ -92,7 +92,7 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
           >
             {eachdropdownItems.label}
             <ChevronDownIcon
-              strokeWidth={2.5}
+              strokeWidth={3.5}
               className={`hidden h-2 w-2 xl:h-3.5 xl:w-3.5 text-[10px] xl:text-xs transition-transform lg:block ${
                 isMenuOpen ? "rotate-180" : ""
               }`}
@@ -101,7 +101,7 @@ export function NavListMenu({ eachdropdownItems, menuposition, keyProp }) {
         </MenuHandler>
         <MenuList className="hidden max-w-screen-xl rounded-none lg:block">
           <ul
-            className="flex flex-col  gap-y-2 outline-none outline-0"
+            className="flex flex-col  gap-y-2 outline-none outline-0 py-3"
             key={keyProp}
           >
             {renderItems}

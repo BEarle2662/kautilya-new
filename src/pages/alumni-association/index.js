@@ -6,18 +6,20 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import indiaMap from "../../../public/assets/img/alumni/india-map.jpg";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const AlumniAssociation = ({ data }) => {
+const AlumniAssociation = ({ data, metaTagsData }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
   return (
     <MainLayout
-      title={"AlumniAssociation page Testing for metatags"}
-      description={"AlumniAssociation page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="false">
         <div className="border-b-2 md:mb-10">
@@ -73,7 +75,7 @@ const AlumniAssociation = ({ data }) => {
             </h1>
 
             <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
-              {data.data.map((each, index) => (
+              {data.map((each, index) => (
                 <div key={each.name}>
                   <ProfileCard profileData={each} page="alumniAssociation" />
                 </div>
@@ -87,16 +89,31 @@ const AlumniAssociation = ({ data }) => {
 };
 
 export async function getStaticProps() {
-  const alumniProfiles = apisBasePath.alumniprofiles;
+  // const alumniProfiles = apisBasePath.alumniprofiles;
+  const almuniProfileApi = ksppApisBasePath.almuniProfileApi;
 
-  const response = await fetch(alumniProfiles);
-  const data = await response.json();
+  const metaTagsResponse = await MetaTagsComponent({
+    page: "alumni-association",
+  });
 
+  // const response = await fetch(alumniProfiles);
+  // const data = await response.json();
+
+  const response = await axios.get(almuniProfileApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+
+  const data = response.data.data;
+  const metaComponentResponse = await MetaTagsComponent({ page: "alumni-association" });
+
+  console.log("alumni-association Page Meta DAta", metaComponentResponse);
   return {
-    props: { data },
+    props: { data, metaTagsData: metaComponentResponse},
+    revalidate: 60,
   };
 }
 
 export default AlumniAssociation;
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-alumniprofiles";

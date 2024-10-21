@@ -4,11 +4,15 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import CategoryHeading from "@/components/common/categoryHeading";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import ProfileCard from "@/components/common/Profile/ProfileCard";
-import aboutImg from "../../../public/assets/img/about-left.jpg";
+
 import Image from "next/image";
 import Link from "next/link";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { ImagePaths } from "@/Endpoints/imagePath";
+
+import aboutImg from "../../../public/assets/img/about-left.jpg";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const sectors = [
   {
@@ -43,7 +47,7 @@ const sectors = [
   },
 ];
 
-const About = ({ initialTeamData }) => {
+const About = ({ initialTeamData, metaTagsData }) => {
   const deptHeadings = [
     { foundingTeam: "Founding Team" },
     { deanData: "Dean" },
@@ -53,15 +57,13 @@ const About = ({ initialTeamData }) => {
     { supportStaff: "Support Staff" },
   ];
 
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
   return (
     <>
       <MainLayout
-        title={"About page Testing for metatags"}
-        description={"Home page Testing for metatags"}
-        keywords={"GIMSR, GITAM, Hospital"}
-        img={image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
       >
         <ScreenWidth layoutwidth="true">
           {deptHeadings.map((each, index) => {
@@ -148,7 +150,7 @@ const About = ({ initialTeamData }) => {
           </div>
         </ScreenWidth>
         <ScreenWidth layoutwidth="false">
-          <div className="bg-[url('/assets/img/bgImages/bg-01.jpg')]  bg-cover bg-no-repeat  h-screen mt-6 pt-24">
+          <div className="bg-black-shade  bg-cover bg-no-repeat  h-screen mt-6 pt-24">
             <ScreenWidth layoutwidth="true">
               <div className="grid grid-cols-9">
                 <div className="text-2xl md:text-3xl lg:text-6xl font-medium mt-16 col-span-9">
@@ -163,7 +165,7 @@ const About = ({ initialTeamData }) => {
                         LEARN ABOUT THE PROGRAM
                       </h1>
                       <Image
-                        src="/assets/img/iconimages/redarrow.png"
+                        src={ImagePaths.redArrow}
                         alt="right-arrow"
                         width={0}
                         height={0}
@@ -182,9 +184,15 @@ const About = ({ initialTeamData }) => {
 };
 
 export async function getStaticProps() {
-  const ksppteamdata = apisBasePath.ksppteam;
+  // const ksppteamdata = apisBasePath.ksppteam;
+  const ksppteamdata = ksppApisBasePath.ourteam;
 
-  const response = await fetch(ksppteamdata);
+  const response = await fetch(ksppteamdata, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
   const data = await response.json();
 
   const foundingTeam = data.data.filter(
@@ -211,8 +219,14 @@ export async function getStaticProps() {
     supportStaff: supportStaff,
   };
 
+  const metaComponentResponse = await MetaTagsComponent({ page: "about" });
+
+  console.log("About Page Meta DAta", metaComponentResponse);
+
   return {
-    props: { initialTeamData },
+    props: { initialTeamData, metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 60, // In seconds
   };
 }
 

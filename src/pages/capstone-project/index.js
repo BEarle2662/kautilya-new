@@ -3,20 +3,18 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import axios from "axios";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const CapstoneProjectPage = ({ slugsData }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
+const CapstoneProjectPage = ({ slugsData, metaTagsData }) => {
   // console.log("Capstone", slugsData);
 
   return (
     <MainLayout
-      title={"Capstone page Testing for metatags"}
-      description={"Capstone page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <SlugsPage pageTitle="Capstone Project" slugsPageData={slugsData} />
     </MainLayout>
@@ -24,7 +22,10 @@ const CapstoneProjectPage = ({ slugsData }) => {
 };
 
 export async function getStaticProps() {
-  const slugsBasePath = `${apisBasePath.capstoneProjectsList}`;
+  // const slugsBasePath = `${apisBasePath.capstoneProjectsList}`;
+
+  const slugsBasePath = `${ksppApisBasePath.cpLists}`;
+
   // "https://guprojects.gitam.edu/kautilya-admin/api/cp-lists";
 
   const res = await axios.get(slugsBasePath, {
@@ -33,11 +34,17 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
+  const metaComponentResponse = await MetaTagsComponent({
+    page: "capstone-project",
+  });
 
-  const slugsData = res.data.data;
+  console.log("capstone-project Page Meta DAta", metaComponentResponse);
 
+  const slugsData = res.data.data || [];
+  // console.log("capstone", slugsData);
   return {
-    props: { slugsData },
+    props: { slugsData, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

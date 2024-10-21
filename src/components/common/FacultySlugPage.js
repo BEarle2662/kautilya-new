@@ -9,9 +9,16 @@ import {
 } from "@material-tailwind/react";
 
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
+import ScreenWidth from "../MainContainer/ScreenWidth";
+import { FaEnvelope } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { SiIndeed } from "react-icons/si";
+import DynamicTabs from "./DynamicTabs";
 
 const FacultySlugPage = ({ slugData }) => {
   const data = slugData.data;
+  // console.log(data);
   const {
     research_interest,
     areas_expertise,
@@ -31,146 +38,126 @@ const FacultySlugPage = ({ slugData }) => {
     inded_id,
   } = data;
 
-  // const imagePath =
-  //   "https://guprojects.gitam.edu/kautilya-admin/public/faculty/banner/";
-
-  // console.log(`${imagePath}${data.full_banner}`);
-
   const tabs = [
     {
-      key: "research_interest",
+      category: "research_interest",
       label: "Research Interest",
-      content: research_interest,
+      description: research_interest,
     },
     {
-      key: "areas_expertise",
+      category: "areas_expertise",
       label: "Areas of Expertise",
-      content: areas_expertise,
+      description: areas_expertise,
     },
     {
-      key: "grants_distinctions",
+      category: "grants_distinctions",
       label: "Grants and Distinctions",
-      content: grants_distinctions,
+      description: grants_distinctions,
     },
-    { key: "publications", label: "Publications", content: publications },
-    { key: "membership", label: "Membership", content: membership },
-    { key: "intiatives", label: "Initiatives", content: intiatives },
-    { key: "recognitions", label: "Recognitions", content: recognitions },
     {
-      key: "courses_fostered",
+      category: "publications",
+      label: "Publications",
+      description: publications,
+    },
+    { category: "membership", label: "Membership", description: membership },
+    { category: "intiatives", label: "Initiatives", description: intiatives },
+    {
+      category: "recognitions",
+      label: "Recognitions",
+      description: recognitions,
+    },
+    {
+      category: "courses_fostered",
       label: "Courses Fostered",
-      content: courses_fostered,
+      description: courses_fostered,
     },
     {
-      key: "talks_conferences",
+      category: "talks_conferences",
       label: "Talks & Conferences",
-      content: talks_conferences,
+      description: talks_conferences,
     },
-    { key: "post_graduate", label: "Postgraduate", content: post_graduate },
-    { key: "awards", label: "Awards", content: awards },
-    { key: "funding", label: "Funding", content: funding },
+    {
+      category: "post_graduate",
+      label: "Postgraduate",
+      description: post_graduate,
+    },
+    { category: "awards", label: "Awards", description: awards },
+    { category: "funding", label: "Funding", description: funding },
   ];
 
-  const dataTabs = [
-    {
-      label: "HTML",
-      value: "html",
-      desc: `It really matters and then like it really doesn't matter.
-      What matters is the people who are sparked by it. And the people 
-      who are like offended by it, it doesn't matter.`,
-    },
-    {
-      label: "React",
-      value: "react",
-      desc: `Because it's about motivating the doers. Because I'm here
-      to follow my dreams and inspire other people to follow their dreams, too.`,
-    },
-    {
-      label: "Vue",
-      value: "vue",
-      desc: `We're not always in the position that we want to be at.
-      We're constantly growing. We're constantly making mistakes. We're
-      constantly trying to express ourselves and actualize our dreams.`,
-    },
-    {
-      label: "Angular",
-      value: "angular",
-      desc: `Because it's about motivating the doers. Because I'm here
-      to follow my dreams and inspire other people to follow their dreams, too.`,
-    },
-    {
-      label: "Svelte",
-      value: "svelte",
-      desc: `We're not always in the position that we want to be at.
-      We're constantly growing. We're constantly making mistakes. We're
-      constantly trying to express ourselves and actualize our dreams.`,
-    },
-  ];
+  const tabsData = tabs.filter((each) => each.description);
+  // console.log("TaBSDATA", tabsData);
   return (
-    <>
-      <Image
-        src={`${ImageBasePaths.facultySlugBannerImagesPath}${data.full_banner}`}
-        alt={data.name}
-        height={0}
-        width={0}
-        className="h-full w-full"
-      />
-      <h1>{data.name}</h1>
-      <div dangerouslySetInnerHTML={{ __html: data.brief_description }}></div>
-      <h5 className="">
-        Contact:
-        {linkedin_id && (
-          <span className="text-primary contact-icon">
-            <a href={linkedin_id}>
-              <i className="fa fa-linkedin"></i>
-            </a>
-          </span>
-        )}
-        {mail && (
-          <span className="text-primary contact-icon">
-            <a href={`mailto:${mail}`}>
-              <i className="fa fa-envelope"></i>
-            </a>
-          </span>
-        )}
-        {twitter_id && (
-          <span className="text-primary contact-icon">
-            <a href={twitter_id}>
-              <i className="fa fa-twitter"></i>
-            </a>
-          </span>
-        )}
-        {inded_id && (
-          <span className="text-primary contact-icon">
-            <a href={inded_id}>
-              <i className="fa fa-inded"></i>
-            </a>
-          </span>
-        )}
-      </h5>
+    <div>
+      <ScreenWidth layoutwidth="true">
+        <Image
+          src={`${ImageBasePaths.facultySlugBannerImagesPath}${data.full_banner}`}
+          alt={data.name}
+          height={0}
+          width={0}
+          className="h-full w-full mb-10"
+        />
+        {/* <h1>{data.name}</h1> */}
 
-      <Tabs value="html" className="max-w-[40rem]">
-        <TabsHeader
-          className="bg-transparent"
-          indicatorProps={{
-            className: "bg-gray-900/10 shadow-none !text-gray-900",
-          }}
-        >
-          {dataTabs.map(({ label, value }) => (
-            <Tab key={value} value={value}>
-              {label}
-            </Tab>
-          ))}
-        </TabsHeader>
-        <TabsBody>
-          {dataTabs.map(({ value, desc }) => (
-            <TabPanel key={value} value={value}>
-              {desc}
-            </TabPanel>
-          ))}
-        </TabsBody>
-      </Tabs>
-    </>
+        <div
+          dangerouslySetInnerHTML={{ __html: data.brief_description }}
+          className="slug-description"
+        ></div>
+        <div className="flex items-center">
+          <span className="mr-4 text-xl font-medium">Contact:</span>
+          {linkedin_id && (
+            <span className="text-primary text-xl mr-4">
+              <a href={linkedin_id}>
+                <FaLinkedinIn />
+              </a>
+            </span>
+          )}
+          {mail && (
+            <span className="text-primary text-xl mr-4">
+              <a href={`mailto:${mail}`}>
+                <FaEnvelope />
+              </a>
+            </span>
+          )}
+          {twitter_id && (
+            <span className="text-primary text-xl mr-4">
+              <a href={twitter_id}>
+                <FaSquareXTwitter />
+              </a>
+            </span>
+          )}
+          {inded_id && (
+            <span className="text-primary text-xl mr-4">
+              <a href={inded_id}>
+                <SiIndeed />
+              </a>
+            </span>
+          )}
+        </div>
+      </ScreenWidth>
+      <div className="py-10 bg-[#f6f6f6]">
+        <ScreenWidth layoutwidth="true">
+          {/* <Tabs value={tabsData[0].key}>
+            <TabsHeader>
+              {tabsData.map(({ label, key }) => (
+                <Tab key={key} value={key}>
+                  {label}
+                </Tab>
+              ))}
+            </TabsHeader>
+            <TabsBody>
+              {tabsData.map(({ content, key }) => (
+                <TabPanel key={key} value={key}>
+                  <div dangerouslySetInnerHTML={{ __html: content }}></div>
+                </TabPanel>
+              ))}
+            </TabsBody>
+          </Tabs> */}
+
+          <DynamicTabs tabData={tabsData} />
+        </ScreenWidth>
+      </div>
+    </div>
   );
 };
 

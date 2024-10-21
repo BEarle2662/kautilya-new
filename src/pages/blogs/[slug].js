@@ -3,20 +3,19 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import CategoryHeading from "@/components/common/categoryHeading";
 
 const BlogSlugPage = ({ blog }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
   return (
     <MainLayout
       title={"Blogs slug page Testing for metatags"}
       description={"Capstone page Testing for metatags"}
       keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      img={null}
     >
       <ScreenWidth layoutwidth="true">
+        {/* <CategoryHeading heading="slug detailed page" /> */}
         <SlugDetailedPage slugDetailedPage="Blog" slugData={blog} />
       </ScreenWidth>
     </MainLayout>
@@ -27,7 +26,8 @@ export default BlogSlugPage;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    apisBasePath.blogsList,
+    // apisBasePath.blogsList,
+    ksppApisBasePath.blogsListApi,
 
     {
       headers: {
@@ -44,24 +44,44 @@ export async function getStaticPaths() {
     };
   });
 
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 }
 
 export async function getStaticProps({ params }) {
-  const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "8efgh5gyujk",
-    },
-  });
+  try {
+    // const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
 
-  const blog = await res.json();
+    const res = await fetch(
+      `${ksppApisBasePath.blogsListBriefApi}/${params.slug}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "8efgh5gyujk",
+        },
+      }
+    );
 
-  return {
-    props: {
-      blog,
-    },
-  };
+    // const blog = await res.json();
+
+    if (!res.ok) {
+      // Handle case where API returns an error
+      return { notFound: true };
+    }
+
+    const blog = await res.json();
+
+    // Ensure the blog has the required structure
+    if (!blog || !blog.data) {
+      return { notFound: true };
+    }
+
+    return {
+      props: {
+        blog,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch blog data:", error);
+    return { notFound: true };
+  }
 }
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/blog-lists",

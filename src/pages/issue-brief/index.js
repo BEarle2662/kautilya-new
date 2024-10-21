@@ -3,20 +3,16 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import axios from "axios";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const IssueBrief = ({ slugsData }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
-  //   console.log("Issue Brief", slugsData);
-
+const IssueBrief = ({ slugsData, metaTagsData }) => {
   return (
     <MainLayout
-      title={"Issue Brief page Testing for metatags"}
-      description={"Issue Brief page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <SlugsPage pageTitle="Issue Brief" slugsPageData={slugsData} />
     </MainLayout>
@@ -24,7 +20,9 @@ const IssueBrief = ({ slugsData }) => {
 };
 
 export async function getStaticProps() {
-  const slugsBasePath = `${apisBasePath.issuesBreifList}`;
+  // const slugsBasePath = `${apisBasePath.issuesBreifList}`;
+
+  const slugsBasePath = `${ksppApisBasePath.issueBriefLists}`;
 
   const res = await axios.get(slugsBasePath, {
     headers: {
@@ -33,10 +31,17 @@ export async function getStaticProps() {
     },
   });
 
-  const slugsData = res.data.data;
+  const slugsData = res.data.data || [];
+  const metaComponentResponse = await MetaTagsComponent({
+    page: "issue-brief",
+  });
+
+  console.log("issue-brief Page Meta DAta", metaComponentResponse);
+  // console.log("Issue brief", slugsData);
 
   return {
-    props: { slugsData },
+    props: { slugsData, metaTagsData: metaComponentResponse },
+    revalidate: 60,
   };
 }
 

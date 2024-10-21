@@ -3,18 +3,15 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 const CapstoneProjectSlugPage = ({ CapstoneProject }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
   return (
     <MainLayout
       title={"Capstone slug page Testing for metatags"}
       description={"Capstone page Testing for metatags"}
       keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      img={null}
     >
       <ScreenWidth layoutwidth="true">
         <SlugDetailedPage
@@ -30,7 +27,8 @@ export default CapstoneProjectSlugPage;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    apisBasePath.capstoneProjectsList,
+    // apisBasePath.capstoneProjectsList,
+    ksppApisBasePath.cpLists,
     // "https://guprojects.gitam.edu/kautilya-admin/api/cp-lists",
     {
       headers: {
@@ -47,12 +45,15 @@ export async function getStaticPaths() {
     };
   });
 
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 }
 
 export async function getStaticProps({ params }) {
+  // console.log("CP Params", params.slug);
   const res = await fetch(
-    `${apisBasePath.capstoneProjectsList}/${params.slug}`,
+    // `${apisBasePath.capstoneProjectsList}/${params.slug}`,
+    `${ksppApisBasePath.cpSlug}/${params.slug}`,
+
     {
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +63,7 @@ export async function getStaticProps({ params }) {
   );
 
   const CapstoneProject = await res.json();
-
+  // console.log("CapstoneProject", CapstoneProject);
   return {
     props: {
       CapstoneProject,

@@ -3,20 +3,23 @@ import React from "react";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+
 
 import podcast from "../../../public/assets/img/podcast.jpg";
 import Faq from "@/components/common/Faq";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import axios from "axios";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const PodcastFaqs = ({ podcastFaqs }) => {
+const PodcastFaqs = ({ podcastFaqs, metaTagsData }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
   return (
     <MainLayout
-      title={"Podcast Faq page Testing for metatags"}
-      description={"Podcast Faq page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image src={podcast} width={0} height={0} alt="podcast-faq-banner" />
@@ -46,32 +49,49 @@ const PodcastFaqs = ({ podcastFaqs }) => {
 };
 
 export async function getStaticProps() {
-  let podcastFaqs = [];
+ // let podcastFaqs = [];
 
-  try {
-    const response = await fetch(
-      apisBasePath.faqdata,
 
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "Podcasts",
-        }),
-      }
-    );
-    podcastFaqs = await response.json();
-    // console.log("podcastFaqs", podcastFaqs);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+  const podcastFaqsApi = ksppApisBasePath.resourcespodcastsApi;
 
+  const response = await axios.get(podcastFaqsApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+  const podcastFaqs = response.data.data || [];
+  // try {
+  //   const response = await fetch(
+  //     apisBasePath.faqdata,
+
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         type: "Podcasts",
+  //       }),
+  //     }
+  //   );
+  //   podcastFaqs = await response.json();
+  //   // console.log("podcastFaqs", podcastFaqs);
+  // } catch (error) {
+  //   console.error("Error fetching data:", error);
+  // }
+  let  metaComponentResponse = await MetaTagsComponent({ page: "resource-list-of-podcasts" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for resource-list-of-podcasts Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("resource-list-of-podcasts Page Meta DAta", metaComponentResponse);
   return {
     props: {
       podcastFaqs,
+      metaTagsData: metaComponentResponse
     },
+    revalidate: 60,
   };
 }
 

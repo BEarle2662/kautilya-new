@@ -3,20 +3,22 @@ import React from "react";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 import faqImage from "../../../public/assets/img/FAQ-2.jpg";
 import Faq from "@/components/common/Faq";
+import axios from "axios";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const ResearchFaqs = ({ researchFaq }) => {
+const ResearchFaqs = ({ researchFaq, metaTagsData }) => {
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
   return (
     <MainLayout
-      title={"Rasearch Faq page Testing for metatags"}
-      description={"Rasearch Faq page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image src={faqImage} width={0} height={0} alt="faq-banner" />
@@ -29,32 +31,43 @@ const ResearchFaqs = ({ researchFaq }) => {
 };
 
 export async function getStaticProps() {
-  let researchFaq = [];
+  // let researchFaq = [];
 
-  try {
-    const response = await fetch(
-      apisBasePath.faqdata,
+  // try {
+  //   const response = await axios.post(
+  //     apisBasePath.faqdata,
+  //     {
+  //       type: "Research",
+  //     },
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   );
+  //   researchFaq = response.data;
+  //   console.log("researchFaq", researchFaq);
+  // } catch (error) {
+  //   console.error("Error fetching data:", error);
+  // }
+  const researchFaqsApi = ksppApisBasePath.researchFaqsApi;
 
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          type: "Research",
-        }),
-      }
-    );
-    researchFaq = await response.json();
-    // console.log("ResearchFaq", researchFaq);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+  const response = await axios.get(researchFaqsApi, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+  const metaComponentResponse = await MetaTagsComponent({ page: "research-faqs" });
 
+  console.log("research-faqs Page Meta DAta", metaComponentResponse);
+
+  const researchFaq = response.data.data || [];
   return {
     props: {
-      researchFaq,
+      researchFaq, metaTagsData: metaComponentResponse
     },
+    revalidate: 60, 
   };
 }
 

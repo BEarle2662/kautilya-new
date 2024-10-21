@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React from "react";
+=======
+import React, { useEffect, useState } from "react";
+import { UserCircleIcon } from "@heroicons/react/24/solid";
+>>>>>>> f9b78406d15768fac3762fafa025239d58162d00
 import { FaCircleDown } from "react-icons/fa6";
 import {
   Tabs,
@@ -7,28 +12,67 @@ import {
   TabsBody,
   TabPanel,
 } from "@material-tailwind/react";
+import CustomSlides from "./CustomSlides";
 
-const DynamicTabs = ({ tabData = [] }) => {
-  // console.log("DynamicTabs received data:", tabData);
+const DynamicTabs = ({ tabData, phd, page }) => {
+  const [mppTabsData, setMppTabsData] = useState([]);
 
-  if (!Array.isArray(tabData)) {
-    console.error("Expected tabData to be an array but received:", tabData);
-    tabData = [];
-  }
+  useEffect(() => {
+    if (phd) {
+      const filteredTabsData = phd.filter(
+        (each) => each.category !== "Batch Profile"
+      );
+      const batchProfile = phd.filter(
+        (each) => each.category === "Batch Profile"
+      );
+      setMppTabsData([
+        ...filteredTabsData,
+        { id: 0, category: "Batch Profile", slides: batchProfile },
+      ]);
+    } else {
+      setMppTabsData(tabData);
+    }
+  }, [phd, tabData]);
 
   return (
-    <Tabs
-      id="dynamic-tabs"
-      value={tabData.length > 0 ? tabData[0].id : "default"}
-    >
-      {tabData.length > 0 ? (
-        <>
-          <TabsHeader>
-            {tabData.map(({ category, id }) => (
-              <Tab key={id} value={id}>
+    <>
+      {mppTabsData.length > 0 ? (
+        <Tabs
+          id="custom-animation"
+          value={
+            mppTabsData[0]?.category === "Academic Associates page" ||
+            mppTabsData[0]?.category === "Faculties page"
+              ? mppTabsData[0]?.name
+              : mppTabsData[0]?.category
+          }
+        >
+          <TabsHeader className="flex-col md:flex-row">
+            {mppTabsData.map(({ category, id, name, label }) => (
+              <Tab
+                key={id || label}
+                value={
+                  category === "Academic Associates page" ||
+                  category === "Faculties page"
+                    ? name
+                    : category
+                }
+                className="lg:text-nowrap text-base md:text-sm font-semibold"
+              >
                 <div className="flex items-center gap-2">
+<<<<<<< HEAD
                   <FaCircleDown className="w-5 h-5" />
                   {category}
+=======
+                  <FaCircleDown className="w-5 h-5 lg:w-3 lg:h-3" />
+                  <span>
+                    {category === "Academic Associates page" ||
+                    category === "Faculties page"
+                      ? name
+                      : label
+                      ? label
+                      : category}
+                  </span>
+>>>>>>> f9b78406d15768fac3762fafa025239d58162d00
                 </div>
               </Tab>
             ))}
@@ -36,22 +80,43 @@ const DynamicTabs = ({ tabData = [] }) => {
 
           <TabsBody
             animate={{
-              initial: { y: 250 },
+              initial: { y: 0 },
               mount: { y: 0 },
-              unmount: { y: 250 },
+              unmount: { y: 0 },
             }}
           >
-            {tabData.map(({ id, description }) => (
-              <TabPanel key={id} value={id}>
-                <div dangerouslySetInnerHTML={{ __html: description }} />
-              </TabPanel>
-            ))}
+            {mppTabsData.map(
+              ({ id, description, category, slides, name, label }) => (
+                <TabPanel
+                  key={id || label}
+                  value={
+                    category === "Academic Associates page" ||
+                    category === "Faculties page"
+                      ? name
+                      : category
+                  }
+                >
+                  {category === "Batch Profile" ? (
+                    <CustomSlides
+                      sliderdata={slides}
+                      page={page}
+                      sliderType="MPP Tabs"
+                    />
+                  ) : (
+                    <div
+                      dangerouslySetInnerHTML={{ __html: description }}
+                      className="tabpanel-inner-tags"
+                    />
+                  )}
+                </TabPanel>
+              )
+            )}
           </TabsBody>
-        </>
+        </Tabs>
       ) : (
         <p>No data available for tabs</p>
       )}
-    </Tabs>
+    </>
   );
 };
 

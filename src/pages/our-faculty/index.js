@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import MainLayout from "@/components/MainContainer/MainLayout";
 import CategoryHeading from "@/components/common/categoryHeading";
@@ -7,43 +7,83 @@ import ProfileCard from "@/components/common/Profile/ProfileCard";
 import Link from "next/link";
 import Image from "next/image";
 
-import { apisBasePath } from "@/Endpoints/apisBase";
+import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { ImagePaths } from "@/Endpoints/imagePath";
+import axios from "axios";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const faculty = ({ data }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
+const faculty = ({ data, metaTagsData }) => {
+  const distinguished = data.data?.filter(
+    (each) => each.category === "Distinguished Professor/Fellow"
+  );
+  const permanentFaculties = data.data?.filter(
+    (each) => each.category === "Permanent Faculties"
+  );
+  const visitingFaculties = data.data?.filter(
+    (each) => each.category === "Visiting Faculties"
+  );
+
+  const metaImg =
+    metaTagsData.meta_image !== null
+      ? `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`
+      : "https://kspp.edu.in/images/administration.jpg";
 
   return (
     <>
       <MainLayout
-        title={"Faculty page Testing for metatags"}
-        description={"Faculty page Testing for metatags"}
-        keywords={"GIMSR, GITAM, Hospital"}
-        img={image}
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaImg}
       >
         <ScreenWidth layoutwidth="true">
-          <div className="my-10">
-            <CategoryHeading heading="Faculty Members" />
+          <div>
+            <CategoryHeading heading="Distinguished Professor/Fellow" />
+
+            <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-4">
+              {distinguished.map((each, index) => (
+                <div key={each.id}>
+                  <ProfileCard profileData={each} page="faculty" />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
-            {data.data.map((each, index) => (
-              <div key={each.id}>
-                <ProfileCard profileData={each} page="faculty" />
-              </div>
-            ))}
+
+          <div>
+            <CategoryHeading heading="Permanent Faculties" />
+
+            <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
+              {permanentFaculties.map((each, index) => (
+                <div key={each.id}>
+                  <ProfileCard profileData={each} page="faculty" />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <CategoryHeading heading="Visiting Faculties" />
+
+            <div className="grid grid-cols-1  md:grid-cols-3 lg:grid-cols-5">
+              {visitingFaculties.map((each, index) => (
+                <div key={each.id}>
+                  <ProfileCard profileData={each} page="faculty" />
+                </div>
+              ))}
+            </div>
           </div>
         </ScreenWidth>
 
         <ScreenWidth layoutwidth="false">
-          <div className="bg-[url('/assets/img/bgImages/faculty-bg.jpg')]  bg-cover bg-no-repeat  h-lvh mt-6">
+          <div className="bg-group-img  bg-cover bg-no-repeat  h-lvh mt-6">
             <ScreenWidth layoutwidth="true">
               <div className="grid grid-cols-12">
                 <div className="hidden md:block md:col-span-4"></div>
-                <div className="col-span-10 md:col-span-7 text-2xl md:text-3xl lg:text-5xl font-medium mt-16">
+                <div className="col-span-10 md:col-span-8 text-2xl md:text-3xl lg:text-5xl font-medium mt-16">
                   <h1 className="mb-4">
-                    Kautilya’s Master of Public Policy (MPP) is designed for
-                    those looking to rebalance Society, Government and Business
-                    towards an equitable society.
+                    Kautilya’s Master’s Program in Public Policy (MPP) is
+                    designed for those looking to rebalance Society, Government
+                    and Business towards an equitable society.
                   </h1>
                   <Link href="/mpp" className="text-primary">
                     <div className="flex">
@@ -51,7 +91,7 @@ const faculty = ({ data }) => {
                         LEARN ABOUT THE PROGRAM
                       </h1>
                       <Image
-                        src="/assets/img/iconimages/redarrow.png"
+                        src={ImagePaths.redArrow}
                         alt="right-arrow"
                         width={0}
                         height={0}
@@ -70,16 +110,27 @@ const faculty = ({ data }) => {
 };
 
 export async function getStaticProps() {
-  const ourFaculty = `${apisBasePath.faculty}`;
+  // const ourFaculty = `${apisBasePath.faculty}`;
+  const ourFaculty = `${ksppApisBasePath.faculty}`;
 
-  const response = await fetch(ourFaculty);
-  const data = await response.json();
+  const res = await axios.get(ourFaculty, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+  const metaComponentResponse = await MetaTagsComponent({
+    page: "our-faculty",
+  });
+
+  console.log("faculty Page Meta DAta", metaComponentResponse);
+  const data = res.data;
 
   return {
-    props: { data },
+    props: { data, metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 60, // In seconds
   };
 }
 
 export default faculty;
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/fetch-faculty";
