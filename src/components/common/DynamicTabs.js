@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import React, { useEffect, useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
->>>>>>> f9b78406d15768fac3762fafa025239d58162d00
 import { FaCircleDown } from "react-icons/fa6";
 import {
   Tabs,
@@ -59,10 +55,6 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                 className="lg:text-nowrap text-base md:text-sm font-semibold"
               >
                 <div className="flex items-center gap-2">
-<<<<<<< HEAD
-                  <FaCircleDown className="w-5 h-5" />
-                  {category}
-=======
                   <FaCircleDown className="w-5 h-5 lg:w-3 lg:h-3" />
                   <span>
                     {category === "Academic Associates page" ||
@@ -72,7 +64,6 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                       ? label
                       : category}
                   </span>
->>>>>>> f9b78406d15768fac3762fafa025239d58162d00
                 </div>
               </Tab>
             ))}
