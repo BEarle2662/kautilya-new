@@ -43,20 +43,23 @@ export async function getStaticProps() {
 
   const slugsBasePath = `${ksppApisBasePath.blogsListApi}`;
 
+  const res = await axios.get(slugsBasePath, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "8efgh5gyujk",
+    },
+  });
+  const slugsData = res.data.data || [];
   // try {
-  //   const res = await axios.get(slugsBasePath, {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: process.env.NEXT_PUBLIC_API_AUTH_TOKEN, // Use env variable
-  //     },
-  //   });
+  // const res = await axios.get(slugsBasePath, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: process.env.NEXT_PUBLIC_API_AUTH_TOKEN, // Use env variable
+  //   },
+  // });
 
-  //   const slugsData = res.data.data;
+  // const slugsData = res.data.data;
 
-  //   return {
-  //     props: { slugsData },
-  //     revalidate: 60,
-  //   };
   // } catch (error) {
   //   console.error(
   //     "Error fetching blogs:",
@@ -72,7 +75,7 @@ export async function getStaticProps() {
 
   return {
     // props: { slugsData: [], metaTagsData: metaComponentResponse }, // Provide fallback data
-    props: { slugsData: [] }, // Provide fallback data
+    props: { slugsData }, // Provide fallback data
 
     revalidate: 60,
   };

@@ -18,6 +18,7 @@ import Link from "next/link";
 import { ImagePaths } from "@/Endpoints/imagePath";
 
 const SlugsPage = ({ pageTitle, slugsPageData }) => {
+  console.log("Slug PAge", slugsPageData);
   let slugBasePath;
   let slugMediaThumbnailPath;
   let slugMediaPostedByPath;
@@ -126,7 +127,7 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                     />
                     <CardBody>
                       <p className="font-semibold text-sm text-[#000] mb-4">
-                        {eachSlugItem.title}
+                        {eachSlugItem.thumbnail_title}
                       </p>
 
                       <Avatar
@@ -145,9 +146,23 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                           {eachSlugItem.posted_by}
                         </span>
                       )}
-                      <p className="text-sm text-[#424a53] ellipsis-two-lines">
-                        {eachSlugItem.posted_by_about}
-                      </p>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: eachSlugItem.thumbnail_description,
+                        }}
+                        className="text-sm text-[#424a53] ellipsis-two-lines"
+                      ></div>
+                      {/* {eachSlugItem.description && (
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: eachSlugItem.description,
+                          }}
+                          className="text-sm text-[#424a53] ellipsis-two-lines"
+                        ></div>
+                      )} */}
+                      {/* <p className="text-sm text-[#424a53] ellipsis-two-lines">
+                        {eachSlugItem.thumbnail_description}
+                      </p> */}
                     </CardBody>
                     <CardFooter className="pt-0">
                       <Link href={`${slugBasePath}${eachSlugItem.slug}`}>

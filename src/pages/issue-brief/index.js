@@ -37,7 +37,7 @@ export async function getStaticProps() {
   });
 
   console.log("issue-brief Page Meta DAta", metaComponentResponse);
-  // console.log("Issue brief", slugsData);
+  console.log("Issue brief", slugsData);
 
   return {
     props: { slugsData, metaTagsData: metaComponentResponse },
