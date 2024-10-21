@@ -277,7 +277,6 @@ export const customTheme = {
   accordion: accordianTheme,
   tabs: tabsTheme,
   tabsHeader: tabsHeaderTheme,
-  tabsHeader: headerTheme,
   tabsBody: tabsBody,
   tab: tabTheme,
   tabsBody: tabsBodyTheme,

@@ -7,7 +7,7 @@ p {
   margin-bottom: 1rem;
 }
 
-/* //scroll button */
+/* scroll button */
 .back-to-top {
   display: none;
 }
@@ -109,7 +109,7 @@ p {
 table tr td {
   color: #424a53;
   text-align: center;
-} */
+} 
 
 .india-by-kc p {
   @apply mb-4;
