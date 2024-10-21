@@ -123,7 +123,7 @@ const ImgTextContent = ({ content }) => {
   );
 };
 
-const colloquyEvent = ({metaTagsData}) => {
+const colloquyEvent = () => {
   const [activeTab, setActiveTab] = useState("about");
 
   const handleTabClick = (tab) => {
@@ -136,13 +136,11 @@ const colloquyEvent = ({metaTagsData}) => {
 
   return (
     <MainLayout
-    title={metaTagsData.title}
-      description={metaTagsData.description}
-      keywords={metaTagsData.keywords}
-      img={metaTagsData.meta_image}
+    // title={metaTagsData.title}
+    // description={metaTagsData.description}
+    // keywords={metaTagsData.keywords}
+    // img={metaTagsData.meta_image}
     >
-
-
       <div className="bg-[#95131d] h-[20vh] pt-10 py-20 md:pt-20 md:py-40">
         <h1 className="text-white text-center text-2xl md:text-4xl font-semibold">
           Kautilya Colloquy
@@ -341,20 +339,19 @@ const colloquyEvent = ({metaTagsData}) => {
   );
 };
 
-export async function getStaticProps() {
-  let  metaComponentResponse = await MetaTagsComponent({ page: "kautilya-colloquy-2024" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for kautilya-colloquy-2024 Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("kautilya-colloquy-2024 Page Meta DAta", metaComponentResponse);
-  return {
-    props: {
-      metaTagsData: metaComponentResponse
-    },
-    revalidate: 60,
-  };
-}
-
+// export async function getStaticProps() {
+//   let  metaComponentResponse = await MetaTagsComponent({ page: "kautilya-colloquy-2024" });
+//   if (!metaComponentResponse) {
+//     console.log("No Meta Data for kautilya-colloquy-2024 Page, fetching Home Page Meta Data");
+//     metaComponentResponse = await MetaTagsComponent({ page: "home" });
+//   }
+//   console.log("kautilya-colloquy-2024 Page Meta DAta", metaComponentResponse);
+//   return {
+//     props: {
+//       metaTagsData: metaComponentResponse
+//     },
+//     revalidate: 60,
+//   };
+// }
 
 export default colloquyEvent;

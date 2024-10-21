@@ -57,15 +57,13 @@ const About = ({ initialTeamData, metaTagsData }) => {
     { supportStaff: "Support Staff" },
   ];
 
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
   return (
     <>
       <MainLayout
         title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image || image}
+        img={metaTagsData.meta_image}
       >
         <ScreenWidth layoutwidth="true">
           {deptHeadings.map((each, index) => {

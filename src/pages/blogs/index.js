@@ -7,16 +7,13 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import CategoryHeading from "@/components/common/categoryHeading";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const BlogsPage = ({ slugsData, metaTagsData }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
+const BlogsPage = ({ slugsData }) => {
   return (
     <MainLayout
-    title={metaTagsData.title}
-    description={metaTagsData.description}
-    keywords={metaTagsData.keywords}
-    img={metaTagsData.meta_image}
+    // title={metaTagsData.title}
+    // description={metaTagsData.description}
+    // keywords={metaTagsData.keywords}
+    // img={metaTagsData.meta_image}
     >
       <SlugsPage pageTitle="Blogs" slugsPageData={slugsData} />
     </MainLayout>
@@ -66,18 +63,19 @@ export async function getStaticProps() {
   //     error.response ? error.response.data : error.message
   //   );
 
-  let  metaComponentResponse = await MetaTagsComponent({ page: "blogs" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for About Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("blogs Page Meta DAta", metaComponentResponse);
+  // let  metaComponentResponse = await MetaTagsComponent({ page: "blogs" });
+  // if (!metaComponentResponse) {
+  //   console.log("No Meta Data for About Page, fetching Home Page Meta Data");
+  //   metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  // }
+  // console.log("blogs Page Meta DAta", metaComponentResponse);
 
-    return {
-      props: { slugsData: [], metaTagsData: metaComponentResponse }, // Provide fallback data
-      revalidate: 60,
-    };
-  }
+  return {
+    // props: { slugsData: [], metaTagsData: metaComponentResponse }, // Provide fallback data
+    props: { slugsData: [] }, // Provide fallback data
 
+    revalidate: 60,
+  };
+}
 
 export default BlogsPage;

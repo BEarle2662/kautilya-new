@@ -7,15 +7,12 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import CategoryHeading from "@/components/common/categoryHeading";
 
 const BlogSlugPage = ({ blog }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
   return (
     <MainLayout
       title={"Blogs slug page Testing for metatags"}
       description={"Capstone page Testing for metatags"}
       keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      img={null}
     >
       <ScreenWidth layoutwidth="true">
         {/* <CategoryHeading heading="slug detailed page" /> */}

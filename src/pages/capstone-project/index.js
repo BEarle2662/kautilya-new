@@ -6,10 +6,7 @@ import React from "react";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const CapstoneProjectPage = ({ slugsData,metaTagsData }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
+const CapstoneProjectPage = ({ slugsData, metaTagsData }) => {
   // console.log("Capstone", slugsData);
 
   return (
@@ -37,14 +34,16 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({ page: "capstone-project" });
+  const metaComponentResponse = await MetaTagsComponent({
+    page: "capstone-project",
+  });
 
   console.log("capstone-project Page Meta DAta", metaComponentResponse);
 
   const slugsData = res.data.data || [];
   // console.log("capstone", slugsData);
   return {
-    props: { slugsData,  metaTagsData: metaComponentResponse },
+    props: { slugsData, metaTagsData: metaComponentResponse },
     revalidate: 60,
   };
 }

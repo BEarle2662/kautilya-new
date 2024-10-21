@@ -14,12 +14,17 @@ const StudentMix = ({ data, metaTagsData }) => {
   const thirdSlider = data?.filter((each) => each.category === "2021-23");
   const fourthSlider = data?.filter((each) => each.category === "2024-26");
 
+  const metaImg =
+    metaTagsData.meta_image !== null
+      ? `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`
+      : "https://kspp.edu.in/images/administration.jpg";
+
   return (
     <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaImg}
     >
       <div className="bg-white-shade  bg-cover bg-no-repeat">
         <ScreenWidth layoutwidth="true">
@@ -129,7 +134,9 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({ page: "student-mix" });
+  const metaComponentResponse = await MetaTagsComponent({
+    page: "student-mix",
+  });
 
   console.log("student-mix Page Meta DAta", metaComponentResponse);
   const data = response.data.data;

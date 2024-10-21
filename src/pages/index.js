@@ -8,7 +8,7 @@ import axios from "axios";
 import Link from "next/link";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-export default function Home({ data,metaTagsData }) {
+export default function Home({ data, metaTagsData }) {
   return (
     <MainLayout
       title={metaTagsData.title}
@@ -16,7 +16,6 @@ export default function Home({ data,metaTagsData }) {
       keywords={metaTagsData.keywords}
       img={metaTagsData.meta_image}
     >
-
       <div className="pt-4">
         <ScreenWidth layoutwidth="false">
           <FullwidthSlider />
@@ -80,8 +79,8 @@ export default function Home({ data,metaTagsData }) {
           </h1>
           <div className="blackLine mb-5"></div>
           <div className="grid grid-cols-5 gap-5">
-            {data.accRanking.map((each) => (
-              <div className="flex flex-col items-center">
+            {data.accRanking.map((each, i) => (
+              <div className="flex flex-col items-center" key={i}>
                 <Link href={`${docsPath.acceDoc}${each.doc}`}>
                   <img
                     src={`${ImageBasePaths.homeAccRankDeskImagesPath}${each.desktop_image}`}
@@ -185,9 +184,12 @@ export async function getStaticProps() {
   };
   // console.log("home", data);
 
-  let  metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  
-  console.log("resource-list-of-podcasts Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({ page: "home" });
+
+  console.log(
+    "resource-list-of-podcasts Page Meta DAta",
+    metaComponentResponse
+  );
   return {
     props: { data, metaTagsData: metaComponentResponse },
     // Revalidate at most once every 60 seconds
