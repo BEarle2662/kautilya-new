@@ -12,6 +12,7 @@ module.exports = withMT({
     extend: {
       backgroundImage: {
         // "gradient-image": "url('/kautilya-next/assets/img/gradient-bg.jpg')",
+        "mpp-background": "url('/assets/img/mpp/mpp.jpg')",
       },
       colors: {
         p: "#424a53",
@@ -20,6 +21,7 @@ module.exports = withMT({
 
       fontFamily: {
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans, "sans-serif"],
+        gupter: ["Gupter", "serif"],
       },
     },
   },

@@ -1,4 +1,5 @@
 import MainLayout from "@/components/MainContainer/MainLayout";
+import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import DynamicTabs from "@/components/common/DynamicTabs";
 import { Button } from "@material-tailwind/react";
 import Link from "next/link";
@@ -21,29 +22,42 @@ export async function getStaticProps() {
 const DoctoralPhdProgram = ({ tabData }) => {
   return (
     <MainLayout>
-      <div className="p-12">
-        <Link href="https://kspp.edu.in/study-at-kautilya" target="_blank">
-          <Button>Download Brochure</Button>
-        </Link>
-        <p className="text-p mt-4">
-          The Ph.D. program at the Kautilya School of Public Policy will equip
-          scholars with the training that will allow them to contribute through
-          their research in academia, government, business, and society.
-        </p>
+      <ScreenWidth layoutwidth="true">
+        <div className="p-12">
+          <Link href="https://kspp.edu.in/study-at-kautilya" target="_blank">
+            <Button>Download Brochure</Button>
+          </Link>
+          <p className="text-p mt-4">
+            The Ph.D. program at the Kautilya School of Public Policy will equip
+            scholars with the training that will allow them to contribute
+            through their research in academia, government, business, and
+            society.
+          </p>
 
-        <h5>
-          <b>
-            Lead the way in public policy innovation with impactful research.
-          </b>
-        </h5>
+          <h5>
+            <b>
+              Lead the way in public policy innovation with impactful research.
+            </b>
+          </h5>
 
-        <p>
-          Our PhD program is tailored to provide you with advanced training and
-          research opportunities that align with your passions and career goals.
-        </p>
+          <p>
+            Our PhD program is tailored to provide you with advanced training
+            and research opportunities that align with your passions and career
+            goals.
+          </p>
+          <h5>
+            <b>Purpose-Driven Education</b>
+          </h5>
+          <p>
+            Our PhD program is tailored to provide you with advanced training
+            and research opportunities that align with your passions and career
+            goals. You'll be prepared to contribute to various sectors,
+            including academia, government, business, and society.
+          </p>
 
-        <DynamicTabs tabData={tabData} />
-      </div>
+          <DynamicTabs tabData={tabData} />
+        </div>
+      </ScreenWidth>
     </MainLayout>
   );
 };

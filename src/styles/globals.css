@@ -56,3 +56,13 @@ p {
   width: 100%;
   height: 100%;
 }
+.admission-process, 
+.admission-process h1, 
+.admission-process h2, 
+.admission-process h3, 
+.admission-process h4, 
+.admission-process h5, 
+.admission-process h6, 
+.admission-process p {
+    @apply font-gupter font-normal;
+}

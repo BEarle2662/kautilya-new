@@ -1,10 +1,6 @@
 // /** @type {import('@material-tailwind/react').ButtonStyleTypes} */
-// /** @type {import('@material-tailwind/react').AccordionStylesType } */
-// /** @type {import('@material-tailwind/react').TabsStylesType } */
-// /** @type {import('@material-tailwind/react').TabsHeaderStylesType } */
-// /** @type {import('@material-tailwind/react').TabsBodyStylesType } */
-// /** @type {import('@material-tailwind/react').TabPanelStylesType  } */
-// /** @type {import('@material-tailwind/react').TabStylesType } */
+/** @type {import('@material-tailwind/react').AccordionStylesType } */
+/** @type {import('@material-tailwind/react').TabsHeaderStylesType } */
 
 const buttonTheme = {
   defaultProps: {
@@ -12,7 +8,7 @@ const buttonTheme = {
     size: "sm",
     fullWidth: false,
     ripple: true,
-    className: "rounded-none bg-primary text-primary",
+    className: "rounded-none bg-[#b11016]",
   },
 };
 
@@ -27,48 +23,105 @@ const accordianTheme = {
       body: {
         borderWidth: "border-t border-b-blue-gray-200",
         p: {
-          marginBottom: "mb-4",
-          fontSize: "text-lg",
+          marginBottom: "mb-4", // Adds margin-bottom to paragraphs
+          fontSize: "text-lg", // Adjust font size
         },
         a: {
-          color: "text-blue-500",
+          color: "text-blue-500", // Blue text color for links
           "&:hover": {
-            color: "text-blue-700",
+            color: "text-blue-700", // Darker blue on hover
           },
         },
       },
     },
   },
 };
-const tabTheme = {
-  tabs: {
-    tabsHeader: {
-      styles: {
-        base: {
-          display: "flex",
-          position: "relative",
-          bg: "!bg-primary",
-          bgOpacity: "bg-opacity-10",
-          borderRadius: "rounded-lg",
-          p: "p-1",
-          active: "bg-primary text-white",
-        },
-      },
-    },
-    tab: {
-      className: "text-primary text-left",
-      bg: "bg-transparent",
-    },
-    tabsBody: {
-      className: "border-t border-gray-100 border-2",
-      bg: "!bg-transparent",
-      overflow: "overflow-hidden",
+
+const tabsTheme = {
+  styles: {
+    base: {
+      display: "flex",
+      position: "relative",
+      bg: "bg-white",
+      bgOpacity: "bg-opacity-0",
+      borderRadius: "rounded-none",
+      padding: "p-6",
     },
   },
 };
 
-export const theme = {
+const headerTheme = {
+  styles: {
+    base: {
+      bg: "bg-transparent",
+      bgOpacity: "bg-opacity-0",
+      borderRadius: "rounded-0",
+      padding: "p-0",
+    },
+  },
+};
+
+const tabTheme = {
+  defaultProps: {
+    className: "border-2",
+    activeClassName: "text-white border-2",
+    disabled: false,
+  },
+  styles: {
+    base: {
+      tab: {
+        initial: {
+          bg: "bg-transparent",
+          py: "py-2",
+          px: "px-2",
+          fontWeight: "font-semibold",
+          width: "w-full",
+          height: "h-full",
+          mx: "mx-2",
+          className: "border border-primary",
+        },
+      },
+      indicator: {
+        position: "absolute",
+        inset: "inset-0",
+        zIndex: "z-10",
+        height: "h-full",
+        bg: "bg-[#b11016]",
+        borderRadius: "rounded-none",
+        boxShadow: "none",
+      },
+    },
+  },
+};
+
+const tabsBody = {
+  defaultProps: {
+    className: "border-2",
+    activeClassName: "text-white border-2",
+    disabled: false,
+  },
+  styles: {
+    base: {
+      tabsBody: {
+        initial: {
+          bg: "bg-transparent",
+          py: "py-4",
+          px: "px-4",
+          borderWidth: "border-1 border-gray",
+          fontWeight: "font-semibold",
+          width: "w-full",
+          height: "h-full",
+          mx: "mx-2",
+        },
+      },
+    },
+  },
+};
+export const customTheme = {
   button: buttonTheme,
   accordion: accordianTheme,
-  tabs: tabTheme,
+  tabs: tabsTheme,
+  tabsHeader: headerTheme,
+  tabsBody: tabsBody,
+  tab: tabTheme,
 };
