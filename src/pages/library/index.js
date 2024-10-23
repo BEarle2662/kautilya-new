@@ -10,6 +10,13 @@ import img3 from "../../../public/assets/img/library/MOnika-latest-1.jpg";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const Library = ({metaTagsData}) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
+
   return (
     <MainLayout
         title={metaTagsData.title}
@@ -89,8 +96,14 @@ const Library = ({metaTagsData}) => {
   );
 };
 export async function getStaticProps() {
-  const metaComponentResponse = await MetaTagsComponent({ page: "library" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "library" });
 
+  // console.log("library Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "library" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for library Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
   console.log("library Page Meta DAta", metaComponentResponse);
   return {
     props: {metaTagsData: metaComponentResponse },

@@ -11,6 +11,12 @@ import axios from "axios";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const ResearchFaqs = ({ researchFaq, metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
   return (
@@ -58,10 +64,15 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({ page: "research-faqs" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "research-faqs" });
 
-  console.log("research-faqs Page Meta DAta", metaComponentResponse);
-
+  // console.log("research-faqs Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "research-faqs" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for research faqs Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("research faqs Page Meta DAta", metaComponentResponse);
   const researchFaq = response.data.data || [];
   return {
     props: {

@@ -45,6 +45,12 @@ const financialAidContent = `
   </div>
 `;
 const FinancialAid = ({ metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
       title={metaTagsData.title}
@@ -87,15 +93,25 @@ export const getStaticProps = async () => {
   //     },
   //   };
   // }
-  const metaComponentResponse = await MetaTagsComponent({
+  // const metaComponentResponse = await MetaTagsComponent({
+  //   page: "scholarships-financial-aid",
+  // });
+
+  // console.log(
+  //   "scholarships-financial-aid Page Meta DAta",
+  //   metaComponentResponse
+  // );
+
+  let metaComponentResponse = await MetaTagsComponent({
     page: "scholarships-financial-aid",
   });
-
-  console.log(
-    "scholarships-financial-aid Page Meta DAta",
-    metaComponentResponse
-  );
-
+  if (!metaComponentResponse) {
+    console.log(
+      "No Meta Data for scholarships Page, fetching Home Page Meta Data"
+    );
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
+  console.log("scholarships Page Meta DAta", metaComponentResponse);
   return {
     props: { metaTagsData: metaComponentResponse },
     // Revalidate at most once every 60 seconds

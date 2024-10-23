@@ -9,6 +9,12 @@ import Link from "next/link";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 export default function Home({ data, metaTagsData }) {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
       title={metaTagsData.title}
@@ -79,20 +85,30 @@ export default function Home({ data, metaTagsData }) {
           </h1>
           <div className="blackLine mb-5"></div>
           <div className="grid grid-cols-5 gap-5">
-            {data.accRanking.map((each, i) => (
-              <div className="flex flex-col items-center" key={i}>
-                <Link href={`${docsPath.acceDoc}${each.doc}`}>
-                  <img
-                    src={`${ImageBasePaths.homeAccRankDeskImagesPath}${each.desktop_image}`}
-                    className="max-w-full"
-                    alt={each.alt_tag}
-                  />
-                  <p className="text-center font-bold text-sm mt-4">
-                    {each.img_title}
-                  </p>
-                </Link>
-              </div>
-            ))}
+            {data.accRanking
+              .sort((a, b) => a.weborder - b.weborder) // Sort based on weborder (ascending)
+              .map((each) => (
+                <div
+                  className="flex flex-col items-center"
+                  key={each.id || each.doc}
+                >
+                  <Link
+                    href={`${docsPath.acceDoc}${each.doc}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={`${ImageBasePaths.homeAccRankDeskImagesPath}${each.desktop_image}`}
+                      className="max-w-full"
+                      alt={each.alt_tag || "Default alt text"}
+                      loading="lazy"
+                    />
+                    <p className="text-center font-bold text-sm mt-4">
+                      {each.img_title}
+                    </p>
+                  </Link>
+                </div>
+              ))}
             {/* <div className="flex flex-col items-center">
               <img
                 src="assets/img/accrediations/gitam-naac-A-grade-in-2017.jpg"
@@ -193,6 +209,6 @@ export async function getStaticProps() {
   return {
     props: { data, metaTagsData: metaComponentResponse },
     // Revalidate at most once every 60 seconds
-    revalidate: 30, // In seconds
+    revalidate: 60, // In seconds
   };
 }

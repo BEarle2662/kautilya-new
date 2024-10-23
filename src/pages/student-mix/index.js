@@ -14,10 +14,12 @@ const StudentMix = ({ data, metaTagsData }) => {
   const thirdSlider = data?.filter((each) => each.category === "2021-23");
   const fourthSlider = data?.filter((each) => each.category === "2024-26");
 
-  const metaImg =
-    metaTagsData.meta_image !== null
-      ? `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`
-      : "https://kspp.edu.in/images/administration.jpg";
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
 
   return (
     <MainLayout
@@ -134,13 +136,22 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({
-    page: "student-mix",
-  });
+  // const metaComponentResponse = await MetaTagsComponent({
+  //   page: "student-mix",
+  // });
 
-  console.log("student-mix Page Meta DAta", metaComponentResponse);
-  const data = response.data.data;
+  // console.log("student-mix Page Meta DAta", metaComponentResponse);
+  // const data = response.data.data;
   //   console.log(data);
+
+  let metaComponentResponse = await MetaTagsComponent({ page: "student-mix" });
+  if (!metaComponentResponse) {
+    console.log(
+      "No Meta Data for student mix Page, fetching Home Page Meta Data"
+    );
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
+  console.log("student mix Page Meta DAta", metaComponentResponse);
   return {
     props: { data, metaTagsData: metaComponentResponse },
     revalidate: 60,

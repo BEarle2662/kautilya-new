@@ -80,6 +80,12 @@ const projectContent = `
 `;
 
 const ResearchProjects = ({metaTagsData}) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
     title={metaTagsData.title}
@@ -102,9 +108,15 @@ const ResearchProjects = ({metaTagsData}) => {
   );
 };
 export async function getStaticProps() {
-  const metaComponentResponse = await MetaTagsComponent({ page: "research-projects" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "research-projects" });
 
-  console.log("research-projects Page Meta DAta", metaComponentResponse);
+  // console.log("research-projects Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "research-projects" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for research projects Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("research projects Page Meta DAta", metaComponentResponse);
 
   return {
     props: { metaTagsData: metaComponentResponse },

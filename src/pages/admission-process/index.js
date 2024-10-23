@@ -6,8 +6,15 @@ import VideoBackground from "@/components/common/videoBackground";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import TopRecruiters from "@/components/common/topRecruters";
 import Navbar from "@/components/MainContainer/Navbar";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-function AdmissionProcess() {
+function AdmissionProcess({ metaTagsData }) {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   const [admTabsdata, setAdmTabsdata] = useState([]);
 
   useEffect(() => {
@@ -330,5 +337,21 @@ function AdmissionProcess() {
     </>
   );
 }
-
+export async function getStaticProps() {
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "admission-process",
+  });
+  if (!metaComponentResponse) {
+    console.log(
+      "No Meta Data for admission process Page, fetching Home Page Meta Data"
+    );
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
+  console.log("admission process Page Meta DAta", metaComponentResponse);
+  return {
+    props: { metaTagsData: metaComponentResponse },
+    // Revalidate at most once every 60 seconds
+    revalidate: 60, // In seconds
+  };
+}
 export default AdmissionProcess;

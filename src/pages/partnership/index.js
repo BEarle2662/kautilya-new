@@ -35,6 +35,12 @@ const partnersData = [
 ];
 
 const Partnership = ({ data, metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
         title={metaTagsData.title}
@@ -89,8 +95,14 @@ export async function getStaticProps() {
 
   const data = response.data.data;
   // console.log(data);
-  const metaComponentResponse = await MetaTagsComponent({ page: "partnership" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "partnership" });
 
+  // console.log("partnership Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "partnership" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for partnership Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
   console.log("partnership Page Meta DAta", metaComponentResponse);
   return {
     props: {

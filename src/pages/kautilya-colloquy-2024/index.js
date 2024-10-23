@@ -123,7 +123,13 @@ const ImgTextContent = ({ content }) => {
   );
 };
 
-const colloquyEvent = () => {
+const colloquyEvent = ({ metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   const [activeTab, setActiveTab] = useState("about");
 
   const handleTabClick = (tab) => {
@@ -339,19 +345,23 @@ const colloquyEvent = () => {
   );
 };
 
-// export async function getStaticProps() {
-//   let  metaComponentResponse = await MetaTagsComponent({ page: "kautilya-colloquy-2024" });
-//   if (!metaComponentResponse) {
-//     console.log("No Meta Data for kautilya-colloquy-2024 Page, fetching Home Page Meta Data");
-//     metaComponentResponse = await MetaTagsComponent({ page: "home" });
-//   }
-//   console.log("kautilya-colloquy-2024 Page Meta DAta", metaComponentResponse);
-//   return {
-//     props: {
-//       metaTagsData: metaComponentResponse
-//     },
-//     revalidate: 60,
-//   };
-// }
+export async function getStaticProps() {
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "kautilya-colloquy-2024",
+  });
+  if (!metaComponentResponse) {
+    console.log(
+      "No Meta Data for kautilya-colloquy-2024 Page, fetching Home Page Meta Data"
+    );
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
+  console.log("kautilya-colloquy-2024 Page Meta DAta", metaComponentResponse);
+  return {
+    props: {
+      metaTagsData: metaComponentResponse,
+    },
+    revalidate: 60,
+  };
+}
 
 export default colloquyEvent;

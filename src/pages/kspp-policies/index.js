@@ -9,6 +9,12 @@ import PoliciesCard from "@/components/PoliciesCard";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const Policies = ({ policiesData, metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
       title={metaTagsData.title}

@@ -8,7 +8,12 @@ import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const CapstoneProjectPage = ({ slugsData, metaTagsData }) => {
   // console.log("Capstone", slugsData);
-
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
       title={metaTagsData.title}
@@ -34,12 +39,21 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({
+  // const metaComponentResponse = await MetaTagsComponent({
+  //  page: "capstone-project",
+  // });
+
+  //console.log("capstone-project Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({
     page: "capstone-project",
   });
-
-  console.log("capstone-project Page Meta DAta", metaComponentResponse);
-
+  if (!metaComponentResponse) {
+    console.log(
+      "No Meta Data for capstone project Page, fetching Home Page Meta Data"
+    );
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
+  console.log("capstone Page Meta DAta", metaComponentResponse);
   const slugsData = res.data.data || [];
   // console.log("capstone", slugsData);
   return {

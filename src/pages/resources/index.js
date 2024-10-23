@@ -18,6 +18,13 @@ const Resources = ({ data,metaTagsData }) => {
     (each) => each.category === "News & Updates"
   );
 
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
+
   return (
     <MainLayout
       title={metaTagsData.title}

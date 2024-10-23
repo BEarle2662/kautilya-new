@@ -56,7 +56,12 @@ const About = ({ initialTeamData, metaTagsData }) => {
     { technicalSupport: "Technical Support" },
     { supportStaff: "Support Staff" },
   ];
-
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <>
       <MainLayout
@@ -219,10 +224,16 @@ export async function getStaticProps() {
     supportStaff: supportStaff,
   };
 
-  const metaComponentResponse = await MetaTagsComponent({ page: "about" });
+  //const metaComponentResponse = await MetaTagsComponent({ page: "about" });
 
-  console.log("About Page Meta DAta", metaComponentResponse);
+  //console.log("About Page Meta DAta", metaComponentResponse);
 
+  let metaComponentResponse = await MetaTagsComponent({ page: "about" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for about Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
+  console.log("about Page Meta DAta", metaComponentResponse);
   return {
     props: { initialTeamData, metaTagsData: metaComponentResponse },
     // Revalidate at most once every 60 seconds

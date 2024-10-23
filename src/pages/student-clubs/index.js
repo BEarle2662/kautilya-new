@@ -98,7 +98,12 @@ const StudentClub = ({ data, metaTagsData }) => {
     autoplay: true,
     cssEase: "linear",
   };
-
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
         title={metaTagsData.title}
@@ -154,9 +159,15 @@ export async function getStaticProps() {
   });
 
   const data = response.data.data;
-  const metaComponentResponse = await MetaTagsComponent({ page: "student-clubs" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "student-clubs" });
 
-  console.log("student-clubs Page Meta DAta", metaComponentResponse);
+  // console.log("student-clubs Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "student-clubs" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for student Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("student Page Meta DAta", metaComponentResponse);
   return {
     props: {
       data, metaTagsData: metaComponentResponse

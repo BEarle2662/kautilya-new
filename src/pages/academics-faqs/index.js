@@ -13,7 +13,12 @@ const AcademicFaqs = ({ academicFaqData, metaTagsData}) => {
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
   // console.log("academicfaq", academicfaq);
-
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
     title={metaTagsData.title}
@@ -37,9 +42,16 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({ page: "academics-faqs" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "academics-faqs" });
 
-  console.log("academics-faqs Page Meta DAta", metaComponentResponse);
+  // console.log("academics-faqs Page Meta DAta", metaComponentResponse);
+
+  let  metaComponentResponse = await MetaTagsComponent({ page: "academics-faqs" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for faqs Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("faqs Page Meta DAta", metaComponentResponse);
   const academicFaqData = academicFaqDataRes.data.data;
   // console.log("A Faq", academicFaqData);
   return {

@@ -7,7 +7,13 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import CategoryHeading from "@/components/common/categoryHeading";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const BlogsPage = ({ slugsData }) => {
+const BlogsPage = ({ slugsData, metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
     // title={metaTagsData.title}
@@ -50,6 +56,12 @@ export async function getStaticProps() {
     },
   });
   const slugsData = res.data.data || [];
+  let metaComponentResponse = await MetaTagsComponent({ page: "blogs" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for blogs Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
+  console.log("blogs Page Meta DAta", metaComponentResponse);
   // try {
   // const res = await axios.get(slugsBasePath, {
   //   headers: {
@@ -75,7 +87,7 @@ export async function getStaticProps() {
 
   return {
     // props: { slugsData: [], metaTagsData: metaComponentResponse }, // Provide fallback data
-    props: { slugsData }, // Provide fallback data
+    props: { slugsData, metaTagsData: metaComponentResponse }, // Provide fallback data
 
     revalidate: 60,
   };

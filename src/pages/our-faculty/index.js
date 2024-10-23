@@ -23,10 +23,12 @@ const faculty = ({ data, metaTagsData }) => {
     (each) => each.category === "Visiting Faculties"
   );
 
-  const metaImg =
-    metaTagsData.meta_image !== null
-      ? `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`
-      : "https://kspp.edu.in/images/administration.jpg";
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
 
   return (
     <>
@@ -119,10 +121,16 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({
-    page: "our-faculty",
-  });
+  // const metaComponentResponse = await MetaTagsComponent({
+  //   page: "our-faculty",
+  // });
 
+  // console.log("faculty Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({ page: "our-faculty" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for faculty Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  }
   console.log("faculty Page Meta DAta", metaComponentResponse);
   const data = res.data;
 

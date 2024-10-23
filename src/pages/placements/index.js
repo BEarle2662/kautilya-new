@@ -47,6 +47,14 @@ const textData = [
 ];
 
 const Placements = ({ data, metaTagsData }) => {
+  
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
+
   const [open, setOpen] = useState(false);
 
   const handleOpenDialog = (handleDialog) => {
