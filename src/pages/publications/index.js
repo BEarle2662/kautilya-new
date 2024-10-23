@@ -11,7 +11,12 @@ const Publications = ({ publicationData, metaTagsData}) => {
   // const facultyTabs = publicationData.facultiesData?.filter(
   //   (each) => each.category === "Publications page"
   // );
-
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
         title={metaTagsData.title}
@@ -70,10 +75,17 @@ export async function getStaticProps() {
     facultiesData: facultiesdata,
   };
 
-  const metaComponentResponse = await MetaTagsComponent({ page: "publications" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "publications" });
 
-  console.log("publications Page Meta DAta", metaComponentResponse);
+  // console.log("publications Page Meta DAta", metaComponentResponse);
   // console.log("facultyTabs", publicationData);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "publications" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for publications Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("publications Page Meta DAta", metaComponentResponse);
+
   return {
     props: { publicationData, metaTagsData: metaComponentResponse },
     revalidate: 60,

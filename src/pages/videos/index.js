@@ -9,6 +9,15 @@ import LazyLoad from "react-lazyload";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const videos = ({ videosData, metaTagsData  }) => {
+
+  
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
+
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 

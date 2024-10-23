@@ -1,8 +1,7 @@
 const buttonTheme = {
   defaultProps: {
     variant: "filled",
-    size: "lg",
-    color: "#b11016",
+    size: "sm",
     fullWidth: false,
     ripple: true,
     className: "rounded-none bg-[#b11016]",
@@ -68,6 +67,8 @@ const tabTheme = {
   defaultProps: {
     className: "bg-white mr-2 border-2 border-gray-200 w-full",
     activeClassName: "text-white border-2 border-slate-800",
+    className: "border-2",
+    activeClassName: "text-white border-2",
     disabled: false,
   },
   styles: {
@@ -84,6 +85,13 @@ const tabTheme = {
           bg: "bg-transparent",
           py: "py-4",
           px: "px-2",
+          py: "py-2",
+          px: "px-2",
+          fontWeight: "font-semibold",
+          width: "w-full",
+          height: "h-full",
+          mx: "mx-2",
+          className: "border border-primary",
         },
       },
       indicator: {
@@ -241,11 +249,35 @@ const cardTheme = {
   },
 };
 
+const tabsBody = {
+  defaultProps: {
+    className: "border-2",
+    activeClassName: "text-white border-2",
+    disabled: false,
+  },
+  styles: {
+    base: {
+      tabsBody: {
+        initial: {
+          bg: "bg-transparent",
+          py: "py-4",
+          px: "px-4",
+          borderWidth: "border-1 border-gray",
+          fontWeight: "font-semibold",
+          width: "w-full",
+          height: "h-full",
+          mx: "mx-2",
+        },
+      },
+    },
+  },
+};
 export const customTheme = {
   button: buttonTheme,
   accordion: accordianTheme,
   tabs: tabsTheme,
   tabsHeader: tabsHeaderTheme,
+  tabsBody: tabsBody,
   tab: tabTheme,
   tabsBody: tabsBodyTheme,
   tabPanel: tabPanelTheme,

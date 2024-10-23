@@ -9,13 +9,19 @@ import { Button } from "@material-tailwind/react";
 import DynamicTabs from "@/components/common/DynamicTabs";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const MentorshipProgram = ({ mentorPageData,metaTagsData }) => {
+const MentorshipProgram = ({ mentorPageData, metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
     <MainLayout
-       title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <div className="mb-4" id="know-more">
@@ -104,11 +110,19 @@ export async function getStaticProps() {
     mentorImagesData: data[0].data,
     tabsData: data[1].data,
   };
-  const metaComponentResponse = await MetaTagsComponent({ page: "mentorship-program" });
+  // const metaComponentResponse = await MetaTagsComponent({
+  //   page: "mentorship-program",
+  // });
 
-  console.log("mentorship-program Page Meta DAta", metaComponentResponse);
+  // console.log("mentorship-program Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "mentorship-program" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for mentorship Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("mentorship Page Meta DAta", metaComponentResponse);
   return {
-    props: { mentorPageData,  metaTagsData: metaComponentResponse},
+    props: { mentorPageData, metaTagsData: metaComponentResponse },
     revalidate: 60,
   };
 }

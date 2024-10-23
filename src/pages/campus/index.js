@@ -8,6 +8,12 @@ import React from "react";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const Campus = ({ facilitiesdata,metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   const tabsData = facilitiesdata;
   return (
     <MainLayout
@@ -62,8 +68,14 @@ export async function getStaticProps() {
     },
   });
   // const facilitiesdata = await facilityListdataResponse.json();
-  const metaComponentResponse = await MetaTagsComponent({ page: "campus" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "campus" });
 
+  // console.log("campus Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "campus" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for campus Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
   console.log("campus Page Meta DAta", metaComponentResponse);
   const facilitiesdata = response.data.data;
   // console.log(facilitiesdata);

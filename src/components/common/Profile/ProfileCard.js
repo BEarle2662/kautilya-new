@@ -83,7 +83,7 @@ const ProfileCard = ({ profileData, page }) => {
           : profileData.designation1}
       </p>
 
-      {(page !== "Mentorship" || page !== "contactUs") && (
+      {page !== "Mentorship" && page !== "contactUs" && (
         <ProfileCardDialog
           openProfile={openProfile}
           setOpenProfile={setOpenProfile}

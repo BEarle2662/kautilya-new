@@ -86,6 +86,7 @@ module.exports = withMT({
 
       fontFamily: {
         sans: ["Montserrat", ...defaultTheme.fontFamily.sans, "sans-serif"],
+        gupter: ["Gupter", "serif"],
         whitney: ["Whitney"],
       },
     },

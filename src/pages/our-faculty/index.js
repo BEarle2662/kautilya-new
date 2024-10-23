@@ -13,11 +13,6 @@ import axios from "axios";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const faculty = ({ data, metaTagsData }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
-  // console.log("KSPP faculty", data);
-
   const distinguished = data.data?.filter(
     (each) => each.category === "Distinguished Professor/Fellow"
   );
@@ -28,13 +23,20 @@ const faculty = ({ data, metaTagsData }) => {
     (each) => each.category === "Visiting Faculties"
   );
 
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
+
   return (
     <>
       <MainLayout
         title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image}
+        img={metaImg}
       >
         <ScreenWidth layoutwidth="true">
           <div>
@@ -119,8 +121,16 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({ page: "our-faculty" });
+  // const metaComponentResponse = await MetaTagsComponent({
+  //   page: "our-faculty",
+  // });
 
+  // console.log("faculty Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "our-faculty" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for faculty Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
   console.log("faculty Page Meta DAta", metaComponentResponse);
   const data = res.data;
 

@@ -11,6 +11,13 @@ import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 // React component definition
 const DoctoralPhdProgram = ({ tabData, metaTagsData  }) => {
+
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   return (
 
     <MainLayout
@@ -94,9 +101,16 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  const metaComponentResponse = await MetaTagsComponent({ page: "ph-d-duration" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "ph-d-duration" });
 
-  console.log("ph-d-duration Page Meta DAta", metaComponentResponse);
+  // console.log("ph-d-duration Page Meta DAta", metaComponentResponse);
+
+  let  metaComponentResponse = await MetaTagsComponent({ page: "ph-d-duration" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for phd Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("phd Page Meta DAta", metaComponentResponse);
 
   const data = response.data.data;
 

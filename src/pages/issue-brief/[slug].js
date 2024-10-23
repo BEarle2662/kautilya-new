@@ -6,15 +6,12 @@ import React from "react";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 
 const issuebriefSlugPage = ({ issueBrief }) => {
-  const image =
-    "https://programmes.gitam.edu/mbbs/static/media/academic_1.792758fcc02309368071.png";
-
   return (
     <MainLayout
       title={"Issue Brief slug page Testing for metatags"}
       description={"Capstone page Testing for metatags"}
       keywords={"GIMSR, GITAM, Hospital"}
-      img={image}
+      img={null}
     >
       <ScreenWidth layoutwidth="true">
         <SlugDetailedPage

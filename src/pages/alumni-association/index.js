@@ -11,6 +11,12 @@ import axios from "axios";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const AlumniAssociation = ({ data, metaTagsData }) => {
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
   const image =
     "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
 
@@ -107,9 +113,15 @@ export async function getStaticProps() {
   });
 
   const data = response.data.data;
-  const metaComponentResponse = await MetaTagsComponent({ page: "alumni-association" });
+  // const metaComponentResponse = await MetaTagsComponent({ page: "alumni-association" });
 
-  console.log("alumni-association Page Meta DAta", metaComponentResponse);
+  // console.log("alumni-association Page Meta DAta", metaComponentResponse);
+  let  metaComponentResponse = await MetaTagsComponent({ page: "alumni-association" });
+  if (!metaComponentResponse) {
+    console.log("No Meta Data for alumni association Page, fetching Home Page Meta Data");
+    metaComponentResponse = await MetaTagsComponent({ page: "home" });
+  } 
+  console.log("alumni association Page Meta DAta", metaComponentResponse);
   return {
     props: { data, metaTagsData: metaComponentResponse},
     revalidate: 60,
