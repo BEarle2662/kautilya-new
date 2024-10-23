@@ -148,7 +148,7 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                       )}
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: eachSlugItem.thumbnail_description,
+                          __html: eachSlugItem.posted_by_about,
                         }}
                         className="text-sm text-[#424a53] ellipsis-two-lines"
                       ></div>
