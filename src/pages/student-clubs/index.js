@@ -109,7 +109,7 @@ const StudentClub = ({ data, metaTagsData }) => {
         title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image}
+        img={metaImg}
     >
       <ScreenWidth layoutwidth="false">
         <div className="h-[40vh] bg-black-shade pt-10">

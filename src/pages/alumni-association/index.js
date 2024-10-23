@@ -25,7 +25,7 @@ const AlumniAssociation = ({ data, metaTagsData }) => {
         title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image}
+        img={metaImg}
     >
       <ScreenWidth layoutwidth="false">
         <div className="border-b-2 md:mb-10">

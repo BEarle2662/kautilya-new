@@ -20,7 +20,7 @@ const Campus = ({ facilitiesdata,metaTagsData }) => {
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaTagsData.meta_image}
+      img={metaImg}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Facilities" />

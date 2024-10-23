@@ -35,7 +35,7 @@ const videos = ({ videosData, metaTagsData  }) => {
         title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image}
+        img={metaImg}
       >
         <ScreenWidth layoutwidth="true">
           <div className="">

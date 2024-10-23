@@ -24,7 +24,7 @@ const DoctoralPhdProgram = ({ tabData, metaTagsData  }) => {
     title={metaTagsData.title}
     description={metaTagsData.description}
     keywords={metaTagsData.keywords}
-    img={metaTagsData.meta_image}
+    img={metaImg}
     >
       <div className="md:p-12">
         <ScreenWidth layoutwidth="true">
