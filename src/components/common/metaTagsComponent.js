@@ -23,10 +23,12 @@ export const MetaTagsComponent = async ({ page }) => {
       },
     });
     const data = response.data; // Axios returns the data directly in response.data
-    // console.log(":MetaData", data.data);
+
+    console.log(":MetaData", data.data);
     return data.data; // Return the actual meta tags data
   } catch (error) {
     console.error("Error fetching meta tags:", error);
+
     return null; // Handle errors and return null if something goes wrong
   }
 };

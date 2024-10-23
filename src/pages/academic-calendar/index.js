@@ -165,6 +165,13 @@ const AcademicCalendar = ({ metaTagsData }) => {
   // const image =
   //   "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/mpp_desktop_66b64f79d1f7d.jpg";
 
+  let metaImg;
+  if (metaTagsData.meta_image !== null) {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
+  } else {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  }
+
   return (
     <MainLayout
       title={metaTagsData.title}
