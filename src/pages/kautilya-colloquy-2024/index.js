@@ -346,10 +346,6 @@ const colloquyEvent = ({ metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  console.log(
-    "No Meta Data for kautilya-colloquy-2024 Page, fetching Home Page Meta Data"
-  );
-
   let metaComponentResponse = await MetaTagsComponent({
     page: "kautilya-colloquy-2024",
   });
