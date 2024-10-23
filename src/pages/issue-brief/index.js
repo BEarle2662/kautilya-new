@@ -18,7 +18,7 @@ const IssueBrief = ({ slugsData, metaTagsData }) => {
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaTagsData.meta_image}
+      img={metaImg}
     >
       <SlugsPage pageTitle="Issue Brief" slugsPageData={slugsData} />
     </MainLayout>

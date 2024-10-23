@@ -25,7 +25,7 @@ const PodcastFaqs = ({ podcastFaqs, metaTagsData }) => {
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaTagsData.meta_image}
+      img={metaImg}
     >
       <ScreenWidth layoutwidth="true">
         <Image src={podcast} width={0} height={0} alt="podcast-faq-banner" />

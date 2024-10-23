@@ -24,7 +24,7 @@ const ResearchFaqs = ({ researchFaq, metaTagsData }) => {
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaTagsData.meta_image}
+      img={metaImg}
     >
       <ScreenWidth layoutwidth="true">
         <Image src={faqImage} width={0} height={0} alt="faq-banner" />

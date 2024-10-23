@@ -20,7 +20,7 @@ const Policies = ({ policiesData, metaTagsData }) => {
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaTagsData.meta_image}
+      img={metaImg}
     >
       <div className="mt-10">
         <h1 className="font-bold text-xl md:font-extrabold md:text-4xl text-center">

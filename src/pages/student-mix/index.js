@@ -141,7 +141,7 @@ export async function getStaticProps() {
   // });
 
   // console.log("student-mix Page Meta DAta", metaComponentResponse);
-  // const data = response.data.data;
+  const data = response.data.data;
   //   console.log(data);
 
   let metaComponentResponse = await MetaTagsComponent({ page: "student-mix" });

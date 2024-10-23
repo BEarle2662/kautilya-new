@@ -33,7 +33,7 @@ const Mpp = ({ mppData,metaTagsData  }) => {
     title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaTagsData.meta_image}
+        img={metaImg}
     >
       <div className="bg-mpp-img  bg-cover bg-no-repeat py-14">
         <ScreenWidth layoutwidth="true">

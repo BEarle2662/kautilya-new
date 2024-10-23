@@ -16,10 +16,10 @@ const BlogsPage = ({ slugsData, metaTagsData }) => {
   }
   return (
     <MainLayout
-    // title={metaTagsData.title}
-    // description={metaTagsData.description}
-    // keywords={metaTagsData.keywords}
-    // img={metaTagsData.meta_image}
+     title={metaTagsData.title}
+     description={metaTagsData.description}
+    keywords={metaTagsData.keywords}
+     img={metaImg}
     >
       <SlugsPage pageTitle="Blogs" slugsPageData={slugsData} />
     </MainLayout>

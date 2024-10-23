@@ -19,7 +19,7 @@ const CapstoneProjectPage = ({ slugsData, metaTagsData }) => {
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaTagsData.meta_image}
+      img={metaImg}
     >
       <SlugsPage pageTitle="Capstone Project" slugsPageData={slugsData} />
     </MainLayout>
