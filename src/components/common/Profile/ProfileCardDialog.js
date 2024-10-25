@@ -25,7 +25,7 @@ export function ProfileCardDialog({
       ? profileData.imgURL
       : `${imageBasePath}${profileData.profile}`;
 
-  console.log("pagefinding", page);
+  // console.log("pagefinding", page);
   return (
     <>
       <Dialog

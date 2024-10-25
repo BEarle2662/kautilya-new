@@ -79,22 +79,16 @@ const projectContent = `
   </div>
 `;
 
-const ResearchProjects = ({metaTagsData}) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
+const ResearchProjects = ({ metaTagsData }) => {
   return (
     <MainLayout
-    title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
-        <CategoryHeading heading="Grants & Projects" />
+        <CategoryHeading heading="Grants & Projects" color="text-[#00174d]" />
         <Image
           src={banner}
           height={0}
@@ -108,19 +102,13 @@ const ResearchProjects = ({metaTagsData}) => {
   );
 };
 export async function getStaticProps() {
-  // const metaComponentResponse = await MetaTagsComponent({ page: "research-projects" });
-
-  // console.log("research-projects Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "research-projects" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for research projects Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("research projects Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "research-projects",
+  });
 
   return {
     props: { metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
+
     revalidate: 60, // In seconds
   };
 }

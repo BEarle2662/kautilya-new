@@ -58,8 +58,8 @@ const CustomSlides = ({ sliderdata, page, sliderType }) => {
       noOfslidesToScroll = 4;
       break;
     case "MPP Tabs":
-      noOfslidesToShow = 2;
-      noOfslidesToScroll = 2;
+      noOfslidesToShow = 1;
+      noOfslidesToScroll = 1;
       break;
     default:
       noOfslidesToShow = 3;

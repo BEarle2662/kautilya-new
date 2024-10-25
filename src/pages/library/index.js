@@ -9,20 +9,13 @@ import img2 from "../../../public/assets/img/library/logo.png";
 import img3 from "../../../public/assets/img/library/MOnika-latest-1.jpg";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const Library = ({metaTagsData}) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
+const Library = ({ metaTagsData }) => {
   return (
     <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Library" />
@@ -96,19 +89,12 @@ const Library = ({metaTagsData}) => {
   );
 };
 export async function getStaticProps() {
-  // const metaComponentResponse = await MetaTagsComponent({ page: "library" });
+  let metaComponentResponse = await MetaTagsComponent({ page: "library" });
 
-  // console.log("library Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "library" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for library Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("library Page Meta DAta", metaComponentResponse);
   return {
-    props: {metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
-    revalidate: 60, // In seconds
+    props: { metaTagsData: metaComponentResponse },
+
+    revalidate: 60,
   };
 }
 export default Library;

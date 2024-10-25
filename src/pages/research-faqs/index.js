@@ -11,20 +11,12 @@ import axios from "axios";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const ResearchFaqs = ({ researchFaq, metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-  const image =
-    "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image src={faqImage} width={0} height={0} alt="faq-banner" />
@@ -37,25 +29,6 @@ const ResearchFaqs = ({ researchFaq, metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // let researchFaq = [];
-
-  // try {
-  //   const response = await axios.post(
-  //     apisBasePath.faqdata,
-  //     {
-  //       type: "Research",
-  //     },
-  //     {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   );
-  //   researchFaq = response.data;
-  //   console.log("researchFaq", researchFaq);
-  // } catch (error) {
-  //   console.error("Error fetching data:", error);
-  // }
   const researchFaqsApi = ksppApisBasePath.researchFaqsApi;
 
   const response = await axios.get(researchFaqsApi, {
@@ -64,21 +37,18 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  // const metaComponentResponse = await MetaTagsComponent({ page: "research-faqs" });
 
-  // console.log("research-faqs Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "research-faqs" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for research faqs Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("research faqs Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "research-faqs",
+  });
+
   const researchFaq = response.data.data || [];
   return {
     props: {
-      researchFaq, metaTagsData: metaComponentResponse
+      researchFaq,
+      metaTagsData: metaComponentResponse,
     },
-    revalidate: 60, 
+    revalidate: 60,
   };
 }
 

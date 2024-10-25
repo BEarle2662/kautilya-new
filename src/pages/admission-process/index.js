@@ -7,14 +7,10 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import TopRecruiters from "@/components/common/topRecruters";
 import Navbar from "@/components/MainContainer/Navbar";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
+import Head from "next/head";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 function AdmissionProcess({ metaTagsData }) {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
   const [admTabsdata, setAdmTabsdata] = useState([]);
 
   useEffect(() => {
@@ -33,8 +29,42 @@ function AdmissionProcess({ metaTagsData }) {
     }
   };
 
+  const metaData = {
+    title:
+      "Master’s Program - Master's Program in Public Policy (MPP), Kautilya School of Public Policy, Best MPP Program",
+    description:
+      "Download Brochure IMPORTANT DATES APPLICATION CYCLE APPLICATION START DATE APPLICATION END DATE WITH SCHOLARSHIP ONLINE INTERVIEW SLOT 'Provisional Admission Letter' RELEASE DATE WITH SCHOLARSHIP LAST DATE TO PAY ADMISSION FEE Cycle 01 Sunday, 1 October, 2023 Sunday, 10 December, 2023 1 DEC - 15 DEC 2023 Friday, 15 December, 2023 Wednesday, 3 January, 2024 Cycle",
+    keywords:
+      "Download Brochure IMPORTANT DATES APPLICATION CYCLE APPLICATION START DATE APPLICATION END DATE WITH SCHOLARSHIP ONLINE INTERVIEW SLOT 'Provisional Admission Letter' RELEASE DATE WITH SCHOLARSHIP LAST DATE TO PAY ADMISSION FEE Cycle 01 Sunday, 1 October, 2023 Sunday, 10 December, 2023 1 DEC - 15 DEC 2023 Friday, 15 December, 2023 Wednesday, 3 January, 2024 Cycle",
+    image: "https://kspp.edu.in/images/administration.jpg",
+  };
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{metaData.title}</title>
+        <meta name="description" content={metaData.description} />
+        <meta name="keywords" content={metaData.keywords} />
+        <link rel="icon" href="./favicon.png" />
+
+        {/* Open Graph meta tags for social media sharing */}
+        <meta property="og:title" content={metaData.title} />
+        <meta property="og:description" content={metaData.description} />
+        <meta property="og:image" content={metaData.image} />
+        <meta
+          property="og:url"
+          content="https://nextdev.gitam.edu/kautilya-next/"
+        />
+        <meta property="og:type" content="website" />
+        {/* Twitter Card meta tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaData.title} />
+        <meta name="twitter:description" content={metaData.description} />
+        <meta name="twitter:image" content={metaData.image} />
+        {/* Nofollow tag */}
+        {/* <meta name="robots" content="nofollow" /> */}
+        <meta name="robots" content="noindex, nofollow" />
+      </Head>
       <Navbar />
       <div className="admission-process">
         <div className="mt-1 text-center">
@@ -187,7 +217,7 @@ function AdmissionProcess({ metaTagsData }) {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
               <div>
-                <img src="/assets/img/admission-process/pic.jpg" />
+                <img src={ImagePaths.publlicPolicyADP} />
               </div>
               <div>
                 <h6 className="text-primary font-semibold text-lg mb-3">
@@ -269,7 +299,7 @@ function AdmissionProcess({ metaTagsData }) {
               </div>
               <div>
                 <img
-                  src="/assets/img/admission-process/pic.jpg"
+                  src={ImagePaths.publlicPolicyADP}
                   alt="Admission Process"
                   className="w-full h-auto"
                 />
@@ -285,21 +315,21 @@ function AdmissionProcess({ metaTagsData }) {
         <div className="flex flex-wrap justify-center mt-5">
           <div className="w-full md:w-1/3 p-2">
             <img
-              src="/assets/img/admission-process/1.png"
+              src={ImagePaths.alumni_1_ADP}
               alt="Alumni 1"
               className="w-full h-auto"
             />
           </div>
           <div className="w-full md:w-1/3 p-2">
             <img
-              src="/assets/img/admission-process/2.png"
+              src={ImagePaths.alumni_2_ADP}
               alt="Alumni 2"
               className="w-full h-auto"
             />
           </div>
           <div className="w-full md:w-1/3 p-2">
             <img
-              src="/assets/img/admission-process/3.png"
+              src={ImagePaths.alumni_3_ADP}
               alt="Alumni 3"
               className="w-full h-auto"
             />
@@ -341,16 +371,10 @@ export async function getStaticProps() {
   let metaComponentResponse = await MetaTagsComponent({
     page: "admission-process",
   });
-  if (!metaComponentResponse) {
-    console.log(
-      "No Meta Data for admission process Page, fetching Home Page Meta Data"
-    );
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  }
-  console.log("admission process Page Meta DAta", metaComponentResponse);
+
   return {
     props: { metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
+
     revalidate: 60, // In seconds
   };
 }

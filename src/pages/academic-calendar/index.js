@@ -162,22 +162,12 @@ const AcademicCalendar = ({ metaTagsData }) => {
 
   const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
-  // const image =
-  //   "https://guprojects.gitam.edu/kautilya-admin/public/mmp_sliders/mpp_desktop_66b64f79d1f7d.jpg";
-
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Academic Calendar" />
@@ -369,18 +359,14 @@ const AcademicCalendar = ({ metaTagsData }) => {
   );
 };
 export async function getStaticProps() {
-  // const initialTeamData = {
-  // }
   const metaComponentResponse = await MetaTagsComponent({
     page: "academic-calendar",
   });
 
-  console.log("academic-calendar Page Meta DAta", metaComponentResponse);
-
   return {
     props: { metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
-    revalidate: 60, // In seconds
+
+    revalidate: 60,
   };
 }
 export default AcademicCalendar;

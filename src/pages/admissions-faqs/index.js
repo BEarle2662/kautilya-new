@@ -10,24 +10,22 @@ import Faq from "@/components/common/Faq";
 import axios from "axios";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const AdmissionFaqs = ({ admissionFaqs,metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-  const image =
-    "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
+const AdmissionFaqs = ({ admissionFaqs, metaTagsData }) => {
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
+      <Image
+        src={faqImage}
+        width={0}
+        height={0}
+        className="w-full"
+        alt="faq-banner"
+      />
       <ScreenWidth layoutwidth="true">
-        <Image src={faqImage} width={0} height={0} alt="faq-banner" />
         <div className="md:px-5 md:py-8">
           <Faq faqData={admissionFaqs} />
         </div>
@@ -37,28 +35,6 @@ const AdmissionFaqs = ({ admissionFaqs,metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // let admissionFaqs = [];
-
-  // try {
-  //   const response = await fetch(
-  //     apisBasePath.faqdata,
-
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         type: "Admissions",
-  //       }),
-  //     }
-  //   );
-  //   admissionFaqs = await response.json();
-  //   console.log("admissionFaqs", admissionFaqs);
-  // } catch (error) {
-  //   console.error("Error fetching data:", error);
-  // }
-
   const admissionFaqApi = ksppApisBasePath.admissionFaqApi;
 
   const response = await axios.get(admissionFaqApi, {
@@ -69,18 +45,15 @@ export async function getStaticProps() {
   });
 
   const admissionFaqs = response.data.data;
-  // const metaComponentResponse = await MetaTagsComponent({ page: "admissions-faqs" });
 
-  // console.log("admissions-faqs Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "admissions-faqs" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for admissions faqs Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("admissions faqs Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "admissions-faqs",
+  });
+
   return {
     props: {
-      admissionFaqs,metaTagsData: metaComponentResponse
+      admissionFaqs,
+      metaTagsData: metaComponentResponse,
     },
     revalidate: 60,
   };

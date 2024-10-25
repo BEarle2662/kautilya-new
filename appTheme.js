@@ -90,7 +90,8 @@ const tabTheme = {
           fontWeight: "font-semibold",
           width: "w-full",
           height: "h-full",
-          mx: "mx-2",
+          mx: "mx-0",
+
           className: "border border-primary",
         },
       },

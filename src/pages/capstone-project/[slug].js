@@ -4,14 +4,15 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const CapstoneProjectSlugPage = ({ CapstoneProject }) => {
+const CapstoneProjectSlugPage = ({ CapstoneProject, metaTagsData }) => {
   return (
     <MainLayout
-      title={"Capstone slug page Testing for metatags"}
-      description={"Capstone page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={null}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <SlugDetailedPage
@@ -27,9 +28,8 @@ export default CapstoneProjectSlugPage;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    // apisBasePath.capstoneProjectsList,
     ksppApisBasePath.cpLists,
-    // "https://guprojects.gitam.edu/kautilya-admin/api/cp-lists",
+
     {
       headers: {
         "Content-Type": "application/json",
@@ -49,9 +49,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // console.log("CP Params", params.slug);
   const res = await fetch(
-    // `${apisBasePath.capstoneProjectsList}/${params.slug}`,
     `${ksppApisBasePath.cpSlug}/${params.slug}`,
 
     {
@@ -63,10 +61,15 @@ export async function getStaticProps({ params }) {
   );
 
   const CapstoneProject = await res.json();
-  // console.log("CapstoneProject", CapstoneProject);
+
+  let metaComponentResponse = await MetaTagsComponent({
+    page: params.slug,
+  });
+
   return {
     props: {
       CapstoneProject,
+      metaTagsData: metaComponentResponse,
     },
   };
 }

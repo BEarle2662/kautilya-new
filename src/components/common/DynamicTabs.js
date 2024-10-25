@@ -54,7 +54,7 @@ const DynamicTabs = ({ tabData, phd, page }) => {
                 }
                 className="lg:text-nowrap text-base md:text-sm font-semibold"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 uppercase">
                   <FaCircleDown className="w-5 h-5 lg:w-3 lg:h-3" />
                   <span>
                     {category === "Academic Associates page" ||

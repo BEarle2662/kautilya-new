@@ -4,14 +4,15 @@ import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const ourFacultySlugPage = ({ facultySlugData }) => {
+const ourFacultySlugPage = ({ facultySlugData, metaTagsData }) => {
   return (
     <MainLayout
-      title={"Our faculty slug page Testing for metatags"}
-      description={"Our faculty slug for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={null}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <FacultySlugPage
         slugDetailedPage="Our Faculty Slug"
@@ -24,12 +25,6 @@ const ourFacultySlugPage = ({ facultySlugData }) => {
 export default ourFacultySlugPage;
 
 export async function getStaticPaths() {
-  // const res = await fetch(`${apisBasePath.faculty}`, {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: "8efgh5gyujk",
-  //   },
-  // });
   const res = await fetch(`${ksppApisBasePath.faculty}`, {
     headers: {
       "Content-Type": "application/json",
@@ -41,24 +36,17 @@ export async function getStaticPaths() {
   const slugProfiles = facultySlugsData.data.filter((each) =>
     each.readmore === "Yes" ? each.slug : null
   );
-  //   console.log("slugProfiles", slugProfiles.length);
+
   const paths = slugProfiles.map((facultyData) => {
     return {
       params: { slug: facultyData.slug },
     };
   });
-  // console.log("Paths", paths);
+
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  // const res = await fetch(`${apisBasePath.facultyBrief}/${params.slug}`, {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: "8efgh5gyujk",
-  //   },
-  // });
-
   const res = await fetch(`${ksppApisBasePath.facultyBrief}/${params.slug}`, {
     headers: {
       "Content-Type": "application/json",
@@ -66,11 +54,12 @@ export async function getStaticProps({ params }) {
     },
   });
   const facultySlugData = await res.json();
+  let metaComponentResponse = await MetaTagsComponent({ page: params.slug });
 
-  // console.log("facultySlugData", facultySlugData);
   return {
     props: {
       facultySlugData,
+      metaTagsData: metaComponentResponse,
     },
     revalidate: 60,
   };

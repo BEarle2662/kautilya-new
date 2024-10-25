@@ -8,29 +8,13 @@ import axios from "axios";
 import React from "react";
 
 const StudyAtKautilya = ({ studentAtKautilyaData, metaTagsData }) => {
-  let metaImg;
-  // valu= " "
-  // const metaImg =
-  //   metaTagsData.meta_image !== null || metaTagsData.meta_image !== ""
-  //     ? `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`
-  //     : "https://kspp.edu.in/images/administration.jpg";
-
-  console.log("study Page Meta DAta", metaTagsData);
-
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
-  console.log("study Page Meta DAta", metaImg);
   return (
     <>
       <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+        title={metaTagsData?.title}
+        description={metaTagsData?.description}
+        keywords={metaTagsData?.keywords}
+        img={metaTagsData?.meta_image}
       >
         <h1 className="text-2xl md:text-5xl text-center text-white bg-primary mb-4 py-16">
           LEARN FROM THE BEST
@@ -78,20 +62,19 @@ export const getStaticProps = async () => {
         Authorization: "8efgh5gyujk",
       },
     });
-    // console.log("studentAtKautilyaData", response);
+
     const studentAtKautilyaData = response.data.data;
 
     const metaComponentResponse = await MetaTagsComponent({
       page: "study-at-kautilya",
     });
 
-    // console.log("study Page Meta DAta", metaComponentResponse);
     return {
       props: {
         studentAtKautilyaData,
         metaTagsData: metaComponentResponse,
       },
-      revalidate: 60, // Ensure default object if undefined
+      revalidate: 60,
     };
   } catch (error) {
     console.error("Error fetching data", error);

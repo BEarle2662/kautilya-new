@@ -7,10 +7,16 @@ import Image from "next/image";
 import { ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const ieUniversitysSchoolOfPolitics = ({ data }) => {
+const ieUniversitysSchoolOfPolitics = ({ data, metaTagsData }) => {
   return (
-    <MainLayout>
+    <MainLayout
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
+    >
       <ScreenWidth layoutwidth="true">
         <h5 className="mb-4 text-base font-semibold">{data.full_title}</h5>
         <Image
@@ -21,19 +27,6 @@ const ieUniversitysSchoolOfPolitics = ({ data }) => {
           alt={data.fullpageimage_alttag}
         />
 
-        {/* <p className="mt-4 text-sm md:text-base">
-          Kautilya School of Public Policy has signed an MoU with IE
-          University’s School of Politics, Global Affairs and Economics (SPEGA)
-          for student exchange, research collaboration, faculty exchange amongst
-          other areas of collaboration. The student exchange will be in effect
-          from the academic year 2024-25.
-        </p>
-        <p className="text-sm md:text-base">
-          The student exchange would mean students from Kautilya would study
-          various courses at SPEGA . There will be a merit based competitive
-          process for the selection of interested students. The credit
-          equivalence has been established.
-        </p> */}
         <div
           dangerouslySetInnerHTML={{ __html: data.description }}
           className="mt-4 text-sm md:text-base"
@@ -58,9 +51,14 @@ export async function getStaticProps() {
 
   const data = response.data.data;
 
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "ie-universitys-school-of-politics",
+  });
+
   return {
     props: {
       data,
+      metaTagsData: metaComponentResponse,
     },
   };
 }

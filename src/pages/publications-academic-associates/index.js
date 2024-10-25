@@ -9,24 +9,12 @@ import Image from "next/image";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const PublicationsAcademicAssociates = ({ AcademicAssodata, metaTagsData }) => {
-  const image =
-    "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
-
-  // const academicAssoDatafilter = AcademicAssodata.associatesData?.filter(
-  //   (each) => each.category === "Academic Associates page"
-  // );
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image
@@ -48,10 +36,8 @@ const PublicationsAcademicAssociates = ({ AcademicAssodata, metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // const publicationBanner = `${apisBasePath.publicationBanner}`;
   const publicationBanner = `${ksppApisBasePath.publicationBannerData}`;
 
-  // const publicationAcademicAssoData = `${apisBasePath.publicationAcademicAssoData}`;
   const publicationAcademicAssoData = `${ksppApisBasePath.publicationTabsData}`;
 
   const responses = await Promise.all([
@@ -80,18 +66,12 @@ export async function getStaticProps() {
     associatesData: Associatesdata,
   };
 
-  // const metaComponentResponse = await MetaTagsComponent({ page: "publications-academic-associates" });
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "publications-academic-associates",
+  });
 
-  // console.log("publications-academic-associates Page Meta DAta", metaComponentResponse);
-  // console.log("AcademicAssodata", AcademicAssodata);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "publications-academic-associates" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for publications academic associates Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("publications academic associates Page Meta DAta", metaComponentResponse);
   return {
-    props: { AcademicAssodata, metaTagsData: metaComponentResponse  },
+    props: { AcademicAssodata, metaTagsData: metaComponentResponse },
     revalidate: 60,
   };
 }

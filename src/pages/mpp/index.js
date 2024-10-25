@@ -8,9 +8,11 @@ import mppPath from "../../../public/assets/img/mpp/mpp-path.jpg";
 import DynamicTabs from "@/components/common/DynamicTabs";
 
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
+import { Button } from "@material-tailwind/react";
+import Link from "next/link";
+import { FaCircleDown } from "react-icons/fa6";
 
-
-const Mpp = ({ mppData,metaTagsData  }) => {
+const Mpp = ({ mppData, metaTagsData }) => {
   // filter for masterProgramdata
   let page = "master-program";
   const skillsShop = mppData.slidesData?.filter(
@@ -22,18 +24,13 @@ const Mpp = ({ mppData,metaTagsData  }) => {
   const electives = mppData.slidesData?.filter(
     (each) => each.category === "Electives"
   );
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
+
   return (
     <MainLayout
-    title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <div className="bg-mpp-img  bg-cover bg-no-repeat py-14">
         <ScreenWidth layoutwidth="true">
@@ -60,7 +57,17 @@ const Mpp = ({ mppData,metaTagsData  }) => {
           </div>
         </ScreenWidth>
       </div>
-      <div className="md:py-10">
+      <div>
+        <ScreenWidth layoutwidth="true">
+          <Link href="https://kspp.edu.in/pdf/Admissions%20Brochure%202025%20Web.pdf">
+            <Button className="inline-flex justify-between ">
+              <FaCircleDown className="w-5 h-5 lg:w-3 lg:h-3" />
+              Download Brochure
+            </Button>
+          </Link>
+        </ScreenWidth>
+      </div>
+      <div className="md:pb-10">
         <ScreenWidth layoutwidth="true">
           <Image src={mppPath} width={0} height={0} className="w-full h-full" />
         </ScreenWidth>
@@ -103,7 +110,10 @@ const Mpp = ({ mppData,metaTagsData  }) => {
             underneath contains an indicative term-wise outlay of the courses
             for the 1st two years:
           </p>
-          <CustomSlides sliderdata={coreCourses} page={page} />
+
+          <div className="mppTabsSlider">
+            <CustomSlides sliderdata={coreCourses} page={page} />
+          </div>
         </ScreenWidth>
       </div>
 
@@ -139,12 +149,10 @@ const Mpp = ({ mppData,metaTagsData  }) => {
 };
 
 export async function getStaticProps() {
-  // const masterProgramData = `${apisBasePath.masterProgramData}`;
   const masterProgramData = `${ksppApisBasePath.mppSliders}`;
 
-  // const masterProgramTabsData = `${apisBasePath.masterProgramTabsData}`;
   const mppTabsData = `${ksppApisBasePath.mppTabs}`;
-  // console.log("mppTabsData", mppTabsData);
+
   const responses = await Promise.all([
     fetch(masterProgramData, {
       headers: {
@@ -166,15 +174,9 @@ export async function getStaticProps() {
     slidesData: data[0].data,
     tabsData: data[1].data,
   };
-  //const metaComponentResponse = await MetaTagsComponent({ page: "mpp" });
 
- // console.log("mpp Page Meta DAta", metaComponentResponse);
- let  metaComponentResponse = await MetaTagsComponent({ page: "mpp" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for mpp Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("mpp Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({ page: "mpp" });
+
   return {
     props: { mppData, metaTagsData: metaComponentResponse },
     revalidate: 60,

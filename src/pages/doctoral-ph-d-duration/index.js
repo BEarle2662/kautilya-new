@@ -6,25 +6,17 @@ import { Button } from "@material-tailwind/react";
 import axios from "axios";
 import Link from "next/link";
 
-// import pdfDoc from "../../../public/assets/pdf/events/qs-gitamuniversity.pdf";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-// React component definition
 const DoctoralPhdProgram = ({ tabData, metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
   return (
-    <MainLayout 
-    title={metaTagsData.title}
-    description={metaTagsData.description}
-    keywords={metaTagsData.keywords}
-    img={metaTagsData.meta_image}
+    <MainLayout
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
-      <div className="md:p-12">
+      <div className="md:py-12">
         <ScreenWidth layoutwidth="true">
           <Link
             href="/assets/pdf/events/qs-gitamuniversity.pdf"
@@ -74,7 +66,9 @@ const DoctoralPhdProgram = ({ tabData, metaTagsData }) => {
       </div>
       <div className="bg-[#f6f6f6]">
         <ScreenWidth layoutwidth="true" section="tabs">
-          <DynamicTabs tabData={tabData} />
+          <ScreenWidth layoutwidth="true">
+            <DynamicTabs tabData={tabData} />
+          </ScreenWidth>
         </ScreenWidth>
       </div>
     </MainLayout>
@@ -83,12 +77,7 @@ const DoctoralPhdProgram = ({ tabData, metaTagsData }) => {
 
 export default DoctoralPhdProgram;
 
-// Fetch tab data during build time
 export async function getStaticProps() {
-  // const response = await fetch(
-  //   "https://guprojects.gitam.edu/kautilya-admin/api/fetch-phd-tabsdata"
-  // );
-  // const data = await response.json();
   const ksppPhdDoctoralTabsApi = ksppApisBasePath.phdDoctoralTabs;
 
   const response = await axios.get(ksppPhdDoctoralTabsApi, {
@@ -100,20 +89,15 @@ export async function getStaticProps() {
 
   const phdDoctoralTabs = response.data.data;
 
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "ph-d-duration",
+  });
 
-//const metaComponentResponse = await MetaTagsComponent({ page: "ph-d-duration" });
-
- // console.log("doctoral Page Meta DAta", metaComponentResponse);
- let  metaComponentResponse = await MetaTagsComponent({ page: "ph-d-duration" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for phd Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("phd Page Meta DAta", metaComponentResponse);
   return {
     props: {
-      tabData: phdDoctoralTabs || [], metaTagsData: metaComponentResponse // Pass tabData to the page
+      tabData: phdDoctoralTabs || [],
+      metaTagsData: metaComponentResponse,
     },
-    revalidate: 60, 
+    revalidate: 60,
   };
 }

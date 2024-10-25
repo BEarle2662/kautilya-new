@@ -45,18 +45,12 @@ const financialAidContent = `
   </div>
 `;
 const FinancialAid = ({ metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <div className="bg-[#95131d] h-[20vh] pt-10 py-20 md:pt-20 md:py-40">
         <h1 className="text-white text-center text-2xl md:text-6xl font-normal">
@@ -74,47 +68,13 @@ const FinancialAid = ({ metaTagsData }) => {
 };
 
 export const getStaticProps = async () => {
-  // try {
-  //   const metaTagsResponse = await MetaTagsComponent({
-  //     page: "scholarships-financial-aid",
-  //   });
-  //   // console.log("metaTagsResponse", metaTagsResponse);
-
-  //   return {
-  //     props: {
-  //       metaTagsResponse: metaTagsResponse || {},
-  //     },
-  //   };
-  // } catch (error) {
-  //   console.error("Error fetching data", error);
-  //   return {
-  //     props: {
-  //       metaTagsResponse: {},
-  //     },
-  //   };
-  // }
-  // const metaComponentResponse = await MetaTagsComponent({
-  //   page: "scholarships-financial-aid",
-  // });
-
-  // console.log(
-  //   "scholarships-financial-aid Page Meta DAta",
-  //   metaComponentResponse
-  // );
-
   let metaComponentResponse = await MetaTagsComponent({
     page: "scholarships-financial-aid",
   });
-  if (!metaComponentResponse) {
-    console.log(
-      "No Meta Data for scholarships Page, fetching Home Page Meta Data"
-    );
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  }
-  console.log("scholarships Page Meta DAta", metaComponentResponse);
+
   return {
     props: { metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
+
     revalidate: 60, // In seconds
   };
 };

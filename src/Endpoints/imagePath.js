@@ -241,4 +241,25 @@ export const ImagePaths = {
   DeanAMA: `${basePath}/assets/img/events/publicPolicy/Dean-AMA-n.png`,
   dateIcon: `${basePath}/assets/img/events/publicPolicy/date-icon.png`,
   timeIcon: `${basePath}/assets/img/events/publicPolicy/time-icon.png`,
+
+  // video path admission process
+
+  kautilyaVideoMp4: `${basePath}/assets/videos/kautilya_gitam.mp4`,
+  kautilyaVideoWebm: `${basePath}/assets/videos/kautilya_gitam.webm`,
+
+  publlicPolicyADP: `${basePath}/assets/img/admission-process/pic.jpg`,
+  top_rc_1_ADP: `${basePath}/assets/img/admission-process/logo/1.png`,
+  top_rc_2_ADP: `${basePath}/assets/img/admission-process/logo/2.png`,
+  top_rc_3_ADP: `${basePath}/assets/img/admission-process/logo/3.png`,
+  top_rc_4_ADP: `${basePath}/assets/img/admission-process/logo/4.png`,
+  top_rc_5_ADP: `${basePath}/assets/img/admission-process/logo/5.png`,
+  top_rc_6_ADP: `${basePath}/assets/img/admission-process/logo/6.png`,
+  top_rc_7_ADP: `${basePath}/assets/img/admission-process/logo/7.png`,
+
+  alumni_1_ADP: `${basePath}/assets/img/admission-process/1.png`,
+  alumni_2_ADP: `${basePath}/assets/img/admission-process/2.png`,
+  alumni_3_ADP: `${basePath}/assets/img/admission-process/3.png`,
+
+  appendix_1: `${basePath}/assets/img/source_appendix_1.jpg`,
+  appendix_2: `${basePath}/assets/img/source_appendix_2.jpg`,
 };

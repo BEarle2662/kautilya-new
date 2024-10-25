@@ -35,39 +35,32 @@ const partnersData = [
 ];
 
 const Partnership = ({ data, metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
   return (
     <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Partnership" />
-        <div className="flex flex-col md:flex-row justify-around items-center">
+        <div className="flex flex-col md:flex-row justify-evenly items-center">
           {data.map((each) => (
             <Card
-              className="mt-6 md:w-96 rounded-none p-2 border-2"
+              className="mt-6 md:w-100 rounded-none p-2 border-2"
               key={each.thumnail_title}
             >
               <Image
                 src={`${ImageBasePaths.partnerShipImagesPath}thumbnail/${each.thumbnail_image}`}
-                height={0}
-                width={0}
-                className="w-full h-full"
+                height={191}
+                width={364}
                 alt={each.thumbnail_alttag}
               />
 
               <CardBody>
-                <h4 className="text-base font-semibold text-black">
+                <h6 className="font-semibold text-black">
                   {each.thumnail_title}
-                </h4>
+                </h6>
               </CardBody>
               <CardFooter className="pt-0 text-center">
                 <Link href={each.slug}>
@@ -94,19 +87,13 @@ export async function getStaticProps() {
   });
 
   const data = response.data.data;
-  // console.log(data);
-  // const metaComponentResponse = await MetaTagsComponent({ page: "partnership" });
 
-  // console.log("partnership Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "partnership" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for partnership Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("partnership Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({ page: "partnership" });
+
   return {
     props: {
-      data, metaTagsData: metaComponentResponse
+      data,
+      metaTagsData: metaComponentResponse,
     },
     revalidate: 60,
   };

@@ -7,20 +7,14 @@ import axios from "axios";
 import React from "react";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const Campus = ({ facilitiesdata,metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
+const Campus = ({ facilitiesdata, metaTagsData }) => {
   const tabsData = facilitiesdata;
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Facilities" />
@@ -57,8 +51,6 @@ const Campus = ({ facilitiesdata,metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // const facilityListdata = `${apisBasePath.facilityListdata}`;
-
   const faciltiesDataApi = `${ksppApisBasePath.faciltiesDataApi}`;
 
   const response = await axios.get(faciltiesDataApi, {
@@ -67,18 +59,11 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  // const facilitiesdata = await facilityListdataResponse.json();
-  // const metaComponentResponse = await MetaTagsComponent({ page: "campus" });
 
-  // console.log("campus Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "campus" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for campus Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("campus Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({ page: "campus" });
+
   const facilitiesdata = response.data.data;
-  // console.log(facilitiesdata);
+
   return {
     props: { facilitiesdata, metaTagsData: metaComponentResponse },
     revalidate: 60,

@@ -8,19 +8,7 @@ import YouTube from "react-youtube";
 import LazyLoad from "react-lazyload";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const videos = ({ videosData, metaTagsData  }) => {
-
-  
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
-  const image =
-    "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
-
+const videos = ({ videosData, metaTagsData }) => {
   const opts = {
     height: "315",
     width: "100%",
@@ -32,10 +20,10 @@ const videos = ({ videosData, metaTagsData  }) => {
   return (
     <>
       <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+        title={metaTagsData?.title}
+        description={metaTagsData?.description}
+        keywords={metaTagsData?.keywords}
+        img={metaTagsData?.meta_image}
       >
         <ScreenWidth layoutwidth="true">
           <div className="">
@@ -79,8 +67,6 @@ const videos = ({ videosData, metaTagsData  }) => {
 };
 
 export async function getStaticProps() {
-  // const videosDataPath = `${apisBasePath.videosData}`;
-
   const videosDataPath = `${ksppApisBasePath.videoGalleryApi}`;
 
   const res = await axios.get(videosDataPath, {
@@ -91,13 +77,8 @@ export async function getStaticProps() {
   });
 
   const videosData = res.data.data;
-  let  metaComponentResponse = await MetaTagsComponent({ page: "videos" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for videos Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("videos Page Meta DAta", metaComponentResponse);
-  // console.log("Videos", videosData);
+  let metaComponentResponse = await MetaTagsComponent({ page: "videos" });
+
   return {
     props: { videosData, metaTagsData: metaComponentResponse },
     revalidate: 60,

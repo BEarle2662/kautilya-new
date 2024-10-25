@@ -4,14 +4,15 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const issuebriefSlugPage = ({ issueBrief }) => {
+const issuebriefSlugPage = ({ issueBrief, metaTagsData }) => {
   return (
     <MainLayout
-      title={"Issue Brief slug page Testing for metatags"}
-      description={"Capstone page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={null}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <SlugDetailedPage
@@ -27,7 +28,6 @@ export default issuebriefSlugPage;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    // `${apisBasePath.issuesBreifList}`,
     `${ksppApisBasePath.issueBriefLists}`,
 
     {
@@ -50,7 +50,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const res = await fetch(
-    // `${apisBasePath.issuesBreifList}/${params.slug}`,
     `${ksppApisBasePath.issueBriefSlug}/${params.slug}`,
 
     {
@@ -62,13 +61,16 @@ export async function getStaticProps({ params }) {
   );
 
   const issueBrief = await res.json();
-  // console.log("Issue brief Slug", issueBrief);
+
+  let metaComponentResponse = await MetaTagsComponent({
+    page: params.slug,
+  });
 
   return {
     props: {
       issueBrief,
+      metaTagsData: metaComponentResponse,
     },
+    revalidate: 60,
   };
 }
-
-// "https://guprojects.gitam.edu/kautilya-admin/api/issues-lists",

@@ -3,8 +3,6 @@ import React from "react";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 
-
-
 import podcast from "../../../public/assets/img/podcast.jpg";
 import Faq from "@/components/common/Faq";
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
@@ -12,20 +10,12 @@ import axios from "axios";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const PodcastFaqs = ({ podcastFaqs, metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-  const image =
-    "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <Image src={podcast} width={0} height={0} alt="podcast-faq-banner" />
@@ -55,9 +45,6 @@ const PodcastFaqs = ({ podcastFaqs, metaTagsData }) => {
 };
 
 export async function getStaticProps() {
- // let podcastFaqs = [];
-
-
   const podcastFaqsApi = ksppApisBasePath.resourcespodcastsApi;
 
   const response = await axios.get(podcastFaqsApi, {
@@ -67,35 +54,15 @@ export async function getStaticProps() {
     },
   });
   const podcastFaqs = response.data.data || [];
-  // try {
-  //   const response = await fetch(
-  //     apisBasePath.faqdata,
 
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         type: "Podcasts",
-  //       }),
-  //     }
-  //   );
-  //   podcastFaqs = await response.json();
-  //   // console.log("podcastFaqs", podcastFaqs);
-  // } catch (error) {
-  //   console.error("Error fetching data:", error);
-  // }
-  let  metaComponentResponse = await MetaTagsComponent({ page: "resource-list-of-podcasts" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for resource-list-of-podcasts Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("resource-list-of-podcasts Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "resource-list-of-podcasts",
+  });
+
   return {
     props: {
       podcastFaqs,
-      metaTagsData: metaComponentResponse
+      metaTagsData: metaComponentResponse,
     },
     revalidate: 60,
   };

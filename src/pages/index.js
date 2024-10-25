@@ -9,18 +9,12 @@ import Link from "next/link";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 export default function Home({ data, metaTagsData }) {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <div className="pt-4">
         <ScreenWidth layoutwidth="false">
@@ -109,56 +103,6 @@ export default function Home({ data, metaTagsData }) {
                   </Link>
                 </div>
               ))}
-            {/* <div className="flex flex-col items-center">
-              <img
-                src="assets/img/accrediations/gitam-naac-A-grade-in-2017.jpg"
-                className="max-w-full"
-                alt="gitam-naac-A-grade-in-2017"
-              />
-              <p className="text-center font-bold text-sm mt-4">
-                NAAC ‘A ++ ’ Grade in 2023
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <img
-                src="assets/img/accrediations/gitam-recognized-by-ugc-mhrd.jpg"
-                className="max-w-full"
-                alt="gitam-recognized-by-ugc-mhrd"
-              />
-              <p className="text-center font-bold text-sm mt-4">
-                UGC Recognized as Category - ‘I’ Deemed to be University
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <img
-                src="assets/img/accrediations/101-150-Rank-in-NIRF-2023-University-Category.jpg"
-                className="max-w-full"
-                alt="101-150-Rank-in-NIRF-2023-University-Category"
-              />
-              <p className="text-center font-bold text-sm mt-4">
-                101-150 Rank University in NIRF 2023
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <img
-                src="assets/img/accrediations/601-800-Rank-in-THE-mpact-Rankings-2023-in-Overall-SDGs.jpg"
-                className="max-w-full"
-                alt="601-800-Rank-in-THE-mpact-Rankings-2023-in-Overall-SDGs"
-              />
-              <p className="text-center font-bold text-sm mt-4">
-                601+ Rank in THE ASIA Ranking 2023
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <img
-                src="assets/img/accrediations/80-in-QS-INDIA-Rankings-2022.jpg"
-                className="max-w-full"
-                alt="80-in-QS-INDIA-Rankings-2022"
-              />
-              <p className="text-center font-bold text-sm mt-4">
-                93 in QS – INDIA Rankings 2023
-              </p>
-            </div> */}
           </div>
         </ScreenWidth>
       </div>
@@ -198,17 +142,12 @@ export async function getStaticProps() {
     gitamGlance: gitamGlance.data.data,
     accRanking: accRanking.data.data,
   };
-  // console.log("home", data);
 
   let metaComponentResponse = await MetaTagsComponent({ page: "home" });
 
-  console.log(
-    "resource-list-of-podcasts Page Meta DAta",
-    metaComponentResponse
-  );
   return {
     props: { data, metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
+
     revalidate: 60, // In seconds
   };
 }

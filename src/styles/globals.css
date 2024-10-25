@@ -47,6 +47,12 @@ p {
   margin: auto;
 }
 
+.mppTabsSlider .slider-container {
+  width: 90% !important;
+  height: 90% !important;
+  overflow: hidden;
+}
+
 .bg-gray {
   @apply bg-[#f1f1f1];
 }
@@ -57,7 +63,7 @@ p {
 .k-facult-sub {
   @apply text-xs md:text-sm font-normal mt-1 text-center;
 }
- @media (max-width: 640px) {
+@media (max-width: 640px) {
   .line-below::after {
     content: "";
     position: absolute;
@@ -83,15 +89,15 @@ p {
   width: 100%;
   height: 100%;
 }
-.admission-process, 
-.admission-process h1, 
-.admission-process h2, 
-.admission-process h3, 
-.admission-process h4, 
-.admission-process h5, 
-.admission-process h6, 
+.admission-process,
+.admission-process h1,
+.admission-process h2,
+.admission-process h3,
+.admission-process h4,
+.admission-process h5,
+.admission-process h6,
 .admission-process p {
-    @apply font-gupter font-normal;
+  @apply font-gupter font-normal;
 }
 .sub_title {
   color: #b11016;
@@ -104,12 +110,10 @@ p {
   margin-bottom: 40px;
 }
 
-
-
 table tr td {
   color: #424a53;
   text-align: center;
-} 
+}
 
 .india-by-kc p {
   @apply mb-4;
@@ -213,8 +217,21 @@ p {
 
 /* slug pages */
 
+.slug-description img {
+  display: block;
+  margin: 20px auto;
+}
+
 .slug-description a {
   @apply text-[#15c] hover:underline hover:decoration-indigo-500;
+}
+
+.faculty_list li {
+  @apply mb-3;
+}
+
+.margin-minus {
+  margin-top: -100px;
 }
 
 .blog_intro p {

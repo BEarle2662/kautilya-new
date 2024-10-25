@@ -4,15 +4,27 @@ import { useEffect } from "react";
 import axios from "axios";
 import MainLayout from "@/components/MainContainer/MainLayout";
 import { apisBasePath } from "@/Endpoints/apisBase";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const UnknownPaths = ({ slug = [], issueSlugs, capstoneSlugs, blogSlugs }) => {
+const UnknownPaths = ({
+  slug = [],
+  issueSlugs,
+  capstoneSlugs,
+  blogSlugs,
+  metaTagsData,
+}) => {
   const router = useRouter();
 
   // console.log("CATCHING", slug);
   // Check if slug is defined
   if (!slug.length) {
     return (
-      <MainLayout>
+      <MainLayout
+        title={metaTagsData.title}
+        description={metaTagsData.description}
+        keywords={metaTagsData.keywords}
+        img={metaTagsData.meta_image}
+      >
         <div className="flex flex-col items-center justify-center min-h-screen">
           <p>Loading...</p>
         </div>
@@ -37,7 +49,12 @@ const UnknownPaths = ({ slug = [], issueSlugs, capstoneSlugs, blogSlugs }) => {
   }, [slug, issueSlugs, capstoneSlugs, blogSlugs, router]);
 
   return (
-    <MainLayout>
+    <MainLayout
+      title={metaTagsData?.title}
+      description={metaTagsData?.description}
+      keywords={metaTagsData?.keywords}
+      img={metaTagsData?.meta_image}
+    >
       <div className="flex flex-col items-center justify-center min-h-screen">
         <p>Searching for a Results...</p>
       </div>
@@ -81,12 +98,17 @@ export async function getServerSideProps(context) {
     const capstoneSlugs = capstoneRes.data.data.map((each) => each.slug);
     const blogSlugs = blogRes.data.data.map((each) => each.slug);
 
+    const metaComponentResponse = await MetaTagsComponent({
+      page: "unknown",
+    });
+
     return {
       props: {
         slug,
         issueSlugs,
         capstoneSlugs,
         blogSlugs,
+        metaTagsData: metaComponentResponse,
       },
     };
   } catch (error) {
@@ -97,6 +119,7 @@ export async function getServerSideProps(context) {
         issueSlugs: [],
         capstoneSlugs: [],
         blogSlugs: [],
+        metaTagsData: {},
       },
     };
   }

@@ -4,15 +4,15 @@ import ScreenWidth from "@/components/MainContainer/ScreenWidth";
 import React from "react";
 
 import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
-import CategoryHeading from "@/components/common/categoryHeading";
+import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const BlogSlugPage = ({ blog }) => {
+const BlogSlugPage = ({ blog, metaTagsData }) => {
   return (
     <MainLayout
-      title={"Blogs slug page Testing for metatags"}
-      description={"Capstone page Testing for metatags"}
-      keywords={"GIMSR, GITAM, Hospital"}
-      img={null}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         {/* <CategoryHeading heading="slug detailed page" /> */}
@@ -26,7 +26,6 @@ export default BlogSlugPage;
 
 export async function getStaticPaths() {
   const res = await fetch(
-    // apisBasePath.blogsList,
     ksppApisBasePath.blogsListApi,
 
     {
@@ -49,8 +48,6 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   try {
-    // const res = await fetch(`${apisBasePath.blogsList}/${params.slug}`, {
-
     const res = await fetch(
       `${ksppApisBasePath.blogsListBriefApi}/${params.slug}`,
       {
@@ -60,8 +57,6 @@ export async function getStaticProps({ params }) {
         },
       }
     );
-
-    // const blog = await res.json();
 
     if (!res.ok) {
       // Handle case where API returns an error
@@ -75,9 +70,12 @@ export async function getStaticProps({ params }) {
       return { notFound: true };
     }
 
+    let metaComponentResponse = await MetaTagsComponent({ page: params.slug });
+
     return {
       props: {
         blog,
+        metaTagsData: metaComponentResponse,
       },
     };
   } catch (error) {

@@ -9,18 +9,12 @@ import PoliciesCard from "@/components/PoliciesCard";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const Policies = ({ policiesData, metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <div className="mt-10">
         <h1 className="font-bold text-xl md:font-extrabold md:text-4xl text-center">
@@ -37,7 +31,6 @@ const Policies = ({ policiesData, metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // const publicPolicies = `${apisBasePath.publicPolicies}`;
   const publicPolicies = `${ksppApisBasePath.policiesGuideLines}`;
 
   const response = await fetch(publicPolicies, {
@@ -50,11 +43,7 @@ export async function getStaticProps() {
   let metaComponentResponse = await MetaTagsComponent({
     page: "kspp-policies",
   });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for kspp-policies, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  }
-  console.log("kspp-policies Page Meta DAta", metaComponentResponse);
+
   return {
     props: { policiesData, metaTagsData: metaComponentResponse },
     revalidate: 60,

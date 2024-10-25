@@ -18,7 +18,7 @@ import Link from "next/link";
 import { ImagePaths } from "@/Endpoints/imagePath";
 
 const SlugsPage = ({ pageTitle, slugsPageData }) => {
-  console.log("Slug PAge", slugsPageData);
+  // console.log("Slug PAge", slugsPageData);
   let slugBasePath;
   let slugMediaThumbnailPath;
   let slugMediaPostedByPath;
@@ -112,11 +112,11 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {slugsPageData.length > 0 ? (
             <>
-              {slugsPageData.map((eachSlugItem) => {
+              {slugsPageData.map((eachSlugItem, index) => {
                 return (
                   <Card
-                    className="mt-6 rounded-none flex flex-col justify-between drop-shadow-md"
-                    key={eachSlugItem.id}
+                    className="mt-6 rounded-none flex flex-col justify-between drop-shadow-md py-0"
+                    key={index}
                   >
                     <Image
                       src={`${slugMediaThumbnailPath}/${eachSlugItem.thumbnail_image}`}
@@ -126,43 +126,32 @@ const SlugsPage = ({ pageTitle, slugsPageData }) => {
                       alt={eachSlugItem.thumbnail_alttag}
                     />
                     <CardBody>
-                      <p className="font-semibold text-sm text-[#000] mb-4">
+                      <p className="font-semibold text-sm text-[#000] mb-4 text-left">
                         {eachSlugItem.thumbnail_title}
                       </p>
 
-                      <Avatar
-                        size="lg"
-                        variant="circular"
-                        alt={eachSlugItem.posted_by_image_alttag}
-                        src={`${slugMediaPostedByPath}/${eachSlugItem.posted_by_image}`}
-                        className="border-2 border-white hover:z-10"
-                      />
-                      {eachSlugItem.posted_by_front ? (
-                        <span className="font-semibold text-xs text-[#000] ml-2">
-                          {eachSlugItem.posted_by_front}
-                        </span>
-                      ) : (
-                        <span className="font-semibold text-xs text-[#000] ml-2">
-                          {eachSlugItem.posted_by}
-                        </span>
-                      )}
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: eachSlugItem.thumbnail_description,
-                        }}
-                        className="text-sm text-[#424a53] ellipsis-two-lines"
-                      ></div>
-                      {/* {eachSlugItem.description && (
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: eachSlugItem.description,
-                          }}
-                          className="text-sm text-[#424a53] ellipsis-two-lines"
-                        ></div>
-                      )} */}
-                      {/* <p className="text-sm text-[#424a53] ellipsis-two-lines">
-                        {eachSlugItem.thumbnail_description}
-                      </p> */}
+                      <div className="flex">
+                        <Avatar
+                          size="lg"
+                          variant="circular"
+                          alt={eachSlugItem.posted_by_image_alttag}
+                          src={`${slugMediaPostedByPath}/${eachSlugItem.posted_by_image}`}
+                          className="border-2 border-white hover:z-10"
+                        />
+                        {eachSlugItem.posted_by_front ? (
+                          <span className="font-semibold text-xs text-[#000] ml-2 flex items-center">
+                            {eachSlugItem.posted_by_front}
+                          </span>
+                        ) : (
+                          <span className="font-semibold text-xs text-[#000] ml-2 flex items-center">
+                            {eachSlugItem.posted_by}
+                          </span>
+                        )}
+                      </div>
+
+                      <p className="text-sm text-[#424a53] ellipsis-two-lines text-start">
+                        {eachSlugItem.posted_by_about}
+                      </p>
                     </CardBody>
                     <CardFooter className="pt-0">
                       <Link href={`${slugBasePath}${eachSlugItem.slug}`}>

@@ -1,3 +1,4 @@
+import { ImagePaths } from "@/Endpoints/imagePath";
 import React from "react";
 import { MdHeight } from "react-icons/md";
 
@@ -13,8 +14,10 @@ const VideoBackground = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/assets/videos/kautilya_gitam.mp4" type="video/mp4" />
-          <source src="/assets/videos/kautilya_gitam.webm" type="video/webm" />
+          {/* <source src="/assets/videos/kautilya_gitam.mp4" type="video/mp4" />
+          <source src="/assets/videos/kautilya_gitam.webm" type="video/webm" /> */}
+          <source src={ImagePaths.kautilyaVideoMp4} type="video/mp4" />
+          <source src={ImagePaths.kautilyaVideoWebm} type="video/webm" />
           Your browser does not support the video tag.
         </video>
       </div>

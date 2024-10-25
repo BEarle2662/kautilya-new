@@ -47,14 +47,6 @@ const textData = [
 ];
 
 const Placements = ({ data, metaTagsData }) => {
-  
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
   const [open, setOpen] = useState(false);
 
   const handleOpenDialog = (handleDialog) => {
@@ -98,7 +90,7 @@ const Placements = ({ data, metaTagsData }) => {
         title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaImg}
+        img={metaTagsData.meta_image}
       >
         <CategoryHeading heading="Placements" />
         <ScreenWidth layoutwidth="false">
@@ -356,8 +348,6 @@ const Placements = ({ data, metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // const placementsKcAdvnData = `${apisBasePath.placementsKcAdvnData}`;
-
   const placementsApi = ksppApisBasePath.placementsApi;
 
   const placementResponse = await fetch(placementsApi, {
@@ -367,12 +357,8 @@ export async function getStaticProps() {
     },
   });
   const data = await placementResponse.json();
-  let  metaComponentResponse = await MetaTagsComponent({ page: "placements" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for placements Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("placements Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({ page: "placements" });
+
   return {
     props: { data, metaTagsData: metaComponentResponse },
     revalidate: 60,

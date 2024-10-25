@@ -1,15 +1,16 @@
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
+import { ImagePaths } from "@/Endpoints/imagePath";
 
 const TopRecruiters = () => {
   const data = [
-    { id: 1, src: "/assets/img/admission-process/logo/1.png" },
-    { id: 2, src: "/assets/img/admission-process/logo/2.png" },
-    { id: 3, src: "/assets/img/admission-process/logo/3.png" },
-    { id: 4, src: "/assets/img/admission-process/logo/4.png" },
-    { id: 5, src: "/assets/img/admission-process/logo/5.png" },
-    { id: 6, src: "/assets/img/admission-process/logo/6.png" },
-    { id: 7, src: "/assets/img/admission-process/logo/7.png" },
+    { id: 1, src: ImagePaths.top_rc_1_ADP },
+    { id: 2, src: ImagePaths.top_rc_2_ADP },
+    { id: 3, src: ImagePaths.top_rc_3_ADP },
+    { id: 4, src: ImagePaths.top_rc_4_ADP },
+    { id: 5, src: ImagePaths.top_rc_5_ADP },
+    { id: 6, src: ImagePaths.top_rc_6_ADP },
+    { id: 7, src: ImagePaths.top_rc_7_ADP },
   ];
 
   return (

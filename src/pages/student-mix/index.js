@@ -14,23 +14,16 @@ const StudentMix = ({ data, metaTagsData }) => {
   const thirdSlider = data?.filter((each) => each.category === "2021-23");
   const fourthSlider = data?.filter((each) => each.category === "2024-26");
 
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <div className="bg-white-shade  bg-cover bg-no-repeat">
         <ScreenWidth layoutwidth="true">
-          <CategoryHeading heading="#IndiaByKautilya" />
+          <CategoryHeading heading="#IndiaByKautilya" color="text-[#00174d]" />
 
           <div className="hidden  md:grid  md:grid-cols-3">
             <div>
@@ -124,11 +117,7 @@ const StudentMix = ({ data, metaTagsData }) => {
 export default StudentMix;
 
 export async function getStaticProps() {
-  // const studentMixData = `${apisBasePath.studentMixData}`;
   const studentMixApi = ksppApisBasePath.studentMixApi;
-
-  // const studentMixDataResp = await fetch(studentMixData);
-  // const data = await studentMixDataResp.json();
 
   const response = await axios.get(studentMixApi, {
     headers: {
@@ -136,22 +125,11 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  // const metaComponentResponse = await MetaTagsComponent({
-  //   page: "student-mix",
-  // });
 
-  // console.log("student-mix Page Meta DAta", metaComponentResponse);
   const data = response.data.data;
-  //   console.log(data);
 
   let metaComponentResponse = await MetaTagsComponent({ page: "student-mix" });
-  if (!metaComponentResponse) {
-    console.log(
-      "No Meta Data for student mix Page, fetching Home Page Meta Data"
-    );
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  }
-  console.log("student mix Page Meta DAta", metaComponentResponse);
+
   return {
     props: { data, metaTagsData: metaComponentResponse },
     revalidate: 60,

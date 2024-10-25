@@ -27,19 +27,13 @@ const researchContent = [
   },
 ];
 
-const Research = ({metaTagsData}) => {
-  let metaImg;
-if (metaTagsData.meta_image !== null) {
-  metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-} else {
-  metaImg = "https://kspp.edu.in/images/administration.jpg";
-}
+const Research = ({ metaTagsData }) => {
   return (
     <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Research @ Kautilya" />
@@ -80,18 +74,11 @@ if (metaTagsData.meta_image !== null) {
   );
 };
 export async function getStaticProps() {
-// const metaComponentResponse = await MetaTagsComponent({ page: "research" });
+  let metaComponentResponse = await MetaTagsComponent({ page: "research" });
 
-//   console.log("research Page Meta DAta", metaComponentResponse);
-let  metaComponentResponse = await MetaTagsComponent({ page: "research" });
-if (!metaComponentResponse) {
-  console.log("No Meta Data for research Page, fetching Home Page Meta Data");
-  metaComponentResponse = await MetaTagsComponent({ page: "home" });
-} 
-console.log("research Page Meta DAta", metaComponentResponse);
   return {
     props: { metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
+
     revalidate: 60, // In seconds
   };
 }

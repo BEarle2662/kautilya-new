@@ -11,7 +11,7 @@ import { docsPath } from "@/Endpoints/docsBasePath";
 
 const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
   const docPath = "https://guprojects.gitam.edu/kautilya-admin/public/";
-
+  // console.log(slugData);
   let documentFile;
   let slugMediaInnerImgPath;
   let slugMediaPostedByPath;
@@ -44,7 +44,7 @@ const SlugDetailedPage = ({ slugData, slugDetailedPage }) => {
 
   const data = slugData?.data;
 
-  if (!data.inner_title) {
+  if (!data?.inner_title) {
     return <div>Data not available</div>;
   }
 

@@ -7,20 +7,21 @@ import BackToTopButton from "../common/BackToTop";
 // import AdmissionEnquiryBtn from "../common/AdmissionEnquiryBtn";
 
 const MainLayout = ({ children, title, description, keywords, img }) => {
-  // const metaImg =
-  //   img !== undefined
-  //     ? `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${img}`
-  //     : "https://kspp.edu.in/images/administration.jpg";
+  let metaImg;
 
-  // console.log("Img", img);
-  // console.log("MetaImage", metaImg);
+  if (img === null || img === "" || img === undefined) {
+    metaImg = "https://kspp.edu.in/images/administration.jpg";
+  } else {
+    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${img}`;
+  }
+
   return (
     <>
       <MetaData
         title={title}
         description={description}
         keywords={keywords}
-        image={img}
+        image={metaImg}
       />
       <Navbar />
       {/* <AdmissionEnquiryBtn /> */}

@@ -6,16 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import slideImg1 from "../../../public/assets/img/studentClubs/1.jpg";
-import slideImg2 from "../../../public/assets/img/studentClubs/2.jpg";
 
-import slideImg3 from "../../../public/assets/img/studentClubs/3.jpg";
-
-import slideImg4 from "../../../public/assets/img/studentClubs/4.jpg";
-
-import slideImg5 from "../../../public/assets/img/studentClubs/5.jpg";
-
-import slideImg6 from "../../../public/assets/img/studentClubs/6.jpg";
 import { ksppApisBasePath } from "@/Endpoints/apisBase";
 import axios from "axios";
 import { ImageBasePaths } from "@/Endpoints/imageBasePaths";
@@ -70,27 +61,6 @@ const clubData = [
 ];
 
 const StudentClub = ({ data, metaTagsData }) => {
-  // const data = [
-  //   {
-  //     imgURL: slideImg1,
-  //   },
-  //   {
-  //     imgURL: slideImg2,
-  //   },
-  //   {
-  //     imgURL: slideImg3,
-  //   },
-  //   {
-  //     imgURL: slideImg4,
-  //   },
-  //   {
-  //     imgURL: slideImg5,
-  //   },
-  //   {
-  //     imgURL: slideImg6,
-  //   },
-  // ];
-
   const settings = {
     dots: true,
     slidesToShow: 1,
@@ -98,18 +68,13 @@ const StudentClub = ({ data, metaTagsData }) => {
     autoplay: true,
     cssEase: "linear",
   };
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
+
   return (
     <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="false">
         <div className="h-[40vh] bg-black-shade pt-10">
@@ -120,18 +85,20 @@ const StudentClub = ({ data, metaTagsData }) => {
         </div>
 
         <ScreenWidth layoutwidth="true">
-          <Slider {...settings}>
-            {data.map((eachobj, index) => (
-              <Image
-                src={`${ImageBasePaths.studentsClubImagesPath}${eachobj.desktop_banner}`}
-                key={index}
-                height={0}
-                width={0}
-                className="h-full w-full"
-                alt="students-club"
-              />
-            ))}
-          </Slider>
+          <div className="margin-minus">
+            <Slider {...settings}>
+              {data.map((eachobj, index) => (
+                <Image
+                  src={`${ImageBasePaths.studentsClubImagesPath}${eachobj.desktop_banner}`}
+                  key={index}
+                  height={0}
+                  width={0}
+                  className="h-full w-full"
+                  alt="students-club"
+                />
+              ))}
+            </Slider>
+          </div>
         </ScreenWidth>
 
         <ScreenWidth layoutwidth="true">
@@ -159,18 +126,15 @@ export async function getStaticProps() {
   });
 
   const data = response.data.data;
-  // const metaComponentResponse = await MetaTagsComponent({ page: "student-clubs" });
 
-  // console.log("student-clubs Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "student-clubs" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for student Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("student Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "student-clubs",
+  });
+
   return {
     props: {
-      data, metaTagsData: metaComponentResponse
+      data,
+      metaTagsData: metaComponentResponse,
     },
     revalidate: 60,
   };

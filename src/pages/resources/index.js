@@ -6,10 +6,11 @@ import { apisBasePath, ksppApisBasePath } from "@/Endpoints/apisBase";
 import React from "react";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
-const Resources = ({ data,metaTagsData }) => {
+const Resources = ({ data, metaTagsData }) => {
   let Page = "Resource";
   const events = data.data?.filter((each) => each.category === "Events");
   const colloquy = data.data?.filter((each) => each.category === "Colloquy");
+  const fieldTrip = data.data?.filter((each) => each.category === "Field Trip");
 
   const policySeries = data.data?.filter(
     (each) => each.category === "Policy Series"
@@ -17,24 +18,20 @@ const Resources = ({ data,metaTagsData }) => {
   const new_updates = data.data?.filter(
     (each) => each.category === "News & Updates"
   );
-
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
+  console.log("oeld Trip", fieldTrip);
   return (
     <MainLayout
       title={metaTagsData.title}
       description={metaTagsData.description}
       keywords={metaTagsData.keywords}
-      img={metaImg}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="true">
         <CategoryHeading heading="Events" textAlign="text-left" />
         <EventsSlider sliderData={events} page={Page} />
+
+        <CategoryHeading heading="Field Trip" textAlign="text-left" />
+        <EventsSlider sliderData={fieldTrip} page={Page} />
 
         <CategoryHeading heading="Colloquy event" textAlign="text-left" />
         <EventsSlider sliderData={colloquy} page={Page} />
@@ -64,17 +61,12 @@ export async function getStaticProps() {
   });
   const data = await response.json();
 
-  let  metaComponentResponse = await MetaTagsComponent({ page: "resources" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for resources Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("resources Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({ page: "resources" });
+
   return {
     props: { data, metaTagsData: metaComponentResponse },
     revalidate: 60,
   };
-  
 }
 
 export default Resources;

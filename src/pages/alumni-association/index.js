@@ -11,21 +11,12 @@ import axios from "axios";
 import { MetaTagsComponent } from "@/components/common/metaTagsComponent";
 
 const AlumniAssociation = ({ data, metaTagsData }) => {
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-  const image =
-    "https://kspp.edu.in/images/placements/KSPP-Placement-Report-2023-Final.jpg";
-
   return (
     <MainLayout
-        title={metaTagsData.title}
-        description={metaTagsData.description}
-        keywords={metaTagsData.keywords}
-        img={metaImg}
+      title={metaTagsData.title}
+      description={metaTagsData.description}
+      keywords={metaTagsData.keywords}
+      img={metaTagsData.meta_image}
     >
       <ScreenWidth layoutwidth="false">
         <div className="border-b-2 md:mb-10">
@@ -95,15 +86,7 @@ const AlumniAssociation = ({ data, metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // const alumniProfiles = apisBasePath.alumniprofiles;
   const almuniProfileApi = ksppApisBasePath.almuniProfileApi;
-
-  const metaTagsResponse = await MetaTagsComponent({
-    page: "alumni-association",
-  });
-
-  // const response = await fetch(alumniProfiles);
-  // const data = await response.json();
 
   const response = await axios.get(almuniProfileApi, {
     headers: {
@@ -113,17 +96,13 @@ export async function getStaticProps() {
   });
 
   const data = response.data.data;
-  // const metaComponentResponse = await MetaTagsComponent({ page: "alumni-association" });
 
-  // console.log("alumni-association Page Meta DAta", metaComponentResponse);
-  let  metaComponentResponse = await MetaTagsComponent({ page: "alumni-association" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for alumni association Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  } 
-  console.log("alumni association Page Meta DAta", metaComponentResponse);
+  let metaComponentResponse = await MetaTagsComponent({
+    page: "alumni-association",
+  });
+
   return {
-    props: { data, metaTagsData: metaComponentResponse},
+    props: { data, metaTagsData: metaComponentResponse },
     revalidate: 60,
   };
 }

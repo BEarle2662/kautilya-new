@@ -23,20 +23,13 @@ const faculty = ({ data, metaTagsData }) => {
     (each) => each.category === "Visiting Faculties"
   );
 
-  let metaImg;
-  if (metaTagsData.meta_image !== null) {
-    metaImg = `https://guprojects.gitam.edu/KSPPCMS/public/metaimages/${metaTagsData.meta_image}`;
-  } else {
-    metaImg = "https://kspp.edu.in/images/administration.jpg";
-  }
-
   return (
     <>
       <MainLayout
         title={metaTagsData.title}
         description={metaTagsData.description}
         keywords={metaTagsData.keywords}
-        img={metaImg}
+        img={metaTagsData.meta_image}
       >
         <ScreenWidth layoutwidth="true">
           <div>
@@ -112,7 +105,6 @@ const faculty = ({ data, metaTagsData }) => {
 };
 
 export async function getStaticProps() {
-  // const ourFaculty = `${apisBasePath.faculty}`;
   const ourFaculty = `${ksppApisBasePath.faculty}`;
 
   const res = await axios.get(ourFaculty, {
@@ -121,23 +113,15 @@ export async function getStaticProps() {
       Authorization: "8efgh5gyujk",
     },
   });
-  // const metaComponentResponse = await MetaTagsComponent({
-  //   page: "our-faculty",
-  // });
 
-  // console.log("faculty Page Meta DAta", metaComponentResponse);
   let metaComponentResponse = await MetaTagsComponent({ page: "our-faculty" });
-  if (!metaComponentResponse) {
-    console.log("No Meta Data for faculty Page, fetching Home Page Meta Data");
-    metaComponentResponse = await MetaTagsComponent({ page: "home" });
-  }
-  console.log("faculty Page Meta DAta", metaComponentResponse);
+
   const data = res.data;
 
   return {
     props: { data, metaTagsData: metaComponentResponse },
-    // Revalidate at most once every 60 seconds
-    revalidate: 60, // In seconds
+
+    revalidate: 60,
   };
 }
 
